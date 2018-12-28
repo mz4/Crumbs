@@ -1,4 +1,3 @@
-## Welcome to Notes on Frontend Development
 ### React Concepts
 
 from [freeCodeCamp](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)
