@@ -1,6 +1,6 @@
 ## Welcome to Notes on Frontend Development
 ## React
-from [freeCodeCampe](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)
+from [freeCodeCamp](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)
 * Component Lifecycle
 * HOC higher-order components
 * State and setState
