@@ -1,4 +1,14 @@
 ## Welcome to Notes on Frontend Development
+## React
+from [freeCodeCampe](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)
+* Component Lifecycle
+* HOC higher-order components
+* State and setState
+* Context
+
+
+
+
 
 You can use the [editor on GitHub](https://github.com/mz4/notes/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
