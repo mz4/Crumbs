@@ -49,6 +49,44 @@ sasa
 * What is the difference between event capturing and bubbling?
 * What is the difference between stopPropagation and preventDefault?
 
+
+--------------------------------------------------------------------------
+- What are the different scopes in javascript?
+Global Scope, Local Scope, Block Scope (let)
+Old school JavaScript
+Traditionally, JavaScript really only has two types of scope :
+Global Scope : Variables are known throughout the application, from the start of the application
+Functional Scope : Variables are known within the function they are declared in, from the start of the function
+I will not elaborate on this, since there are already many other answers explaining the difference.
+Modern JavaScript
+The most recent JavaScript specs now also allow a third scope :
+Block Scope : Variables are known within the block they are declared in, from the moment they are declared onwards
+How do I create block scope variables?
+Traditionally, you create your variables like this :
+var myVariable = "Some text";
+Block scope variables are created like this :
+let myVariable = "Some text";
+
+--------------------------------------------------------------------------
+- What is the Difference Between Function and Block Scope in JavaScript?
+var is function scope.
+let and const are block scope.
+
+Function scope is within the function.
+Block scope is within curly brackets.
+
+--------------------------------------------------------------------------
+- What is variable hoisting?
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+- What is scope chain?
+JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, 
+it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, 
+let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
+
+
+
+
 ### GENERAL CONCEPTS
 - BOM Browser Object Model
 * What Is Browser Object Model (BOM)? 
