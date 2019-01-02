@@ -19,17 +19,6 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 
 ```markdown
 fdfd
-fd
-fd
-f
-dsasa
-sa
-sa
-s
-as
-as
-sasa
-sasa
 ```
 
 ### JAVASCRIPT Questions
