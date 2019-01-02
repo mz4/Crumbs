@@ -52,6 +52,7 @@ sasa
 
 --------------------------------------------------------------------------
 - What are the different scopes in javascript?
+
 Global Scope, Local Scope, Block Scope (let)
 Old school JavaScript
 Traditionally, JavaScript really only has two types of scope :
@@ -69,6 +70,7 @@ let myVariable = "Some text";
 
 --------------------------------------------------------------------------
 - What is the Difference Between Function and Block Scope in JavaScript?
+
 var is function scope.
 let and const are block scope.
 
@@ -77,6 +79,7 @@ Block scope is within curly brackets.
 
 --------------------------------------------------------------------------
 - What is variable hoisting?
+
 Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
 
 - What is scope chain?
