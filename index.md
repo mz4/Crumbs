@@ -33,8 +33,9 @@ sasa
 ```
 
 ### JAVASCRIPT Questions
-* What are the different scopes in javascript?
-* What is variable hoisting?
+* **What are the different scopes in javascript?**
+* **What is the Difference Between Function and Block Scope in JavaScript?**
+* **What is variable hoisting?**
 * What is the scope chain?
 * What is an IIFE and why might you use it?
 * What are function closures?
