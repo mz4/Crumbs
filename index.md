@@ -231,10 +231,9 @@ Sets - Looping through Sets
 https://react.christmas/
 https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
-**************************************************************************
-* CSS3/SASS
-**************************************************************************
-CSS
+
+###  CSS3/SASS
+
 CSS Syntax
 A CSS rule set consists of a selector and a declaration block:
 selector	declaration (propert+value)
@@ -295,12 +294,6 @@ SCSS Mixins
 .big-red-square {
   @include square(300px, rgb(255,0,0));
 }
-
-
-
-
-
-
 
 
 SCSS CrossBrowser Mixins
@@ -370,14 +363,6 @@ $width: 800px;
 .column-fifth {
   width: $width / 5;
 }
-
-
-
-
-
-
-
-
 
 Install SASS
 $ npm install sass-loader node-sass --save-dev
