@@ -231,3 +231,163 @@ Sets - Looping through Sets
 https://react.christmas/
 https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
+**************************************************************************
+* CSS3/SASS
+**************************************************************************
+CSS
+CSS Syntax
+A CSS rule set consists of a selector and a declaration block:
+selector	declaration (propert+value)
+h1		{color: blue;}
+CSS Comments
+/* comment */
+Selector
+name, id, class
+
+Select p elements with class="center"
+p.center 
+
+Grouping Selectors
+h1, h2, p {
+    text-align: center;
+    color: red;
+}
+External CSS
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+Internal Style Sheet
+<style>
+body {
+    background-color: linen;
+}
+</style>
+
+Inline Styles
+<h1 style="color:blue;margin-left:30px;">This is a heading.</h1>
+SCSS Variables
+$title-font: normal 24px/1.5 'Open Sans', sans-serif;
+$cool-red: #F44336;
+$box-shadow-bottom-only: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+
+h1.title {
+  font: $title-font;
+  color: $cool-red;
+}
+
+div.container {
+  color: $cool-red;
+  background: #fff;
+  width: 100%;
+  box-shadow: $box-shadow-bottom-only;
+}
+
+SCSS Mixins
+@mixin square($size, $color) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+.small-blue-square {
+  @include square(20px, rgb(0,0,255));
+}
+
+.big-red-square {
+  @include square(300px, rgb(255,0,0));
+}
+
+
+
+
+
+
+
+
+SCSS CrossBrowser Mixins
+@mixin transform-tilt() {
+  $tilt: rotate(15deg);
+
+  -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
+      -ms-transform: $tilt; /* IE 9 */
+          transform: $tilt; /* IE 10, Fx 16+, Op 12.1+ */
+}
+
+.frame:hover { 
+  @include transform-tilt; 
+}
+
+SCSS Extend
+Extending should be used when we need similarly styled elements, which still differ in some detail. 
+
+.dialog-button {
+  box-sizing: border-box;
+  color: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  padding: 12px 40px;
+  cursor: pointer;
+}
+
+.confirm {
+  @extend .dialog-button;
+  background-color: #87bae1;
+  float: left;
+}
+
+.cancel {
+  @extend .dialog-button;
+  background-color: #e4749e;
+  float: right;
+}
+SCSS Nesting
+Organize your stylesheet in a way that resembles the HTML more closely.
+
+ul {
+  list-style: none;
+
+  li {
+    padding: 15px;
+    display: inline-block;
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #444;
+    }
+  }
+}
+
+SCSS Operations
+$width: 800px;
+
+.container { 
+  width: $width;
+}
+
+.column-half {
+  width: $width / 2;
+}
+
+.column-fifth {
+  width: $width / 5;
+}
+
+
+
+
+
+
+
+
+
+Install SASS
+$ npm install sass-loader node-sass --save-dev
+Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
+
+Module:{
+     Rules:[
+             {
+                 test:/\.(s*)css$/,
+                 use:['style-loader','css-loader', 'sass-loader']
+              }
+      ]
+   },
