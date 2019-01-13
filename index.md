@@ -268,6 +268,7 @@ SCSS CrossBrowser Mixins
 SCSS Extend
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
 
+```
 .dialog-button {
   box-sizing: border-box;
   color: #ffffff;
@@ -287,6 +288,8 @@ Extending should be used when we need similarly styled elements, which still dif
   background-color: #e4749e;
   float: right;
 }
+```
+
 SCSS Nesting
 Organize your stylesheet in a way that resembles the HTML more closely.
 
