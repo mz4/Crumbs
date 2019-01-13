@@ -241,15 +241,11 @@ SCSS Mixins
   height: $size;
   background-color: $color;
 }
-```
 
-```
 .small-blue-square {
   @include square(20px, rgb(0,0,255));
 }
-```
 
-```
 .big-red-square {
   @include square(300px, rgb(255,0,0));
 }
