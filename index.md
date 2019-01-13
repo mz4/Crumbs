@@ -2,7 +2,7 @@
 
 ###  CSS3/SASS
 
-SCSS Mixins
+#### SCSS Mixins
 ```scss
 @mixin square($size, $color) {
   width: $size;
@@ -19,7 +19,7 @@ SCSS Mixins
 }
 ```
 
-SCSS CrossBrowser Mixins
+#### SCSS CrossBrowser Mixins
 ```scss
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
@@ -33,7 +33,7 @@ SCSS CrossBrowser Mixins
 }
 ```
 
-SCSS Extend
+#### SCSS Extend  
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
 
 ```scss
@@ -58,7 +58,7 @@ Extending should be used when we need similarly styled elements, which still dif
 }
 ```
 
-SCSS Nesting
+#### SCSS Nesting  
 Organize your stylesheet in a way that resembles the HTML more closely.
 
 ```scss
@@ -78,7 +78,7 @@ ul {
 }
 ```
 
-SCSS Operations
+#### SCSS Operations  
 ```scss
 $width: 800px;
 
@@ -95,10 +95,11 @@ $width: 800px;
 }
 ```
 
-Install SASS
+#### Install SASS
 ```
 $ npm install sass-loader node-sass --save-dev
 ```
+
 Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
 ```scss
 Module:{
