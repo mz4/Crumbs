@@ -2,6 +2,23 @@
 
 ###  CSS3/SASS
 
+#### SCSS Variables
+```scss
+$zHeader: 2000;
+$zOverlay: 5000;
+$zMessage: 5050;
+
+.header {
+  z-index: $zHeader;
+}
+.overlay {
+  z-index: $zOverlay;
+}
+.message {
+  z-index: $zMessage;
+}
+```
+
 #### SCSS Mixins
 ```scss
 @mixin square($size, $color) {
@@ -75,6 +92,24 @@ ul {
   }
 }
 ```
+
+#### Nested Pseudo Classes and Pseudo Elements 
+```scss
+.weather {
+  @extend %module;
+  @include transition(all 0.3s ease-out);
+  background: LightCyan;
+  &:hover {
+    background: DarkCyan;
+  }
+  &::before {
+    content: "";
+    display: block;
+  }
+  ...
+}
+```
+
 
 #### SCSS Operations  
 ```scss
