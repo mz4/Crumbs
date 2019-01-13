@@ -293,6 +293,7 @@ Extending should be used when we need similarly styled elements, which still dif
 SCSS Nesting
 Organize your stylesheet in a way that resembles the HTML more closely.
 
+```
 ul {
   list-style: none;
 
@@ -307,8 +308,10 @@ ul {
     }
   }
 }
+```
 
 SCSS Operations
+```
 $width: 800px;
 
 .container { 
@@ -322,6 +325,7 @@ $width: 800px;
 .column-fifth {
   width: $width / 5;
 }
+```
 
 Install SASS
 $ npm install sass-loader node-sass --save-dev
