@@ -1,29 +1,29 @@
 ### React Concepts
 
 ## Links
-from [freeCodeCamp](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
-(Component Lifecycle, HOC higher-order components, State and setState, Context)
+from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
+Component Lifecycle, HOC higher-order components, State and setState, Context
 
-from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
-(Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization)
+from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
+Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
 
 ### JAVASCRIPT Questions
 - **[What are the different scopes in javascript?](#jsq1)**
-* **What is the Difference Between Function and Block Scope in JavaScript?**
-* **What is variable hoisting?**
-* What is the scope chain?
-* What is an IIFE and why might you use it?
-* What are function closures?
-* What does the this keyword mean?
-* What do the functions call, bind and apply do?
-* What is the prototype chain?
-* What is the difference between prototypal and classical inheritance?
-* What is the Constructor OO pattern?
-* What is the Prototype OO pattern?
-* What is CORS? 
-* What is JSONP?
-* What is the difference between event capturing and bubbling?
-* What is the difference between stopPropagation and preventDefault?
+- **What is the Difference Between Function and Block Scope in JavaScript?**
+- **What is variable hoisting?**
+- What is the scope chain?
+- What is an IIFE and why might you use it?
+- What are function closures?
+- What does the this keyword mean?
+- What do the functions call, bind and apply do?
+- What is the prototype chain?
+- What is the difference between prototypal and classical inheritance?
+- What is the Constructor OO pattern?
+- What is the Prototype OO pattern?
+- What is CORS? 
+- What is JSONP?
+- What is the difference between event capturing and bubbling?
+- What is the difference between stopPropagation and preventDefault?
 
 --------------------------------------------------------------------------
 ## What are the different scopes in javascript? {#jsq1}
