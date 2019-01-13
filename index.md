@@ -1,11 +1,20 @@
 ### React Concepts
 
 ## Links
+### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
 
 from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
 Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
+
+[React Various articles](https://react.christmas/)
+
+### CSS Links  
+[cssreference.io](https://cssreference.io)
+
+### Various links
+[github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
 ### JAVASCRIPT Questions
 - **[What are the different scopes in javascript?](#jsq1)**
@@ -201,15 +210,6 @@ The WeakMap
 Sets - Creation and Adding Items 
 Sets - Managing Items 
 Sets - Looping through Sets 
-
-
-**************************************************************************
-* REACT
-**************************************************************************
-- LINKS
-https://react.christmas/
-https://help.github.com/articles/basic-writing-and-formatting-syntax/
-
 
 ###  CSS3/SASS
 
