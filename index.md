@@ -290,7 +290,7 @@ ul {
 ```
 
 SCSS Operations
-```css
+```sass
 $width: 800px;
 
 .container { 
@@ -311,7 +311,7 @@ Install SASS
 $ npm install sass-loader node-sass --save-dev
 ```
 Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
-```css
+```scss
 Module:{
      Rules:[
              {
