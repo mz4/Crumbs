@@ -214,7 +214,7 @@ https://help.github.com/articles/basic-writing-and-formatting-syntax/
 ###  CSS3/SASS
 
 SCSS Mixins
-```css
+```scss
 @mixin square($size, $color) {
   width: $size;
   height: $size;
@@ -231,7 +231,7 @@ SCSS Mixins
 ```
 
 SCSS CrossBrowser Mixins
-```css
+```scss
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
   -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
@@ -247,7 +247,7 @@ SCSS CrossBrowser Mixins
 SCSS Extend
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
 
-```css
+```scss
 .dialog-button {
   box-sizing: border-box;
   color: #ffffff;
@@ -272,7 +272,7 @@ Extending should be used when we need similarly styled elements, which still dif
 SCSS Nesting
 Organize your stylesheet in a way that resembles the HTML more closely.
 
-```css
+```scss
 ul {
   list-style: none;
 
@@ -290,7 +290,7 @@ ul {
 ```
 
 SCSS Operations
-```sass
+```scss
 $width: 800px;
 
 .container { 
