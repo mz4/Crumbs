@@ -37,7 +37,7 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * What is the difference between stopPropagation and preventDefault?
 
 --------------------------------------------------------------------------
-## {#jsq1} **- What are the different scopes in javascript?**
+## What are the different scopes in javascript? {#jsq1}
 
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
