@@ -1,5 +1,6 @@
 ### React Concepts
 
+## Links
 from [freeCodeCamp](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)
 * Component Lifecycle
 * HOC higher-order components
@@ -16,10 +17,6 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * Code splitting
 * Server rendering
 * Internationalization
-
-```markdown
-fdfd
-```
 
 ### JAVASCRIPT Questions
 * **What are the different scopes in javascript?**
@@ -44,18 +41,14 @@ fdfd
 - What are the different scopes in javascript?
 
 Global Scope, Local Scope, Block Scope (let)
-Old school JavaScript
+#Old school JavaScript
 Traditionally, JavaScript really only has two types of scope :
-Global Scope : Variables are known throughout the application, from the start of the application
-Functional Scope : Variables are known within the function they are declared in, from the start of the function
-I will not elaborate on this, since there are already many other answers explaining the difference.
-Modern JavaScript
+**Global Scope** : Variables are known throughout the application, from the start of the application
+**Functional Scope** : Variables are known within the function they are declared in, from the start of the function
+
+#Modern JavaScript
 The most recent JavaScript specs now also allow a third scope :
-Block Scope : Variables are known within the block they are declared in, from the moment they are declared onwards
-How do I create block scope variables?
-Traditionally, you create your variables like this :
-var myVariable = "Some text";
-Block scope variables are created like this :
+**Block Scope** : Variables are known within the block they are declared in, from the moment they are declared onwards
 let myVariable = "Some text";
 
 --------------------------------------------------------------------------
