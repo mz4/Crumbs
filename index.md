@@ -35,7 +35,6 @@
 
 #### SCSS Extend  
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
-
 ```scss
 .dialog-button {
   box-sizing: border-box;
@@ -60,7 +59,6 @@ Extending should be used when we need similarly styled elements, which still dif
 
 #### SCSS Nesting  
 Organize your stylesheet in a way that resembles the HTML more closely.
-
 ```scss
 ul {
   list-style: none;
@@ -111,7 +109,6 @@ Module:{
       ]
    },
 ```
-
 
 ## JAVASCRIPT Questions
 - **[What are the different scopes in javascript?](#jsq1)**
@@ -165,12 +162,9 @@ let’s say in your case can be the country, which in context of JavaScript will
 
 --------------------------------------------------------------------------
 
-
-
-
 ### GENERAL CONCEPTS
 - BOM Browser Object Model
-* What Is Browser Object Model (BOM)? 
+* Browser Object Model (BOM)  
 * Window Object 
 * Window Object Timing 
 * Screen Object 
