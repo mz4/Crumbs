@@ -19,8 +19,7 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * Internationalization
 
 ### JAVASCRIPT Questions
-[Hellooo](#hello)  
-* **What are the different scopes in javascript?**
+* **[What are the different scopes in javascript?](#jsq1)**
 * **What is the Difference Between Function and Block Scope in JavaScript?**
 * **What is variable hoisting?**
 * What is the scope chain?
@@ -38,8 +37,7 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * What is the difference between stopPropagation and preventDefault?
 
 --------------------------------------------------------------------------
-## Hello
-**- What are the different scopes in javascript?**
+## {#jsq1} **- What are the different scopes in javascript?**
 
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
