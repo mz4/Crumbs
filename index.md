@@ -1,7 +1,7 @@
 ### React Concepts
 
 ## Links
-### Javascript  
+#### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
 
@@ -10,13 +10,13 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 [React Various articles](https://react.christmas/)
 
-### CSS Links  
+#### CSS Links  
 [cssreference.io](https://cssreference.io)
 
-### Various links
+#### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
-### JAVASCRIPT Questions
+## JAVASCRIPT Questions
 - **[What are the different scopes in javascript?](#jsq1)**
 - **What is the Difference Between Function and Block Scope in JavaScript?**
 - **What is variable hoisting?**
@@ -35,7 +35,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 - What is the difference between stopPropagation and preventDefault?
 
 --------------------------------------------------------------------------
-## What are the different scopes in javascript? {#jsq1}
+#### What are the different scopes in javascript? {#jsq1}
 
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
@@ -50,18 +50,18 @@ let myVariable = "Some text";
 const myVar = "val";
 
 --------------------------------------------------------------------------
-**- What is the Difference Between Function and Block Scope in JavaScript?**
+#### What is the Difference Between Function and Block Scope in JavaScript?**
 
 Function scope is within the function. (var is function scope.)
 Block scope is within curly brackets. (let and const are block scope.)
 
 --------------------------------------------------------------------------
-- What is variable hoisting?
+#### What is variable hoisting?
 
 Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
 
 --------------------------------------------------------------------------
-- What is scope chain?
+#### What is scope chain?
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, 
 it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, 
 let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
