@@ -19,7 +19,7 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * Internationalization
 
 ### JAVASCRIPT Questions
-* **[What are the different scopes in javascript?](#jsq1)**
+- **[What are the different scopes in javascript?](#jsq1)**
 * **What is the Difference Between Function and Block Scope in JavaScript?**
 * **What is variable hoisting?**
 * What is the scope chain?
@@ -225,7 +225,7 @@ https://help.github.com/articles/basic-writing-and-formatting-syntax/
 ###  CSS3/SASS
 
 SCSS Mixins
-```
+```css
 @mixin square($size, $color) {
   width: $size;
   height: $size;
@@ -242,7 +242,7 @@ SCSS Mixins
 ```
 
 SCSS CrossBrowser Mixins
-```
+```css
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
   -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
@@ -258,7 +258,7 @@ SCSS CrossBrowser Mixins
 SCSS Extend
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
 
-```
+```css
 .dialog-button {
   box-sizing: border-box;
   color: #ffffff;
@@ -283,7 +283,7 @@ Extending should be used when we need similarly styled elements, which still dif
 SCSS Nesting
 Organize your stylesheet in a way that resembles the HTML more closely.
 
-```
+```css
 ul {
   list-style: none;
 
@@ -301,7 +301,7 @@ ul {
 ```
 
 SCSS Operations
-```
+```css
 $width: 800px;
 
 .container { 
@@ -322,7 +322,7 @@ Install SASS
 $ npm install sass-loader node-sass --save-dev
 ```
 Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
-```
+```css
 Module:{
      Rules:[
              {
