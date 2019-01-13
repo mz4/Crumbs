@@ -1,20 +1,116 @@
-### React Concepts
+### 
 
-## Links
-#### Javascript  
-from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
-Component Lifecycle, HOC higher-order components, State and setState, Context
+###  CSS3/SASS
 
-from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
-Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
+SCSS Mixins
+```scss
+@mixin square($size, $color) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
 
-[React Various articles](https://react.christmas/)
+.small-blue-square {
+  @include square(20px, rgb(0,0,255));
+}
 
-#### CSS Links  
-[cssreference.io](https://cssreference.io)
+.big-red-square {
+  @include square(300px, rgb(255,0,0));
+}
+```
 
-#### Various links
-[github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+SCSS CrossBrowser Mixins
+```scss
+@mixin transform-tilt() {
+  $tilt: rotate(15deg);
+  -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
+      -ms-transform: $tilt; /* IE 9 */
+          transform: $tilt; /* IE 10, Fx 16+, Op 12.1+ */
+}
+
+.frame:hover { 
+  @include transform-tilt; 
+}
+```
+
+SCSS Extend
+Extending should be used when we need similarly styled elements, which still differ in some detail. 
+
+```scss
+.dialog-button {
+  box-sizing: border-box;
+  color: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  padding: 12px 40px;
+  cursor: pointer;
+}
+
+.confirm {
+  @extend .dialog-button;
+  background-color: #87bae1;
+  float: left;
+}
+
+.cancel {
+  @extend .dialog-button;
+  background-color: #e4749e;
+  float: right;
+}
+```
+
+SCSS Nesting
+Organize your stylesheet in a way that resembles the HTML more closely.
+
+```scss
+ul {
+  list-style: none;
+
+  li {
+    padding: 15px;
+    display: inline-block;
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #444;
+    }
+  }
+}
+```
+
+SCSS Operations
+```scss
+$width: 800px;
+
+.container { 
+  width: $width;
+}
+
+.column-half {
+  width: $width / 2;
+}
+
+.column-fifth {
+  width: $width / 5;
+}
+```
+
+Install SASS
+```
+$ npm install sass-loader node-sass --save-dev
+```
+Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
+```scss
+Module:{
+     Rules:[
+             {
+                 test:/\.(s*)css$/,
+                 use:['style-loader','css-loader', 'sass-loader']
+              }
+      ]
+   },
+```
+
 
 ## JAVASCRIPT Questions
 - **[What are the different scopes in javascript?](#jsq1)**
@@ -211,113 +307,19 @@ Sets - Creation and Adding Items
 Sets - Managing Items 
 Sets - Looping through Sets 
 
-###  CSS3/SASS
 
-SCSS Mixins
-```scss
-@mixin square($size, $color) {
-  width: $size;
-  height: $size;
-  background-color: $color;
-}
+## Links
+#### Javascript  
+from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
+Component Lifecycle, HOC higher-order components, State and setState, Context
 
-.small-blue-square {
-  @include square(20px, rgb(0,0,255));
-}
+from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
+Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
 
-.big-red-square {
-  @include square(300px, rgb(255,0,0));
-}
-```
+[React Various articles](https://react.christmas/)
 
-SCSS CrossBrowser Mixins
-```scss
-@mixin transform-tilt() {
-  $tilt: rotate(15deg);
-  -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
-      -ms-transform: $tilt; /* IE 9 */
-          transform: $tilt; /* IE 10, Fx 16+, Op 12.1+ */
-}
+#### CSS Links  
+[cssreference.io](https://cssreference.io)
 
-.frame:hover { 
-  @include transform-tilt; 
-}
-```
-
-SCSS Extend
-Extending should be used when we need similarly styled elements, which still differ in some detail. 
-
-```scss
-.dialog-button {
-  box-sizing: border-box;
-  color: #ffffff;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-  padding: 12px 40px;
-  cursor: pointer;
-}
-
-.confirm {
-  @extend .dialog-button;
-  background-color: #87bae1;
-  float: left;
-}
-
-.cancel {
-  @extend .dialog-button;
-  background-color: #e4749e;
-  float: right;
-}
-```
-
-SCSS Nesting
-Organize your stylesheet in a way that resembles the HTML more closely.
-
-```scss
-ul {
-  list-style: none;
-
-  li {
-    padding: 15px;
-    display: inline-block;
-
-    a {
-      text-decoration: none;
-      font-size: 16px;
-      color: #444;
-    }
-  }
-}
-```
-
-SCSS Operations
-```scss
-$width: 800px;
-
-.container { 
-  width: $width;
-}
-
-.column-half {
-  width: $width / 2;
-}
-
-.column-fifth {
-  width: $width / 5;
-}
-```
-
-Install SASS
-```
-$ npm install sass-loader node-sass --save-dev
-```
-Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
-```scss
-Module:{
-     Rules:[
-             {
-                 test:/\.(s*)css$/,
-                 use:['style-loader','css-loader', 'sass-loader']
-              }
-      ]
-   },
-```
+#### Various links
+[github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
