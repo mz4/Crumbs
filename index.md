@@ -19,6 +19,7 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * Internationalization
 
 ### JAVASCRIPT Questions
+[Link to Header](##prova)
 * **What are the different scopes in javascript?**
 * **What is the Difference Between Function and Block Scope in JavaScript?**
 * **What is variable hoisting?**
@@ -36,29 +37,27 @@ from [creativebloq](https://www.creativebloq.com/news/5-expert-reactjs-tips-that
 * What is the difference between event capturing and bubbling?
 * What is the difference between stopPropagation and preventDefault?
 
-
 --------------------------------------------------------------------------
-- What are the different scopes in javascript?
+## prova
+**- What are the different scopes in javascript?**
 
 Global Scope, Local Scope, Block Scope (let)  
-### Old school JavaScript
+**Old school JavaScript**
 Traditionally, JavaScript really only has two types of scope :  
 **Global Scope** : Variables are known throughout the application, from the start of the application  
 **Functional Scope** : Variables are known within the function they are declared in, from the start of the function  
 
-### Modern JavaScript
+**Modern JavaScript**
 The most recent JavaScript specs now also allow a third scope :  
 **Block Scope** : Variables are known within the block they are declared in, from the moment they are declared onwards  
-let myVariable = "Some text";
+let myVariable = "Some text";  
+const myVar = "val";
 
 --------------------------------------------------------------------------
-- What is the Difference Between Function and Block Scope in JavaScript?
+**- What is the Difference Between Function and Block Scope in JavaScript?**
 
-var is function scope.
-let and const are block scope.
-
-Function scope is within the function.
-Block scope is within curly brackets.
+Function scope is within the function. (var is function scope.)
+Block scope is within curly brackets. (let and const are block scope.)
 
 --------------------------------------------------------------------------
 - What is variable hoisting?
