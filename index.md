@@ -234,58 +234,14 @@ https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
 ###  CSS3/SASS
 
-CSS Syntax
-A CSS rule set consists of a selector and a declaration block:
-selector	declaration (propert+value)
-h1		{color: blue;}
-CSS Comments
-/* comment */
-Selector
-name, id, class
-
-Select p elements with class="center"
-p.center 
-
-Grouping Selectors
-h1, h2, p {
-    text-align: center;
-    color: red;
-}
-External CSS
-<link rel="stylesheet" type="text/css" href="mystyle.css">
-
-Internal Style Sheet
-<style>
-body {
-    background-color: linen;
-}
-</style>
-
-Inline Styles
-<h1 style="color:blue;margin-left:30px;">This is a heading.</h1>
-SCSS Variables
-$title-font: normal 24px/1.5 'Open Sans', sans-serif;
-$cool-red: #F44336;
-$box-shadow-bottom-only: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
-
-h1.title {
-  font: $title-font;
-  color: $cool-red;
-}
-
-div.container {
-  color: $cool-red;
-  background: #fff;
-  width: 100%;
-  box-shadow: $box-shadow-bottom-only;
-}
-
 SCSS Mixins
+```
 @mixin square($size, $color) {
   width: $size;
   height: $size;
   background-color: $color;
 }
+```
 
 .small-blue-square {
   @include square(20px, rgb(0,0,255));
