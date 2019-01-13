@@ -252,9 +252,9 @@ SCSS Mixins
 ```
 
 SCSS CrossBrowser Mixins
+```
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
-
   -webkit-transform: $tilt; /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
       -ms-transform: $tilt; /* IE 9 */
           transform: $tilt; /* IE 10, Fx 16+, Op 12.1+ */
@@ -263,6 +263,7 @@ SCSS CrossBrowser Mixins
 .frame:hover { 
   @include transform-tilt; 
 }
+```
 
 SCSS Extend
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
