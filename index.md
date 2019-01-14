@@ -293,6 +293,7 @@ render() {
 
 ## Linux Commands
 #### File Commands
+```
 ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
@@ -314,9 +315,10 @@ cp file1 file2 Copy the contents of file1 to file2
 cp -r dir1 dir2 Copy dir1 to dir2;create dir2 if not present
 mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
 ln -s file link Create symbolic link link to file
-
+```
 
 #### Process Management
+```
 ps To display the currently working processes
 top Display all running process
 kill pid Kill the process with given pid
@@ -325,13 +327,15 @@ pkill pattern Will kill all processes matching the pattern
 bg List stopped or background jobs,resume a stopped job in the background
 fg Brings the most recent job to foreground
 fg n Brings job n to the foreground
-
+```
 
 #### File permission
+```
 chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
 • 4-read(r)
 • 2-write(w)
 • 1-execute(x)
+```
 
 ## Links
 #### Javascript  
