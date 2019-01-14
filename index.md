@@ -230,6 +230,67 @@ const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
 
+## React
+
+#### Import statement - imr
+```javascript
+import React from 'react';
+```
+
+#### Import React and Component - imrc
+```javascript
+import React, { Component } from 'react';
+```
+
+#### Make a Class Component and export - cc
+```javascript
+class | extends Component {
+  state = { | },
+  render() {
+    return ( | );
+  }
+}
+
+export default |;
+```
+
+#### Make a stateless function component - sfc
+```javascript
+const | = props => {
+  return ( | );
+};
+
+export default |;
+```
+
+#### componentDidMount - cdm
+```javascript
+componentDidMount() {
+  |
+}
+```
+
+#### componentDidUpdate - cdu
+```javascript
+componentDidUpdate(prevProps, prevState) {
+  |
+}
+```
+
+#### setState - ss
+```javascript
+this.setState({ | : | });
+```
+
+#### render - ren
+```javascript
+render() {
+  return (
+    |
+  );
+}
+```
+
 ## Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
