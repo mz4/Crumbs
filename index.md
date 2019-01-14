@@ -150,26 +150,10 @@ Module:{
    },
 ```
 
-## JAVASCRIPT Questions
-- **[What are the different scopes in javascript?](#jsq1)**
-- **What is the Difference Between Function and Block Scope in JavaScript?**
-- **What is variable hoisting?**
-- What is the scope chain?
-- What is an IIFE and why might you use it?
-- What are function closures?
-- What does the this keyword mean?
-- What do the functions call, bind and apply do?
-- What is the prototype chain?
-- What is the difference between prototypal and classical inheritance?
-- What is the Constructor OO pattern?
-- What is the Prototype OO pattern?
-- What is CORS? 
-- What is JSONP?
-- What is the difference between event capturing and bubbling?
-- What is the difference between stopPropagation and preventDefault?
+## JAVASCRIPT  
 
 --------------------------------------------------------------------------
-#### What are the different scopes in javascript? {#jsq1}
+#### What are the different scopes in javascript?
 
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
@@ -201,8 +185,18 @@ it will go to its lexical outer scope (your house) and if not even found there, 
 let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
 
 --------------------------------------------------------------------------
-
-### GENERAL CONCEPTS
+- What is an IIFE and why might you use it?
+- What are function closures?
+- What does the this keyword mean?
+- What do the functions call, bind and apply do?
+- What is the prototype chain?
+- What is the difference between prototypal and classical inheritance?
+- What is the Constructor OO pattern?
+- What is the Prototype OO pattern?
+- What is CORS? 
+- What is JSONP?
+- What is the difference between event capturing and bubbling?
+- What is the difference between stopPropagation and preventDefault?
 - BOM Browser Object Model
 * Browser Object Model (BOM)  
 * Window Object 
@@ -341,6 +335,20 @@ The WeakMap
 Sets - Creation and Adding Items 
 Sets - Managing Items 
 Sets - Looping through Sets 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Links
