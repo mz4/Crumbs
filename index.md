@@ -207,6 +207,16 @@ x => { return x * x }  // block
 x => x * x  // expression, equivalent to previous line
 ```
 
+#### Arrow function 2
+```javascript
+const phraseSplitterEs6 = phrase => phrase.split(" ");
+```
+
+#### Arrow function 3
+```javascript
+var docLogEs6 = () => { console.log(document); };
+```
+
 ## Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
