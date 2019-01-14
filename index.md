@@ -217,6 +217,19 @@ const phraseSplitterEs6 = phrase => phrase.split(" ");
 var docLogEs6 = () => { console.log(document); };
 ```
 
+#### Arrow function 4
+```javascript
+const smartPhones = [
+  { name:'iphone', price:649 },
+  { name:'Galaxy S6', price:576 },
+  { name:'Galaxy Note 5', price:489 }
+];
+
+// ES6
+const prices = smartPhones.map(smartPhone => smartPhone.price);
+console.log(prices); // [649, 576, 489]
+```
+
 ## Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
