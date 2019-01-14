@@ -177,6 +177,13 @@ Hoisting is JavaScript's default behavior of moving all declarations to the top 
 #### What is scope chain?
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  
 
+### ES6
+#### The Spread Operator  
+const userInfo = { isAuthenticated: false }  
+const action = { isAuthenticated: true, type: 'nope' }  
+const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
+console.log(res);  
+
 - What is an IIFE and why might you use it?
 - What are function closures?
 - What does the this keyword mean?
@@ -281,7 +288,6 @@ JavaScript engine will try to find the value of the variable in the executing co
 * Functions and Default Parameters 
 * Object Literal Extensions 
 * The Rest Operator 
-* The Spread Operator 
 * The for-of Loop 
 * Template Literals 
 * Destructuring - Arrays 
