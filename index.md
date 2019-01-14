@@ -152,9 +152,7 @@ Module:{
 
 ## JAVASCRIPT  
 
---------------------------------------------------------------------------
 #### What are the different scopes in javascript?
-
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
 Traditionally, JavaScript really only has two types of scope :  
@@ -167,24 +165,20 @@ The most recent JavaScript specs now also allow a third scope :
 let myVariable = "Some text";  
 const myVar = "val";
 
---------------------------------------------------------------------------
-#### What is the Difference Between Function and Block Scope in JavaScript?**
+#### Difference Between Function and Block Scope in JavaScript?
 
 Function scope is within the function. (var is function scope.)
 Block scope is within curly brackets. (let and const are block scope.)
 
---------------------------------------------------------------------------
 #### What is variable hoisting?
 
 Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
 
---------------------------------------------------------------------------
 #### What is scope chain?
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, 
 it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, 
 let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
 
---------------------------------------------------------------------------
 - What is an IIFE and why might you use it?
 - What are function closures?
 - What does the this keyword mean?
