@@ -308,6 +308,26 @@ All right, so, when code is executed, your JavaScript code is executed, an execu
 At the base level, when you're not inside a function, you have a global object that the JavaScript engine creates for you as part of that execution context.  
 If you're running code inside a browser, that Global Object is the window object. You'd get a special variable called "this:. And in the case of the browser this at that global level is just the same as the window object, it's equal to the window object.  
 
+#### Bind
+We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
+
+```javascript
+// <button>Get Random Person</button>
+// <input type="text">
+var user = {
+    data        :[
+        {name:"T. Woods", age:37},
+        {name:"P. Mickelson", age:43}
+    ],
+    clickHandler:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
+        $ ("input").val (this.data[randomNum].name + " " + this.data[randomNum].age);
+    }
+}
+// Assign an eventHandler to the button's click event
+$ ("button").click (user.clickHandler);
+```
+
 #### Scopes in javascript
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
