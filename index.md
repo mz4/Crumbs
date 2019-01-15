@@ -7,10 +7,14 @@
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
 #### get commits by date and author
+```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
+```
 
 #### number of commits by author
+```
 git shortlog -s -n --all
+```
 
 #### undo last commit. Warning: Don't do this if you've already pushed
 ```
