@@ -299,6 +299,15 @@ Module:{
 
 ## JAVASCRIPT  
 
+#### Global Environment and the Global Object.
+Whenever code is run in JavaScript, it's run inside an execution context.  
+The global execution context creates a Global Object and it creates a special variable, called 'this'.  
+The JavaScript engine is creating these two things for you whenever your code is run, because your code is wrapped inside an execution context.  
+So, your variables and your functions when lexically is not sitting inside a function, they're just sitting right there on the global object.  
+All right, so, when code is executed, your JavaScript code is executed, an execution context is created.  
+At the base level, when you're not inside a function, you have a global object that the JavaScript engine creates for you as part of that execution context.  
+If you're running code inside a browser, that Global Object is the window object. You'd get a special variable called "this:. And in the case of the browser this at that global level is just the same as the window object, it's equal to the window object.  
+
 #### Scopes in javascript
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
