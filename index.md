@@ -1,5 +1,148 @@
 ### Mind Map
 
+###  GIT
+
+#### get tag
+```
+git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
+```
+#### get commits by date and author
+git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
+
+#### number of commits by author
+git shortlog -s -n --all
+
+#### undo last commit. Warning: Don't do this if you've already pushed
+```
+ git reset HEAD~
+```
+  
+If you don't want the changes and blow everything away:
+```  
+ git reset --hard HEAD~
+```
+
+#### untrack .pyc files
+```
+$ find . -name '*.pyc' | xargs -n 1 git rm --cached
+```
+
+#### Switch to branch 
+```
+git checkout BRANCHNAME
+```
+
+#### Pull from master branch
+```
+git pull origin master
+```
+
+#### Check git status
+```
+git status
+```
+
+#### Add files
+```
+git add sys_ui/css/FILE.css 
+git add sys_ui/FILE.html 
+git add sys_ui/js/FILE.js 
+```
+
+#### Commit
+```
+git commit
+```
+
+#### Push
+```
+git push
+```
+
+#### Checkout master
+```
+git chekcout master
+```
+
+#### Merge branch into master
+```
+git merge user_interface
+```
+
+#### Check Log
+```
+git log
+```
+
+#### Create branch and switch
+```
+git checkout -b v0.4bugfix v0.4Master
+```
+
+```
+git branch NAME
+git checkout NAME
+```
+
+#### Push a branch to origin
+```
+git push -u origin <branch>
+```
+
+### tags
+```
+git tag v1.0 ec32d32
+git push origin --tags
+```
+
+#### How to undo a local commit
+```
+git reset --soft HEAD^     # use --soft if you want to keep your changes
+git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
+```
+
+#### How to undo git add
+```
+git reset filename.jsx
+```
+
+#### Delete a local branch - Delete remote branch
+```
+git branch -d branch_name
+git push origin --delete <branch_name>
+```
+
+#### show differences after git pull
+```
+git diff master@{1} master
+```
+
+#### clone specific branch
+```
+git clone -b <branch> <remote_repo>
+git clone -b my-branch git@github.com:user/myproject.git
+```
+
+#### clone repo
+```
+git clone USER@10.0.2.10:/home/git/repos/sys .
+```
+
+#### lists branches merged into master
+```
+git branch --merged master
+```
+
+#### lists branches merged into HEAD (i.e. tip of current branch)
+```
+git branch --merged 
+```
+
+#### lists branches that have not been merged
+```
+git branch --no-merged
+```
+
 ###  CSS3/SASS
 
 #### SCSS Import
