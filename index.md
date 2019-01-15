@@ -497,5 +497,8 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 #### CSS Links  
 [cssreference.io](https://cssreference.io)
 
+#### GIT
+[git commands](https://git-scm.com/docs)
+
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
