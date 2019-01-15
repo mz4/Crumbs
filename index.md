@@ -93,7 +93,7 @@ git checkout NAME
 git push -u origin <branch>
 ```
 
-#### tags
+#### Tags
 ```
 git tag v1.0 ec32d32
 git push origin --tags
