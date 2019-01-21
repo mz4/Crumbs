@@ -166,6 +166,27 @@ Show only files that are different between the two branches (without changes the
 git diff --name-status master..staging
 ```
 
+#### Create New Branch and Checkout – In One Command
+```
+git checkout -b <branch_name>
+```
+
+#### Revert Changes to File
+```
+git checkout -- <file>
+```
+
+#### Edit Last Commit Message
+Change the last commit message through the command-line:  
+```
+git commit --amend -m "New commit message"
+```
+
+#### Create a New Git Repository
+```
+git init
+```
+
 ###  CSS3/SASS
 
 #### SCSS Import
