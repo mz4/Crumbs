@@ -553,6 +553,29 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
+###  WEBPACK
+
+#### webpack installation
+```
+npm install --save-dev webpack
+```
+If you're using webpack v4 or later, you'll need to install the CLI.  
+```
+npm install --save-dev webpack-cli
+```
+Create a webpack config file e.g. webpack.config.js  
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
 ## Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
