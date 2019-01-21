@@ -147,6 +147,25 @@ git branch --merged
 git branch --no-merged
 ```
 
+#### Checkout previous branch
+```
+git checkout -
+```
+
+#### Diff between branches
+Diff between current branch and master:  
+```
+git diff master
+```
+Diff between two branches, e.g. master and staging:  
+```
+git diff master..staging
+```
+Show only files that are different between the two branches (without changes themselves):  
+```
+git diff --name-status master..staging
+```
+
 ###  CSS3/SASS
 
 #### SCSS Import
