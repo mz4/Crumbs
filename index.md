@@ -558,13 +558,13 @@ chmod octal file Change the permission of file to octal,which can be found separ
 #### webpack installation
 ```
 npm install --save-dev webpack
-
+```
 If you're using webpack v4 or later, you'll need to install the CLI.  
-
+```
 npm install --save-dev webpack-cli
-
+```
 Create a webpack config file e.g. webpack.config.js  
-
+```
 const path = require('path');
 
 module.exports = {
@@ -574,8 +574,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   }
 };
+```
 
-in package.json
+in package.json  
+```
  "scripts": {
 +     "build": "webpack"
     },
