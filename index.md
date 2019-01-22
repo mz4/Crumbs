@@ -572,9 +572,41 @@ render() {
 ```
 
 ## Linux Commands
-#### File Commands
+#### Check if port is listening
+```
+sudo netstat -ntlp | grep :443
+```
+#### Find a string
 ```
 grep -r "test" - find string
+```
+#### Find Large files
+```
+find / -size +10M -ls
+```
+#### Directory Size
+```
+du -hs direcotryName
+```
+#### Show system name and kernel
+```
+uname -a
+```
+#### Start a screen session.
+```
+screen
+```
+#### Resume a screen session.
+```
+screen -r
+```
+#### List screen sessions.
+```
+screen -list
+```
+Show your current screen sessions.
+#### Most used Commands
+```
 ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
