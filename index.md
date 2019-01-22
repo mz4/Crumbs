@@ -595,9 +595,9 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [React Various articles](https://react.christmas/)
 
 #### CSS Links  
-[cssreference.io](https://cssreference.io)
-[css grids](https://learncssgrid.com/)
-[Jen Simmons CSS Lab](https://labs.jensimmons.com/)
+[cssreference.io](https://cssreference.io)  
+[css grids](https://learncssgrid.com/)  
+[Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 
 #### GIT
 [git commands](https://git-scm.com/docs)
