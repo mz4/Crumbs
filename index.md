@@ -188,7 +188,22 @@ git init
 ```
 
 ###  CSS3/SASS
-
+#### BEM 
+```
+<div class="block__element block__element--modifier">
+  Hallo
+</div>
+```
+```
+.block {
+  &__element {
+    background: blue;
+    &--modifier {
+      color: white;
+    }
+  }
+}
+```
 #### SCSS Import
 ```scss
 @import 'reset';
@@ -510,6 +525,7 @@ render() {
 ## Linux Commands
 #### File Commands
 ```
+grep -r "test" - find string
 ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
