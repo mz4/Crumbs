@@ -188,7 +188,7 @@ git init
 ```
 
 ###  CSS3/SASS
-#### BEM 
+#### BEM Block Element Modifier
 ```
 <div class="block__element block__element--modifier">
   Hallo
@@ -204,6 +204,55 @@ git init
   }
 }
 ```
+#### BEM with Sass
+```
+.person {
+  &__hand {/* Styles */}
+
+  &__leg {/* Styles */}
+
+  &--male {
+    /* Styles */
+
+    &__hand {
+      /* Styles */
+
+      &--left {/* Styles */}
+
+      &--right {/* Styles */}
+    }
+
+    &__leg {
+      /* Styles */
+
+      &--left {/* Styles */}
+
+      &--right {/* Styles */}
+    }
+  }
+
+  &--female {
+    /* Styles */
+
+    &__hand {
+      /* Styles */
+
+      &--left {/* Styles */}
+
+      &--right {/* Styles */}
+    }
+
+    &__leg {
+      /* Styles */
+
+      &--left {/* Styles */}
+
+      &--right {/* Styles */}
+    }
+  }
+}
+```
+
 #### SCSS Import
 ```scss
 @import 'reset';
@@ -616,6 +665,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [Grids by example](https://gridbyexample.com)  
 [CSS Grid Garden](http://cssgridgarden.com)  
+[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)
 
 #### GIT
 [git commands](https://git-scm.com/docs)
