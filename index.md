@@ -571,6 +571,63 @@ render() {
 }
 ```
 
+#### defaultProps example
+```javascript
+Notification.defaultProps = {
+  actionTitle: '',
+  selectedElements: {},
+  actionLogs: [],
+};
+```
+
+#### propTypes example
+```javascript
+Notification.propTypes = {
+  actionTitle: PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  elementTitle: PropTypes.objectOf(PropTypes.any),
+  selectedElements: PropTypes.arrayOf(PropTypes.any),
+};
+```
+
+#### export example with mapStateToProps, mapDispatchToProps
+```javascript
+export default connect(mapStateToProps, mapDispatchToProps)(Name);
+```
+
+#### mapStateToProps example
+```javascript
+const mapStateToProps = (state) => {
+  return {
+    elements: state.refreshRaidElements.raidElements,
+    controllers: state.refreshControllers.controllers,
+    waitingLogs: state.watingLogs.wating_action_logs,
+  };
+};
+```
+
+#### mapDispatchToProps
+Import actions  
+```javascript
+import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
+```
+  
+Emit action  
+```javascript
+this.props.selectedRaidIndex(id);
+```
+  
+Dispatch actions  
+```javascript
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkboxClicked: id => dispatch(checkboxClicked(id)),
+    selectedIndex: id => dispatch(selectedIndex(id)),
+  };
+};
+```
+
 ## Linux Commands
 #### Check if port is listening
 ```
