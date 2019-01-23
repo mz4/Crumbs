@@ -737,8 +737,63 @@ in package.json
     },
 ```
 
+###  Node/npm
 
-## Links
+#### version
+```
+which node
+which npm
+node --version
+npm --version
+```
+
+#### global install packages
+```
+npm install uglify-js --global
+```
+
+#### list global packages
+```
+npm list --global
+npm list -g --depth=0
+```
+
+#### initialize project
+```
+npm init
+```
+
+#### local install packages devDependencies
+```
+npm install should --save-dev
+```
+
+#### local install packages dependencies
+```
+npm install should --save
+```
+
+#### uninstall packages
+```
+npm uninstall underscore
+```
+
+#### install specific version
+```
+npm install underscore@1.8.2
+```
+
+#### check outdated packages
+```
+npm outdated
+```
+
+#### update packages
+```
+npm update underscore
+```
+
+### Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
@@ -766,3 +821,4 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)
+[Site Point](https://www.sitepoint.com/)
