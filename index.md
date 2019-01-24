@@ -881,6 +881,177 @@ npm outdated
 npm update underscore
 ```
 
+#### Quick Project Setup - React, Webpack, Babel, ESLint
+  
+##### Dependencies
+```
+npm install --save react react-dom
+```
+
+##### Dev Dependencies
+```
+npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-react babel-eslint css-loader node-sass sass-loader style-loader file-loader webpack webpack-dev-server eslint eslint-plugin-import eslint-plugin-react eslint-watch
+```
+
+##### NPM Scripts (package.json)
+```
+"scripts": {
+  "start": "webpack-dev-server --progress --hot --inline",
+  "build": "webpack",
+  "lint": "esw webpack.config.js src",
+  "lint:watch": "npm run lint -- --watch",
+  "fix": "./node_modules/.bin/eslint src --fix"
+},
+```
+
+##### Babel (.babelrc)
+```
+{
+  "presets": [
+    "es2015",
+    "react"
+  ]
+}
+```
+##### Webpack (webpack.config.js)
+```
+const path = require('path');
+
+module.exports = {
+	target: 'web',
+
+	// Entry file where webpack starts the bundling process
+	entry: path.resolve(__dirname, 'src/index.js'),
+
+	// Location where bundled code will be saved
+	output: {
+
+		// Target directory for all output files
+		path: path.resolve(__dirname, './dist'),
+
+		// Name of each Output bundle file
+		filename: "bundle.js",
+	},
+
+	// Webpack development server (config)
+	devServer: {
+		port: 9000,
+
+		// Directory to serve content from
+		contentBase: path.resolve(__dirname, './src'),
+
+		// Automatically open browser when local server boots up
+		open: true
+	},
+
+	// Source Map setting
+	devtool: "inline-source-map",
+
+	// Modules & Loaders
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /(\.css|\.scss|\.sass)$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+};
+```
+
+##### ESLint (.eslintrc.json)
+```
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "quotes": 0,
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-var": 1,
+    "semi": [1, "always"],
+    "no-trailing-spaces": 1,
+    "eol-last": 0,
+    "no-unused-vars": 1,
+    "no-underscore-dangle": 0,
+    "no-alert": 0,
+    "no-lone-blocks": 0,
+    "no-multi-spaces": 1,
+    "jsx-quotes": 1,
+    "react/display-name": [ 1, {"ignoreTranspilerName": false }],
+    "react/forbid-prop-types": [1, {"forbid": ["any"]}],
+    "react/jsx-boolean-value": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-curly-spacing": 1,
+    "react/jsx-indent-props": 0,
+    "react/jsx-key": 1,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-no-bind": 0,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-literals": 0,
+    "react/jsx-no-undef": 1,
+    "react/jsx-pascal-case": 1,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-direct-mutation-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-set-state": 0,
+    "react/no-unknown-property": 1,
+    "react/prefer-es6-class": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/jsx-space-before-closing": 1,
+    "react/no-string-refs": 1,
+    "react/jsx-wrap-multilines": 1,
+    "react/require-render-return": 1
+  }
+}
+```
+
+
+
 ### Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
