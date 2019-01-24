@@ -2,6 +2,11 @@
 
 ###  GIT
 
+#### file history
+```
+git log -p filename
+```
+
 #### get tag
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
@@ -188,6 +193,7 @@ git init
 ```
 
 ###  CSS3/SASS
+
 #### BEM Block Element Modifier
 ```
 <div class="block__element block__element--modifier">
@@ -401,7 +407,7 @@ Module:{
    },
 ```
 
-## JAVASCRIPT  
+### JAVASCRIPT  
 
 #### Global Environment and the Global Object.
 Whenever code is run in JavaScript, it's run inside an execution context.  
@@ -456,6 +462,88 @@ Hoisting is JavaScript's default behavior of moving all declarations to the top 
 
 #### Scope chain
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  
+
+#### Closures
+A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  
+
+#### Promise
+A promise is commonly defined as a proxy for a value that will eventually become available.  
+Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.  
+Although they’ve been around for years, they were standardized and introduced in ES2015, and now they have been superseded in ES2017 by async functions.  
+Async functions use the promises API as their building block, so understanding them is fundamental even if in newer code you’ll likely use async functions instead of promises.  
+
+A Promise is in one of these states:  
+  
+pending: initial state, neither fulfilled nor rejected.  
+fulfilled: meaning that the operation completed successfully.  
+rejected: meaning that the operation failed.  
+  
+A Promise object is created using the new keyword and its constructor.  
+This constructor takes as its argument a function, called the "executor function".  
+This function should take two functions as parameters.  
+The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.  
+The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  
+
+##### Promise example 1
+```javascript
+get('supplyData.json').then(function(response) {
+  console.log("Success!", response);
+}).catch(function(error) {
+  console.log("Failed!", error);
+})
+```
+  
+##### Promise example 2
+```javascript
+var promise1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    resolve('foo');
+  }, 300);
+});
+
+promise1.then(function(value) {
+  console.log(value);
+  // expected output: "foo"
+});
+
+console.log(promise1);
+// expected output: [object Promise]
+```
+
+##### Promise example 3
+```javascript
+function myAsyncFunction(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = () => resolve(xhr.responseText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+}
+```
+#### Callback
+You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.  
+This is the so-called callback.  
+A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  
+
+##### Callback example 1
+```javascript
+document.getElementById('button').addEventListener('click', () => {
+  //item clicked
+})
+```
+
+##### Callback example 2
+```javascript
+setTimeout(() => {
+  // runs after 2 seconds
+}, 2000)
+```
+
+
+#### Promises vs Callbacks
+
 
 ### ES6
 #### Spread Operator 1  
@@ -802,6 +890,8 @@ from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-tha
 Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
 
 [React Various articles](https://react.christmas/)
+
+[Flavio Copes](https://flaviocopes.com)
 
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
