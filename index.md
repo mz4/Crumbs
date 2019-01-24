@@ -1064,6 +1064,9 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 [Flavio Copes](https://flaviocopes.com)
 
+#### React
+[Awesome-react](https://github.com/enaqx/awesome-react)
+
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
@@ -1083,3 +1086,4 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)
 [Site Point](https://www.sitepoint.com/)
+[cheatsheets](https://devhints.io)
