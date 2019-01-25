@@ -717,6 +717,12 @@ const mapDispatchToProps = (dispatch) => {
 ```
 
 ## Linux Commands
+
+#### cat long file
+```
+cat branch | more -d
+```
+
 #### Check if port is listening
 ```
 sudo netstat -ntlp | grep :443
@@ -1081,6 +1087,9 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 #### GIT
 [git commands](https://git-scm.com/docs)
+
+#### Linux
+[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)
 
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
