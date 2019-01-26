@@ -194,6 +194,7 @@ git commit --amend -m "New commit message"
 git init
 ```
 
+---
 ###  CSS3/SASS
 
 #### BEM Block Element Modifier
@@ -409,7 +410,8 @@ Module:{
    },
 ```
 
-### JAVASCRIPT  
+---
+### Javascript  
 
 #### Global Environment and the Global Object.
 Whenever code is run in JavaScript, it's run inside an execution context.  
@@ -546,8 +548,9 @@ setTimeout(() => {
 
 #### Promises vs Callbacks
 
-
-### ES6
+---
+### ES6  
+  
 #### Spread Operator 1  
 ```javascript
 const userInfo = { isAuthenticated: false }  
@@ -600,7 +603,8 @@ const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
 
-## React
+---
+### React
 
 #### Import statement - imr
 ```javascript
@@ -718,7 +722,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 ```
 
-## Linux Commands
+---
+### Linux Commands
 
 #### cat long file
 ```
@@ -803,6 +808,7 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
+---
 ###  WEBPACK
 
 #### webpack installation
@@ -833,6 +839,7 @@ in package.json
     },
 ```
 
+---
 ###  Node/npm
 
 #### version
@@ -1060,6 +1067,11 @@ module.exports = {
 
 
 
+
+
+
+
+---
 ### Links
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
