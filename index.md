@@ -2,7 +2,7 @@
 
 ###  GIT
 
-#### file history
+#### Single file history
 ```
 git log -p filename
 ```
