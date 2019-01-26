@@ -757,6 +757,118 @@ ReactDOM.render(
 );
 ```
 
+The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.  
+**AddTodo.jsx**  
+```javascript
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
+import NewTodo from '../components/NewTodo';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddTodo: todo => {
+      dispatch(addTodo(toto));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewTodo);
+```
+
+**actions/index.jsx**  
+```javascript
+import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from './types';
+
+import axios from 'axios';
+
+export const addTodo = ({ title, userId }) => {
+  return dispatch => {
+    dispatch(addTodoStarted());
+
+    axios
+      .post(`https://jsonplaceholder.typicode.com/todos`, {
+        title,
+        userId,
+        completed: false
+      })
+      .then(res => {
+        dispatch(addTodoSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(addTodoFailure(err.message));
+      });
+  };
+};
+
+const addTodoSuccess = todo => ({
+  type: ADD_TODO_SUCCESS,
+  payload: {
+    ...todo
+  }
+});
+
+const addTodoStarted = () => ({
+  type: ADD_TODO_STARTED
+});
+
+const addTodoFailure = error => ({
+  type: ADD_TODO_FAILURE,
+  payload: {
+    error
+  }
+});
+```
+
+**reducers/todoReducers.jsx**  
+```javascript
+import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from '../actions/types';
+
+const initialState = {
+  loading: false,
+  todos: [],
+  error: null
+};
+
+export default function todosReducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD_TODO_STARTED:
+      return {
+        ...state,
+        loading: true
+      };
+    case ADD_TODO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: [...state.todos, action.payload]
+      };
+    case ADD_TODO_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
+    default:
+      return state;
+  }
+}
+```
+
+
 
 
 ---
