@@ -722,6 +722,21 @@ const mapDispatchToProps = (dispatch) => {
 };
 ```
 
+#### React Redux Thunk  
+
+Actions in Redux are dispatched synchronously.   
+Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  
+
+**Redux Thunk is a middleware** that lets you call action creators that return a function instead of an action object.  
+That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.  
+  
+Install redux-thunk  
+```
+npm install redux-thunk
+```
+
+
+
 ---
 ### Linux Commands
 
