@@ -1,8 +1,10 @@
-### ---
+# Crumbs
 
-###  GIT
+---
+# **GIT**
 
-#### file history
+
+#### Single file history
 ```
 git log -p filename
 ```
@@ -203,7 +205,8 @@ git commit --amend -m "New commit message"
 git init
 ```
 
-###  CSS3/SASS
+---
+# **CSS3/SASS**  
 
 #### BEM Block Element Modifier
 ```
@@ -418,7 +421,8 @@ Module:{
    },
 ```
 
-### JAVASCRIPT  
+---
+# **Javascript**  
 
 #### Global Environment and the Global Object.
 Whenever code is run in JavaScript, it's run inside an execution context.  
@@ -555,8 +559,9 @@ setTimeout(() => {
 
 #### Promises vs Callbacks
 
-
-### ES6
+---
+## **ES6**  
+  
 #### Spread Operator 1  
 ```javascript
 const userInfo = { isAuthenticated: false }  
@@ -609,7 +614,8 @@ const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
 
-## React
+---
+## **React**  
 
 #### Import statement - imr
 ```javascript
@@ -727,7 +733,157 @@ const mapDispatchToProps = (dispatch) => {
 };
 ```
 
-## Linux Commands
+#### React Redux Thunk  
+
+Actions in Redux are dispatched synchronously.   
+Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  
+
+**Redux Thunk is a middleware** that lets you call action creators that return a function instead of an action object.  
+That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.  
+  
+Install redux-thunk  
+```
+npm install redux-thunk
+```
+
+Apply middleware to app store.  
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import rootReducer from './reducers';
+import App from './App';
+
+// use applyMiddleware to add the thunk middleware to the store
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.  
+**AddTodo.jsx**  
+```javascript
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
+import NewTodo from '../components/NewTodo';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddTodo: todo => {
+      dispatch(addTodo(toto));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewTodo);
+```
+
+**actions/index.jsx**  
+```javascript
+import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from './types';
+
+import axios from 'axios';
+
+export const addTodo = ({ title, userId }) => {
+  return dispatch => {
+    dispatch(addTodoStarted());
+
+    axios
+      .post(`https://jsonplaceholder.typicode.com/todos`, {
+        title,
+        userId,
+        completed: false
+      })
+      .then(res => {
+        dispatch(addTodoSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(addTodoFailure(err.message));
+      });
+  };
+};
+
+const addTodoSuccess = todo => ({
+  type: ADD_TODO_SUCCESS,
+  payload: {
+    ...todo
+  }
+});
+
+const addTodoStarted = () => ({
+  type: ADD_TODO_STARTED
+});
+
+const addTodoFailure = error => ({
+  type: ADD_TODO_FAILURE,
+  payload: {
+    error
+  }
+});
+```
+
+**reducers/todoReducers.jsx**  
+```javascript
+import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from '../actions/types';
+
+const initialState = {
+  loading: false,
+  todos: [],
+  error: null
+};
+
+export default function todosReducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD_TODO_STARTED:
+      return {
+        ...state,
+        loading: true
+      };
+    case ADD_TODO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: [...state.todos, action.payload]
+      };
+    case ADD_TODO_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
+    default:
+      return state;
+  }
+}
+```
+
+
+
+
+---
+# **Linux Commands**  
 
 #### cat long file
 ```
@@ -812,7 +968,8 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
-###  WEBPACK
+---
+# **WEBPACK**  
 
 #### webpack installation
 ```
@@ -842,7 +999,8 @@ in package.json
     },
 ```
 
-###  Node/npm
+---
+# **Node/npm**  
 
 #### version
 ```
@@ -1041,7 +1199,13 @@ module.exports = {
 
 
 
-### Links
+
+
+
+
+---
+# **Links**  
+
 #### Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
@@ -1055,6 +1219,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 #### React
 [Awesome-react](https://github.com/enaqx/awesome-react)
+[Articles about frontend](https://alligator.io/)
 
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
@@ -1079,3 +1244,4 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Recording Screen](https://github.com/phw/peek)
 [Site Point](https://www.sitepoint.com/)
 [cheatsheets](https://devhints.io)
+[github help](https://help.github.com/)
