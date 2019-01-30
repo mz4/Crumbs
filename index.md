@@ -559,6 +559,15 @@ setTimeout(() => {
 
 #### Promises vs Callbacks
 
+#### Random number
+```javascript
+Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+    graphData = graphData.map((graph) => {
+      graph.read_bytes = Math.floor(Math.random() * (10000 - 1024 + 1)) + 1024;
+      return graph;
+    });
+```
+
 ---
 ## **ES6**  
   
