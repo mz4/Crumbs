@@ -1221,7 +1221,7 @@ module.exports = {
 
 --- 
 # **Docker**  
-Docker terminology
+##### Docker terminology
 - Images: The blueprints of our application which form the basis of containers.  
 - Containers: Created from Docker images and run the actual application. 
 - Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
@@ -1234,51 +1234,51 @@ Docker terminology
 - Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  
 - User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  
   
-Install latest Docker  
+##### Install latest Docker  
 ```
 sudo apt-get install docker-ce
 ```
 
-Test your Docker installation by running the following  
+##### Test your Docker installation by running the following  
 ```
 docker run hello-world
 ```
   
-The pull command fetches image from the Docker registry and saves it to system.  
+##### The pull command fetches image from the Docker registry and saves it to system.  
 ```
 docker pull busybox
 ```
 
-Docker Hub  
+##### Docker Hub  
 [Docker Images hub](https://hub.docker.com/search/?q=&type=image)  
 
-to see a list of all images on your system.  
+##### to see a list of all images on your system.  
 ```
 docker images
 ```
 
-run a container
+##### run a container
 ```
 docker run busybox
 docker run busybox echo "hello from busybox"
 ```
 
-show running containers
+##### show running containers
 ```
 docker ps
 ```
 
-show containers that ran previously
+##### show containers that ran previously
 ```
 docker ps -a
 ```
 
-live tty session
+##### live tty session
 ```
 docker run -it busybox sh
 ```
 
-Remove containers from which you left
+##### Remove containers from which you left
 ```
 docker rm $(docker ps -a -q -f status=exited)
 OR
@@ -1287,7 +1287,7 @@ docker container prune
 
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
-Run detached  
+##### Run detached  
 -d will detach our terminal  
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
@@ -1295,22 +1295,22 @@ Run detached
 docker run -d -P --name static-site name/static-site
 ```
 
-See the ports by running the docker port [CONTAINER] command
+##### See the ports by running the docker port [CONTAINER] command
 ```
 docker port static-site
 ```
 
-Specify a custom port
+##### Specify a custom port
 ```
 docker run -p 8888:80 prakhar1989/static-site
 ```
 
-Stop a container
+##### Stop a container
 ```
 docker stop static-site
 ```
 
-Creating an image  
+##### Creating an image  
 A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.  
 CMD is to tell the container which command it should run when it is started  
 port number that needs to be exposed  
@@ -1326,32 +1326,32 @@ EXPOSE 5000
 CMD ["python", "./app.py"]
 ```
 
-Build image from Dockerfile
+##### Build image from Dockerfile
 ```
 docker build -t mz2kh/catnip .
 ```
 
-Run the container
+##### Run the container
 ```
 run -p 8888:5000 mz2kh/catnip
 ```
   
-Publish image to Docker HUB
+##### Publish image to Docker HUB
 ```
 docker push mz2kh/catnip
 ```
   
-Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
+##### Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 ```
 docker run -p 8888:5000 prakhar1989/catnip
 ```
 
-Search for images
+##### Search for images
 ```
 docker search elasticsearch
 ```
 
-When docker is installed, it creates three networks automatically.
+##### When docker is installed, it creates three networks automatically.
 ```
 docker network ls
 NETWORK ID          NAME                DRIVER              SCOPE
@@ -1360,28 +1360,28 @@ NETWORK ID          NAME                DRIVER              SCOPE
 13e644755906        none                null                local
 ```
 
-The bridge network is the network in which containers are run by default.  
-Inspect bridge Network:
+##### The bridge network is the network in which containers are run by default.  
+##### Inspect bridge Network:
 ```
 docker network inspect bridge
 ```
 
-Create our own network  
+##### Create our own network  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 ```
 docker network create catnip-net
 ```
 
-Launch containers into network (--net foodtrucks-net)
+##### Launch containers into network (--net foodtrucks-net)
 ```
 $ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
 $ docker network inspect foodtrucks-net
 ```
 
-Create and run container on a created Network  
-./setup-docker.sh
+##### Create and run container on a created Network  
+##### ./setup-docker.sh
 ```
 !/bin/bash
 
@@ -1398,131 +1398,133 @@ start the flask app container
 docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
 ```
 
-Docker Registries & Repositories  
+##### Docker Registries & Repositories  
 Searching an Image  
 ```
-docker search nginx
+##### docker search nginx
 docker search --filter stars=3 --no-trunc nginx
 ```
-Pulling an Image
+##### Pulling an Image
 ```
 docker image pull nginx
 docker image pull eon01/nginx localhost:5000/myadmin/nginx
 ```
-Pushing an Image
+##### Pushing an Image
 ```
 docker image push eon01/nginx
 docker image push eon01/nginx localhost:5000/myadmin/nginx
 ```
-Running Containers  
-Create and Run a Simple Container  
-Start an ubuntu:latest image  
-Bind the port 80 from the CONTAINER to port 3000 on the HOST  
-Mount the current directory to /data on the CONTAINER  
+##### Running Containers  
+##### Create and Run a Simple Container  
+##### Start an ubuntu:latest image  
+##### Bind the port 80 from the CONTAINER to port 3000 on the HOST  
+##### Mount the current directory to /data on the CONTAINER  
 ```
 docker container run --name infinite -it -p 3000:80 -v ${PWD}:/data ubuntu:latest
 ```
 
-Creating a Container  
+##### Creating a Container  
 ```
 docker container create -t -i eon01/infinite --name infinite
 ```
-Running a Container  
+##### Running a Container  
 ```
 docker container run -it --name infinite -d eon01/infinite
 ```
-Renaming a Container  
+##### Renaming a Container  
 ```
 docker container rename infinite infinity
 ```
-Removing a Container
+##### Removing a Container
 ```
 docker container rm infinite
 ```
-Updating a Container
+##### Updating a Container
 ```
 docker container update --cpu-shares 512 -m 300M infinite
 ```
 
-Starting & Stopping Containers  
-Starting  
+##### Starting & Stopping Containers  
+##### Starting  
 ```
 docker container start nginx
 ```
 
-Stopping
+##### Stopping
 ```
 docker container stop nginx
 ```
-Restarting
+##### Restarting
 ```
 docker container restart nginx
 ```
-Pausing
+##### Pausing
 ```
 docker container pause nginx
 ```
-Unpausing
+##### Unpausing
 ```
 docker container unpause nginx
 ```
-Blocking a Container
+##### Blocking a Container
 ```
 docker container wait nginx
 ```
-Sending a SIGKILL
+##### Sending a SIGKILL
 ```
 docker container kill nginx
 ```
-Sending another signal
+##### Sending another signal
 ```
 docker container kill -s HUP nginx
 ```
-Connecting to an Existing Container
+##### Connecting to an Existing Container
 ```
 docker container attach nginx
 ```
-Getting Information about Containers
-Running Containers
+##### Getting Information about Containers
+##### Running Containers
 ```
 docker container ls
 docker container ls -a
 ```
-Container Logs
-docker logs infinite
-Follow Container Logs
+##### Container Logs
+##### docker logs infinite
+##### Follow Container Logs
 ```
 docker container logs infinite -f
 ```
-Inspecting Containers
+##### Inspecting Containers
 ```
 docker container inspect infinite
 docker container inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 ```
-Containers Events
+##### Containers Events
 ```
 docker system events infinite
 ```
-Public Ports
+##### Public Ports
 ```
 docker container port infinite
 ```
-Running Processes
+##### Running Processes
 ```
 docker container top infinite
 ```
-Container Resource Usage  
+##### Container Resource Usage  
+```
 docker container stats infinite  
-Inspecting changes to files or directories on a container’s filesystem  
+```
+##### Inspecting changes to files or directories on a container’s filesystem  
 ```
 docker container diff infinite  
 ```
-Manipulating Images  
-Listing Images  
+##### Manipulating Images  
+##### Listing Images  
 ```
 docker image ls
 ```
-Building Images  
+##### Building Images  
 ```
 docker build .
 docker build github.com/creack/docker-firefox
@@ -1532,37 +1534,37 @@ docker build -t eon/infinite .
 docker build -f myOtherDockerfile .
 curl example.com/remote/Dockerfile | docker build -f - .
 ```
-Removing an Image  
+##### Removing an Image  
 ```
 docker image rm nginx
 ```
-Loading a Tarred Repository from a File or the Standard Input Stream
+##### Loading a Tarred Repository from a File or the Standard Input Stream
 ```
 docker image load < ubuntu.tar.gz
 docker image load --input ubuntu.tar
 ```
-Save an Image to a Tar Archive
+##### Save an Image to a Tar Archive
 ```
 docker image save busybox > ubuntu.tar
 ```
-Showing the History of an Image
+##### Showing the History of an Image
 ```
 docker image history
 ```
-Creating an Image From a Container
+##### Creating an Image From a Container
 ```
 docker container commit nginx
 ```
-Tagging an Image
+##### Tagging an Image
 ```
 docker image tag nginx eon01/nginx
 ```
-Pushing an Image
+##### Pushing an Image
 ```
 docker image push eon01/nginx
 ```
-Networking  
-Creating Networks  
+##### Networking  
+##### Creating Networks  
 ```
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
@@ -1576,33 +1578,32 @@ docker network create -d overlay \
   --aux-address="my-printer=192.170.1.5" --aux-address="my-nas=192.170.1.6" \
   MyOverlayNetwork
 ```
-Removing a Network
+##### Removing a Network
 ```
 docker network rm MyOverlayNetwork
 ```
-Listing Networks
+##### Listing Networks
 ```
 docker network ls
 ```
-Getting Information About a Network
+##### Getting Information About a Network
 ```
 docker network inspect MyOverlayNetwork
 ```
-Connecting a Running Container to a Network
+##### Connecting a Running Container to a Network
 ```
 docker network connect MyOverlayNetwork nginx
 ```
-Connecting a Container to a Network When it Starts
+##### Connecting a Container to a Network When it Starts
 ```
 docker container run -it -d --network=MyOverlayNetwork nginx
 ```
-Disconnecting a Container from a Network
+##### Disconnecting a Container from a Network
 ```
 docker network disconnect MyOverlayNetwork nginx
 ```
-Exposing Ports  
-Using Dockerfile, you can expose a port on the container using:
-  
+##### Exposing Ports  
+##### Using Dockerfile, you can expose a port on the container using:
 ```
 EXPOSE <port_number>
 You can also map the container port to a host port using:
@@ -1611,52 +1612,53 @@ e.g.
 
 docker run -p $HOST_PORT:$CONTAINER_PORT --name infinite -t infinite
 ```
-Cleaning Docker  
-Removing a Running Container  
+
+##### Cleaning Docker  
+##### Removing a Running Container  
 ```
 docker container rm nginx
-````
-Removing a Container and its Volume
+```
+##### Removing a Container and its Volume
 ```
 docker container rm -v nginx
 ```
-Removing all Exited Containers
+##### Removing all Exited Containers
 ```
 docker container rm $(docker container ls -a -f status=exited -q)
 ```
-Removing All Stopped Containers
+##### Removing All Stopped Containers
 ```
 docker container rm `docker container ls -a -q`
 ```
-Removing a Docker Image
+##### Removing a Docker Image
 ```
 docker image rm nginx
 ```
-Removing Dangling Images
+##### Removing Dangling Images
 ```
 docker image rm $(docker image ls -f dangling=true -q)
 ```
-Removing all Images
+##### Removing all Images
 ```
 docker image rm $(docker image ls -a -q)
 ```
-Removing all untagged images
+##### Removing all untagged images
 ```
 docker image rm -f $(docker image ls | grep "^<none>" | awk "{print $3}")
 ```
-Stopping & Removing all Containers
+##### Stopping & Removing all Containers
 ```
 docker container stop $(docker container ls -a -q) && docker container rm $(docker container ls -a -q)
 ```
-Removing Dangling Volumes
+##### Removing Dangling Volumes
 ```
 docker volume rm $(docker volume ls -f dangling=true -q)
 ```
-Removing all unused (containers, images, networks and volumes)
+##### Removing all unused (containers, images, networks and volumes)
 ```
 docker system prune -f
 ```
-Clean all
+##### Clean all
 ```
 docker system prune -a
 ```
