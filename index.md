@@ -977,6 +977,19 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
+#### Create Swap file
+```
+sudo mkdir -v /var/cache/swap
+cd /var/cache/swap
+sudo dd if=/dev/zero of=swapfile bs=1K count=8M
+sudo chmod 600 swapfile
+sudo mkswap swapfil
+sudo mkswap swapfile
+sudo swapon swapfile
+top -bn1 | grep -i swap
+echo "/var/cache/swap/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
+```
+
 ---
 # **WEBPACK**  
 
