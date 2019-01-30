@@ -1219,10 +1219,184 @@ module.exports = {
 }
 ```
 
+--- 
+# **Docker**  
+Docker terminology
+- Images: The blueprints of our application which form the basis of containers.  
+- Containers: Created from Docker images and run the actual application. 
+- Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
+- Docker Client: The command line tool that allows the user to interact with the daemon. 
+- Docker Hub: A registry of Docker images. If required, one can host their own Docker registries and can use them for pulling images.
+  
+- Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  
+- Child images: are images that build on base images and add additional functionality.  
+  
+- Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  
+- User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  
+  
+Install latest Docker  
+```
+sudo apt-get install docker-ce
+```
 
+Test your Docker installation by running the following  
+```
+docker run hello-world
+```
+  
+The pull command fetches image from the Docker registry and saves it to system.  
+```
+docker pull busybox
+```
 
+Docker Hub  
+[Docker Images hub](https://hub.docker.com/search/?q=&type=image)  
 
+to see a list of all images on your system.  
+```
+docker images
+```
 
+run a container
+```
+docker run busybox
+docker run busybox echo "hello from busybox"
+```
+
+show running containers
+```
+docker ps
+```
+
+show containers that ran previously
+```
+docker ps -a
+```
+
+live tty session
+```
+docker run -it busybox sh
+```
+
+Remove containers from which you left
+```
+docker rm $(docker ps -a -q -f status=exited)
+OR
+docker container prune
+```
+
+--rm flag can be passed to docker run which automatically deletes the container once it's exited from  
+
+Run detached  
+-d will detach our terminal  
+-P will publish all exposed ports to random ports and finally  
+--name corresponds to a name we want to give.  
+```
+docker run -d -P --name static-site name/static-site
+```
+
+See the ports by running the docker port [CONTAINER] command
+```
+docker port static-site
+```
+
+Specify a custom port
+```
+docker run -p 8888:80 prakhar1989/static-site
+```
+
+Stop a container
+```
+docker stop static-site
+```
+
+Creating an image  
+A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.  
+CMD is to tell the container which command it should run when it is started  
+port number that needs to be exposed  
+specifying our base image. Use the FROM keyword to do that  
+```
+# Dockerfile
+FROM python:3-onbuild
+
+# tell the port number the container should expose
+EXPOSE 5000
+
+# run the command
+CMD ["python", "./app.py"]
+```
+
+Build image from Dockerfile
+```
+docker build -t mz2kh/catnip .
+```
+
+Run the container
+```
+run -p 8888:5000 mz2kh/catnip
+```
+  
+Publish image to Docker HUB
+```
+docker push mz2kh/catnip
+```
+  
+Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
+```
+docker run -p 8888:5000 prakhar1989/catnip
+```
+
+Search for images
+```
+docker search elasticsearch
+```
+
+When docker is installed, it creates three networks automatically.
+```
+docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+77192b388b9d        bridge              bridge              local
+3a125533ca3f        host                host                local
+13e644755906        none                null                local
+```
+
+The bridge network is the network in which containers are run by default.  
+Inspect bridge Network:
+```
+docker network inspect bridge
+```
+
+Create our own network  
+A bridge network allows containers connected to the same bridge network to communicate,  
+while providing isolation from containers which are not connected to that bridge network. 
+```
+docker network create catnip-net
+```
+
+Launch containers into network (--net foodtrucks-net)
+```
+$ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
+$ docker network inspect foodtrucks-net
+```
+
+Create and run container on a created Network  
+./setup-docker.sh
+```
+#!/bin/bash
+
+# build the flask container
+docker build -t prakhar1989/foodtrucks-web .
+
+# create the network
+docker network create foodtrucks-net
+
+# start the ES container
+docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+# start the flask app container
+docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
+```
 
 
 ---
