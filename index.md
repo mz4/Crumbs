@@ -964,6 +964,7 @@ sudo apt-get --download-only source vsftpd
 sudo apt-get check
 ```
 #### Most used Commands
+```
 ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
