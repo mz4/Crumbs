@@ -931,9 +931,39 @@ screen -r
 ```
 screen -list
 ```
-Show your current screen sessions.
-#### Most used Commands
+#### List All Available Packages
 ```
+apt-cache pkgnames
+```
+#### Package Name and Description of Software
+```
+apt-cache search vsftpd
+```
+#### Package Information
+```
+apt-cache show netcat
+```
+#### Dependencies for Specific Packages
+```
+apt-cache showpkg vsftpd
+```
+#### Update System Packages
+```
+sudo apt-get update
+```
+#### Clean up disks space
+```
+sudo apt-get clean
+```
+#### Download only source code
+```
+sudo apt-get --download-only source vsftpd
+```
+#### Check broken dependencies
+```
+sudo apt-get check
+```
+#### Most used Commands
 ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
