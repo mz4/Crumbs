@@ -1249,6 +1249,191 @@ module.exports = {
   }
 }
 ```
+---
+#### Webpack setup2
+-y takes the default
+```
+npm init -y
+```
+From root folder:
+```
+mkdir dist
+cd dist
+touch index.html
+```
+in dist/index.html
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Minimal React Webpack Babel Setup</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
+```
+Install Webpack from root folder
+```
+npm install --save-dev webpack webpack-dev-server webpack-cli
+```
+Folder Structure
+```
+- dist
+-- index.html
+- node_modules
+- package.json
+```
+package.json
+```
+"scripts": {
+  "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+  ...
+},
+```
+Create webpack configuration file
+```
+touch webpack.config.js
+```
+webpack config content
+```
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+```
+Start Webpack dev server
+```
+npm start
+```
+
+## Babel Setup
+Babel transpiles back to vanilla JavaScript so that every browser can interpret it. 
+```
+npm install --save-dev @babel/core @babel/preset-env
+```
+hook it to webpack
+```
+npm install --save-dev babel-loader
+```
+JSX to javasript
+```
+npm install --save-dev @babel/preset-react
+```
+package.json
+```
+"keywords": [],
+"author": "",
+"license": "ISC",
+"babel": {
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+```
+webpack.config.json
+```
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+```
+
+Install packages for react
+```
+npm install --save react react-dom
+```
+src/index.js
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const title = 'My Minimal React Webpack Babel Setup';
+
+ReactDOM.render(
+  <div>{title}</div>,
+  document.getElementById('app')
+);
+```
+
+## Hot Module Replacement in React
+apply changes to the browser
+```
+npm install --save-dev react-hot-loader
+```
+webpack.config.js
+```
+const webpack = require('webpack');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  }
+};
+```
+
+in src/index.js add at the end
+```
+module.hot.accept();
+```
+```
+npm start
+```
+
+
+
+
+
+
 
 --- 
 # **Docker**  
