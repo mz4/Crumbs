@@ -424,12 +424,23 @@ Module:{
 ---
 # **Javascript**  
 
-#### Execution Context.
-Whenever code is run in JavaScript, it's run inside an execution context.  
-The execution context creates a Global Object and it creates a special variable, called 'this'.  
+#### Execution Context.  
+**Execution context**: the environment in which code is running. It is created when your code is executed.  
+    
+**Global Execution Context** creates 3 things:  
+- Global Object Window (browser)  
+- Special Object 'this'  
+- Ref to outer environment  
 
-So, your variables and your functions when lexically is not sitting inside a function, they're just sitting right there on the global object.  
-If you're running code inside a browser, that Global Object is the window object. You'd get a special variable called "this".  
+**JS Engine** performs following two steps while executing any code:  
+**Creation Phase**
+- Run through your code & identifies variables & functions  
+- Setup memory space for Variables & Functions - "Hoisting"  
+- Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
+
+**Execution Phase**  
+- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
+- Variable assignment are done in this phase 
 
 #### Bind
 We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
