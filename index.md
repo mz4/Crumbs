@@ -1894,31 +1894,32 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Flavio Copes](https://flaviocopes.com)
 
 #### React
-[Awesome-react](https://github.com/enaqx/awesome-react)
-[Articles about frontend](https://alligator.io/)
-[Frontend Articles](https://www.robinwieruch.de/)
+[Awesome-react](https://github.com/enaqx/awesome-react)  
+[Articles about frontend](https://alligator.io/)  
+[Frontend Articles](https://www.robinwieruch.de/)  
+[Frontend Articles](https://www.valentinog.com)  
 
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
-[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)
-##### CSS Grids
+[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
+##### CSS Grids  
 [css grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
 ##### CSS Flexbox
-[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 
 #### GIT
-[git commands](https://git-scm.com/docs)
+[git commands](https://git-scm.com/docs)  
 
 #### Linux
-[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)
+[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
-[Recording Screen](https://github.com/phw/peek)
-[Site Point](https://www.sitepoint.com/)
-[cheatsheets](https://devhints.io)
-[github help](https://help.github.com/)
+[Recording Screen](https://github.com/phw/peek)  
+[Site Point](https://www.sitepoint.com/)  
+[cheatsheets](https://devhints.io)  
+[github help](https://help.github.com/)  
