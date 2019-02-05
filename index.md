@@ -424,14 +424,23 @@ Module:{
 ---
 # **Javascript**  
 
-#### Global Environment and the Global Object.
-Whenever code is run in JavaScript, it's run inside an execution context.  
-The global execution context creates a Global Object and it creates a special variable, called 'this'.  
-The JavaScript engine is creating these two things for you whenever your code is run, because your code is wrapped inside an execution context.  
-So, your variables and your functions when lexically is not sitting inside a function, they're just sitting right there on the global object.  
-All right, so, when code is executed, your JavaScript code is executed, an execution context is created.  
-At the base level, when you're not inside a function, you have a global object that the JavaScript engine creates for you as part of that execution context.  
-If you're running code inside a browser, that Global Object is the window object. You'd get a special variable called "this:. And in the case of the browser this at that global level is just the same as the window object, it's equal to the window object.  
+#### Execution Context.  
+**Execution context**: the environment in which code is running. It is created when your code is executed.  
+    
+**Global Execution Context** creates 3 things:  
+- Global Object Window (browser)  
+- Special Object 'this'  
+- Ref to outer environment  
+
+**JS Engine** performs following two steps while executing any code:  
+**Creation Phase**
+- Run through your code & identifies variables & functions  
+- Setup memory space for Variables & Functions - "Hoisting"  
+- Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
+
+**Execution Phase**  
+- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
+- Variable assignment are done in this phase 
 
 #### Bind
 We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
@@ -1300,6 +1309,191 @@ module.exports = {
   }
 }
 ```
+---
+#### Webpack setup2
+-y takes the default
+```
+npm init -y
+```
+From root folder:
+```
+mkdir dist
+cd dist
+touch index.html
+```
+in dist/index.html
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Minimal React Webpack Babel Setup</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
+```
+Install Webpack from root folder
+```
+npm install --save-dev webpack webpack-dev-server webpack-cli
+```
+Folder Structure
+```
+- dist
+-- index.html
+- node_modules
+- package.json
+```
+package.json
+```
+"scripts": {
+  "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+  ...
+},
+```
+Create webpack configuration file
+```
+touch webpack.config.js
+```
+webpack config content
+```
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+```
+Start Webpack dev server
+```
+npm start
+```
+
+## Babel Setup
+Babel transpiles back to vanilla JavaScript so that every browser can interpret it. 
+```
+npm install --save-dev @babel/core @babel/preset-env
+```
+hook it to webpack
+```
+npm install --save-dev babel-loader
+```
+JSX to javasript
+```
+npm install --save-dev @babel/preset-react
+```
+package.json
+```
+"keywords": [],
+"author": "",
+"license": "ISC",
+"babel": {
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+```
+webpack.config.json
+```
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+```
+
+Install packages for react
+```
+npm install --save react react-dom
+```
+src/index.js
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const title = 'My Minimal React Webpack Babel Setup';
+
+ReactDOM.render(
+  <div>{title}</div>,
+  document.getElementById('app')
+);
+```
+
+## Hot Module Replacement in React
+apply changes to the browser
+```
+npm install --save-dev react-hot-loader
+```
+webpack.config.js
+```
+const webpack = require('webpack');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  }
+};
+```
+
+in src/index.js add at the end
+```
+module.hot.accept();
+```
+```
+npm start
+```
+
+
+
+
+
+
 
 --- 
 # **Docker**  
@@ -1760,26 +1954,28 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Flavio Copes](https://flaviocopes.com)
 
 #### React
-[Awesome-react](https://github.com/enaqx/awesome-react)
-[Articles about frontend](https://alligator.io/)
+[Awesome-react](https://github.com/enaqx/awesome-react)  
+[Articles about frontend](https://alligator.io/)  
+[Frontend Articles](https://www.robinwieruch.de/)  
+[Frontend Articles](https://www.valentinog.com)  
 
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
-[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)
-##### CSS Grids
+[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
+##### CSS Grids  
 [css grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
 ##### CSS Flexbox
-[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 
 #### GIT
-[git commands](https://git-scm.com/docs)
+[git commands](https://git-scm.com/docs)  
 
 #### Linux
-[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)
+[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
