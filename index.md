@@ -421,6 +421,39 @@ Module:{
    },
 ```
 
+#### Selectors
+
+##### Descendant Selector
+all <p> elements inside <div> elements  
+```
+div p {
+  background-color: yellow;
+}
+```
+  
+##### Child Selector
+all <p> elements that are immediate children of a <div> element  
+```
+div > p {
+  background-color: yellow;
+}
+```
+
+##### Adjacent Sibling Selector
+all <p> elements that are placed immediately after <div> elements  
+```
+div + p {
+  background-color: yellow;
+}
+```
+
+##### General Sibling Selector
+all <p> elements that are siblings of <div> elements  
+```
+div ~ p {
+  background-color: yellow;
+}
+```
 ---
 # **Javascript**  
 
@@ -1963,6 +1996,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
+[CSS Animation](http://animista.net)
 ##### CSS Grids  
 [css grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
