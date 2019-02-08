@@ -1025,6 +1025,10 @@ sudo netstat -ntlp | grep :443
 ```
 grep -r "test" - find string
 ```
+#### Find string include, exclude, ignore case
+```
+grep -r -i ".ui" --include \*.scss --exclude app.scss
+```
 #### Find Large files
 ```
 find / -size +10M -ls
