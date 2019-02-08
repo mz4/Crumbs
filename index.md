@@ -930,6 +930,31 @@ export default function todosReducer(state = initialState, action) {
 }
 ```
 
+# Test Jest Enzyme
+Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  
+Jest is a test framework managed by Facebook.  
+install enzyme along with an Adapter corresponding to the version of react.  
+```
+npm i --save-dev enzyme enzyme-adapter-react-16
+```
+Jest Setup with React:  
+```
+npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
+```
+Add into babel configuration  
+```
+"env": {
+  "test": {
+    "presets": ["es2015", "react", "stage-0"]
+  }
+}
+```
+
+#### useful for debug
+```
+console.log(wrapper.debug());
+```
+
 ---
 # REST API - Application Programming Interface (API)  
 A REST API consists of an assembly of interlinked resources.  
