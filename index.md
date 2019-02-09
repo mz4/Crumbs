@@ -421,17 +421,59 @@ Module:{
    },
 ```
 
+#### Selectors
+
+##### Descendant Selector
+all <p> elements inside <div> elements  
+```
+div p {
+  background-color: yellow;
+}
+```
+  
+##### Child Selector
+all <p> elements that are immediate children of a <div> element  
+```
+div > p {
+  background-color: yellow;
+}
+```
+
+##### Adjacent Sibling Selector
+all <p> elements that are placed immediately after <div> elements  
+```
+div + p {
+  background-color: yellow;
+}
+```
+
+##### General Sibling Selector
+all <p> elements that are siblings of <div> elements  
+```
+div ~ p {
+  background-color: yellow;
+}
+```
 ---
 # **Javascript**  
 
-#### Global Environment and the Global Object.
-Whenever code is run in JavaScript, it's run inside an execution context.  
-The global execution context creates a Global Object and it creates a special variable, called 'this'.  
-The JavaScript engine is creating these two things for you whenever your code is run, because your code is wrapped inside an execution context.  
-So, your variables and your functions when lexically is not sitting inside a function, they're just sitting right there on the global object.  
-All right, so, when code is executed, your JavaScript code is executed, an execution context is created.  
-At the base level, when you're not inside a function, you have a global object that the JavaScript engine creates for you as part of that execution context.  
-If you're running code inside a browser, that Global Object is the window object. You'd get a special variable called "this:. And in the case of the browser this at that global level is just the same as the window object, it's equal to the window object.  
+#### Execution Context.  
+**Execution context**: the environment in which code is running. It is created when your code is executed.  
+    
+**Global Execution Context** creates 3 things:  
+- Global Object Window (browser)  
+- Special Object 'this'  
+- Ref to outer environment  
+
+**JS Engine** performs following two steps while executing any code:  
+**Creation Phase**
+- Run through your code & identifies variables & functions  
+- Setup memory space for Variables & Functions - "Hoisting"  
+- Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
+
+**Execution Phase**  
+- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
+- Variable assignment are done in this phase 
 
 #### Bind
 We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
@@ -624,7 +666,7 @@ console.log(prices); // [649, 576, 489]
 ```
 
 ---
-## **React**  
+# **React**  
 
 #### Import statement - imr
 ```javascript
@@ -888,7 +930,83 @@ export default function todosReducer(state = initialState, action) {
 }
 ```
 
+# Test Jest Enzyme
+Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  
+Jest is a test framework managed by Facebook.  
+install enzyme along with an Adapter corresponding to the version of react.  
+```
+npm i --save-dev enzyme enzyme-adapter-react-16
+```
+Jest Setup with React:  
+```
+npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
+```
+Add into babel configuration  
+```
+"env": {
+  "test": {
+    "presets": ["es2015", "react", "stage-0"]
+  }
+}
+```
 
+#### useful for debug
+```
+console.log(wrapper.debug());
+```
+
+---
+# REST API - Application Programming Interface (API)  
+A REST API consists of an assembly of interlinked resources.  
+A Web API conforming to the REST architectural style is a REST API.  
+Having a REST API makes a web service “RESTful.”  
+A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
+
+#### URI Format  
+generic URI syntax as shown below:  
+```
+URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
+```
+Forward slash separator (/) indicates a hierarchical relationship  
+underscores (_) should not be used in uris  
+Trailing forward slash (/) should not be included in uris  
+hyphens (-) should be used to improve readability of uris  
+lowercase letters should be preferred in uri paths  
+crud function names should not be used in uris  
+query component of a URI may be used to filter collections or stores
+
+#### Request Methods
+CRUD requests: DELETE, GET, POST, PUT  
+HEAD retrieve metadata.  
+OPTIONS retrieve metadata of resource’s available interactions.  
+
+#### Some Responses status
+200 success
+201 new resource has been created
+202 Accepted, start of an asynchronous action
+204 No Content body left blank
+301 Moved Permanently
+400 Bad Request Indicates a nonspecific client error
+401 Unauthorized
+402 Forbidden
+404 Not Found
+405 Method Not Allowed
+
+#### HTTP Headers
+Various forms of metadata may be conveyed through the entity headers.  
+##### Request headers
+Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.  
+User-Agent: identify the application type, operating system, software vendor
+Host: The Host request header specifies the domain name of the server  
+X-Requested-With: Mainly used to identify AJAX requests.  
+Accept-Language which languages the client is able to understand  
+##### Response headers
+Content-Type  
+Content-Length  size of the response body  
+Set-Cookie used to send cookies from the server to the client.
+####  Body Format
+A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
+Today, the most commonly used text formats is JSON.
 
 
 ---
@@ -906,6 +1024,10 @@ sudo netstat -ntlp | grep :443
 #### Find a string
 ```
 grep -r "test" - find string
+```
+#### Find string include, exclude, ignore case
+```
+grep -r -i ".ui" --include \*.scss --exclude app.scss
 ```
 #### Find Large files
 ```
@@ -1908,6 +2030,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
+[CSS Animation](http://animista.net)
 ##### CSS Grids  
 [css grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
@@ -1924,7 +2047,8 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 #### Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
-[Recording Screen](https://github.com/phw/peek)  
-[Site Point](https://www.sitepoint.com/)  
-[cheatsheets](https://devhints.io)  
-[github help](https://help.github.com/)  
+[Recording Screen](https://github.com/phw/peek)
+[Site Point](https://www.sitepoint.com/)
+[cheatsheets](https://devhints.io)
+[github help](https://help.github.com/)
+[REST API Design Rulebook](https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf)
