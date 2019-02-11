@@ -1085,6 +1085,11 @@ sudo apt-get --download-only source vsftpd
 ```
 sudo apt-get check
 ```
+#### Remove files containing a string
+```
+rm ?*foo?*
+ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
+```
 #### Most used Commands
 ```
 ls Directory listing
