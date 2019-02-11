@@ -28,6 +28,12 @@ git log -10 --pretty=format:"%h %s"
 git shortlog -s -n --all
 ```
 
+#### remove local untracked files 
+```
+git clean -n
+git clean -f
+```
+
 #### undo last commit. Warning: Don't do this if you've already pushed
 ```
  git reset HEAD~
