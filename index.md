@@ -1135,6 +1135,11 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
+#### Create folder and cd into it
+```
+mkdir foo && cd "$_"
+```
+
 #### Create Swap file
 ```
 sudo mkdir -v /var/cache/swap
