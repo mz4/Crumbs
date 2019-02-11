@@ -1273,6 +1273,26 @@ npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-reac
   ]
 }
 ```
+##### Webpack Performance codesplitting react-loadable
+```
+npm install --save react-loadable
+```
+
+```
+import Loadable from 'react-loadable';
+import Loading from '../../layout/Loading';
+const ComponentName = Loadable({ loader: () => import(/* webpackChunkName: "ComponentName" */'./subcomponents/ComponentName'), loading: Loading });
+```
+in webpack.config.js
+```
+  output: {
+    path: path.join(__dirname, 'app/static/bin'),
+    filename: 'bundle.js',
+    publicPath: '/static/bin/',
+    chunkFilename: '[name].bundle.js',
+  },
+```
+
 ##### Webpack (webpack.config.js)
 ```
 const path = require('path');
