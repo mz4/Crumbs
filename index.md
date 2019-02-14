@@ -1299,6 +1299,58 @@ in webpack.config.js
   },
 ```
 
+##### general performance improvements
+```
+React-loadable: this is a code splitting library. It allows to load components only when those are needed.  
+There are 2 main ways to split code:  
+by route
+by subcomponents
+
+Show loading icon when initial page is loading.
+The objective in this case is to give immediately a feedback to the user that page is loading.
+
+Webpack Plugin: UglifyWebpackPlugin minify js files
+(license MIT) uglifyjs-webpack-plugin
+
+Webpack Plugin: MomentLocalesPlugin remove unused locales from Moment
+(license MIT) moment-locales-webpack-plugin
+
+Webpack Plugin: BundleAnalyzerPlugin analyze build files (use http://127.0.0.1:8888 after running npm run-script build)
+(license MIT): Webpack Bundle Analyzer
+
+Babel Plugin: transform-imports import only needed modules
+(license ISC) babel-plugin-transform-imports
+
+Babel Plugin: transform-react-remove-prop-types Remove React propTypes from the production build, as they are only used in development.
+(license MIT) babel-plugin-transform-react-remove-prop-types
+```
+
+##### webpack treeshaking
+```
+npm run-script build -- --display-used-exports
+```
+
+##### .babelrc transform imports
+npm install --save-dev babel-plugin-transform-imports  
+in .babelrc
+
+```
+{
+    "plugins": [
+        ["transform-imports", {
+            "react-bootstrap": {
+                "transform": "react-bootstrap/lib/${member}",
+                "preventFullImport": true
+            },
+            "lodash": {
+                "transform": "lodash/${member}",
+                "preventFullImport": true
+            }
+        }]
+    ]
+}
+```
+
 ##### Webpack (webpack.config.js)
 ```
 const path = require('path');
