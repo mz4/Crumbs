@@ -246,6 +246,8 @@ align-self: overrides alignment set on parent
 ```
 
 #### CSS GRID
+[Grid examples from CSS Grid](https://css-tricks.com/snippets/css/css-grid-starter-layouts/)
+
 ##### Properties for the Grid Container
 ```
 display: grid | inline-grid;
