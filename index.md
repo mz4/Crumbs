@@ -216,9 +216,9 @@ git init
 
 #### Responsive Design
 ##### Defined by three characteristics
-• Flexible grid-based layout
-• Media queries (CSS3)
-• Images that resize
+- Flexible grid-based layout  
+- Media queries (CSS3)  
+- Images that resize  
 
 #### Flexbox:
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
