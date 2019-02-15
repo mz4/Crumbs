@@ -214,6 +214,73 @@ git init
 ---
 # **CSS3/SASS**  
 
+#### Responsive Design
+##### Defined by three characteristics
+• Flexible grid-based layout
+• Media queries (CSS3)
+• Images that resize
+
+#### Flexbox:
+[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
+[Flexbox Grid](http://flexboxgrid.com/)  
+
+#### FLEXBOX PROPERTIES
+##### Parent (Flex Container)
+```
+display: flex | inline-flex;
+flex-direction: row | row-reverse | column | columnreverse;
+flex-wrap: wrap | nowrap | wrap-reverse; flex-flow (shorthand for flex-direction and flexwrap)
+justify-content: flex-start | flex-end | center | spacebetween | space-around | space-evenly;
+align-items: flex-start | flex-end | center | baseline | stretch;
+align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
+```
+
+##### Children (Flex Items)
+```
+order: <integer>;
+flex-grow: <number>;
+flex-shrink: <number>;
+flex-basis: <length> | auto;
+flex: shorthand for grow, shrink, and basis (default: 0 1 auto)
+align-self: overrides alignment set on parent
+```
+
+#### CSS GRID
+##### Properties for the Grid Container
+```
+display: grid | inline-grid;
+grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
+grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
+grid-template-areas: <grid-area-name>;
+grid-template: A shorthand for setting grid-template-rows, grid-template-columns, and grid-template-areas in a single declaration.
+grid-column-gap: <line-size>;
+grid-row-gap: <line-size>;
+grid-gap: A shorthand for grid-row-gap and grid-column-gap
+justify-items: start | end | center | stretch;
+align-items: start | end | center | stretch;
+place-items: place-items sets both the align-items and justify-items properties in a single declaration.
+justify-content: start | end | center | stretch | space-around | space-between | space-evenly;	
+align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+place-content: place-content sets both the align-content and justify-content properties in a single declaration.
+grid-auto-columns: <track-size> ...;
+grid-auto-rows: <track-size> ...;
+grid-auto-flow: row | column | row dense | column dense
+grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
+```
+##### Properties for the Grid Items
+```
+grid-column-start: <number> | <name> | span <number> | span <name> | auto
+grid-column-end: <number> | <name> | span <number> | span <name> | auto
+grid-row-start: <number> | <name> | span <number> | span <name> | auto
+grid-row-end: <number> | <name> | span <number> | span <name> | auto
+grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+justify-self: start | end | center | stretch;
+align-self: start | end | center | stretch;
+place-self: center;
+```
+
 #### BEM Block Element Modifier
 ```
 <div class="block__element block__element--modifier">
