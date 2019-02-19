@@ -1018,6 +1018,11 @@ Today, the most commonly used text formats is JSON.
 ---
 # **Linux Commands**  
 
+#### truncate file content
+```
+truncate -s 0 dash.txt
+```
+
 #### cat long file
 ```
 cat branch | more -d
@@ -1349,6 +1354,21 @@ in .babelrc
         }]
     ]
 }
+```
+
+##### .eslintrc configuration
+```
+module.exports = {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+        "browser": true
+    },
+    "rules": {
+      "class-methods-use-this": "off",
+      "react/sort-comp": "off"
+    }
+};
 ```
 
 ##### Webpack (webpack.config.js)
@@ -2108,6 +2128,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Articles about frontend](https://alligator.io/)  
 [Frontend Articles](https://www.robinwieruch.de/)  
 [Frontend Articles](https://www.valentinog.com)  
+[Hooks collection](https://nikgraf.github.io/react-hooks/)
 
 #### CSS Links  
 [cssreference.io](https://cssreference.io)  
