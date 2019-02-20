@@ -775,7 +775,7 @@ console.log(prices); // [649, 576, 489]
 ```
 
 ---
-# **React**  
+# REACT  
 
 #### Import statement - imr
 ```javascript
@@ -1037,6 +1037,60 @@ export default function todosReducer(state = initialState, action) {
       return state;
   }
 }
+```
+
+
+#### socket
+
+##### socket client
+
+##### socket install 
+```
+npm i socket.io-client
+```
+
+#####
+```
+const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
+export default io;
+```
+
+##### io Emit from client
+```
+import io from './components/common/io';
+io.emit('populate_table', { table_name: 'users_table' });
+```
+
+##### io Receive
+```
+io.on('isloggedin', (payload) => {
+  ...
+}
+```
+
+##### Remove listeners
+```
+io.removeAllListeners('action_response');
+```
+
+##### socketio server flask
+```
+from app.server import socketio
+@socketio.on(socket_names.UPLOAD_LICENSE)
+def upload_license_action(args):
+    """
+    Upload a new license file.
+    """
+    data = args['data']
+    uuid = args['uuid']
+    sid = request.sid
+    user_store.update_previous_connection(sid)
+    socketio.emit(socket_names.ACTION_TIME, {
+        'action_time': now(sid)}, room=sid)
+    with thread_lock:
+        socketio.start_background_task(
+            target=upload_license,
+            kwargs={'data': data, 'sid': sid, 'uuid': uuid})
 ```
 
 # Test Jest Enzyme
@@ -2260,3 +2314,4 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [cheatsheets](https://devhints.io)
 [github help](https://help.github.com/)
 [REST API Design Rulebook](https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf)
+[static site generator](https://www.mkdocs.org)
