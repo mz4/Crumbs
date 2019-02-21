@@ -4,26 +4,27 @@
 # **GIT**
 
 
-#### Single file history
+Single file history  
 ```
 git log -p filename
 ```
 
-#### get tag
+get tag  
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
-#### get commits by date and author
+
+get commits by date and author  
 ```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
 ```
 
-#### git log commit subject of last 10 commits
+git log commit subject of last 10 commits  
 ```
 git log -10 --pretty=format:"%h %s"
 ```
 
-#### number of commits by author
+number of commits by author  
 ```
 git shortlog -s -n --all
 ```
