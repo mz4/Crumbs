@@ -54,11 +54,6 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#crumbs">Crumbs</a></li>
         <li class="main "><a href="#git">GIT</a></li>
-            <li><a href="#single-file-history">Single file history</a></li>
-            <li><a href="#get-tag">get tag</a></li>
-            <li><a href="#get-commits-by-date-and-author">get commits by date and author</a></li>
-            <li><a href="#git-log-commit-subject-of-last-10-commits">git log commit subject of last 10 commits</a></li>
-            <li><a href="#number-of-commits-by-author">number of commits by author</a></li>
             <li><a href="#remove-local-untracked-files">remove local untracked files</a></li>
             <li><a href="#undo-last-commit-warning-dont-do-this-if-youve-already-pushed">undo last commit. Warning: Don't do this if you've already pushed</a></li>
             <li><a href="#untrack-pyc-files">untrack .pyc files</a></li>
@@ -298,23 +293,23 @@
 <h1 id="crumbs">Crumbs</h1>
 <hr />
 <h1 id="git"><strong>GIT</strong></h1>
-<h4 id="single-file-history">Single file history</h4>
+<p>Single file history  </p>
 <pre><code>git log -p filename
 </code></pre>
 
-<h4 id="get-tag">get tag</h4>
+<p>get tag  </p>
 <pre><code>git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 </code></pre>
 
-<h4 id="get-commits-by-date-and-author">get commits by date and author</h4>
+<p>get commits by date and author  </p>
 <pre><code>git log --pretty=format:&quot;%ad - %an: %s&quot; --after=&quot;2010-02-15&quot; --until=&quot;2018-08-20&quot; --author=&quot;John&quot;
 </code></pre>
 
-<h4 id="git-log-commit-subject-of-last-10-commits">git log commit subject of last 10 commits</h4>
+<p>git log commit subject of last 10 commits  </p>
 <pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
 </code></pre>
 
-<h4 id="number-of-commits-by-author">number of commits by author</h4>
+<p>number of commits by author  </p>
 <pre><code>git shortlog -s -n --all
 </code></pre>
 
@@ -2483,5 +2478,5 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-21 13:03:46
+Build Date UTC : 2019-02-21 13:10:04
 -->
