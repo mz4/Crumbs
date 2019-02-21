@@ -1,2 +1,3 @@
 site_name: test
 site_description: Description of the documentation
+theme: slate
