@@ -2315,3 +2315,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [github help](https://help.github.com/)
 [REST API Design Rulebook](https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf)
 [static site generator](https://www.mkdocs.org)
+[awesome frontend](https://github.com/sindresorhus/awesome#front-end-development)
+[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)
+[interview questions](https://github.com/MaximAbramchuck/awesome-interview-questions)
+[deploy mkdocs to github](https://www.sitepoint.com/building-product-documentation-mkdocs/)
