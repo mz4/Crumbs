@@ -1175,7 +1175,35 @@ Today, the most commonly used text formats is JSON.
 
 
 ---
-# **Linux Commands**  
+# Linux
+
+Systems Directories
+```
+/ The root directory.  
+/bin Contains binaries (programs) that must be present for the system to boot and run.  
+/boot Contains Linux kernel, initial RAM disk image, and the boot loader.
+/dev This is a special directory which contains device nodes.  
+/etc configuration files / shell scripts for system services at boot time.
+/home each user is given a directory in /home
+/lib Contains shared library files used by the core system
+/lost+found used in the case of a partial recovery from a file system corruption event
+/media mount points for removable media
+/mnt On older Linux systems, mount points for removable devices
+/opt to install “optional” software.
+/proc virtual file system maintained by the Linux kernel
+/root home directory for the root account.
+/sbin “system” binaries. 
+/tmp temporary files
+/usr all the programs and support files used by regular users.
+/usr/bin /usr/bin contains the executable programs installed by your Linux distribution
+/usr/lib shared libraries for the programs in /usr/bin.
+/usr/local programs that are not included with your distribution but are intended for systemwide use are installed.
+/usr/sbin system administration programs.
+/usr/share all the shared data used by programs in /usr/bin.
+/usr/share/doc packages documentation.
+/var where data that is likely to change is stored.
+/var/log log files
+```
 
 truncate file content
 ```
