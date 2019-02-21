@@ -29,13 +29,13 @@ number of commits by author
 git shortlog -s -n --all
 ```
 
-#### remove local untracked files 
+remove local untracked files 
 ```
 git clean -n
 git clean -f
 ```
 
-#### undo last commit. Warning: Don't do this if you've already pushed
+undo last commit. Warning: Don't do this if you've already pushed
 ```
  git reset HEAD~
 ```
@@ -45,65 +45,65 @@ If you don't want the changes and blow everything away:
  git reset --hard HEAD~
 ```
 
-#### untrack .pyc files
+untrack .pyc files
 ```
 $ find . -name '*.pyc' | xargs -n 1 git rm --cached
 ```
 
-#### Switch to branch 
+Switch to branch 
 ```
 git checkout BRANCHNAME
 ```
 
-#### Pull from master branch
+Pull from master branch
 ```
 git pull origin master
 ```
 
-#### Squash
+Squash
 ```
 git reset --soft HEAD~$squashCount
 git commit -m "$commitMsg"
 ```
 
-#### Check git status
+Check git status
 ```
 git status
 ```
 
-#### Add files
+Add files
 ```
 git add sys_ui/css/FILE.css 
 git add sys_ui/FILE.html 
 git add sys_ui/js/FILE.js 
 ```
 
-#### Commit
+Commit
 ```
 git commit
 ```
 
-#### Push
+Push
 ```
 git push
 ```
 
-#### Checkout master
+Checkout master
 ```
 git chekcout master
 ```
 
-#### Merge branch into master
+Merge branch into master
 ```
 git merge user_interface
 ```
 
-#### Check Log
+Check Log
 ```
 git log
 ```
 
-#### Create branch and switch
+Create branch and switch
 ```
 git checkout -b v0.4bugfix v0.4Master
 ```
@@ -113,71 +113,71 @@ git branch NAME
 git checkout NAME
 ```
 
-#### Push a branch to origin
+Push a branch to origin
 ```
 git push -u origin <branch>
 ```
 
-#### Tags
+Tags
 ```
 git tag v1.0 ec32d32
 git push origin --tags
 ```
 
-#### How to undo a local commit
+How to undo a local commit
 ```
 git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 ```
 
-#### How to undo git add
+How to undo git add
 ```
 git reset filename.jsx
 ```
 
-#### Delete a local branch - Delete remote branch
+Delete a local branch - Delete remote branch
 ```
 git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
-#### show differences after git pull
+show differences after git pull
 ```
 git diff master@{1} master
 ```
 
-#### clone specific branch
+clone specific branch
 ```
 git clone -b <branch> <remote_repo>
 git clone -b my-branch git@github.com:user/myproject.git
 ```
 
-#### clone repo
+clone repo
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
 
-#### lists branches merged into master
+lists branches merged into master
 ```
 git branch --merged master
 ```
 
-#### lists branches merged into HEAD (i.e. tip of current branch)
+lists branches merged into HEAD (i.e. tip of current branch)
 ```
 git branch --merged 
 ```
 
-#### lists branches that have not been merged
+lists branches that have not been merged
 ```
 git branch --no-merged
 ```
 
-#### Checkout previous branch
+Checkout previous branch
 ```
 git checkout -
 ```
 
-#### Diff between branches
+Diff between branches  
 Diff between current branch and master:  
 ```
 git diff master
@@ -191,23 +191,23 @@ Show only files that are different between the two branches (without changes the
 git diff --name-status master..staging
 ```
 
-#### Create New Branch and Checkout – In One Command
+Create New Branch and Checkout – In One Command
 ```
 git checkout -b <branch_name>
 ```
 
-#### Revert Changes to File
+Revert Changes to File
 ```
 git checkout -- <file>
 ```
 
-#### Edit Last Commit Message
+Edit Last Commit Message
 Change the last commit message through the command-line:  
 ```
 git commit --amend -m "New commit message"
 ```
 
-#### Create a New Git Repository
+Create a New Git Repository
 ```
 git init
 ```
@@ -215,18 +215,18 @@ git init
 ---
 # **CSS3/SASS**  
 
-#### Responsive Design
-##### Defined by three characteristics
+Responsive Design  
+Defined by three characteristics  
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
 
-#### Flexbox:
+Flexbox:
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 [Flexbox Grid](http://flexboxgrid.com/)  
 
-#### FLEXBOX PROPERTIES
-##### Parent (Flex Container)
+FLEXBOX PROPERTIES
+Parent (Flex Container)
 ```
 display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
@@ -236,7 +236,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
 ```
 
-##### Children (Flex Items)
+Children (Flex Items)
 ```
 order: <integer>;
 flex-grow: <number>;
@@ -246,10 +246,10 @@ flex: shorthand for grow, shrink, and basis (default: 0 1 auto)
 align-self: overrides alignment set on parent
 ```
 
-#### CSS GRID
+CSS GRID
 [Grid examples from CSS Grid](https://css-tricks.com/snippets/css/css-grid-starter-layouts/)
 
-##### Properties for the Grid Container
+Properties for the Grid Container
 ```
 display: grid | inline-grid;
 grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
@@ -270,7 +270,7 @@ grid-auto-rows: <track-size> ...;
 grid-auto-flow: row | column | row dense | column dense
 grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
 ```
-##### Properties for the Grid Items
+Properties for the Grid Items
 ```
 grid-column-start: <number> | <name> | span <number> | span <name> | auto
 grid-column-end: <number> | <name> | span <number> | span <name> | auto
@@ -284,7 +284,7 @@ align-self: start | end | center | stretch;
 place-self: center;
 ```
 
-#### Media Queries
+Media Queries
 ```
 /* 
   ##Device = Desktops
@@ -318,7 +318,7 @@ place-self: center;
 @media (min-width: 320px) and (max-width: 480px) {}
 ```
 
-#### BEM Block Element Modifier
+BEM Block Element Modifier
 ```
 <div class="block__element block__element--modifier">
   Hallo
@@ -334,7 +334,7 @@ place-self: center;
   }
 }
 ```
-#### BEM with Sass
+BEM with Sass
 ```
 .person {
   &__hand {/* Styles */}
@@ -383,12 +383,12 @@ place-self: center;
 }
 ```
 
-#### SCSS Import
+SCSS Import
 ```scss
 @import 'reset';
 ```
 
-#### SCSS Variables
+SCSS Variables
 ```scss
 $zHeader: 2000;
 $zOverlay: 5000;
@@ -405,7 +405,7 @@ $zMessage: 5050;
 }
 ```
 
-#### SCSS Mixins
+SCSS Mixins
 ```scss
 @mixin square($size, $color) {
   width: $size;
@@ -422,7 +422,7 @@ $zMessage: 5050;
 }
 ```
 
-#### SCSS CrossBrowser Mixins
+SCSS CrossBrowser Mixins
 ```scss
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
@@ -436,7 +436,7 @@ $zMessage: 5050;
 }
 ```
 
-#### SCSS Extend  
+SCSS Extend  
 Extending should be used when we need similarly styled elements, which still differ in some detail. 
 ```scss
 .dialog-button {
@@ -460,7 +460,7 @@ Extending should be used when we need similarly styled elements, which still dif
 }
 ```
 
-#### SCSS Nesting  
+SCSS Nesting  
 Organize your stylesheet in a way that resembles the HTML more closely.
 ```scss
 ul {
@@ -479,7 +479,7 @@ ul {
 }
 ```
 
-#### Nested Pseudo Classes and Pseudo Elements 
+Nested Pseudo Classes and Pseudo Elements 
 ```scss
 .weather {
   @extend %module;
@@ -497,7 +497,7 @@ ul {
 ```
 
 
-#### SCSS Operations  
+SCSS Operations  
 ```scss
 $width: 800px;
 
@@ -514,7 +514,7 @@ $width: 800px;
 }
 ```
 
-#### Install SASS
+Install SASS
 ```
 $ npm install sass-loader node-sass --save-dev
 ```
@@ -531,9 +531,9 @@ Module:{
    },
 ```
 
-#### Selectors
+Selectors
 
-##### Descendant Selector
+Descendant Selector
 all <p> elements inside <div> elements  
 ```
 div p {
@@ -541,7 +541,7 @@ div p {
 }
 ```
   
-##### Child Selector
+Child Selector
 all <p> elements that are immediate children of a <div> element  
 ```
 div > p {
@@ -549,7 +549,7 @@ div > p {
 }
 ```
 
-##### Adjacent Sibling Selector
+Adjacent Sibling Selector
 all <p> elements that are placed immediately after <div> elements  
 ```
 div + p {
@@ -557,7 +557,7 @@ div + p {
 }
 ```
 
-##### General Sibling Selector
+General Sibling Selector
 all <p> elements that are siblings of <div> elements  
 ```
 div ~ p {
@@ -567,7 +567,7 @@ div ~ p {
 ---
 # **Javascript**  
 
-#### Execution Context.  
+Execution Context.  
 **Execution context**: the environment in which code is running. It is created when your code is executed.  
     
 **Global Execution Context** creates 3 things:  
@@ -585,7 +585,7 @@ div ~ p {
 - When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
 - Variable assignment are done in this phase 
 
-#### Bind
+Bind
 We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
 
 ```javascript
@@ -605,7 +605,7 @@ var user = {
 $ ("button").click (user.clickHandler);
 ```
 
-#### Scopes in javascript
+Scopes in javascript
 Global Scope, Local Scope, Block Scope (let)  
 **Old school JavaScript**
 Traditionally, JavaScript really only has two types of scope :  
@@ -618,22 +618,22 @@ The most recent JavaScript specs now also allow a third scope :
 let myVariable = "Some text";  
 const myVar = "val";
 
-#### Difference Between Function and Block Scope
+Difference Between Function and Block Scope
 
 Function scope is within the function. (var is function scope.)  
 Block scope is within curly brackets. (let and const are block scope.)  
 
-#### Variable hoisting
+Variable hoisting
 
 Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  
 
-#### Scope chain
+Scope chain
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  
 
-#### Closures
+Closures
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  
 
-#### Promise
+Promise
 A promise is commonly defined as a proxy for a value that will eventually become available.  
 Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.  
 Although they’ve been around for years, they were standardized and introduced in ES2015, and now they have been superseded in ES2017 by async functions.  
@@ -651,7 +651,7 @@ This function should take two functions as parameters.
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.  
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  
 
-##### Promise example 1
+Promise example 1
 ```javascript
 get('supplyData.json').then(function(response) {
   console.log("Success!", response);
@@ -660,7 +660,7 @@ get('supplyData.json').then(function(response) {
 })
 ```
   
-##### Promise example 2
+Promise example 2
 ```javascript
 var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -677,7 +677,7 @@ console.log(promise1);
 // expected output: [object Promise]
 ```
 
-##### Promise example 3
+Promise example 3
 ```javascript
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -689,19 +689,19 @@ function myAsyncFunction(url) {
   });
 }
 ```
-#### Callback
+Callback
 You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.  
 This is the so-called callback.  
 A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  
 
-##### Callback example 1
+Callback example 1
 ```javascript
 document.getElementById('button').addEventListener('click', () => {
   //item clicked
 })
 ```
 
-##### Callback example 2
+Callback example 2
 ```javascript
 setTimeout(() => {
   // runs after 2 seconds
@@ -709,9 +709,9 @@ setTimeout(() => {
 ```
 
 
-#### Promises vs Callbacks
+Promises vs Callbacks
 
-#### Random number
+Random number
 ```javascript
 Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     graphData = graphData.map((graph) => {
@@ -721,9 +721,9 @@ Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 ```
 
 ---
-## **ES6**  
+# **ES6**  
   
-#### Spread Operator 1  
+Spread Operator 1  
 ```javascript
 const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
@@ -731,7 +731,7 @@ const res = { ...userInfo, isAuthenticated: action.isAuthenticated };
 console.log(res);  
 ```
 
-####  Spread Operator 2
+ Spread Operator 2
 ```javascript
 var mid = [3, 4];  
 var arr = [1, 2, ...mid, 5, 6];  
@@ -739,7 +739,7 @@ var arr = [1, 2, ...mid, 5, 6];
 console.log(arr);  
 ```
 
-#### Arrow functions 1
+Arrow functions 1
 Specifying parameters:
 ```javascript
     () => { ... } // no parameter
@@ -752,17 +752,17 @@ x => { return x * x }  // block
 x => x * x  // expression, equivalent to previous line
 ```
 
-#### Arrow function 2
+Arrow function 2
 ```javascript
 const phraseSplitterEs6 = phrase => phrase.split(" ");
 ```
 
-#### Arrow function 3
+Arrow function 3
 ```javascript
 var docLogEs6 = () => { console.log(document); };
 ```
 
-#### Arrow function 4
+Arrow function 4
 ```javascript
 const smartPhones = [
   { name:'iphone', price:649 },
@@ -778,17 +778,17 @@ console.log(prices); // [649, 576, 489]
 ---
 # REACT  
 
-#### Import statement - imr
+Import statement - imr
 ```javascript
 import React from 'react';
 ```
 
-#### Import React and Component - imrc
+Import React and Component - imrc
 ```javascript
 import React, { Component } from 'react';
 ```
 
-#### Make a Class Component and export - cc
+Make a Class Component and export - cc
 ```javascript
 class | extends Component {
   state = { | },
@@ -800,7 +800,7 @@ class | extends Component {
 export default |;
 ```
 
-#### Make a stateless function component - sfc
+Make a stateless function component - sfc
 ```javascript
 const | = props => {
   return ( | );
@@ -809,26 +809,26 @@ const | = props => {
 export default |;
 ```
 
-#### componentDidMount - cdm
+componentDidMount - cdm
 ```javascript
 componentDidMount() {
   |
 }
 ```
 
-#### componentDidUpdate - cdu
+componentDidUpdate - cdu
 ```javascript
 componentDidUpdate(prevProps, prevState) {
   |
 }
 ```
 
-#### setState - ss
+setState - ss
 ```javascript
 this.setState({ | : | });
 ```
 
-#### render - ren
+render - ren
 ```javascript
 render() {
   return (
@@ -837,7 +837,7 @@ render() {
 }
 ```
 
-#### defaultProps example
+defaultProps example
 ```javascript
 Notification.defaultProps = {
   actionTitle: '',
@@ -846,7 +846,7 @@ Notification.defaultProps = {
 };
 ```
 
-#### propTypes example
+propTypes example
 ```javascript
 Notification.propTypes = {
   actionTitle: PropTypes.string,
@@ -857,12 +857,12 @@ Notification.propTypes = {
 };
 ```
 
-#### export example with mapStateToProps, mapDispatchToProps
+export example with mapStateToProps, mapDispatchToProps
 ```javascript
 export default connect(mapStateToProps, mapDispatchToProps)(Name);
 ```
 
-#### mapStateToProps example
+mapStateToProps example
 ```javascript
 const mapStateToProps = (state) => {
   return {
@@ -873,7 +873,7 @@ const mapStateToProps = (state) => {
 };
 ```
 
-#### mapDispatchToProps
+mapDispatchToProps
 Import actions  
 ```javascript
 import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
@@ -894,7 +894,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 ```
 
-#### React Redux Thunk  
+React Redux Thunk  
 
 Actions in Redux are dispatched synchronously.   
 Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  
@@ -1041,40 +1041,39 @@ export default function todosReducer(state = initialState, action) {
 ```
 
 
-#### socket
+socket
 
-##### socket client
+socket client
 
-##### socket install 
+socket install 
 ```
 npm i socket.io-client
 ```
 
-#####
 ```
 const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
 export default io;
 ```
 
-##### io Emit from client
+io Emit from client
 ```
 import io from './components/common/io';
 io.emit('populate_table', { table_name: 'users_table' });
 ```
 
-##### io Receive
+io Receive
 ```
 io.on('isloggedin', (payload) => {
   ...
 }
 ```
 
-##### Remove listeners
+Remove listeners
 ```
 io.removeAllListeners('action_response');
 ```
 
-##### socketio server flask
+socketio server flask
 ```
 from app.server import socketio
 @socketio.on(socket_names.UPLOAD_LICENSE)
@@ -1114,7 +1113,7 @@ Add into babel configuration
 }
 ```
 
-#### useful for debug
+useful for debug
 ```
 console.log(wrapper.debug());
 ```
@@ -1126,7 +1125,7 @@ A Web API conforming to the REST architectural style is a REST API.
 Having a REST API makes a web service “RESTful.”  
 A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
 
-#### URI Format  
+URI Format  
 generic URI syntax as shown below:  
 ```
 URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
@@ -1139,12 +1138,12 @@ lowercase letters should be preferred in uri paths
 crud function names should not be used in uris  
 query component of a URI may be used to filter collections or stores
 
-#### Request Methods
+Request Methods
 CRUD requests: DELETE, GET, POST, PUT  
 HEAD retrieve metadata.  
 OPTIONS retrieve metadata of resource’s available interactions.  
 
-#### Some Responses status
+Some Responses status
 200 success
 201 new resource has been created
 202 Accepted, start of an asynchronous action
@@ -1156,19 +1155,21 @@ OPTIONS retrieve metadata of resource’s available interactions.
 404 Not Found
 405 Method Not Allowed
 
-#### HTTP Headers
-Various forms of metadata may be conveyed through the entity headers.  
-##### Request headers
+HTTP Headers
+Various forms of metadata may be conveyed through the entity headers.    
+  
+Request headers
 Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.  
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server  
 X-Requested-With: Mainly used to identify AJAX requests.  
 Accept-Language which languages the client is able to understand  
-##### Response headers
+  
+Response headers  
 Content-Type  
 Content-Length  size of the response body  
 Set-Cookie used to send cookies from the server to the client.
-####  Body Format
+ Body Format
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
@@ -1176,90 +1177,90 @@ Today, the most commonly used text formats is JSON.
 ---
 # **Linux Commands**  
 
-#### truncate file content
+truncate file content
 ```
 truncate -s 0 dash.txt
 ```
 
-#### cat long file
+cat long file
 ```
 cat branch | more -d
 ```
 
-#### Check if port is listening
+Check if port is listening
 ```
 sudo netstat -ntlp | grep :443
 ```
-#### Find a string
+Find a string
 ```
 grep -r "test" - find string
 ```
-#### Find string include, exclude, ignore case
+Find string include, exclude, ignore case
 ```
 grep -r -i ".ui" --include \*.scss --exclude app.scss
 ```
-#### Find Large files
+Find Large files
 ```
 find / -size +10M -ls
 ```
-#### Directory Size
+Directory Size
 ```
 du -hs direcotryName
 ```
-#### Show system name and kernel
+Show system name and kernel
 ```
 uname -a
 ```
-#### Start a screen session.
+Start a screen session.
 ```
 screen
 ```
-#### Resume a screen session.
+Resume a screen session.
 ```
 screen -r
 ```
-#### List screen sessions.
+List screen sessions.
 ```
 screen -list
 ```
-#### List All Available Packages
+List All Available Packages
 ```
 apt-cache pkgnames
 ```
-#### Package Name and Description of Software
+Package Name and Description of Software
 ```
 apt-cache search vsftpd
 ```
-#### Package Information
+Package Information
 ```
 apt-cache show netcat
 ```
-#### Dependencies for Specific Packages
+Dependencies for Specific Packages
 ```
 apt-cache showpkg vsftpd
 ```
-#### Update System Packages
+Update System Packages
 ```
 sudo apt-get update
 ```
-#### Clean up disks space
+Clean up disks space
 ```
 sudo apt-get clean
 ```
-#### Download only source code
+Download only source code
 ```
 sudo apt-get --download-only source vsftpd
 ```
-#### Check broken dependencies
+Check broken dependencies
 ```
 sudo apt-get check
 ```
-#### Remove files containing a string
+Remove files containing a string
 ```
 rm ?*foo?*
 ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
 ```
-#### Most used Commands
+Most used Commands
 ```
 ls Directory listing
 ls -al Formatted listing with hidden files
@@ -1284,7 +1285,7 @@ mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
 ln -s file link Create symbolic link link to file
 ```
 
-#### Process Management
+Process Management
 ```
 ps To display the currently working processes
 top Display all running process
@@ -1296,7 +1297,7 @@ fg Brings the most recent job to foreground
 fg n Brings job n to the foreground
 ```
 
-#### File permission
+File permission
 ```
 chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
 • 4-read(r)
@@ -1304,12 +1305,12 @@ chmod octal file Change the permission of file to octal,which can be found separ
 • 1-execute(x)
 ```
 
-#### Create folder and cd into it
+Create folder and cd into it
 ```
 mkdir foo && cd "$_"
 ```
 
-#### Create Swap file
+Create Swap file
 ```
 sudo mkdir -v /var/cache/swap
 cd /var/cache/swap
@@ -1325,7 +1326,7 @@ echo "/var/cache/swap/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 ---
 # **WEBPACK**  
 
-#### webpack installation
+webpack installation
 ```
 npm install --save-dev webpack
 ```
@@ -1356,7 +1357,7 @@ in package.json
 ---
 # **Node/npm**  
 
-#### version
+version
 ```
 which node
 which npm
@@ -1364,65 +1365,65 @@ node --version
 npm --version
 ```
 
-#### global install packages
+global install packages
 ```
 npm install uglify-js --global
 ```
 
-#### list global packages
+list global packages
 ```
 npm list --global
 npm list -g --depth=0
 ```
 
-#### initialize project
+initialize project
 ```
 npm init
 ```
 
-#### local install packages devDependencies
+local install packages devDependencies
 ```
 npm install should --save-dev
 ```
 
-#### local install packages dependencies
+local install packages dependencies
 ```
 npm install should --save
 ```
 
-#### uninstall packages
+uninstall packages
 ```
 npm uninstall underscore
 ```
 
-#### install specific version
+install specific version
 ```
 npm install underscore@1.8.2
 ```
 
-#### check outdated packages
+check outdated packages
 ```
 npm outdated
 ```
 
-#### update packages
+update packages
 ```
 npm update underscore
 ```
 
-#### Quick Project Setup - React, Webpack, Babel, ESLint
+Quick Project Setup - React, Webpack, Babel, ESLint
   
-##### Dependencies
+Dependencies
 ```
 npm install --save react react-dom
 ```
 
-##### Dev Dependencies
+Dev Dependencies
 ```
 npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-react babel-eslint css-loader node-sass sass-loader style-loader file-loader webpack webpack-dev-server eslint eslint-plugin-import eslint-plugin-react eslint-watch
 ```
 
-##### NPM Scripts (package.json)
+NPM Scripts (package.json)
 ```
 "scripts": {
   "start": "webpack-dev-server --progress --hot --inline",
@@ -1433,7 +1434,7 @@ npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-reac
 },
 ```
 
-##### Babel (.babelrc)
+Babel (.babelrc)
 ```
 {
   "presets": [
@@ -1442,7 +1443,7 @@ npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-reac
   ]
 }
 ```
-##### Webpack Performance codesplitting react-loadable
+Webpack Performance codesplitting react-loadable
 ```
 npm install --save react-loadable
 ```
@@ -1462,7 +1463,7 @@ in webpack.config.js
   },
 ```
 
-##### general performance improvements
+general performance improvements
 ```
 React-loadable: this is a code splitting library. It allows to load components only when those are needed.  
 There are 2 main ways to split code:  
@@ -1488,12 +1489,12 @@ Babel Plugin: transform-react-remove-prop-types Remove React propTypes from the 
 (license MIT) babel-plugin-transform-react-remove-prop-types
 ```
 
-##### webpack treeshaking
+webpack treeshaking
 ```
 npm run-script build -- --display-used-exports
 ```
 
-##### .babelrc transform imports
+.babelrc transform imports
 npm install --save-dev babel-plugin-transform-imports  
 in .babelrc
 
@@ -1514,7 +1515,7 @@ in .babelrc
 }
 ```
 
-##### .eslintrc configuration
+.eslintrc configuration
 ```
 module.exports = {
     "parser": "babel-eslint",
@@ -1529,7 +1530,7 @@ module.exports = {
 };
 ```
 
-##### Webpack (webpack.config.js)
+Webpack (webpack.config.js)
 ```
 const path = require('path');
 
@@ -1589,7 +1590,7 @@ module.exports = {
 };
 ```
 
-##### ESLint (.eslintrc.json)
+ESLint (.eslintrc.json)
 ```
 {
   "root": true,
@@ -1638,7 +1639,7 @@ module.exports = {
 }
 ```
 ---
-#### Webpack setup2
+Webpack setup2
 -y takes the default
 ```
 npm init -y
@@ -1703,7 +1704,7 @@ Start Webpack dev server
 npm start
 ```
 
-## Babel Setup
+# Babel Setup
 Babel transpiles back to vanilla JavaScript so that every browser can interpret it. 
 ```
 npm install --save-dev @babel/core @babel/preset-env
@@ -1771,7 +1772,7 @@ ReactDOM.render(
 );
 ```
 
-## Hot Module Replacement in React
+Hot Module Replacement in React  
 apply changes to the browser
 ```
 npm install --save-dev react-hot-loader
@@ -1817,15 +1818,9 @@ module.hot.accept();
 npm start
 ```
 
-
-
-
-
-
-
 --- 
 # **Docker**  
-##### Docker terminology
+Docker terminology
 - Images: The blueprints of our application which form the basis of containers.  
 - Containers: Created from Docker images and run the actual application. 
 - Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
@@ -1838,51 +1833,51 @@ npm start
 - Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  
 - User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  
   
-##### Install latest Docker  
+Install latest Docker  
 ```
 sudo apt-get install docker-ce
 ```
 
-##### Test your Docker installation by running the following  
+Test your Docker installation by running the following  
 ```
 docker run hello-world
 ```
   
-##### The pull command fetches image from the Docker registry and saves it to system.  
+The pull command fetches image from the Docker registry and saves it to system.  
 ```
 docker pull busybox
 ```
 
-##### Docker Hub  
+Docker Hub  
 [Docker Images hub](https://hub.docker.com/search/?q=&type=image)  
 
-##### to see a list of all images on your system.  
+to see a list of all images on your system.  
 ```
 docker images
 ```
 
-##### run a container
+run a container
 ```
 docker run busybox
 docker run busybox echo "hello from busybox"
 ```
 
-##### show running containers
+show running containers
 ```
 docker ps
 ```
 
-##### show containers that ran previously
+show containers that ran previously
 ```
 docker ps -a
 ```
 
-##### live tty session
+live tty session
 ```
 docker run -it busybox sh
 ```
 
-##### Remove containers from which you left
+Remove containers from which you left
 ```
 docker rm $(docker ps -a -q -f status=exited)
 OR
@@ -1891,7 +1886,7 @@ docker container prune
 
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
-##### Run detached  
+Run detached  
 -d will detach our terminal  
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
@@ -1899,63 +1894,63 @@ docker container prune
 docker run -d -P --name static-site name/static-site
 ```
 
-##### See the ports by running the docker port [CONTAINER] command
+See the ports by running the docker port [CONTAINER] command
 ```
 docker port static-site
 ```
 
-##### Specify a custom port
+Specify a custom port
 ```
 docker run -p 8888:80 prakhar1989/static-site
 ```
 
-##### Stop a container
+Stop a container
 ```
 docker stop static-site
 ```
 
-##### Creating an image  
+Creating an image  
 A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.  
 CMD is to tell the container which command it should run when it is started  
 port number that needs to be exposed  
 specifying our base image. Use the FROM keyword to do that  
 ```
-# Dockerfile
+ Dockerfile
 FROM python:3-onbuild
 
-# tell the port number the container should expose
+ tell the port number the container should expose
 EXPOSE 5000
 
-# run the command
+ run the command
 CMD ["python", "./app.py"]
 ```
 
-##### Build image from Dockerfile
+Build image from Dockerfile
 ```
 docker build -t mz2kh/catnip .
 ```
 
-##### Run the container
+Run the container
 ```
 run -p 8888:5000 mz2kh/catnip
 ```
   
-##### Publish image to Docker HUB
+Publish image to Docker HUB
 ```
 docker push mz2kh/catnip
 ```
   
-##### Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
+Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 ```
 docker run -p 8888:5000 prakhar1989/catnip
 ```
 
-##### Search for images
+Search for images
 ```
 docker search elasticsearch
 ```
 
-##### When docker is installed, it creates three networks automatically.
+When docker is installed, it creates three networks automatically.
 ```
 docker network ls
 NETWORK ID          NAME                DRIVER              SCOPE
@@ -1964,28 +1959,28 @@ NETWORK ID          NAME                DRIVER              SCOPE
 13e644755906        none                null                local
 ```
 
-##### The bridge network is the network in which containers are run by default.  
-##### Inspect bridge Network:
+The bridge network is the network in which containers are run by default.  
+Inspect bridge Network:
 ```
 docker network inspect bridge
 ```
 
-##### Create our own network  
+Create our own network  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 ```
 docker network create catnip-net
 ```
 
-##### Launch containers into network (--net foodtrucks-net)
+Launch containers into network (--net foodtrucks-net)
 ```
 $ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
 $ docker network inspect foodtrucks-net
 ```
 
-##### Create and run container on a created Network  
-##### ./setup-docker.sh
+Create and run container on a created Network  
+./setup-docker.sh
 ```
 !/bin/bash
 
@@ -2002,133 +1997,133 @@ start the flask app container
 docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
 ```
 
-##### Docker Registries & Repositories  
+Docker Registries & Repositories  
 Searching an Image  
 ```
-##### docker search nginx
+docker search nginx
 docker search --filter stars=3 --no-trunc nginx
 ```
-##### Pulling an Image
+Pulling an Image
 ```
 docker image pull nginx
 docker image pull eon01/nginx localhost:5000/myadmin/nginx
 ```
-##### Pushing an Image
+Pushing an Image
 ```
 docker image push eon01/nginx
 docker image push eon01/nginx localhost:5000/myadmin/nginx
 ```
-##### Running Containers  
-##### Create and Run a Simple Container  
-##### Start an ubuntu:latest image  
-##### Bind the port 80 from the CONTAINER to port 3000 on the HOST  
-##### Mount the current directory to /data on the CONTAINER  
+Running Containers  
+Create and Run a Simple Container  
+Start an ubuntu:latest image  
+Bind the port 80 from the CONTAINER to port 3000 on the HOST  
+Mount the current directory to /data on the CONTAINER  
 ```
 docker container run --name infinite -it -p 3000:80 -v ${PWD}:/data ubuntu:latest
 ```
 
-##### Creating a Container  
+Creating a Container  
 ```
 docker container create -t -i eon01/infinite --name infinite
 ```
-##### Running a Container  
+Running a Container  
 ```
 docker container run -it --name infinite -d eon01/infinite
 ```
-##### Renaming a Container  
+Renaming a Container  
 ```
 docker container rename infinite infinity
 ```
-##### Removing a Container
+Removing a Container
 ```
 docker container rm infinite
 ```
-##### Updating a Container
+Updating a Container
 ```
 docker container update --cpu-shares 512 -m 300M infinite
 ```
 
-##### Starting & Stopping Containers  
-##### Starting  
+Starting & Stopping Containers  
+Starting  
 ```
 docker container start nginx
 ```
 
-##### Stopping
+Stopping
 ```
 docker container stop nginx
 ```
-##### Restarting
+Restarting
 ```
 docker container restart nginx
 ```
-##### Pausing
+Pausing
 ```
 docker container pause nginx
 ```
-##### Unpausing
+Unpausing
 ```
 docker container unpause nginx
 ```
-##### Blocking a Container
+Blocking a Container
 ```
 docker container wait nginx
 ```
-##### Sending a SIGKILL
+Sending a SIGKILL
 ```
 docker container kill nginx
 ```
-##### Sending another signal
+Sending another signal
 ```
 docker container kill -s HUP nginx
 ```
-##### Connecting to an Existing Container
+Connecting to an Existing Container
 ```
 docker container attach nginx
 ```
-##### Getting Information about Containers
-##### Running Containers
+Getting Information about Containers
+Running Containers
 ```
 docker container ls
 docker container ls -a
 ```
-##### Container Logs
-##### docker logs infinite
-##### Follow Container Logs
+Container Logs
+docker logs infinite
+Follow Container Logs
 ```
 docker container logs infinite -f
 ```
-##### Inspecting Containers
+Inspecting Containers
 ```
 docker container inspect infinite
 docker container inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 ```
-##### Containers Events
+Containers Events
 ```
 docker system events infinite
 ```
-##### Public Ports
+Public Ports
 ```
 docker container port infinite
 ```
-##### Running Processes
+Running Processes
 ```
 docker container top infinite
 ```
-##### Container Resource Usage  
+Container Resource Usage  
 ```
 docker container stats infinite  
 ```
-##### Inspecting changes to files or directories on a container’s filesystem  
+Inspecting changes to files or directories on a container’s filesystem  
 ```
 docker container diff infinite  
 ```
-##### Manipulating Images  
-##### Listing Images  
+Manipulating Images  
+Listing Images  
 ```
 docker image ls
 ```
-##### Building Images  
+Building Images  
 ```
 docker build .
 docker build github.com/creack/docker-firefox
@@ -2138,37 +2133,37 @@ docker build -t eon/infinite .
 docker build -f myOtherDockerfile .
 curl example.com/remote/Dockerfile | docker build -f - .
 ```
-##### Removing an Image  
+Removing an Image  
 ```
 docker image rm nginx
 ```
-##### Loading a Tarred Repository from a File or the Standard Input Stream
+Loading a Tarred Repository from a File or the Standard Input Stream
 ```
 docker image load < ubuntu.tar.gz
 docker image load --input ubuntu.tar
 ```
-##### Save an Image to a Tar Archive
+Save an Image to a Tar Archive
 ```
 docker image save busybox > ubuntu.tar
 ```
-##### Showing the History of an Image
+Showing the History of an Image
 ```
 docker image history
 ```
-##### Creating an Image From a Container
+Creating an Image From a Container
 ```
 docker container commit nginx
 ```
-##### Tagging an Image
+Tagging an Image
 ```
 docker image tag nginx eon01/nginx
 ```
-##### Pushing an Image
+Pushing an Image
 ```
 docker image push eon01/nginx
 ```
-##### Networking  
-##### Creating Networks  
+Networking  
+Creating Networks  
 ```
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
@@ -2182,32 +2177,32 @@ docker network create -d overlay \
   --aux-address="my-printer=192.170.1.5" --aux-address="my-nas=192.170.1.6" \
   MyOverlayNetwork
 ```
-##### Removing a Network
+Removing a Network
 ```
 docker network rm MyOverlayNetwork
 ```
-##### Listing Networks
+Listing Networks
 ```
 docker network ls
 ```
-##### Getting Information About a Network
+Getting Information About a Network
 ```
 docker network inspect MyOverlayNetwork
 ```
-##### Connecting a Running Container to a Network
+Connecting a Running Container to a Network
 ```
 docker network connect MyOverlayNetwork nginx
 ```
-##### Connecting a Container to a Network When it Starts
+Connecting a Container to a Network When it Starts
 ```
 docker container run -it -d --network=MyOverlayNetwork nginx
 ```
-##### Disconnecting a Container from a Network
+Disconnecting a Container from a Network
 ```
 docker network disconnect MyOverlayNetwork nginx
 ```
-##### Exposing Ports  
-##### Using Dockerfile, you can expose a port on the container using:
+Exposing Ports  
+Using Dockerfile, you can expose a port on the container using:
 ```
 EXPOSE <port_number>
 You can also map the container port to a host port using:
@@ -2217,60 +2212,60 @@ e.g.
 docker run -p $HOST_PORT:$CONTAINER_PORT --name infinite -t infinite
 ```
 
-##### Cleaning Docker  
-##### Removing a Running Container  
+Cleaning Docker  
+Removing a Running Container  
 ```
 docker container rm nginx
 ```
-##### Removing a Container and its Volume
+Removing a Container and its Volume
 ```
 docker container rm -v nginx
 ```
-##### Removing all Exited Containers
+Removing all Exited Containers
 ```
 docker container rm $(docker container ls -a -f status=exited -q)
 ```
-##### Removing All Stopped Containers
+Removing All Stopped Containers
 ```
 docker container rm `docker container ls -a -q`
 ```
-##### Removing a Docker Image
+Removing a Docker Image
 ```
 docker image rm nginx
 ```
-##### Removing Dangling Images
+Removing Dangling Images
 ```
 docker image rm $(docker image ls -f dangling=true -q)
 ```
-##### Removing all Images
+Removing all Images
 ```
 docker image rm $(docker image ls -a -q)
 ```
-##### Removing all untagged images
+Removing all untagged images
 ```
 docker image rm -f $(docker image ls | grep "^<none>" | awk "{print $3}")
 ```
-##### Stopping & Removing all Containers
+Stopping & Removing all Containers
 ```
 docker container stop $(docker container ls -a -q) && docker container rm $(docker container ls -a -q)
 ```
-##### Removing Dangling Volumes
+Removing Dangling Volumes
 ```
 docker volume rm $(docker volume ls -f dangling=true -q)
 ```
-##### Removing all unused (containers, images, networks and volumes)
+Removing all unused (containers, images, networks and volumes)
 ```
 docker system prune -f
 ```
-##### Clean all
+Clean all
 ```
 docker system prune -a
 ```
 
 ---
-# **Links**  
+ # **Links**  
 
-#### Javascript  
+Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
 
@@ -2281,7 +2276,7 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 
 [Flavio Copes](https://flaviocopes.com)
 
-#### React
+React
 [Awesome-react](https://github.com/enaqx/awesome-react)  
 [Articles about frontend](https://alligator.io/)  
 [Frontend Articles](https://www.robinwieruch.de/)  
@@ -2289,26 +2284,26 @@ Container and presentational components, Error boundaries, Portals, CSS with sty
 [Hooks collection](https://nikgraf.github.io/react-hooks/)
 [React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)
 
-#### CSS Links  
+CSS Links  
 [cssreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
 [CSS Animation](http://animista.net)
-##### CSS Grids  
+CSS Grids  
 [css grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
-##### CSS Flexbox
+CSS Flexbox
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 
-#### GIT
+GIT
 [git commands](https://git-scm.com/docs)  
 
-#### Linux
+Linux
 [Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
-#### Various links
+Various links
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)
 [Site Point](https://www.sitepoint.com/)
