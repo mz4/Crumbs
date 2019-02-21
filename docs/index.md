@@ -1,7 +1,4 @@
-# Crumbs
-
----
-# **GIT**
+# GIT
 
 
 Single file history  
@@ -213,7 +210,7 @@ git init
 ```
 
 ---
-# **CSS3/SASS**  
+# CSS3/SASS
 
 Responsive Design  
 Defined by three characteristics  
@@ -565,7 +562,7 @@ div ~ p {
 }
 ```
 ---
-# **Javascript**  
+# JAVASCRIPT
 
 Execution Context.  
 **Execution context**: the environment in which code is running. It is created when your code is executed.  
@@ -721,7 +718,7 @@ Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 ```
 
 ---
-# **ES6**  
+# ES6
   
 Spread Operator 1  
 ```javascript
@@ -1093,7 +1090,7 @@ def upload_license_action(args):
             kwargs={'data': data, 'sid': sid, 'uuid': uuid})
 ```
 
-# Test Jest Enzyme
+# TESTING
 Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  
 Jest is a test framework managed by Facebook.  
 install enzyme along with an Adapter corresponding to the version of react.  
@@ -1119,7 +1116,8 @@ console.log(wrapper.debug());
 ```
 
 ---
-# REST API - Application Programming Interface (API)  
+# REST API  
+
 A REST API consists of an assembly of interlinked resources.  
 A Web API conforming to the REST architectural style is a REST API.  
 Having a REST API makes a web service “RESTful.”  
@@ -1175,7 +1173,7 @@ Today, the most commonly used text formats is JSON.
 
 
 ---
-# Linux
+# LINUX
 
 Systems Directories
 ```
@@ -1352,7 +1350,7 @@ echo "/var/cache/swap/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 ```
 
 ---
-# **WEBPACK**  
+# WEBPACK
 
 webpack installation
 ```
@@ -1383,7 +1381,7 @@ in package.json
 ```
 
 ---
-# **Node/npm**  
+# NODE/NPM  
 
 version
 ```
@@ -1732,7 +1730,8 @@ Start Webpack dev server
 npm start
 ```
 
-# Babel Setup
+# BABEL
+
 Babel transpiles back to vanilla JavaScript so that every browser can interpret it. 
 ```
 npm install --save-dev @babel/core @babel/preset-env
@@ -1847,7 +1846,8 @@ npm start
 ```
 
 --- 
-# **Docker**  
+# DOCKER  
+
 Docker terminology
 - Images: The blueprints of our application which form the basis of containers.  
 - Containers: Created from Docker images and run the actual application. 
@@ -2290,21 +2290,19 @@ Clean all
 docker system prune -a
 ```
 
----
- # **Links**  
+# LINKS
 
 Javascript  
 from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 Component Lifecycle, HOC higher-order components, State and setState, Context
-
+  
 from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
 Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
+  
+[React Various articles](https://react.christmas/)  
+[Flavio Copes](https://flaviocopes.com)  
 
-[React Various articles](https://react.christmas/)
-
-[Flavio Copes](https://flaviocopes.com)
-
-React
+React  
 [Awesome-react](https://github.com/enaqx/awesome-react)  
 [Articles about frontend](https://alligator.io/)  
 [Frontend Articles](https://www.robinwieruch.de/)  
@@ -2322,16 +2320,16 @@ CSS Grids
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
-CSS Flexbox
+CSS Flexbox  
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 
-GIT
+GIT  
 [git commands](https://git-scm.com/docs)  
 
-Linux
+Linux  
 [Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
-Various links
+Various links  
 [github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)
 [Site Point](https://www.sitepoint.com/)
