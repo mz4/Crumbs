@@ -1,48 +1,136 @@
 # GIT
 
+Create a New Git Repository from scratch
+```
+mkdir to create a directory to contain the project.
+cd into the new directory.
+git init.
+Write code. (The first file to create is probably a ReadMe file)
+git add to add the files.
+git commit
+```
+
+Create New Git Repository from existing project
+```
+cd into the directory containing the project.
+git init.
+git add to add all of the relevant files.
+create a .gitignore to indicate all of the files you don’t want to track
+git commit.
+```
+
+Connect to github
+```
+Go to github.
+Log in to your account.
+Click the new repository button in the top-right. 
+Click the “Create repository” button.
+git remote add origin git@github.com:username/new_repo
+git push -u origin master
+```
+
+Create, switch and push origin new branch
+```
+git checkout -b issue400-master
+git push -u origin issue400-master
+```
+
+Add, Commit and Push
+```
+git add sys_ui/css/FILE.css 
+git add sys_ui/FILE.html 
+git add app/dir/ 
+git commit
+git push
+```
+
+Squash commits
+```
+git reset --soft HEAD~$squashCount
+git commit -m "$commitMsg"
+```
+
+Delete a local and remote branch
+```
+git branch -d branch_name
+git push origin --delete <branch_name>
+```
+
+Clone repo
+```
+git clone USER@10.0.2.10:/home/git/repos/sys .
+```
+
+Clone specific branch
+```
+git clone -b <branch> <remote_repo>
+git clone -b my-branch git@github.com:user/myproject.git
+```
+
+Check which branch
+```
+git branch
+```
+
+Check Status
+```
+git status
+```
+
+Check Log
+```
+git log
+```
+
+Edit Last Commit Message
+```
+git commit --amend -m "New commit message"
+```
+
+Log commit subject of last 10 commits  
+```
+git log -10 --pretty=format:"%h %s"
+```
 
 Single file history  
 ```
 git log -p filename
 ```
 
-get tag  
+Get tag  
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
 
-get commits by date and author  
+Get commits by date and author  
 ```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
 ```
 
-git log commit subject of last 10 commits  
-```
-git log -10 --pretty=format:"%h %s"
-```
-
-number of commits by author  
+Get number of commits by author  
 ```
 git shortlog -s -n --all
 ```
 
-remove local untracked files 
+Remove local untracked files 
 ```
-git clean -n
-git clean -f
+git clean -fdx
 ```
 
-undo last commit. Warning: Don't do this if you've already pushed
+Undo last commit.  
+Warning: Don't do this if you've already pushed
 ```
  git reset HEAD~
 ```
-  
+
+Undo last commit.  
 If you don't want the changes and blow everything away:
+Warning: Don't do this if you've already pushed
 ```  
  git reset --hard HEAD~
 ```
 
-untrack .pyc files
+Untrack .pyc files
 ```
 $ find . -name '*.pyc' | xargs -n 1 git rm --cached
 ```
@@ -57,34 +145,6 @@ Pull from master branch
 git pull origin master
 ```
 
-Squash
-```
-git reset --soft HEAD~$squashCount
-git commit -m "$commitMsg"
-```
-
-Check git status
-```
-git status
-```
-
-Add files
-```
-git add sys_ui/css/FILE.css 
-git add sys_ui/FILE.html 
-git add sys_ui/js/FILE.js 
-```
-
-Commit
-```
-git commit
-```
-
-Push
-```
-git push
-```
-
 Checkout master
 ```
 git chekcout master
@@ -95,63 +155,26 @@ Merge branch into master
 git merge user_interface
 ```
 
-Check Log
-```
-git log
-```
-
-Create branch and switch
-```
-git checkout -b v0.4bugfix v0.4Master
-```
-
-```
-git branch NAME
-git checkout NAME
-```
-
-Push a branch to origin
-```
-git push -u origin <branch>
-```
-
-Tags
+Create Tags
 ```
 git tag v1.0 ec32d32
 git push origin --tags
 ```
 
-How to undo a local commit
+Undo a local commit
 ```
 git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 ```
 
-How to undo git add
+Undo git add
 ```
 git reset filename.jsx
 ```
 
-Delete a local branch - Delete remote branch
-```
-git branch -d branch_name
-git push origin --delete <branch_name>
-```
-
-show differences after git pull
+Show differences after git pull
 ```
 git diff master@{1} master
-```
-
-clone specific branch
-```
-git clone -b <branch> <remote_repo>
-git clone -b my-branch git@github.com:user/myproject.git
-```
-
-clone repo
-```
-git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
 
 lists branches merged into master
@@ -196,17 +219,6 @@ git checkout -b <branch_name>
 Revert Changes to File
 ```
 git checkout -- <file>
-```
-
-Edit Last Commit Message
-Change the last commit message through the command-line:  
-```
-git commit --amend -m "New commit message"
-```
-
-Create a New Git Repository
-```
-git init
 ```
 
 ---
