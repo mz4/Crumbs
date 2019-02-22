@@ -742,15 +742,76 @@ Spread Operator 1
 const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
 const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
-console.log(res);  
+console.log(res);  // { isAuthenticated: true } 
 ```
 
  Spread Operator 2
 ```javascript
 var mid = [3, 4];  
 var arr = [1, 2, ...mid, 5, 6];  
-  
-console.log(arr);  
+console.log(arr);  // [ 1, 2, 3, 4, 5, 6 ]
+```
+
+Spread Operator 3
+```javascript
+let nums = [1, 2, 3];
+let abcs = ['a', 'b', 'c'];
+let alphanum = [ ...nums, ...abs ]; // [1, 2, 3, 'a', 'b', 'c']
+```
+
+Destructuring 1
+```javascript
+var address = {
+  city: "London",
+  state: "UK",
+  zip: 1334
+};
+let {city, state, zip} = address;
+
+log(city); // 'London'
+log(state); // 'UK'
+log(zip); // 1334
+```
+
+Destructuring 2
+```javascript
+var address = {
+  city: "London",
+  state: "UK",
+  zip: 1334
+};
+let {city: c, state: s, zip: z} = address;
+log(c, s, z); // 'London UK 1334'
+```
+
+Destructuring 3
+```javascript
+var person = {name: 'Aaaaaa', age: 35};
+displayPerson(person);
+
+function displayPerson({name, age}) {
+  // do something with name and age to display them
+}
+```
+
+Destructuring 4
+```javascript
+var person = {name: 'Aaaaaa', age: 35};
+let {name, age, address} = person; // error!
+let {name, age, ?address} = person; // OK
+let ?{name, age, address} = person; // OK
+```
+
+Destructuring 5
+```javascript
+var nums = [1, 2, 3, 4];
+doSomething(nums);
+
+function doSomething([first, second, ...others]){
+  log(first);   //logs 1
+  log(second);  //logs 2
+  log(others);  //logs [3, 4]
+}
 ```
 
 Arrow functions 1
