@@ -70,40 +70,116 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="git">GIT</h1>
+<p>Create a New Git Repository from scratch</p>
+<pre><code>mkdir to create a directory to contain the project.
+cd into the new directory.
+git init.
+Write code. (The first file to create is probably a ReadMe file)
+git add to add the files.
+git commit
+</code></pre>
+
+<p>Create New Git Repository from existing project</p>
+<pre><code>cd into the directory containing the project.
+git init.
+git add to add all of the relevant files.
+create a .gitignore to indicate all of the files you don’t want to track
+git commit.
+</code></pre>
+
+<p>Connect to github</p>
+<pre><code>Go to github.
+Log in to your account.
+Click the new repository button in the top-right. 
+Click the “Create repository” button.
+git remote add origin git@github.com:username/new_repo
+git push -u origin master
+</code></pre>
+
+<p>Create, switch and push origin new branch</p>
+<pre><code>git checkout -b issue400-master
+git push -u origin issue400-master
+</code></pre>
+
+<p>Add, Commit and Push</p>
+<pre><code>git add sys_ui/css/FILE.css 
+git add sys_ui/FILE.html 
+git add app/dir/ 
+git commit
+git push
+</code></pre>
+
+<p>Squash commits</p>
+<pre><code>git reset --soft HEAD~$squashCount
+git commit -m &quot;$commitMsg&quot;
+</code></pre>
+
+<p>Delete a local and remote branch</p>
+<pre><code>git branch -d branch_name
+git push origin --delete &lt;branch_name&gt;
+</code></pre>
+
+<p>Clone repo</p>
+<pre><code>git clone USER@10.0.2.10:/home/git/repos/sys .
+</code></pre>
+
+<p>Clone specific branch</p>
+<pre><code>git clone -b &lt;branch&gt; &lt;remote_repo&gt;
+git clone -b my-branch git@github.com:user/myproject.git
+</code></pre>
+
+<p>Check which branch</p>
+<pre><code>git branch
+</code></pre>
+
+<p>Check Status</p>
+<pre><code>git status
+</code></pre>
+
+<p>Check Log</p>
+<pre><code>git log
+</code></pre>
+
+<p>Edit Last Commit Message</p>
+<pre><code>git commit --amend -m &quot;New commit message&quot;
+</code></pre>
+
+<p>Log commit subject of last 10 commits  </p>
+<pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
+</code></pre>
+
 <p>Single file history  </p>
 <pre><code>git log -p filename
 </code></pre>
 
-<p>get tag  </p>
+<p>Get tag  </p>
 <pre><code>git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 </code></pre>
 
-<p>get commits by date and author  </p>
+<p>Get commits by date and author  </p>
 <pre><code>git log --pretty=format:&quot;%ad - %an: %s&quot; --after=&quot;2010-02-15&quot; --until=&quot;2018-08-20&quot; --author=&quot;John&quot;
 </code></pre>
 
-<p>git log commit subject of last 10 commits  </p>
-<pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
-</code></pre>
-
-<p>number of commits by author  </p>
+<p>Get number of commits by author  </p>
 <pre><code>git shortlog -s -n --all
 </code></pre>
 
-<p>remove local untracked files </p>
-<pre><code>git clean -n
-git clean -f
+<p>Remove local untracked files </p>
+<pre><code>git clean -fdx
 </code></pre>
 
-<p>undo last commit. Warning: Don't do this if you've already pushed</p>
+<p>Undo last commit.<br />
+Warning: Don't do this if you've already pushed</p>
 <pre><code> git reset HEAD~
 </code></pre>
 
-<p>If you don't want the changes and blow everything away:</p>
+<p>Undo last commit.<br />
+If you don't want the changes and blow everything away:
+Warning: Don't do this if you've already pushed</p>
 <pre><code> git reset --hard HEAD~
 </code></pre>
 
-<p>untrack .pyc files</p>
+<p>Untrack .pyc files</p>
 <pre><code>$ find . -name '*.pyc' | xargs -n 1 git rm --cached
 </code></pre>
 
@@ -115,29 +191,6 @@ git clean -f
 <pre><code>git pull origin master
 </code></pre>
 
-<p>Squash</p>
-<pre><code>git reset --soft HEAD~$squashCount
-git commit -m &quot;$commitMsg&quot;
-</code></pre>
-
-<p>Check git status</p>
-<pre><code>git status
-</code></pre>
-
-<p>Add files</p>
-<pre><code>git add sys_ui/css/FILE.css 
-git add sys_ui/FILE.html 
-git add sys_ui/js/FILE.js 
-</code></pre>
-
-<p>Commit</p>
-<pre><code>git commit
-</code></pre>
-
-<p>Push</p>
-<pre><code>git push
-</code></pre>
-
 <p>Checkout master</p>
 <pre><code>git chekcout master
 </code></pre>
@@ -146,52 +199,22 @@ git add sys_ui/js/FILE.js
 <pre><code>git merge user_interface
 </code></pre>
 
-<p>Check Log</p>
-<pre><code>git log
-</code></pre>
-
-<p>Create branch and switch</p>
-<pre><code>git checkout -b v0.4bugfix v0.4Master
-</code></pre>
-
-<pre><code>git branch NAME
-git checkout NAME
-</code></pre>
-
-<p>Push a branch to origin</p>
-<pre><code>git push -u origin &lt;branch&gt;
-</code></pre>
-
-<p>Tags</p>
+<p>Create Tags</p>
 <pre><code>git tag v1.0 ec32d32
 git push origin --tags
 </code></pre>
 
-<p>How to undo a local commit</p>
+<p>Undo a local commit</p>
 <pre><code>git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 </code></pre>
 
-<p>How to undo git add</p>
+<p>Undo git add</p>
 <pre><code>git reset filename.jsx
 </code></pre>
 
-<p>Delete a local branch - Delete remote branch</p>
-<pre><code>git branch -d branch_name
-git push origin --delete &lt;branch_name&gt;
-</code></pre>
-
-<p>show differences after git pull</p>
+<p>Show differences after git pull</p>
 <pre><code>git diff master@{1} master
-</code></pre>
-
-<p>clone specific branch</p>
-<pre><code>git clone -b &lt;branch&gt; &lt;remote_repo&gt;
-git clone -b my-branch git@github.com:user/myproject.git
-</code></pre>
-
-<p>clone repo</p>
-<pre><code>git clone USER@10.0.2.10:/home/git/repos/sys .
 </code></pre>
 
 <p>lists branches merged into master</p>
@@ -229,15 +252,6 @@ Diff between current branch and master:  </p>
 
 <p>Revert Changes to File</p>
 <pre><code>git checkout -- &lt;file&gt;
-</code></pre>
-
-<p>Edit Last Commit Message
-Change the last commit message through the command-line:  </p>
-<pre><code>git commit --amend -m &quot;New commit message&quot;
-</code></pre>
-
-<p>Create a New Git Repository</p>
-<pre><code>git init
 </code></pre>
 
 <hr />
@@ -2274,5 +2288,5 @@ CSS Flexbox<br />
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-21 17:22:26
+Build Date UTC : 2019-02-22 09:45:00
 -->

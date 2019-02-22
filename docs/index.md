@@ -1,5 +1,10 @@
 # GIT
 
+Install Git
+```
+sudo apt install git-all
+```
+
 Create a New Git Repository from scratch
 ```
 mkdir to create a directory to contain the project.
