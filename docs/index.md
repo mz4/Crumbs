@@ -2,7 +2,10 @@
 
 Install Git
 ```
-sudo apt install git-all
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+git --version
 ```
 
 Create a New Git Repository from scratch
