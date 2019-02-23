@@ -898,20 +898,20 @@ export default |;
 State and lifecycle
 Mounting  
 These methods are called in the following order:  
-- constructor()  
-- static getDerivedStateFromProps()  
-- render()  
-- componentDidMount()  
+* constructor()  
+* static getDerivedStateFromProps()  
+* render()  
+* componentDidMount()  
 Updating  
 An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:  
-- static getDerivedStateFromProps()  
-- shouldComponentUpdate()  
-- render()  
-- getSnapshotBeforeUpdate()  
-- componentDidUpdate()  
+* static getDerivedStateFromProps()  
+* shouldComponentUpdate()  
+* render()  
+* getSnapshotBeforeUpdate()  
+* componentDidUpdate()  
 Unmounting  
 This method is called when a component is being removed from the DOM:  
-- componentWillUnmount()  
+* componentWillUnmount()  
   
 Handling events
 ```javascript

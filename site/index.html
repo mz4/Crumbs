@@ -823,6 +823,162 @@ console.log(prices); // [649, 576, 489]
 
 <hr />
 <h1 id="react">REACT</h1>
+<p>Basic Concepts
+- JSX
+- Rendering Elements
+- Components Functional/Container
+- State and Lifecycle
+- Handling Events
+- Conditional Rendering
+- Lists and Keys
+- Forms</p>
+<p>JSX</p>
+<pre><code class="javascript">&lt;MyComponent message={'hello world'} /&gt;
+</code></pre>
+
+<p>Rendering elements</p>
+<pre><code class="javascript">class TodoList extends React.Component {
+  render() {
+    return (
+      &lt;ul&gt;
+        {this.props.items.map(item =&gt; (
+          &lt;li key={item.id}&gt;{item.text}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>Stateless function component - sfc</p>
+<pre><code class="javascript">const | = props =&gt; {
+  return ( | );
+};
+
+export default |;
+</code></pre>
+
+<p>State and lifecycle
+Mounting<br />
+These methods are called in the following order:<br />
+- constructor()<br />
+- static getDerivedStateFromProps()<br />
+- render()<br />
+- componentDidMount()<br />
+Updating<br />
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:<br />
+- static getDerivedStateFromProps()<br />
+- shouldComponentUpdate()<br />
+- render()<br />
+- getSnapshotBeforeUpdate()<br />
+- componentDidUpdate()<br />
+Unmounting<br />
+This method is called when a component is being removed from the DOM:<br />
+- componentWillUnmount()  </p>
+<p>Handling events</p>
+<pre><code class="javascript">function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    &lt;a href=&quot;#&quot; onClick={handleClick}&gt;
+      Click me
+    &lt;/a&gt;
+  );
+}
+</code></pre>
+
+<p>Conditional rendering</p>
+<pre><code class="javascript">render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    &lt;div&gt;
+      The user is &lt;b&gt;{isLoggedIn ? 'currently' : 'not'}&lt;/b&gt; logged in.
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<p>List and Keys</p>
+<pre><code class="javascript">function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    &lt;ul&gt;
+      {numbers.map((number) =&gt;
+        &lt;ListItem key={number.toString()}
+                  value={number} /&gt;
+
+      )}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+
+<p>Forms</p>
+<pre><code class="javascript">class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>Import CSS</p>
+<pre><code>import './styles/style.css'
+</code></pre>
+
+<p>Declare state</p>
+<pre><code>export class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+  }
+</code></pre>
+
+<p>defaultProps example</p>
+<pre><code class="javascript">Notification.defaultProps = {
+  actionTitle: '',
+  selectedElements: {},
+  actionLogs: [],
+};
+</code></pre>
+
+<p>propTypes example</p>
+<pre><code class="javascript">Notification.propTypes = {
+  actionTitle: PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  elementTitle: PropTypes.objectOf(PropTypes.any),
+  selectedElements: PropTypes.arrayOf(PropTypes.any),
+};
+</code></pre>
+
 <p>Import statement - imr</p>
 <pre><code class="javascript">import React from 'react';
 </code></pre>
@@ -838,14 +994,6 @@ console.log(prices); // [649, 576, 489]
     return ( | );
   }
 }
-
-export default |;
-</code></pre>
-
-<p>Make a stateless function component - sfc</p>
-<pre><code class="javascript">const | = props =&gt; {
-  return ( | );
-};
 
 export default |;
 </code></pre>
@@ -872,24 +1020,6 @@ export default |;
     |
   );
 }
-</code></pre>
-
-<p>defaultProps example</p>
-<pre><code class="javascript">Notification.defaultProps = {
-  actionTitle: '',
-  selectedElements: {},
-  actionLogs: [],
-};
-</code></pre>
-
-<p>propTypes example</p>
-<pre><code class="javascript">Notification.propTypes = {
-  actionTitle: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  elementTitle: PropTypes.objectOf(PropTypes.any),
-  selectedElements: PropTypes.arrayOf(PropTypes.any),
-};
 </code></pre>
 
 <p>export example with mapStateToProps, mapDispatchToProps</p>
@@ -2350,5 +2480,5 @@ CSS Flexbox<br />
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-23 10:45:06
+Build Date UTC : 2019-02-23 11:48:49
 -->
