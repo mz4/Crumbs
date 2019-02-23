@@ -856,6 +856,192 @@ console.log(prices); // [649, 576, 489]
 ---
 # REACT  
 
+Basic Concepts
+- JSX
+- Rendering Elements
+- Components Functional/Container
+- State and Lifecycle
+- Handling Events
+- Conditional Rendering
+- Lists and Keys
+- Forms
+
+JSX
+```javascript
+<MyComponent message={'hello world'} />
+```
+
+Rendering elements
+```javascript
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+```
+
+Stateless function component - sfc
+```javascript
+const | = props => {
+  return ( | );
+};
+
+export default |;
+```
+
+State and lifecycle
+Mounting  
+These methods are called in the following order:  
+- constructor()  
+- static getDerivedStateFromProps()  
+- render()  
+- componentDidMount()  
+Updating  
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:  
+- static getDerivedStateFromProps()  
+- shouldComponentUpdate()  
+- render()  
+- getSnapshotBeforeUpdate()  
+- componentDidUpdate()  
+Unmounting  
+This method is called when a component is being removed from the DOM:  
+- componentWillUnmount()  
+  
+Handling events
+```javascript
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    <a href="#" onClick={handleClick}>
+      Click me
+    </a>
+  );
+}
+```
+
+Conditional rendering
+```javascript
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+    </div>
+  );
+}
+```
+
+List and Keys
+```javascript
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+
+      )}
+    </ul>
+  );
+}
+```
+
+Forms
+```javascript
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Import CSS
+```
+import './styles/style.css'
+```
+
+Declare state
+```
+export class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+  }
+```
+
+defaultProps example
+```javascript
+Notification.defaultProps = {
+  actionTitle: '',
+  selectedElements: {},
+  actionLogs: [],
+};
+```
+
+propTypes example
+```javascript
+Notification.propTypes = {
+  actionTitle: PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  elementTitle: PropTypes.objectOf(PropTypes.any),
+  selectedElements: PropTypes.arrayOf(PropTypes.any),
+};
+```
+
 Import statement - imr
 ```javascript
 import React from 'react';
@@ -874,15 +1060,6 @@ class | extends Component {
     return ( | );
   }
 }
-
-export default |;
-```
-
-Make a stateless function component - sfc
-```javascript
-const | = props => {
-  return ( | );
-};
 
 export default |;
 ```
@@ -913,26 +1090,6 @@ render() {
     |
   );
 }
-```
-
-defaultProps example
-```javascript
-Notification.defaultProps = {
-  actionTitle: '',
-  selectedElements: {},
-  actionLogs: [],
-};
-```
-
-propTypes example
-```javascript
-Notification.propTypes = {
-  actionTitle: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  elementTitle: PropTypes.objectOf(PropTypes.any),
-  selectedElements: PropTypes.arrayOf(PropTypes.any),
-};
 ```
 
 export example with mapStateToProps, mapDispatchToProps
