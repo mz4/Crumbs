@@ -53,6 +53,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#git">GIT</a></li>
+            <li><a href="#install-git">Install Git</a></li>
         <li class="main "><a href="#css3sass">CSS3/SASS</a></li>
         <li class="main "><a href="#javascript">JAVASCRIPT</a></li>
         <li class="main "><a href="#es6">ES6</a></li>
@@ -70,7 +71,11 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="git">GIT</h1>
-<p>Install Git</p>
+<h2 id="install-git">Install Git</h2>
+<h3 id="install-git_1">Install Git</h3>
+<h4 id="install-git_2">Install Git</h4>
+<h5 id="install-git_3">Install Git</h5>
+<p><h3>Install Git</h3></p>
 <pre><code>sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install git
@@ -823,6 +828,10 @@ console.log(prices); // [649, 576, 489]
 
 <hr />
 <h1 id="react">REACT</h1>
+<p>State<br />
+React is all about one-way data flow down the component hierarchy.<br />
+State is created in the component and stays in the component.<br />
+It can be passed to a children as its props.  </p>
 <p>Basic Concepts
 - JSX
 - Rendering Elements
@@ -861,20 +870,20 @@ export default |;
 <p>State and lifecycle
 Mounting<br />
 These methods are called in the following order:<br />
-- constructor()<br />
-- static getDerivedStateFromProps()<br />
-- render()<br />
-- componentDidMount()<br />
+<em> constructor()<br />
+</em> static getDerivedStateFromProps()<br />
+<em> render()<br />
+</em> componentDidMount()<br />
 Updating<br />
 An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:<br />
-- static getDerivedStateFromProps()<br />
-- shouldComponentUpdate()<br />
-- render()<br />
-- getSnapshotBeforeUpdate()<br />
-- componentDidUpdate()<br />
+<em> static getDerivedStateFromProps()<br />
+</em> shouldComponentUpdate()<br />
+<em> render()<br />
+</em> getSnapshotBeforeUpdate()<br />
+<em> componentDidUpdate()<br />
 Unmounting<br />
 This method is called when a component is being removed from the DOM:<br />
-- componentWillUnmount()  </p>
+</em> componentWillUnmount()  </p>
 <p>Handling events</p>
 <pre><code class="javascript">function ActionLink() {
   function handleClick(e) {
@@ -1234,6 +1243,35 @@ def upload_license_action(args):
         socketio.start_background_task(
             target=upload_license,
             kwargs={'data': data, 'sid': sid, 'uuid': uuid})
+</code></pre>
+
+<p>Axios - HTTP client<br />
+Axios install  </p>
+<pre><code>npm install axios --save
+</code></pre>
+
+<p>Basic get request</p>
+<pre><code>  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res =&gt; {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+  }
+</code></pre>
+
+<p>Multiple get requests</p>
+<pre><code>let URL1 = &quot;https://www.something.com&quot;
+let URL2 = &quot;https://www.something1.com
+let URL3 = &quot;https://www.something2.com&quot;
+
+const promise1 = axios.get(URL1);
+const promise2 = axios.get(URL2);
+const promise3 = axios.get(URL3);
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
 </code></pre>
 
 <h1 id="testing">TESTING</h1>
@@ -2480,5 +2518,5 @@ CSS Flexbox<br />
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-23 11:48:49
+Build Date UTC : 2019-02-24 14:47:00
 -->

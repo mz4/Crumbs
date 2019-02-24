@@ -1,6 +1,6 @@
 # GIT
 
-Install Git
+<h3>Install git</h3>
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -8,7 +8,7 @@ sudo apt-get install git
 git --version
 ```
 
-Create a New Git Repository from scratch
+<h3>Create a New Git Repository from scratch</h3>
 ```
 mkdir to create a directory to contain the project.
 cd into the new directory.
@@ -18,7 +18,7 @@ git add to add the files.
 git commit
 ```
 
-Create New Git Repository from existing project
+<h3>Create New Git Repository from existing project</h3>
 ```
 cd into the directory containing the project.
 git init.
@@ -27,7 +27,7 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 ```
 
-Connect to github
+<h3>Connect to github</h3>
 ```
 Go to github.
 Log in to your account.
@@ -37,13 +37,13 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 ```
 
-Create, switch and push origin new branch
+<h3>Create, switch and push origin new branch</h3>
 ```
 git checkout -b issue400-master
 git push -u origin issue400-master
 ```
 
-Add, Commit and Push
+<h3>Add, Commit and Push</h3>
 ```
 git add sys_ui/css/FILE.css 
 git add sys_ui/FILE.html 
@@ -52,179 +52,187 @@ git commit
 git push
 ```
 
-Squash commits
+<h3>Squash commits</h3>
 ```
 git reset --soft HEAD~$squashCount
 git commit -m "$commitMsg"
 ```
 
-Delete a local and remote branch
+<h3>Delete a local and remote branch</h3>
 ```
 git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
-Clone repo
+<h3>Clone repo</h3>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
 
-Clone specific branch
+<h3>Clone specific branch</h3>
 ```
 git clone -b <branch> <remote_repo>
 git clone -b my-branch git@github.com:user/myproject.git
 ```
 
-Check which branch
+<h3>Show current branch</h3>
 ```
 git branch
 ```
 
-Check Status
+<h3>Show local and remote branch</h3>
+```
+git branch -a
+```
+
+<h3>Check Status</h3>
 ```
 git status
 ```
 
-Check Log
+<h3>Check Log</h3>
 ```
 git log
 ```
 
-Edit Last Commit Message
+<h3>Edit Last Commit Message</h3>
 ```
 git commit --amend -m "New commit message"
 ```
 
-Log commit subject of last 10 commits  
+<h3>Log commit subject of last 10 commits</h3>
 ```
 git log -10 --pretty=format:"%h %s"
 ```
 
-Single file history  
+<h3>Single file history</h3>
 ```
 git log -p filename
 ```
 
-Get tag  
+<h3>Get tag</h3>
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
 
-Get commits by date and author  
+<h3>Get commits by date and author</h3>
 ```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
 ```
 
-Get number of commits by author  
+<h3>Get number of commits by author</h3>
 ```
 git shortlog -s -n --all
 ```
 
-Remove local untracked files 
+<h3>Remove local untracked files</h3>
 ```
 git clean -fdx
 ```
 
-Undo last commit.  
+<h3>Undo last commit.</h3>
 Warning: Don't do this if you've already pushed
 ```
  git reset HEAD~
 ```
 
-Undo last commit.  
+<h3>Undo last commit.</h3>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
 ```  
  git reset --hard HEAD~
 ```
 
-Untrack .pyc files
+<h3>Untrack .pyc files</h3>
 ```
 $ find . -name '*.pyc' | xargs -n 1 git rm --cached
 ```
 
-Switch to branch 
+<h3>Switch to branch</h3>
 ```
 git checkout BRANCHNAME
 ```
 
-Pull from master branch
+<h3>Pull from master branch</h3>
 ```
 git pull origin master
 ```
 
-Checkout master
+<h3>Checkout master</h3>
 ```
 git chekcout master
 ```
 
-Merge branch into master
+<h3>Merge branch into master</h3>
 ```
+git checkout master
 git merge user_interface
 ```
 
-Create Tags
+<h3>Create Tags</h3>
 ```
 git tag v1.0 ec32d32
 git push origin --tags
 ```
 
-Undo a local commit
+<h3>Undo a local commit</h3>
 ```
 git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 ```
 
-Undo git add
+<h3>Undo git add</h3>
 ```
 git reset filename.jsx
 ```
 
-Show differences after git pull
+<h3>Show differences after git pull</h3>
 ```
 git diff master@{1} master
 ```
 
-lists branches merged into master
+<h3>Lists branches merged into master</h3>
 ```
 git branch --merged master
 ```
 
-lists branches merged into HEAD (i.e. tip of current branch)
+<h3>Lists branches merged into HEAD</h3>
 ```
 git branch --merged 
 ```
 
-lists branches that have not been merged
+<h3>Lists branches that have not been merged</h3>
 ```
 git branch --no-merged
 ```
 
-Checkout previous branch
+<h3>Checkout previous branch</h3>
 ```
 git checkout -
 ```
 
-Diff between branches  
+<h3>Diff between branches</h3>
 Diff between current branch and master:  
 ```
 git diff master
 ```
-Diff between two branches, e.g. master and staging:  
+
+<h3>Diff between two branches:</h3>
 ```
 git diff master..staging
 ```
-Show only files that are different between the two branches (without changes themselves):  
+
+<h3>Show only files that are different between the two branches</h3>
 ```
 git diff --name-status master..staging
 ```
 
-Create New Branch and Checkout – In One Command
+<h3>Create New Branch and Checkout – In One Command</h3>
 ```
 git checkout -b <branch_name>
 ```
 
-Revert Changes to File
+<h3>Revert Changes to File</h3>
 ```
 git checkout -- <file>
 ```
@@ -232,18 +240,14 @@ git checkout -- <file>
 ---
 # CSS3/SASS
 
-Responsive Design  
-Defined by three characteristics  
+<h3>Responsive Design</h3>
+<h4>Defined by three characteristics</h4>
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
 
-Flexbox:
-[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
-[Flexbox Grid](http://flexboxgrid.com/)  
-
-FLEXBOX PROPERTIES
-Parent (Flex Container)
+<h3>FLEXBOX</h3>
+<h4>Parent Flex Container</h4>
 ```
 display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
@@ -253,7 +257,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
 ```
 
-Children (Flex Items)
+<h4>Children Flex Items</h4>
 ```
 order: <integer>;
 flex-grow: <number>;
@@ -263,10 +267,8 @@ flex: shorthand for grow, shrink, and basis (default: 0 1 auto)
 align-self: overrides alignment set on parent
 ```
 
-CSS GRID
-[Grid examples from CSS Grid](https://css-tricks.com/snippets/css/css-grid-starter-layouts/)
-
-Properties for the Grid Container
+<h3>GRID</h3>
+<h4>Grid Container</h4>
 ```
 display: grid | inline-grid;
 grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
@@ -287,7 +289,8 @@ grid-auto-rows: <track-size> ...;
 grid-auto-flow: row | column | row dense | column dense
 grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
 ```
-Properties for the Grid Items
+
+<h4>Grid Items</h4>
 ```
 grid-column-start: <number> | <name> | span <number> | span <name> | auto
 grid-column-end: <number> | <name> | span <number> | span <name> | auto
@@ -301,7 +304,7 @@ align-self: start | end | center | stretch;
 place-self: center;
 ```
 
-Media Queries
+<h3>Media Queries</h3>
 ```
 /* 
   ##Device = Desktops
@@ -335,12 +338,13 @@ Media Queries
 @media (min-width: 320px) and (max-width: 480px) {}
 ```
 
-BEM Block Element Modifier
+<h3>BEM (Block Element Modifier)</h3>
 ```
 <div class="block__element block__element--modifier">
   Hallo
 </div>
 ```
+
 ```
 .block {
   &__element {
@@ -351,7 +355,8 @@ BEM Block Element Modifier
   }
 }
 ```
-BEM with Sass
+
+<h3>BEM with Sass</h3>
 ```
 .person {
   &__hand {/* Styles */}
@@ -399,13 +404,29 @@ BEM with Sass
   }
 }
 ```
+<h3>Install SASS</h3>
+```
+$ npm install sass-loader node-sass --save-dev
+```
 
-SCSS Import
+<h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
+```scss
+Module:{
+     Rules:[
+             {
+                 test:/\.(s*)css$/,
+                 use:['style-loader','css-loader', 'sass-loader']
+              }
+      ]
+   },
+```
+
+<h3>SCSS Import</h3>
 ```scss
 @import 'reset';
 ```
 
-SCSS Variables
+<h3>SCSS Variables</h3>
 ```scss
 $zHeader: 2000;
 $zOverlay: 5000;
@@ -422,7 +443,7 @@ $zMessage: 5050;
 }
 ```
 
-SCSS Mixins
+<h3>SCSS Mixins</h3>
 ```scss
 @mixin square($size, $color) {
   width: $size;
@@ -439,7 +460,7 @@ SCSS Mixins
 }
 ```
 
-SCSS CrossBrowser Mixins
+<h3>SCSS CrossBrowser Mixins</h3>
 ```scss
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
@@ -453,8 +474,8 @@ SCSS CrossBrowser Mixins
 }
 ```
 
-SCSS Extend  
-Extending should be used when we need similarly styled elements, which still differ in some detail. 
+<h3>SCSS Extend</h3>
+<h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
 ```scss
 .dialog-button {
   box-sizing: border-box;
@@ -477,8 +498,8 @@ Extending should be used when we need similarly styled elements, which still dif
 }
 ```
 
-SCSS Nesting  
-Organize your stylesheet in a way that resembles the HTML more closely.
+<h3>SCSS Nesting</h3>
+<h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
 ```scss
 ul {
   list-style: none;
@@ -496,7 +517,7 @@ ul {
 }
 ```
 
-Nested Pseudo Classes and Pseudo Elements 
+<h3>Nested Pseudo Classes and Pseudo Elements </h3>
 ```scss
 .weather {
   @extend %module;
@@ -513,8 +534,7 @@ Nested Pseudo Classes and Pseudo Elements
 }
 ```
 
-
-SCSS Operations  
+<h3>SCSS Operations  </h3>
 ```scss
 $width: 800px;
 
@@ -531,51 +551,34 @@ $width: 800px;
 }
 ```
 
-Install SASS
-```
-$ npm install sass-loader node-sass --save-dev
-```
+<h3>Selectors</h3>
 
-Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)
-```scss
-Module:{
-     Rules:[
-             {
-                 test:/\.(s*)css$/,
-                 use:['style-loader','css-loader', 'sass-loader']
-              }
-      ]
-   },
-```
-
-Selectors
-
-Descendant Selector
-all <p> elements inside <div> elements  
+<h4>Descendant Selector</h4>
+all p elements inside div elements  
 ```
 div p {
   background-color: yellow;
 }
 ```
   
-Child Selector
-all <p> elements that are immediate children of a <div> element  
+<h4>Child Selector</h4>
+all p elements that are immediate children of a div element  
 ```
 div > p {
   background-color: yellow;
 }
 ```
 
-Adjacent Sibling Selector
-all <p> elements that are placed immediately after <div> elements  
+<h4>Adjacent Sibling Selector</h4>
+all p elements that are placed immediately after div elements  
 ```
 div + p {
   background-color: yellow;
 }
 ```
 
-General Sibling Selector
-all <p> elements that are siblings of <div> elements  
+<h4>General Sibling Selector</h4>
+all p elements that are siblings of div elements  
 ```
 div ~ p {
   background-color: yellow;
@@ -584,26 +587,28 @@ div ~ p {
 ---
 # JAVASCRIPT
 
-Execution Context.  
-**Execution context**: the environment in which code is running. It is created when your code is executed.  
-    
-**Global Execution Context** creates 3 things:  
+<h4>Execution Context</h4>
+the environment in which code is running. It is created when your code is executed.  
+<br>
+<h4>Global Execution Context creates</h4>
 - Global Object Window (browser)  
 - Special Object 'this'  
 - Ref to outer environment  
-
-**JS Engine** performs following two steps while executing any code:  
-**Creation Phase**
+<br>
+<h4>JS Engine</h4>
+it performs following two steps while executing any code:  
+<h5>Creation Phase</h5>
 - Run through your code & identifies variables & functions  
 - Setup memory space for Variables & Functions - "Hoisting"  
 - Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
-
-**Execution Phase**  
+<br>
+<h5>Execution Phase</h5>
 - When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
 - Variable assignment are done in this phase 
-
-Bind
-We use the Bind () method primarily to call a function with the this value set explicitly. In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
+<br>
+<h3>Bind</h3>
+We use the Bind () method primarily to call a function with the this value set explicitly.  
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
 
 ```javascript
 // <button>Get Random Person</button>
@@ -622,35 +627,39 @@ var user = {
 $ ("button").click (user.clickHandler);
 ```
 
-Scopes in javascript
-Global Scope, Local Scope, Block Scope (let)  
-**Old school JavaScript**
+<h3>Scopes in javascript</h3>
+- Global Scope  
+- Local Scope  
+- Block Scope (let)  
+
+<h4>Old school JavaScript</h4>
 Traditionally, JavaScript really only has two types of scope :  
-**Global Scope** : Variables are known throughout the application, from the start of the application  
-**Functional Scope** : Variables are known within the function they are declared in, from the start of the function  
+<h4>Global Scope</h4>
+Variables are known throughout the application, from the start of the application  
+<h4>Functional Scope</h4>
+Variables are known within the function they are declared in, from the start of the function  
 
-**Modern JavaScript**
+<h3>Modern JavaScript</h3>
 The most recent JavaScript specs now also allow a third scope :  
-**Block Scope** : Variables are known within the block they are declared in, from the moment they are declared onwards  
+<h4>Block Scope</h4>
+Variables are known within the block they are declared in, from the moment they are declared onwards  
 let myVariable = "Some text";  
-const myVar = "val";
+const myVar = "val";  
 
-Difference Between Function and Block Scope
-
+<h3>Difference Between Function and Block Scope</h3>
 Function scope is within the function. (var is function scope.)  
 Block scope is within curly brackets. (let and const are block scope.)  
 
-Variable hoisting
-
+<h3>Variable hoisting</h3>
 Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  
 
-Scope chain
+<h3>Scope chain</h3>
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  
 
-Closures
+<h3>Closures</h3>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  
 
-Promise
+<h3>Promise</h3>
 A promise is commonly defined as a proxy for a value that will eventually become available.  
 Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.  
 Although they’ve been around for years, they were standardized and introduced in ES2015, and now they have been superseded in ES2017 by async functions.  
@@ -668,7 +677,7 @@ This function should take two functions as parameters.
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.  
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  
 
-Promise example 1
+<h4>Promise example 1</h4>
 ```javascript
 get('supplyData.json').then(function(response) {
   console.log("Success!", response);
@@ -677,7 +686,7 @@ get('supplyData.json').then(function(response) {
 })
 ```
   
-Promise example 2
+<h4>Promise example 2</h4>
 ```javascript
 var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -694,7 +703,7 @@ console.log(promise1);
 // expected output: [object Promise]
 ```
 
-Promise example 3
+<h4>Promise example 3</h4>
 ```javascript
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -706,19 +715,20 @@ function myAsyncFunction(url) {
   });
 }
 ```
-Callback
+
+<h3>Callback</h3>
 You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.  
 This is the so-called callback.  
 A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  
 
-Callback example 1
+<h4>Callback example 1</h4>
 ```javascript
 document.getElementById('button').addEventListener('click', () => {
   //item clicked
 })
 ```
 
-Callback example 2
+<h4>Callback example 2</h4>
 ```javascript
 setTimeout(() => {
   // runs after 2 seconds
@@ -726,9 +736,9 @@ setTimeout(() => {
 ```
 
 
-Promises vs Callbacks
+<h3>Promises vs Callbacks</h3>
 
-Random number
+<h4>Random number</h4>
 ```javascript
 Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     graphData = graphData.map((graph) => {
@@ -855,6 +865,12 @@ console.log(prices); // [649, 576, 489]
 
 ---
 # REACT  
+
+State  
+React is all about one-way data flow down the component hierarchy.  
+State is created in the component and stays in the component.  
+It can be passed to a children as its props.  
+
 
 Basic Concepts
 - JSX
@@ -990,23 +1006,6 @@ class NameForm extends React.Component {
   }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Import CSS
 ```
@@ -1326,6 +1325,38 @@ def upload_license_action(args):
         socketio.start_background_task(
             target=upload_license,
             kwargs={'data': data, 'sid': sid, 'uuid': uuid})
+```
+
+Axios - HTTP client  
+Axios install  
+```
+npm install axios --save
+```
+
+Basic get request
+```
+  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+  }
+```
+
+Multiple get requests
+```
+let URL1 = "https://www.something.com"
+let URL2 = "https://www.something1.com
+let URL3 = "https://www.something2.com"
+
+const promise1 = axios.get(URL1);
+const promise2 = axios.get(URL2);
+const promise3 = axios.get(URL3);
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
 ```
 
 # TESTING
@@ -2560,6 +2591,7 @@ CSS Grids
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
 CSS Flexbox  
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
+[Flexbox Grid](http://flexboxgrid.com/)  
 
 GIT  
 [git commands](https://git-scm.com/docs)  
