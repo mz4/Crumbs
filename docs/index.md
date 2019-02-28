@@ -1472,6 +1472,55 @@ Systems Directories
 /var/log log files
 ```
 
+Most used Commands
+```
+ls Directory listing
+ls -al Formatted listing with hidden files
+ls -lt Sorting the Formatted listing by time modification
+cd dir Change directory to dir
+cd Change to home directory
+pwd Show current working directory
+mkdir dir Creating a directory dir
+cat >file Places the standard input into the file
+more file Output the contents of the file
+head file Output the first 10 lines of the file
+tail file Output the last 10 lines of the file
+tail -f file Output the contents of file as it grows,starting with the last 10 lines
+touch file Create or update file
+rm file Deleting the file
+rm -r dir Deleting the directory
+rm -f file Force to remove the file
+rm -rf dir Force to remove the directory dir
+cp file1 file2 Copy the contents of file1 to file2
+cp -r dir1 dir2 Copy dir1 to dir2;create dir2 if not present
+mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
+ln -s file link Create symbolic link link to file
+```
+
+Process Management
+```
+ps To display the currently working processes
+top Display all running process
+kill pid Kill the process with given pid
+killall proc Kill all the process named proc
+pkill pattern Will kill all processes matching the pattern
+bg List stopped or background jobs,resume a stopped job in the background
+fg Brings the most recent job to foreground
+fg n Brings job n to the foreground
+```
+
+File permission
+```
+chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
+• 4-read(r)
+• 2-write(w)
+• 1-execute(x)
+```
+Find how many lines for file extension
+```
+wc `find | grep jsx$`
+```
+
 truncate file content
 ```
 truncate -s 0 dash.txt
@@ -1555,51 +1604,6 @@ Remove files containing a string
 rm ?*foo?*
 ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
 ```
-Most used Commands
-```
-ls Directory listing
-ls -al Formatted listing with hidden files
-ls -lt Sorting the Formatted listing by time modification
-cd dir Change directory to dir
-cd Change to home directory
-pwd Show current working directory
-mkdir dir Creating a directory dir
-cat >file Places the standard input into the file
-more file Output the contents of the file
-head file Output the first 10 lines of the file
-tail file Output the last 10 lines of the file
-tail -f file Output the contents of file as it grows,starting with the last 10 lines
-touch file Create or update file
-rm file Deleting the file
-rm -r dir Deleting the directory
-rm -f file Force to remove the file
-rm -rf dir Force to remove the directory dir
-cp file1 file2 Copy the contents of file1 to file2
-cp -r dir1 dir2 Copy dir1 to dir2;create dir2 if not present
-mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
-ln -s file link Create symbolic link link to file
-```
-
-Process Management
-```
-ps To display the currently working processes
-top Display all running process
-kill pid Kill the process with given pid
-killall proc Kill all the process named proc
-pkill pattern Will kill all processes matching the pattern
-bg List stopped or background jobs,resume a stopped job in the background
-fg Brings the most recent job to foreground
-fg n Brings job n to the foreground
-```
-
-File permission
-```
-chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
-• 4-read(r)
-• 2-write(w)
-• 1-execute(x)
-```
-
 Create folder and cd into it
 ```
 mkdir foo && cd "$_"
@@ -2611,3 +2615,7 @@ Various links
 [30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)
 [interview questions](https://github.com/MaximAbramchuck/awesome-interview-questions)
 [deploy mkdocs to github](https://www.sitepoint.com/building-product-documentation-mkdocs/)
+[mock socket](https://github.com/thoov/mock-socket)
+[mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)
+[socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)
+[socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)
