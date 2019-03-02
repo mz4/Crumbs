@@ -139,7 +139,7 @@ Warning: Don't do this if you've already pushed
 <h3>Undo last commit.</h3>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
-```
+```	
  git reset --hard HEAD~
 ```
 
@@ -1440,7 +1440,7 @@ Set-Cookie used to send cookies from the server to the client.
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
-# GraphQL
+# GRAPHQL
 GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  
 - Open source and created by Facebook  
 - Gives clients the power to describe exactly what data they want  
@@ -1460,7 +1460,6 @@ Terminology
 - Query - Queries specify which endpoints we want to call, how we want the response to look  
 - Fields - Properties that comprise the shape of a response  
 - Type - A collection of fields that make up a specific queryable object.  
-  
 - Mutation - A special kind of GraphQL query that causes changes to the data available on the backend  
 - Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information  
 - Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint  
@@ -2636,3 +2635,12 @@ Various links
 [Mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)
 [Socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)
 [Socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)
+
+
+
+https://github.com/howtographql/react-apollo  
+https://www.howtographql.com/react-apollo/0-introduction/  
+https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
+https://www.howtographql.com/react-apollo/1-getting-started/
+
+
