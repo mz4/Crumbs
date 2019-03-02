@@ -139,7 +139,7 @@ Warning: Don't do this if you've already pushed
 <h3>Undo last commit.</h3>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
-```  
+```
  git reset --hard HEAD~
 ```
 
@@ -1440,7 +1440,32 @@ Set-Cookie used to send cookies from the server to the client.
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
-
+# GraphQL
+GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  
+- Open source and created by Facebook  
+- Gives clients the power to describe exactly what data they want  
+- Can sit in front of any existing API because its just a query language  
+  
+GraphQL vs REST
+- GraphQL only has one URL.  
+  Request details are in a POST body (or GET)  
+- In REST, shape and size of data resource is determined by the server,  
+  In Graphql its determined by the query (request)  
+- In REST, you have to male multiple API calls to retrieve relational data,  
+  in GraphQL you can start with entry resource and traverse all the connections in one request  
+- In REST, the shape of the response is determined by whom ever created the server,   
+  in GraphQL the shape is determined by the query  
+  
+Terminology  
+- Query - Queries specify which endpoints we want to call, how we want the response to look  
+- Fields - Properties that comprise the shape of a response  
+- Type - A collection of fields that make up a specific queryable object.  
+  
+- Mutation - A special kind of GraphQL query that causes changes to the data available on the backend  
+- Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information  
+- Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint  
+- Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  
+  
 ---
 # LINUX
 
@@ -2565,57 +2590,49 @@ docker system prune -a
 
 # LINKS
 
-Javascript  
-from [freeCodeCamp:](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
-Component Lifecycle, HOC higher-order components, State and setState, Context
-  
-from [creativebloq:](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
-Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization
-  
-[React Various articles](https://react.christmas/)  
-[Flavio Copes](https://flaviocopes.com)  
-
 React  
 [Awesome-react](https://github.com/enaqx/awesome-react)  
+[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)
+[FreeCodeCamp: React Cocepts](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
+[Creativebloq: React Tips](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
+[React Various articles](https://react.christmas/)  
+[Flavio Copes](https://flaviocopes.com)  
 [Articles about frontend](https://alligator.io/)  
 [Frontend Articles](https://www.robinwieruch.de/)  
 [Frontend Articles](https://www.valentinog.com)  
 [Hooks collection](https://nikgraf.github.io/react-hooks/)
-[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)
-
+[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)
+  
 CSS Links  
-[cssreference.io](https://cssreference.io)  
+[CSSreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
 [CSS Animation](http://animista.net)
-CSS Grids  
-[css grids](https://learncssgrid.com/)  
+[CSS grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
 [Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
-CSS Flexbox  
 [Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
 [Flexbox Grid](http://flexboxgrid.com/)  
 
 GIT  
-[git commands](https://git-scm.com/docs)  
+[GIT commands](https://git-scm.com/docs)  
 
 Linux  
 [Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
 Various links  
-[github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
+[Github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)
 [Site Point](https://www.sitepoint.com/)
-[cheatsheets](https://devhints.io)
-[github help](https://help.github.com/)
+[Cheatsheets](https://devhints.io)
+[Github help](https://help.github.com/)
 [REST API Design Rulebook](https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf)
-[static site generator](https://www.mkdocs.org)
-[awesome frontend](https://github.com/sindresorhus/awesome#front-end-development)
-[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)
-[interview questions](https://github.com/MaximAbramchuck/awesome-interview-questions)
-[deploy mkdocs to github](https://www.sitepoint.com/building-product-documentation-mkdocs/)
-[mock socket](https://github.com/thoov/mock-socket)
-[mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)
-[socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)
-[socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)
+[Static site generator](https://www.mkdocs.org)
+[Awesome frontend](https://github.com/sindresorhus/awesome#front-end-development)
+[Interview questions](https://github.com/MaximAbramchuck/awesome-interview-questions)
+[Deploy mkdocs to github](https://www.sitepoint.com/building-product-documentation-mkdocs/)
+[Mock socket](https://github.com/thoov/mock-socket)
+[Mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)
+[Socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)
+[Socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)
