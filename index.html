@@ -59,6 +59,7 @@
         <li class="main "><a href="#react">REACT</a></li>
         <li class="main "><a href="#testing">TESTING</a></li>
         <li class="main "><a href="#rest-api">REST API</a></li>
+        <li class="main "><a href="#graphql">GraphQL</a></li>
         <li class="main "><a href="#linux">LINUX</a></li>
         <li class="main "><a href="#webpack">WEBPACK</a></li>
         <li class="main "><a href="#nodenpm">NODE/NPM</a></li>
@@ -1442,6 +1443,30 @@ Set-Cookie used to send cookies from the server to the client.
  Body Format
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
 Today, the most commonly used text formats is JSON.</p>
+<h1 id="graphql">GraphQL</h1>
+<p>GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.<br />
+- Open source and created by Facebook<br />
+- Gives clients the power to describe exactly what data they want<br />
+- Can sit in front of any existing API because its just a query language  </p>
+<p>GraphQL vs REST
+- GraphQL only has one URL.<br />
+  Request details are in a POST body (or GET)<br />
+- In REST, shape and size of data resource is determined by the server,<br />
+  In Graphql its determined by the query (request)<br />
+- In REST, you have to male multiple API calls to retrieve relational data,<br />
+  in GraphQL you can start with entry resource and traverse all the connections in one request<br />
+- In REST, the shape of the response is determined by whom ever created the server, <br />
+  in GraphQL the shape is determined by the query  </p>
+<p>Terminology<br />
+- Query - Queries specify which endpoints we want to call, how we want the response to look<br />
+- Fields - Properties that comprise the shape of a response<br />
+- Type - A collection of fields that make up a specific queryable object.  </p>
+<ul>
+<li>Mutation - A special kind of GraphQL query that causes changes to the data available on the backend  </li>
+<li>Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information  </li>
+<li>Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint  </li>
+<li>Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </li>
+</ul>
 <hr />
 <h1 id="linux">LINUX</h1>
 <p>Systems Directories</p>
@@ -2495,53 +2520,48 @@ Removing a Running Container  </p>
 </code></pre>
 
 <h1 id="links">LINKS</h1>
-<p>Javascript<br />
-from <a href="https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030">freeCodeCamp:</a><br />
-Component Lifecycle, HOC higher-order components, State and setState, Context</p>
-<p>from <a href="https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today">creativebloq:</a><br />
-Container and presentational components, Error boundaries, Portals, CSS with styled-components, Using React-specific linting, Snapshot testing with Jest, Code splitting, Server rendering, Internationalization</p>
-<p><a href="https://react.christmas/">React Various articles</a><br />
-<a href="https://flaviocopes.com">Flavio Copes</a>  </p>
 <p>React<br />
 <a href="https://github.com/enaqx/awesome-react">Awesome-react</a><br />
+<a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a>
+<a href="https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030">FreeCodeCamp: React Cocepts</a><br />
+<a href="https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today">Creativebloq: React Tips</a><br />
+<a href="https://react.christmas/">React Various articles</a><br />
+<a href="https://flaviocopes.com">Flavio Copes</a><br />
 <a href="https://alligator.io/">Articles about frontend</a><br />
 <a href="https://www.robinwieruch.de/">Frontend Articles</a><br />
 <a href="https://www.valentinog.com">Frontend Articles</a><br />
 <a href="https://nikgraf.github.io/react-hooks/">Hooks collection</a>
-<a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a></p>
+<a href="https://github.com/30-seconds/30-seconds-of-react#input">30 seconds react</a></p>
 <p>CSS Links<br />
-<a href="https://cssreference.io">cssreference.io</a><br />
+<a href="https://cssreference.io">CSSreference.io</a><br />
 <a href="https://labs.jensimmons.com/">Jen Simmons CSS Lab</a><br />
 <a href="https://www.toptal.com/css/introduction-to-bem-methodology">BEM Block Element Modifier</a><br />
 <a href="http://animista.net">CSS Animation</a>
-CSS Grids<br />
-<a href="https://learncssgrid.com/">css grids</a><br />
+<a href="https://learncssgrid.com/">CSS grids</a><br />
 <a href="https://gridbyexample.com">Grids by example</a><br />
 <a href="http://cssgridgarden.com">Grid CSS Garden</a><br />
 <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid CSS Tricks</a><br />
-CSS Flexbox<br />
 <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox CSS Tricks</a><br />
 <a href="http://flexboxgrid.com/">Flexbox Grid</a>  </p>
 <p>GIT<br />
-<a href="https://git-scm.com/docs">git commands</a>  </p>
+<a href="https://git-scm.com/docs">GIT commands</a>  </p>
 <p>Linux<br />
 <a href="http://landoflinux.com/linux_basic_fundamentals.html">Linux commands</a>  </p>
 <p>Various links<br />
-<a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">github pages markdown</a><br />
+<a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Github pages markdown</a><br />
 <a href="https://github.com/phw/peek">Recording Screen</a>
 <a href="https://www.sitepoint.com/">Site Point</a>
-<a href="https://devhints.io">cheatsheets</a>
-<a href="https://help.github.com/">github help</a>
+<a href="https://devhints.io">Cheatsheets</a>
+<a href="https://help.github.com/">Github help</a>
 <a href="https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf">REST API Design Rulebook</a>
-<a href="https://www.mkdocs.org">static site generator</a>
-<a href="https://github.com/sindresorhus/awesome#front-end-development">awesome frontend</a>
-<a href="https://github.com/30-seconds/30-seconds-of-react#input">30 seconds react</a>
-<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">interview questions</a>
-<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">deploy mkdocs to github</a>
-<a href="https://github.com/thoov/mock-socket">mock socket</a>
-<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">mock socket</a>
-<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">socket unit testing</a>
-<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">socket+jest boilerplate</a></p></div>
+<a href="https://www.mkdocs.org">Static site generator</a>
+<a href="https://github.com/sindresorhus/awesome#front-end-development">Awesome frontend</a>
+<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">Interview questions</a>
+<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">Deploy mkdocs to github</a>
+<a href="https://github.com/thoov/mock-socket">Mock socket</a>
+<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">Mock socket</a>
+<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">Socket unit testing</a>
+<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">Socket+jest boilerplate</a></p></div>
         </div>
 
         <footer class="col-md-12">
@@ -2624,5 +2644,5 @@ CSS Flexbox<br />
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-02-28 12:02:11
+Build Date UTC : 2019-03-02 18:58:01
 -->
