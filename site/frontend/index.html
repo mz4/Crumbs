@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>FRONTEND - Crumbs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Crumbs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">GIT</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">FRONTEND</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#frontend">FRONTEND</a></li>
+            <li><a href="#javascript">JAVASCRIPT</a></li>
+            <li><a href="#es6">ES6</a></li>
+            <li><a href="#react">REACT</a></li>
+        <li class="main "><a href="#css3sass">CSS3/SASS</a></li>
+            <li><a href="#testing">TESTING</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="frontend">FRONTEND</h1>
+<h2 id="javascript">JAVASCRIPT</h2>
+<h4>Execution Context</h4>
+
+<p>the environment in which code is running. It is created when your code is executed.<br />
+<br>
+<h4>Global Execution Context creates</h4>
+- Global Object Window (browser)<br />
+- Special Object 'this'<br />
+- Ref to outer environment<br />
+<br>
+<h4>JS Engine</h4>
+it performs following two steps while executing any code:<br />
+<h5>Creation Phase</h5>
+- Run through your code &amp; identifies variables &amp; functions<br />
+- Setup memory space for Variables &amp; Functions - "Hoisting"<br />
+- Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
+<br>
+<h5>Execution Phase</h5>
+- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context<br />
+- Variable assignment are done in this phase 
+<br>
+<h3>Bind</h3>
+We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
+<pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
+// &lt;input type=&quot;text&quot;&gt;
+var user = {
+    data        :[
+        {name:&quot;T. Woods&quot;, age:37},
+        {name:&quot;P. Mickelson&quot;, age:43}
+    ],
+    clickHandler:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
+        $ (&quot;input&quot;).val (this.data[randomNum].name + &quot; &quot; + this.data[randomNum].age);
+    }
+}
+// Assign an eventHandler to the button's click event
+$ (&quot;button&quot;).click (user.clickHandler);
+</code></pre>
+
+<h3>Scopes in javascript</h3>
+
+<ul>
+<li>Global Scope  </li>
+<li>Local Scope  </li>
+<li>Block Scope (let)  </li>
+</ul>
+<h4>Old school JavaScript</h4>
+
+<p>Traditionally, JavaScript really only has two types of scope :<br />
+<h4>Global Scope</h4>
+Variables are known throughout the application, from the start of the application<br />
+<h4>Functional Scope</h4>
+Variables are known within the function they are declared in, from the start of the function  </p>
+<h3>Modern JavaScript</h3>
+
+<p>The most recent JavaScript specs now also allow a third scope :<br />
+<h4>Block Scope</h4>
+Variables are known within the block they are declared in, from the moment they are declared onwards<br />
+let myVariable = "Some text";<br />
+const myVar = "val";  </p>
+<h3>Difference Between Function and Block Scope</h3>
+
+<p>Function scope is within the function. (var is function scope.)<br />
+Block scope is within curly brackets. (let and const are block scope.)  </p>
+<h3>Variable hoisting</h3>
+
+<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  </p>
+<h3>Scope chain</h3>
+
+<p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  </p>
+<h3>Closures</h3>
+
+<p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  </p>
+<h3>Promise</h3>
+
+<p>A promise is commonly defined as a proxy for a value that will eventually become available.<br />
+Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.<br />
+Although they’ve been around for years, they were standardized and introduced in ES2015, and now they have been superseded in ES2017 by async functions.<br />
+Async functions use the promises API as their building block, so understanding them is fundamental even if in newer code you’ll likely use async functions instead of promises.  </p>
+<p>A Promise is in one of these states:  </p>
+<p>pending: initial state, neither fulfilled nor rejected.<br />
+fulfilled: meaning that the operation completed successfully.<br />
+rejected: meaning that the operation failed.  </p>
+<p>A Promise object is created using the new keyword and its constructor.<br />
+This constructor takes as its argument a function, called the "executor function".<br />
+This function should take two functions as parameters.<br />
+The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.<br />
+The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  </p>
+<h4>Promise example 1</h4>
+
+<pre><code class="javascript">get('supplyData.json').then(function(response) {
+  console.log(&quot;Success!&quot;, response);
+}).catch(function(error) {
+  console.log(&quot;Failed!&quot;, error);
+})
+</code></pre>
+
+<h4>Promise example 2</h4>
+
+<pre><code class="javascript">var promise1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    resolve('foo');
+  }, 300);
+});
+
+promise1.then(function(value) {
+  console.log(value);
+  // expected output: &quot;foo&quot;
+});
+
+console.log(promise1);
+// expected output: [object Promise]
+</code></pre>
+
+<h4>Promise example 3</h4>
+
+<pre><code class="javascript">function myAsyncFunction(url) {
+  return new Promise((resolve, reject) =&gt; {
+    const xhr = new XMLHttpRequest();
+    xhr.open(&quot;GET&quot;, url);
+    xhr.onload = () =&gt; resolve(xhr.responseText);
+    xhr.onerror = () =&gt; reject(xhr.statusText);
+    xhr.send();
+  });
+}
+</code></pre>
+
+<h3>Callback</h3>
+
+<p>You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.<br />
+This is the so-called callback.<br />
+A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  </p>
+<h4>Callback example 1</h4>
+
+<pre><code class="javascript">document.getElementById('button').addEventListener('click', () =&gt; {
+  //item clicked
+})
+</code></pre>
+
+<h4>Callback example 2</h4>
+
+<pre><code class="javascript">setTimeout(() =&gt; {
+  // runs after 2 seconds
+}, 2000)
+</code></pre>
+
+<h3>Promises vs Callbacks</h3>
+
+<h4>Random number</h4>
+
+<pre><code class="javascript">Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+    graphData = graphData.map((graph) =&gt; {
+      graph.read_bytes = Math.floor(Math.random() * (10000 - 1024 + 1)) + 1024;
+      return graph;
+    });
+</code></pre>
+
+<hr />
+<h2 id="es6">ES6</h2>
+<p>Spread Operator 1  </p>
+<pre><code class="javascript">const userInfo = { isAuthenticated: false }  
+const action = { isAuthenticated: true, type: 'nope' }  
+const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
+console.log(res);  // { isAuthenticated: true } 
+</code></pre>
+
+<p>Spread Operator 2</p>
+<pre><code class="javascript">var mid = [3, 4];  
+var arr = [1, 2, ...mid, 5, 6];  
+console.log(arr);  // [ 1, 2, 3, 4, 5, 6 ]
+</code></pre>
+
+<p>Spread Operator 3</p>
+<pre><code class="javascript">let nums = [1, 2, 3];
+let abcs = ['a', 'b', 'c'];
+let alphanum = [ ...nums, ...abs ]; // [1, 2, 3, 'a', 'b', 'c']
+</code></pre>
+
+<p>Destructuring 1</p>
+<pre><code class="javascript">var address = {
+  city: &quot;London&quot;,
+  state: &quot;UK&quot;,
+  zip: 1334
+};
+let {city, state, zip} = address;
+
+log(city); // 'London'
+log(state); // 'UK'
+log(zip); // 1334
+</code></pre>
+
+<p>Destructuring 2</p>
+<pre><code class="javascript">var address = {
+  city: &quot;London&quot;,
+  state: &quot;UK&quot;,
+  zip: 1334
+};
+let {city: c, state: s, zip: z} = address;
+log(c, s, z); // 'London UK 1334'
+</code></pre>
+
+<p>Destructuring 3</p>
+<pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
+displayPerson(person);
+
+function displayPerson({name, age}) {
+  // do something with name and age to display them
+}
+</code></pre>
+
+<p>Destructuring 4</p>
+<pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
+let {name, age, address} = person; // error!
+let {name, age, ?address} = person; // OK
+let ?{name, age, address} = person; // OK
+</code></pre>
+
+<p>Destructuring 5</p>
+<pre><code class="javascript">var nums = [1, 2, 3, 4];
+doSomething(nums);
+
+function doSomething([first, second, ...others]){
+  log(first);   //logs 1
+  log(second);  //logs 2
+  log(others);  //logs [3, 4]
+}
+</code></pre>
+
+<p>Arrow functions 1
+Specifying parameters:</p>
+<pre><code class="javascript">    () =&gt; { ... } // no parameter
+     x =&gt; { ... } // one parameter, an identifier
+(x, y) =&gt; { ... } // several parameters
+</code></pre>
+
+<p>Specifying a body:</p>
+<pre><code class="javascript">x =&gt; { return x * x }  // block
+x =&gt; x * x  // expression, equivalent to previous line
+</code></pre>
+
+<p>Arrow function 2</p>
+<pre><code class="javascript">const phraseSplitterEs6 = phrase =&gt; phrase.split(&quot; &quot;);
+</code></pre>
+
+<p>Arrow function 3</p>
+<pre><code class="javascript">var docLogEs6 = () =&gt; { console.log(document); };
+</code></pre>
+
+<p>Arrow function 4</p>
+<pre><code class="javascript">const smartPhones = [
+  { name:'iphone', price:649 },
+  { name:'Galaxy S6', price:576 },
+  { name:'Galaxy Note 5', price:489 }
+];
+
+// ES6
+const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
+console.log(prices); // [649, 576, 489]
+</code></pre>
+
+<hr />
+<h2 id="react">REACT</h2>
+<p>State<br />
+React is all about one-way data flow down the component hierarchy.<br />
+State is created in the component and stays in the component.<br />
+It can be passed to a children as its props.  </p>
+<p>Basic Concepts
+- JSX
+- Rendering Elements
+- Components Functional/Container
+- State and Lifecycle
+- Handling Events
+- Conditional Rendering
+- Lists and Keys
+- Forms</p>
+<p>JSX</p>
+<pre><code class="javascript">&lt;MyComponent message={'hello world'} /&gt;
+</code></pre>
+
+<p>Rendering elements</p>
+<pre><code class="javascript">class TodoList extends React.Component {
+  render() {
+    return (
+      &lt;ul&gt;
+        {this.props.items.map(item =&gt; (
+          &lt;li key={item.id}&gt;{item.text}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>Stateless function component - sfc</p>
+<pre><code class="javascript">const | = props =&gt; {
+  return ( | );
+};
+
+export default |;
+</code></pre>
+
+<p>State and lifecycle
+Mounting<br />
+These methods are called in the following order:<br />
+<em> constructor()<br />
+</em> static getDerivedStateFromProps()<br />
+<em> render()<br />
+</em> componentDidMount()<br />
+Updating<br />
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:<br />
+<em> static getDerivedStateFromProps()<br />
+</em> shouldComponentUpdate()<br />
+<em> render()<br />
+</em> getSnapshotBeforeUpdate()<br />
+<em> componentDidUpdate()<br />
+Unmounting<br />
+This method is called when a component is being removed from the DOM:<br />
+</em> componentWillUnmount()  </p>
+<p>Handling events</p>
+<pre><code class="javascript">function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    &lt;a href=&quot;#&quot; onClick={handleClick}&gt;
+      Click me
+    &lt;/a&gt;
+  );
+}
+</code></pre>
+
+<p>Conditional rendering</p>
+<pre><code class="javascript">render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    &lt;div&gt;
+      The user is &lt;b&gt;{isLoggedIn ? 'currently' : 'not'}&lt;/b&gt; logged in.
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<p>List and Keys</p>
+<pre><code class="javascript">function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    &lt;ul&gt;
+      {numbers.map((number) =&gt;
+        &lt;ListItem key={number.toString()}
+                  value={number} /&gt;
+
+      )}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+
+<p>Forms</p>
+<pre><code class="javascript">class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>Import CSS</p>
+<pre><code>import './styles/style.css'
+</code></pre>
+
+<p>Declare state</p>
+<pre><code>export class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+  }
+</code></pre>
+
+<p>defaultProps example</p>
+<pre><code class="javascript">Notification.defaultProps = {
+  actionTitle: '',
+  selectedElements: {},
+  actionLogs: [],
+};
+</code></pre>
+
+<p>propTypes example</p>
+<pre><code class="javascript">Notification.propTypes = {
+  actionTitle: PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  elementTitle: PropTypes.objectOf(PropTypes.any),
+  selectedElements: PropTypes.arrayOf(PropTypes.any),
+};
+</code></pre>
+
+<p>Import statement - imr</p>
+<pre><code class="javascript">import React from 'react';
+</code></pre>
+
+<p>Import React and Component - imrc</p>
+<pre><code class="javascript">import React, { Component } from 'react';
+</code></pre>
+
+<p>Make a Class Component and export - cc</p>
+<pre><code class="javascript">class | extends Component {
+  state = { | },
+  render() {
+    return ( | );
+  }
+}
+
+export default |;
+</code></pre>
+
+<p>componentDidMount - cdm</p>
+<pre><code class="javascript">componentDidMount() {
+  |
+}
+</code></pre>
+
+<p>componentDidUpdate - cdu</p>
+<pre><code class="javascript">componentDidUpdate(prevProps, prevState) {
+  |
+}
+</code></pre>
+
+<p>setState - ss</p>
+<pre><code class="javascript">this.setState({ | : | });
+</code></pre>
+
+<p>render - ren</p>
+<pre><code class="javascript">render() {
+  return (
+    |
+  );
+}
+</code></pre>
+
+<p>export example with mapStateToProps, mapDispatchToProps</p>
+<pre><code class="javascript">export default connect(mapStateToProps, mapDispatchToProps)(Name);
+</code></pre>
+
+<p>mapStateToProps example</p>
+<pre><code class="javascript">const mapStateToProps = (state) =&gt; {
+  return {
+    elements: state.refreshRaidElements.raidElements,
+    controllers: state.refreshControllers.controllers,
+    waitingLogs: state.watingLogs.wating_action_logs,
+  };
+};
+</code></pre>
+
+<p>mapDispatchToProps
+Import actions  </p>
+<pre><code class="javascript">import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
+</code></pre>
+
+<p>Emit action  </p>
+<pre><code class="javascript">this.props.selectedRaidIndex(id);
+</code></pre>
+
+<p>Dispatch actions  </p>
+<pre><code class="javascript">const mapDispatchToProps = (dispatch) =&gt; {
+  return {
+    checkboxClicked: id =&gt; dispatch(checkboxClicked(id)),
+    selectedIndex: id =&gt; dispatch(selectedIndex(id)),
+  };
+};
+</code></pre>
+
+<p>React Redux Thunk  </p>
+<p>Actions in Redux are dispatched synchronously. <br />
+Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  </p>
+<p><strong>Redux Thunk is a middleware</strong> that lets you call action creators that return a function instead of an action object.<br />
+That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.  </p>
+<p>Install redux-thunk  </p>
+<pre><code>npm install redux-thunk
+</code></pre>
+
+<p>Apply middleware to app store.  </p>
+<pre><code class="javascript">import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import rootReducer from './reducers';
+import App from './App';
+
+// use applyMiddleware to add the thunk middleware to the store
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+ReactDOM.render(
+  &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+
+<p>The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.<br />
+<strong>AddTodo.jsx</strong>  </p>
+<pre><code class="javascript">import { connect } from 'react-redux';
+import { addTodo } from '../actions';
+import NewTodo from '../components/NewTodo';
+
+const mapDispatchToProps = dispatch =&gt; {
+  return {
+    onAddTodo: todo =&gt; {
+      dispatch(addTodo(toto));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewTodo);
+</code></pre>
+
+<p><strong>actions/index.jsx</strong>  </p>
+<pre><code class="javascript">import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from './types';
+
+import axios from 'axios';
+
+export const addTodo = ({ title, userId }) =&gt; {
+  return dispatch =&gt; {
+    dispatch(addTodoStarted());
+
+    axios
+      .post(`https://jsonplaceholder.typicode.com/todos`, {
+        title,
+        userId,
+        completed: false
+      })
+      .then(res =&gt; {
+        dispatch(addTodoSuccess(res.data));
+      })
+      .catch(err =&gt; {
+        dispatch(addTodoFailure(err.message));
+      });
+  };
+};
+
+const addTodoSuccess = todo =&gt; ({
+  type: ADD_TODO_SUCCESS,
+  payload: {
+    ...todo
+  }
+});
+
+const addTodoStarted = () =&gt; ({
+  type: ADD_TODO_STARTED
+});
+
+const addTodoFailure = error =&gt; ({
+  type: ADD_TODO_FAILURE,
+  payload: {
+    error
+  }
+});
+</code></pre>
+
+<p><strong>reducers/todoReducers.jsx</strong>  </p>
+<pre><code class="javascript">import {
+  ADD_TODO_SUCCESS,
+  ADD_TODO_FAILURE,
+  ADD_TODO_STARTED,
+  DELETE_TODO
+} from '../actions/types';
+
+const initialState = {
+  loading: false,
+  todos: [],
+  error: null
+};
+
+export default function todosReducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD_TODO_STARTED:
+      return {
+        ...state,
+        loading: true
+      };
+    case ADD_TODO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: [...state.todos, action.payload]
+      };
+    case ADD_TODO_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
+    default:
+      return state;
+  }
+}
+</code></pre>
+
+<p>socket</p>
+<p>socket client</p>
+<p>socket install </p>
+<pre><code>npm i socket.io-client
+</code></pre>
+
+<pre><code>const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
+export default io;
+</code></pre>
+
+<p>io Emit from client</p>
+<pre><code>import io from './components/common/io';
+io.emit('populate_table', { table_name: 'users_table' });
+</code></pre>
+
+<p>io Receive</p>
+<pre><code>io.on('isloggedin', (payload) =&gt; {
+  ...
+}
+</code></pre>
+
+<p>Remove listeners</p>
+<pre><code>io.removeAllListeners('action_response');
+</code></pre>
+
+<p>socketio server flask</p>
+<pre><code>from app.server import socketio
+@socketio.on(socket_names.UPLOAD_LICENSE)
+def upload_license_action(args):
+    &quot;&quot;&quot;
+    Upload a new license file.
+    &quot;&quot;&quot;
+    data = args['data']
+    uuid = args['uuid']
+    sid = request.sid
+    user_store.update_previous_connection(sid)
+    socketio.emit(socket_names.ACTION_TIME, {
+        'action_time': now(sid)}, room=sid)
+    with thread_lock:
+        socketio.start_background_task(
+            target=upload_license,
+            kwargs={'data': data, 'sid': sid, 'uuid': uuid})
+</code></pre>
+
+<p>Axios - HTTP client<br />
+Axios install  </p>
+<pre><code>npm install axios --save
+</code></pre>
+
+<p>Basic get request</p>
+<pre><code>  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res =&gt; {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+  }
+</code></pre>
+
+<p>Multiple get requests</p>
+<pre><code>let URL1 = &quot;https://www.something.com&quot;
+let URL2 = &quot;https://www.something1.com
+let URL3 = &quot;https://www.something2.com&quot;
+
+const promise1 = axios.get(URL1);
+const promise2 = axios.get(URL2);
+const promise3 = axios.get(URL3);
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
+</code></pre>
+
+<h1 id="css3sass">CSS3/SASS</h1>
+<h3>Responsive Design</h3>
+
+<h4>Defined by three characteristics</h4>
+
+<ul>
+<li>Flexible grid-based layout  </li>
+<li>Media queries (CSS3)  </li>
+<li>Images that resize  </li>
+</ul>
+<h3>FLEXBOX</h3>
+
+<h4>Parent Flex Container</h4>
+
+<pre><code>display: flex | inline-flex;
+flex-direction: row | row-reverse | column | columnreverse;
+flex-wrap: wrap | nowrap | wrap-reverse; flex-flow (shorthand for flex-direction and flexwrap)
+justify-content: flex-start | flex-end | center | spacebetween | space-around | space-evenly;
+align-items: flex-start | flex-end | center | baseline | stretch;
+align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
+</code></pre>
+
+<h4>Children Flex Items</h4>
+
+<pre><code>order: &lt;integer&gt;;
+flex-grow: &lt;number&gt;;
+flex-shrink: &lt;number&gt;;
+flex-basis: &lt;length&gt; | auto;
+flex: shorthand for grow, shrink, and basis (default: 0 1 auto)
+align-self: overrides alignment set on parent
+</code></pre>
+
+<h3>GRID</h3>
+
+<h4>Grid Container</h4>
+
+<pre><code>display: grid | inline-grid;
+grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
+grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
+grid-template-areas: &lt;grid-area-name&gt;;
+grid-template: A shorthand for setting grid-template-rows, grid-template-columns, and grid-template-areas in a single declaration.
+grid-column-gap: &lt;line-size&gt;;
+grid-row-gap: &lt;line-size&gt;;
+grid-gap: A shorthand for grid-row-gap and grid-column-gap
+justify-items: start | end | center | stretch;
+align-items: start | end | center | stretch;
+place-items: place-items sets both the align-items and justify-items properties in a single declaration.
+justify-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+place-content: place-content sets both the align-content and justify-content properties in a single declaration.
+grid-auto-columns: &lt;track-size&gt; ...;
+grid-auto-rows: &lt;track-size&gt; ...;
+grid-auto-flow: row | column | row dense | column dense
+grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
+</code></pre>
+
+<h4>Grid Items</h4>
+
+<pre><code>grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
+grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
+grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
+grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
+grid-column: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;
+grid-row: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;
+grid-area: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;
+justify-self: start | end | center | stretch;
+align-self: start | end | center | stretch;
+place-self: center;
+</code></pre>
+
+<h3>Media Queries</h3>
+
+<pre><code>/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {}
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {}
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {}
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {}
+</code></pre>
+
+<h3>BEM (Block Element Modifier)</h3>
+
+<pre><code>&lt;div class=&quot;block__element block__element--modifier&quot;&gt;
+  Hallo
+&lt;/div&gt;
+</code></pre>
+
+<pre><code>.block {
+  &amp;__element {
+    background: blue;
+    &amp;--modifier {
+      color: white;
+    }
+  }
+}
+</code></pre>
+
+<h3>BEM with Sass</h3>
+
+<pre><code>.person {
+  &amp;__hand {/* Styles */}
+
+  &amp;__leg {/* Styles */}
+
+  &amp;--male {
+    /* Styles */
+
+    &amp;__hand {
+      /* Styles */
+
+      &amp;--left {/* Styles */}
+
+      &amp;--right {/* Styles */}
+    }
+
+    &amp;__leg {
+      /* Styles */
+
+      &amp;--left {/* Styles */}
+
+      &amp;--right {/* Styles */}
+    }
+  }
+
+  &amp;--female {
+    /* Styles */
+
+    &amp;__hand {
+      /* Styles */
+
+      &amp;--left {/* Styles */}
+
+      &amp;--right {/* Styles */}
+    }
+
+    &amp;__leg {
+      /* Styles */
+
+      &amp;--left {/* Styles */}
+
+      &amp;--right {/* Styles */}
+    }
+  }
+}
+</code></pre>
+
+<h3>Install SASS</h3>
+
+<pre><code>$ npm install sass-loader node-sass --save-dev
+</code></pre>
+
+<h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
+
+<pre><code class="scss">Module:{
+     Rules:[
+             {
+                 test:/\.(s*)css$/,
+                 use:['style-loader','css-loader', 'sass-loader']
+              }
+      ]
+   },
+</code></pre>
+
+<h3>SCSS Import</h3>
+
+<pre><code class="scss">@import 'reset';
+</code></pre>
+
+<h3>SCSS Variables</h3>
+
+<pre><code class="scss">$zHeader: 2000;
+$zOverlay: 5000;
+$zMessage: 5050;
+
+.header {
+  z-index: $zHeader;
+}
+.overlay {
+  z-index: $zOverlay;
+}
+.message {
+  z-index: $zMessage;
+}
+</code></pre>
+
+<h3>SCSS Mixins</h3>
+
+<pre><code class="scss">@mixin square($size, $color) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+.small-blue-square {
+  @include square(20px, rgb(0,0,255));
+}
+
+.big-red-square {
+  @include square(300px, rgb(255,0,0));
+}
+</code></pre>
+
+<h3>SCSS CrossBrowser Mixins</h3>
+
+<pre><code class="scss">@mixin transform-tilt() {
+  $tilt: rotate(15deg);
+  -webkit-transform: $tilt; /* Ch &lt;36, Saf 5.1+, iOS, An =&lt;4.4.4 */
+      -ms-transform: $tilt; /* IE 9 */
+          transform: $tilt; /* IE 10, Fx 16+, Op 12.1+ */
+}
+
+.frame:hover { 
+  @include transform-tilt; 
+}
+</code></pre>
+
+<h3>SCSS Extend</h3>
+
+<h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
+
+<pre><code class="scss">.dialog-button {
+  box-sizing: border-box;
+  color: #ffffff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  padding: 12px 40px;
+  cursor: pointer;
+}
+
+.confirm {
+  @extend .dialog-button;
+  background-color: #87bae1;
+  float: left;
+}
+
+.cancel {
+  @extend .dialog-button;
+  background-color: #e4749e;
+  float: right;
+}
+</code></pre>
+
+<h3>SCSS Nesting</h3>
+
+<h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
+
+<pre><code class="scss">ul {
+  list-style: none;
+
+  li {
+    padding: 15px;
+    display: inline-block;
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #444;
+    }
+  }
+}
+</code></pre>
+
+<h3>Nested Pseudo Classes and Pseudo Elements </h3>
+
+<pre><code class="scss">.weather {
+  @extend %module;
+  @include transition(all 0.3s ease-out);
+  background: LightCyan;
+  &amp;:hover {
+    background: DarkCyan;
+  }
+  &amp;::before {
+    content: &quot;&quot;;
+    display: block;
+  }
+  ...
+}
+</code></pre>
+
+<h3>SCSS Operations  </h3>
+
+<pre><code class="scss">$width: 800px;
+
+.container { 
+  width: $width;
+}
+
+.column-half {
+  width: $width / 2;
+}
+
+.column-fifth {
+  width: $width / 5;
+}
+</code></pre>
+
+<h3>Selectors</h3>
+
+<h4>Descendant Selector</h4>
+
+<p>all p elements inside div elements  </p>
+<pre><code>div p {
+  background-color: yellow;
+}
+</code></pre>
+
+<h4>Child Selector</h4>
+
+<p>all p elements that are immediate children of a div element  </p>
+<pre><code>div &gt; p {
+  background-color: yellow;
+}
+</code></pre>
+
+<h4>Adjacent Sibling Selector</h4>
+
+<p>all p elements that are placed immediately after div elements  </p>
+<pre><code>div + p {
+  background-color: yellow;
+}
+</code></pre>
+
+<h4>General Sibling Selector</h4>
+
+<p>all p elements that are siblings of div elements  </p>
+<pre><code>div ~ p {
+  background-color: yellow;
+}
+</code></pre>
+
+<h2 id="testing">TESTING</h2>
+<p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.<br />
+Jest is a test framework managed by Facebook.<br />
+install enzyme along with an Adapter corresponding to the version of react.  </p>
+<pre><code>npm i --save-dev enzyme enzyme-adapter-react-16
+</code></pre>
+
+<p>Jest Setup with React:  </p>
+<pre><code>npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
+</code></pre>
+
+<p>Add into babel configuration  </p>
+<pre><code>&quot;env&quot;: {
+  &quot;test&quot;: {
+    &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;]
+  }
+}
+</code></pre>
+
+<p>useful for debug</p>
+<pre><code>console.log(wrapper.debug());
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
