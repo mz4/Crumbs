@@ -1465,6 +1465,79 @@ Terminology
 - Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint  
 - Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  
   
+Example frontend graphql query in react
+```
+npm install -g npx // (npx comes with npm 5.2+ and higher)
+npx create-react-app react-graphql-test
+npm start
+```
+
+Dependencies install  
+```
+npm install apollo-boost react-apollo graphql-tag graphql
+```
+
+apollo-boost: Package containing reccomended Apollo Client setup  
+react-apollo: View layer integration for React  
+graphql-tag: Necessary for parsing your GraphQL queries  
+graphql: Also parses your GraphQL queries  
+
+
+in App.js  
+```
+import ApolloClient from "apollo-boost";
+const client = new ApolloClient({
+  uri: "[Insert URI of GraphQL endpoint]"
+});
+```
+
+Connect the instance of ApolloClient to the React app
+```
+import { ApolloProvider } from "react-apollo";
+...
+const App = () => (
+  <ApolloProvider client={client}>
+    <div>
+      <h2>My first Apollo app</h2>
+    </div>
+  </ApolloProvider>
+);
+```
+
+Retrieve a list of Courses.  
+Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  
+```
+import React from 'react';
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+const Courses = () => (
+  <Query
+    query={gql`
+      {
+        allCourses {
+          id
+          title
+          author
+          description
+          topic
+          url
+        }
+      }
+    `}
+  >
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error :(</p>;
+      return data.allCourses.map(({ id, title, author, description, topic, url }) => (
+        <div key={id}>
+          <p>{`${title} by ${author}`}</p>
+        </div>
+      ));
+    }}
+  </Query>
+);
+export default Courses;
+```
 ---
 # LINUX
 
