@@ -1465,6 +1465,73 @@ Today, the most commonly used text formats is JSON.</p>
 - Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information<br />
 - Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint<br />
 - Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </p>
+<p>Example frontend graphql query in react</p>
+<pre><code>npm install -g npx // (npx comes with npm 5.2+ and higher)
+npx create-react-app react-graphql-test
+npm start
+</code></pre>
+
+<p>Dependencies install  </p>
+<pre><code>npm install apollo-boost react-apollo graphql-tag graphql
+</code></pre>
+
+<p>apollo-boost: Package containing reccomended Apollo Client setup<br />
+react-apollo: View layer integration for React<br />
+graphql-tag: Necessary for parsing your GraphQL queries<br />
+graphql: Also parses your GraphQL queries  </p>
+<p>in App.js  </p>
+<pre><code>import ApolloClient from &quot;apollo-boost&quot;;
+const client = new ApolloClient({
+  uri: &quot;[Insert URI of GraphQL endpoint]&quot;
+});
+</code></pre>
+
+<p>Connect the instance of ApolloClient to the React app</p>
+<pre><code>import { ApolloProvider } from &quot;react-apollo&quot;;
+...
+const App = () =&gt; (
+  &lt;ApolloProvider client={client}&gt;
+    &lt;div&gt;
+      &lt;h2&gt;My first Apollo app&lt;/h2&gt;
+    &lt;/div&gt;
+  &lt;/ApolloProvider&gt;
+);
+</code></pre>
+
+<p>Retrieve a list of Courses.<br />
+Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  </p>
+<pre><code>import React from 'react';
+import { Query } from &quot;react-apollo&quot;;
+import gql from &quot;graphql-tag&quot;;
+const Courses = () =&gt; (
+  &lt;Query
+    query={gql`
+      {
+        allCourses {
+          id
+          title
+          author
+          description
+          topic
+          url
+        }
+      }
+    `}
+  &gt;
+    {({ loading, error, data }) =&gt; {
+      if (loading) return &lt;p&gt;Loading...&lt;/p&gt;;
+      if (error) return &lt;p&gt;Error :(&lt;/p&gt;;
+      return data.allCourses.map(({ id, title, author, description, topic, url }) =&gt; (
+        &lt;div key={id}&gt;
+          &lt;p&gt;{`${title} by ${author}`}&lt;/p&gt;
+        &lt;/div&gt;
+      ));
+    }}
+  &lt;/Query&gt;
+);
+export default Courses;
+</code></pre>
+
 <hr />
 <h1 id="linux">LINUX</h1>
 <p>Systems Directories</p>
@@ -2646,5 +2713,5 @@ https://www.howtographql.com/react-apollo/1-getting-started/</p></div>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-03-02 19:30:34
+Build Date UTC : 2019-03-03 19:02:32
 -->
