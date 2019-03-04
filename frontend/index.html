@@ -1311,6 +1311,107 @@ install enzyme along with an Adapter corresponding to the version of react.  </p
 
 <p>useful for debug</p>
 <pre><code>console.log(wrapper.debug());
+</code></pre>
+
+<pre><code class="javascript">import configureStore from 'redux-mock-store';
+import { shallow } from 'enzyme';
+import { shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
+import toJson from 'enzyme-to-json';
+import renderer from 'react-test-renderer';
+import translations from '../src/translations/en.json';
+import io from '../src/components/common/io';
+
+loadTranslationObject(translations);
+
+const initialState = {
+  open: false,
+  errors: [],
+  elements: [
+    {
+      id: '0x00000000001',
+      size: '300000',
+      cache_size: '256',
+      state: 'online',
+    },
+    {
+      id: '0x00000000002',
+      size: '2000',
+      cache_size: '128',
+      state: 'offline',
+    }
+  ]
+}
+const mockStore= configureStore();
+let store;
+let wrapper;
+let instance;
+beforeEach(() =&gt; {
+  store = mockStore(initialState);
+  wrapper = shallowWithIntl(&lt;Raids store={store} {...defaultProps} /&gt;).shallow().dive();
+  instance = wrapper.instance();
+});
+
+describe('Check Initial State', () =&gt; {
+  it('Open set to false', () =&gt; {
+    expect(wrapper.state('open')).toBe(false);
+  });
+  it('Errors set to empty array', () =&gt; {
+    expect(wrapper.state('errors')).toEqual([]);
+  });
+});
+
+describe('Simulate Events', () =&gt; {
+  it('Calls checkErrors on button click', () =&gt; {
+    wrapper.instance().checkErrors = jest.fn();
+    wrapper.find('.buttonSubmit').simulate('click');
+    expect(wrapper.instance().checkErrors).toHaveBeenCalled();
+  });
+});
+
+describe('Component Methods', () =&gt; {
+  it('Tests state value after calling method', () =&gt; {
+    const expectedValue = 'AAAAAAAAAA';
+    instance.selectName(expectedValue);
+    expect(wrapper.state(['elementName'])).toBe(expectedValue);
+  });
+});
+
+describe('Snapshots tests', () =&gt; {
+  it('Tests component rendering snapshot', () =&gt; {
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  it('DisplayErrors match snapshot', () =&gt; {
+    const instance = wrapper.instance();
+    const displayErrors = instance.displayErrors();
+    const errorRender = renderer.create(displayErrors).toJSON();
+    expect(errorRender).toMatchSnapshot();
+  });
+});
+
+describe('Component Rendering', () =&gt; {
+  it('Renders header', () =&gt; {
+    const header = wrapper.find('ModalHeader').exists();
+    expect(header).toBe(true);
+  });
+  it('Renders content', () =&gt; {
+    const content = wrapper.find('ModalContent').exists();
+    expect(content).toBe(true);
+  });
+  it('Renders actions', () =&gt; {
+    const actions = wrapper.find('ModalActions').exists();
+    expect(actions).toBe(true);
+  });
+});
+
+describe('Emit data check', () =&gt; {
+  const emit = jest.spyOn(io, 'emit');
+  it('Submit form with correct data', () =&gt; {
+    instance.createElement();
+    const uuid = expect.any(String);
+    expect(emit).toHaveBeenCalledWith('action', { elements: [elementInfo], action_type: 'create_element', uuid });
+  });
+});
+
 </code></pre></div>
         </div>
 
