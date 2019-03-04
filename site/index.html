@@ -47,7 +47,7 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href=".">GIT</a>
+                                <a href=".">TOOLS</a>
                             </li>
                             <li >
                                 <a href="frontend/">FRONTEND</a>
@@ -78,20 +78,22 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#git">GIT</a></li>
-        <li class="main "><a href="#rest-api">REST API</a></li>
-        <li class="main "><a href="#graphql">GRAPHQL</a></li>
-        <li class="main "><a href="#linux">LINUX</a></li>
-        <li class="main "><a href="#webpack">WEBPACK</a></li>
-        <li class="main "><a href="#nodenpm">NODE/NPM</a></li>
-        <li class="main "><a href="#babel">BABEL</a></li>
-        <li class="main "><a href="#docker">DOCKER</a></li>
-        <li class="main "><a href="#links">LINKS</a></li>
+        <li class="main active"><a href="#tools">TOOLS</a></li>
+            <li><a href="#git">GIT</a></li>
+            <li><a href="#linux">LINUX</a></li>
+            <li><a href="#webpack">WEBPACK</a></li>
+            <li><a href="#nodenpm">NODE/NPM</a></li>
+            <li><a href="#babel">BABEL</a></li>
+            <li><a href="#docker">DOCKER</a></li>
+            <li><a href="#links">LINKS</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="git">GIT</h1>
+<h1 id="tools">TOOLS</h1>
+<hr />
+<p><h4>Tools and stuff useful for both frontend and backend.</h4></p>
+<h2 id="git">GIT</h2>
 <h3>Install git</h3>
 
 <pre><code>sudo apt-get update
@@ -329,144 +331,7 @@ git reset --hard HEAD^     # use --hard if you don't care about keeping the chan
 <pre><code>git checkout -- &lt;file&gt;
 </code></pre>
 
-<h1 id="rest-api">REST API</h1>
-<p>A REST API consists of an assembly of interlinked resources.<br />
-A Web API conforming to the REST architectural style is a REST API.<br />
-Having a REST API makes a web service “RESTful.”<br />
-A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
-<p>URI Format<br />
-generic URI syntax as shown below:  </p>
-<pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
-</code></pre>
-
-<p>Forward slash separator (/) indicates a hierarchical relationship<br />
-underscores (_) should not be used in uris<br />
-Trailing forward slash (/) should not be included in uris<br />
-hyphens (-) should be used to improve readability of uris<br />
-lowercase letters should be preferred in uri paths<br />
-crud function names should not be used in uris<br />
-query component of a URI may be used to filter collections or stores</p>
-<p>Request Methods
-CRUD requests: DELETE, GET, POST, PUT<br />
-HEAD retrieve metadata.<br />
-OPTIONS retrieve metadata of resource’s available interactions.  </p>
-<p>Some Responses status
-200 success
-201 new resource has been created
-202 Accepted, start of an asynchronous action
-204 No Content body left blank
-301 Moved Permanently
-400 Bad Request Indicates a nonspecific client error
-401 Unauthorized
-402 Forbidden
-404 Not Found
-405 Method Not Allowed</p>
-<p>HTTP Headers
-Various forms of metadata may be conveyed through the entity headers.    </p>
-<p>Request headers
-Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
-User-Agent: identify the application type, operating system, software vendor
-Host: The Host request header specifies the domain name of the server<br />
-X-Requested-With: Mainly used to identify AJAX requests.<br />
-Accept-Language which languages the client is able to understand  </p>
-<p>Response headers<br />
-Content-Type<br />
-Content-Length  size of the response body<br />
-Set-Cookie used to send cookies from the server to the client.
- Body Format
-A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
-Today, the most commonly used text formats is JSON.</p>
-<h1 id="graphql">GRAPHQL</h1>
-<p>GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.<br />
-- Open source and created by Facebook<br />
-- Gives clients the power to describe exactly what data they want<br />
-- Can sit in front of any existing API because its just a query language  </p>
-<p>GraphQL vs REST
-- GraphQL only has one URL.<br />
-  Request details are in a POST body (or GET)<br />
-- In REST, shape and size of data resource is determined by the server,<br />
-  In Graphql its determined by the query (request)<br />
-- In REST, you have to male multiple API calls to retrieve relational data,<br />
-  in GraphQL you can start with entry resource and traverse all the connections in one request<br />
-- In REST, the shape of the response is determined by whom ever created the server, <br />
-  in GraphQL the shape is determined by the query  </p>
-<p>Terminology<br />
-- Query - Queries specify which endpoints we want to call, how we want the response to look<br />
-- Fields - Properties that comprise the shape of a response<br />
-- Type - A collection of fields that make up a specific queryable object.<br />
-- Mutation - A special kind of GraphQL query that causes changes to the data available on the backend<br />
-- Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information<br />
-- Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint<br />
-- Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </p>
-<p>Example frontend graphql query in react</p>
-<pre><code>npm install -g npx // (npx comes with npm 5.2+ and higher)
-npx create-react-app react-graphql-test
-npm start
-</code></pre>
-
-<p>Dependencies install  </p>
-<pre><code>npm install apollo-boost react-apollo graphql-tag graphql
-</code></pre>
-
-<p>apollo-boost: Package containing reccomended Apollo Client setup<br />
-react-apollo: View layer integration for React<br />
-graphql-tag: Necessary for parsing your GraphQL queries<br />
-graphql: Also parses your GraphQL queries  </p>
-<p>in App.js  </p>
-<pre><code>import ApolloClient from &quot;apollo-boost&quot;;
-const client = new ApolloClient({
-  uri: &quot;[Insert URI of GraphQL endpoint]&quot;
-});
-</code></pre>
-
-<p>Connect the instance of ApolloClient to the React app</p>
-<pre><code>import { ApolloProvider } from &quot;react-apollo&quot;;
-...
-const App = () =&gt; (
-  &lt;ApolloProvider client={client}&gt;
-    &lt;div&gt;
-      &lt;h2&gt;My first Apollo app&lt;/h2&gt;
-    &lt;/div&gt;
-  &lt;/ApolloProvider&gt;
-);
-</code></pre>
-
-<p>Retrieve a list of Courses.<br />
-Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  </p>
-<pre><code>import React from 'react';
-import { Query } from &quot;react-apollo&quot;;
-import gql from &quot;graphql-tag&quot;;
-const Courses = () =&gt; (
-  &lt;Query
-    query={gql`
-      {
-        allCourses {
-          id
-          title
-          author
-          description
-          topic
-          url
-        }
-      }
-    `}
-  &gt;
-    {({ loading, error, data }) =&gt; {
-      if (loading) return &lt;p&gt;Loading...&lt;/p&gt;;
-      if (error) return &lt;p&gt;Error :(&lt;/p&gt;;
-      return data.allCourses.map(({ id, title, author, description, topic, url }) =&gt; (
-        &lt;div key={id}&gt;
-          &lt;p&gt;{`${title} by ${author}`}&lt;/p&gt;
-        &lt;/div&gt;
-      ));
-    }}
-  &lt;/Query&gt;
-);
-export default Courses;
-</code></pre>
-
-<hr />
-<h1 id="linux">LINUX</h1>
+<h2 id="linux">LINUX</h2>
 <p>Systems Directories</p>
 <pre><code>/ The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
@@ -638,7 +503,7 @@ echo &quot;/var/cache/swap/swapfile none swap sw 0 0&quot; | sudo tee -a /etc/fs
 </code></pre>
 
 <hr />
-<h1 id="webpack">WEBPACK</h1>
+<h2 id="webpack">WEBPACK</h2>
 <p>webpack installation</p>
 <pre><code>npm install --save-dev webpack
 </code></pre>
@@ -666,7 +531,7 @@ module.exports = {
 </code></pre>
 
 <hr />
-<h1 id="nodenpm">NODE/NPM</h1>
+<h2 id="nodenpm">NODE/NPM</h2>
 <p>version</p>
 <pre><code>which node
 which npm
@@ -991,7 +856,7 @@ touch index.html
 <pre><code>npm start
 </code></pre>
 
-<h1 id="babel">BABEL</h1>
+<h2 id="babel">BABEL</h2>
 <p>Babel transpiles back to vanilla JavaScript so that every browser can interpret it. </p>
 <pre><code>npm install --save-dev @babel/core @babel/preset-env
 </code></pre>
@@ -1102,7 +967,7 @@ module.exports = {
 </code></pre>
 
 <hr />
-<h1 id="docker">DOCKER</h1>
+<h2 id="docker">DOCKER</h2>
 <p>Docker terminology
 - Images: The blueprints of our application which form the basis of containers.<br />
 - Containers: Created from Docker images and run the actual application. 
@@ -1517,7 +1382,7 @@ Removing a Running Container  </p>
 <pre><code>docker system prune -a
 </code></pre>
 
-<h1 id="links">LINKS</h1>
+<h2 id="links">LINKS</h2>
 <p>React<br />
 <a href="https://github.com/enaqx/awesome-react">Awesome-react</a><br />
 <a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a>
@@ -1547,23 +1412,26 @@ Removing a Running Container  </p>
 <a href="http://landoflinux.com/linux_basic_fundamentals.html">Linux commands</a>  </p>
 <p>Various links<br />
 <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Github pages markdown</a><br />
-<a href="https://github.com/phw/peek">Recording Screen</a>
-<a href="https://www.sitepoint.com/">Site Point</a>
-<a href="https://devhints.io">Cheatsheets</a>
-<a href="https://help.github.com/">Github help</a>
-<a href="https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf">REST API Design Rulebook</a>
-<a href="https://www.mkdocs.org">Static site generator</a>
-<a href="https://github.com/sindresorhus/awesome#front-end-development">Awesome frontend</a>
-<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">Interview questions</a>
-<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">Deploy mkdocs to github</a>
-<a href="https://github.com/thoov/mock-socket">Mock socket</a>
-<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">Mock socket</a>
-<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">Socket unit testing</a>
-<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">Socket+jest boilerplate</a></p>
-<p>https://github.com/howtographql/react-apollo<br />
-https://www.howtographql.com/react-apollo/0-introduction/<br />
-https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js<br />
-https://www.howtographql.com/react-apollo/1-getting-started/</p></div>
+<a href="https://github.com/phw/peek">Recording Screen</a><br />
+<a href="https://www.sitepoint.com/">Site Point</a><br />
+<a href="https://devhints.io">Cheatsheets</a><br />
+<a href="https://help.github.com/">Github help</a><br />
+<a href="https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf">REST API Design Rulebook</a><br />
+<a href="https://www.mkdocs.org">Static site generator</a><br />
+<a href="https://github.com/sindresorhus/awesome#front-end-development">Awesome frontend</a><br />
+<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">Interview questions</a><br />
+<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">Deploy mkdocs to github</a><br />
+<a href="https://github.com/thoov/mock-socket">Mock socket</a><br />
+<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">Mock socket</a><br />
+<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">Socket unit testing</a><br />
+<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">Socket+jest boilerplate</a>  </p>
+<!--
+https://github.com/howtographql/react-apollo  
+https://www.howtographql.com/react-apollo/0-introduction/  
+https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
+https://www.howtographql.com/react-apollo/1-getting-started/
+https://www.javascript.com/resources
+--></div>
         </div>
 
         <footer class="col-md-12">
@@ -1646,5 +1514,5 @@ https://www.howtographql.com/react-apollo/1-getting-started/</p></div>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-03-03 19:40:46
+Build Date UTC : 2019-03-04 10:24:16
 -->
