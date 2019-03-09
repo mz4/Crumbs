@@ -1299,3 +1299,104 @@ useful for debug
 console.log(wrapper.debug());
 ```
 
+```javascript
+import configureStore from 'redux-mock-store';
+import { shallow } from 'enzyme';
+import { shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
+import toJson from 'enzyme-to-json';
+import renderer from 'react-test-renderer';
+import translations from '../src/translations/en.json';
+import io from '../src/components/common/io';
+
+loadTranslationObject(translations);
+
+const initialState = {
+  open: false,
+  errors: [],
+  elements: [
+    {
+      id: '0x00000000001',
+      size: '300000',
+      cache_size: '256',
+      state: 'online',
+    },
+    {
+      id: '0x00000000002',
+      size: '2000',
+      cache_size: '128',
+      state: 'offline',
+    }
+  ]
+}
+const mockStore= configureStore();
+let store;
+let wrapper;
+let instance;
+beforeEach(() => {
+  store = mockStore(initialState);
+  wrapper = shallowWithIntl(<Raids store={store} {...defaultProps} />).shallow().dive();
+  instance = wrapper.instance();
+});
+
+describe('Check Initial State', () => {
+  it('Open set to false', () => {
+    expect(wrapper.state('open')).toBe(false);
+  });
+  it('Errors set to empty array', () => {
+    expect(wrapper.state('errors')).toEqual([]);
+  });
+});
+
+describe('Simulate Events', () => {
+  it('Calls checkErrors on button click', () => {
+    wrapper.instance().checkErrors = jest.fn();
+    wrapper.find('.buttonSubmit').simulate('click');
+    expect(wrapper.instance().checkErrors).toHaveBeenCalled();
+  });
+});
+
+describe('Component Methods', () => {
+  it('Tests state value after calling method', () => {
+    const expectedValue = 'AAAAAAAAAA';
+    instance.selectName(expectedValue);
+    expect(wrapper.state(['elementName'])).toBe(expectedValue);
+  });
+});
+
+describe('Snapshots tests', () => {
+  it('Tests component rendering snapshot', () => {
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  it('DisplayErrors match snapshot', () => {
+    const instance = wrapper.instance();
+    const displayErrors = instance.displayErrors();
+    const errorRender = renderer.create(displayErrors).toJSON();
+    expect(errorRender).toMatchSnapshot();
+  });
+});
+
+describe('Component Rendering', () => {
+  it('Renders header', () => {
+    const header = wrapper.find('ModalHeader').exists();
+    expect(header).toBe(true);
+  });
+  it('Renders content', () => {
+    const content = wrapper.find('ModalContent').exists();
+    expect(content).toBe(true);
+  });
+  it('Renders actions', () => {
+    const actions = wrapper.find('ModalActions').exists();
+    expect(actions).toBe(true);
+  });
+});
+
+describe('Emit data check', () => {
+  const emit = jest.spyOn(io, 'emit');
+  it('Submit form with correct data', () => {
+    instance.createElement();
+    const uuid = expect.any(String);
+    expect(emit).toHaveBeenCalledWith('action', { elements: [elementInfo], action_type: 'create_element', uuid });
+  });
+});
+
+```
