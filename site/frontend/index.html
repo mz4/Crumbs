@@ -47,10 +47,13 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="..">GIT</a>
+                                <a href="..">TOOLS</a>
                             </li>
                             <li class="active">
                                 <a href="./">FRONTEND</a>
+                            </li>
+                            <li >
+                                <a href="../backend/">BACKEND</a>
                             </li>
                         </ul>
 
@@ -65,8 +68,8 @@
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../backend/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -82,13 +85,18 @@
             <li><a href="#javascript">JAVASCRIPT</a></li>
             <li><a href="#es6">ES6</a></li>
             <li><a href="#react">REACT</a></li>
-        <li class="main "><a href="#css3sass">CSS3/SASS</a></li>
+            <li><a href="#rest-api">REST API</a></li>
+            <li><a href="#axios-http-client">Axios - HTTP client</a></li>
+            <li><a href="#graphql">GRAPHQL</a></li>
+            <li><a href="#socket">SOCKET</a></li>
+            <li><a href="#css3sass">CSS3/SASS</a></li>
             <li><a href="#testing">TESTING</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="frontend">FRONTEND</h1>
+<hr />
 <h2 id="javascript">JAVASCRIPT</h2>
 <h4>Execution Context</h4>
 
@@ -247,7 +255,6 @@ A callback is a simple function that’s passed as a value to another function, 
     });
 </code></pre>
 
-<hr />
 <h2 id="es6">ES6</h2>
 <p>Spread Operator 1  </p>
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
@@ -350,7 +357,6 @@ const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
 console.log(prices); // [649, 576, 489]
 </code></pre>
 
-<hr />
 <h2 id="react">REACT</h2>
 <p>State<br />
 React is all about one-way data flow down the component hierarchy.<br />
@@ -725,7 +731,172 @@ export default function todosReducer(state = initialState, action) {
 }
 </code></pre>
 
-<p>socket</p>
+<h2 id="rest-api">REST API</h2>
+<p>A REST API consists of an assembly of interlinked resources.<br />
+A Web API conforming to the REST architectural style is a REST API.<br />
+Having a REST API makes a web service “RESTful.”<br />
+A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
+<p>URI Format<br />
+generic URI syntax as shown below:  </p>
+<pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
+</code></pre>
+
+<p>Forward slash separator (/) indicates a hierarchical relationship<br />
+underscores (_) should not be used in uris<br />
+Trailing forward slash (/) should not be included in uris<br />
+hyphens (-) should be used to improve readability of uris<br />
+lowercase letters should be preferred in uri paths<br />
+crud function names should not be used in uris<br />
+query component of a URI may be used to filter collections or stores</p>
+<p>Request Methods
+CRUD requests: DELETE, GET, POST, PUT<br />
+HEAD retrieve metadata.<br />
+OPTIONS retrieve metadata of resource’s available interactions.  </p>
+<p>Some Responses status
+200 success
+201 new resource has been created
+202 Accepted, start of an asynchronous action
+204 No Content body left blank
+301 Moved Permanently
+400 Bad Request Indicates a nonspecific client error
+401 Unauthorized
+402 Forbidden
+404 Not Found
+405 Method Not Allowed</p>
+<p>HTTP Headers
+Various forms of metadata may be conveyed through the entity headers.    </p>
+<p>Request headers
+Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
+User-Agent: identify the application type, operating system, software vendor
+Host: The Host request header specifies the domain name of the server<br />
+X-Requested-With: Mainly used to identify AJAX requests.<br />
+Accept-Language which languages the client is able to understand  </p>
+<p>Response headers<br />
+Content-Type<br />
+Content-Length  size of the response body<br />
+Set-Cookie used to send cookies from the server to the client.
+ Body Format
+A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
+Today, the most commonly used text formats is JSON.</p>
+<h2 id="axios-http-client">Axios - HTTP client</h2>
+<p>Axios install  </p>
+<pre><code>npm install axios --save
+</code></pre>
+
+<p>Basic get request</p>
+<pre><code>  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res =&gt; {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+  }
+</code></pre>
+
+<p>Multiple get requests</p>
+<pre><code>let URL1 = &quot;https://www.something.com&quot;
+let URL2 = &quot;https://www.something1.com
+let URL3 = &quot;https://www.something2.com&quot;
+
+const promise1 = axios.get(URL1);
+const promise2 = axios.get(URL2);
+const promise3 = axios.get(URL3);
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
+</code></pre>
+
+<h2 id="graphql">GRAPHQL</h2>
+<p>GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.<br />
+- Open source and created by Facebook<br />
+- Gives clients the power to describe exactly what data they want<br />
+- Can sit in front of any existing API because its just a query language  </p>
+<p>GraphQL vs REST
+- GraphQL only has one URL.<br />
+  Request details are in a POST body (or GET)<br />
+- In REST, shape and size of data resource is determined by the server,<br />
+  In Graphql its determined by the query (request)<br />
+- In REST, you have to male multiple API calls to retrieve relational data,<br />
+  in GraphQL you can start with entry resource and traverse all the connections in one request<br />
+- In REST, the shape of the response is determined by whom ever created the server, <br />
+  in GraphQL the shape is determined by the query  </p>
+<p>Terminology<br />
+- Query - Queries specify which endpoints we want to call, how we want the response to look<br />
+- Fields - Properties that comprise the shape of a response<br />
+- Type - A collection of fields that make up a specific queryable object.<br />
+- Mutation - A special kind of GraphQL query that causes changes to the data available on the backend<br />
+- Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information<br />
+- Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint<br />
+- Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </p>
+<p>Example frontend graphql query in react</p>
+<pre><code>npm install -g npx // (npx comes with npm 5.2+ and higher)
+npx create-react-app react-graphql-test
+npm start
+</code></pre>
+
+<p>Dependencies install  </p>
+<pre><code>npm install apollo-boost react-apollo graphql-tag graphql
+</code></pre>
+
+<p>apollo-boost: Package containing reccomended Apollo Client setup<br />
+react-apollo: View layer integration for React<br />
+graphql-tag: Necessary for parsing your GraphQL queries<br />
+graphql: Also parses your GraphQL queries  </p>
+<p>in App.js  </p>
+<pre><code>import ApolloClient from &quot;apollo-boost&quot;;
+const client = new ApolloClient({
+  uri: &quot;[Insert URI of GraphQL endpoint]&quot;
+});
+</code></pre>
+
+<p>Connect the instance of ApolloClient to the React app</p>
+<pre><code>import { ApolloProvider } from &quot;react-apollo&quot;;
+...
+const App = () =&gt; (
+  &lt;ApolloProvider client={client}&gt;
+    &lt;div&gt;
+      &lt;h2&gt;My first Apollo app&lt;/h2&gt;
+    &lt;/div&gt;
+  &lt;/ApolloProvider&gt;
+);
+</code></pre>
+
+<p>Retrieve a list of Courses.<br />
+Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  </p>
+<pre><code>import React from 'react';
+import { Query } from &quot;react-apollo&quot;;
+import gql from &quot;graphql-tag&quot;;
+const Courses = () =&gt; (
+  &lt;Query
+    query={gql`
+      {
+        allCourses {
+          id
+          title
+          author
+          description
+          topic
+          url
+        }
+      }
+    `}
+  &gt;
+    {({ loading, error, data }) =&gt; {
+      if (loading) return &lt;p&gt;Loading...&lt;/p&gt;;
+      if (error) return &lt;p&gt;Error :(&lt;/p&gt;;
+      return data.allCourses.map(({ id, title, author, description, topic, url }) =&gt; (
+        &lt;div key={id}&gt;
+          &lt;p&gt;{`${title} by ${author}`}&lt;/p&gt;
+        &lt;/div&gt;
+      ));
+    }}
+  &lt;/Query&gt;
+);
+export default Courses;
+</code></pre>
+
+<h2 id="socket">SOCKET</h2>
 <p>socket client</p>
 <p>socket install </p>
 <pre><code>npm i socket.io-client
@@ -769,36 +940,7 @@ def upload_license_action(args):
             kwargs={'data': data, 'sid': sid, 'uuid': uuid})
 </code></pre>
 
-<p>Axios - HTTP client<br />
-Axios install  </p>
-<pre><code>npm install axios --save
-</code></pre>
-
-<p>Basic get request</p>
-<pre><code>  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res =&gt; {
-        const persons = res.data;
-        this.setState({ persons });
-      })
-  }
-</code></pre>
-
-<p>Multiple get requests</p>
-<pre><code>let URL1 = &quot;https://www.something.com&quot;
-let URL2 = &quot;https://www.something1.com
-let URL3 = &quot;https://www.something2.com&quot;
-
-const promise1 = axios.get(URL1);
-const promise2 = axios.get(URL2);
-const promise3 = axios.get(URL3);
-
-Promise.all([promise1, promise2, promise3]).then(function(values) {
-  console.log(values);
-});
-</code></pre>
-
-<h1 id="css3sass">CSS3/SASS</h1>
+<h2 id="css3sass">CSS3/SASS</h2>
 <h3>Responsive Design</h3>
 
 <h4>Defined by three characteristics</h4>
