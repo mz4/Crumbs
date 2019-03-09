@@ -328,7 +328,39 @@ symmetric_difference()  Returns the symmetric difference of two sets as a new se
 symmetric_difference_update()   Updates a set with the symmetric difference of itself and another
 union() Returns the union of sets in a new set
 update()    Updates the set with the union of itself and others
-</code></pre></div>
+</code></pre>
+
+<hr />
+<p>Get minimum/max/sort value from a dictionary</p>
+<pre><code>prices = {
+ 'shows': 41,
+ 'tshirts': 55,
+ 'gloves': 22,
+ 'hats': 11
+}
+
+min_price = min(zip(prices.values(), prices.keys()))
+max_price = max(zip(prices.values(), prices.keys()))
+prices_sorted = sorted(zip(prices.values(), prices.keys()))
+</code></pre>
+
+<p>Given two dictionaries</p>
+<pre><code># Find keys in common
+a.keys() &amp; b.keys()
+# Find keys in a that are not in b
+a.keys() - b.keys()
+# Find (key,value) pairs in common
+a.items() &amp; b.items()
+# Make a new dictionary with certain keys removed
+c = {key:a[key] for key in a.keys() - {'z', 'w'}}
+# Make a dictionary of all prices over 200
+p1 = { key:value for key, value in prices.items() if value &gt; 200 }
+# Make a dictionary of tech stocks
+tech_names = { 'AA', 'BB', 'CC', 'DD' }
+p2 = { key:value for key,value in prices.items() if key in tech_names }
+</code></pre>
+
+<p>https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf</p></div>
         </div>
 
         <footer class="col-md-12">
