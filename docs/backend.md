@@ -249,4 +249,37 @@ union()	Returns the union of sets in a new set
 update()	Updates the set with the union of itself and others
 ```
 
+---
+
+Get minimum/max/sort value from a dictionary
+```
+prices = {
+ 'shows': 41,
+ 'tshirts': 55,
+ 'gloves': 22,
+ 'hats': 11
+}
+
+min_price = min(zip(prices.values(), prices.keys()))
+max_price = max(zip(prices.values(), prices.keys()))
+prices_sorted = sorted(zip(prices.values(), prices.keys()))
+```
+
+Given two dictionaries
+```
+# Find keys in common
+a.keys() & b.keys()
+# Find keys in a that are not in b
+a.keys() - b.keys()
+# Find (key,value) pairs in common
+a.items() & b.items()
+# Make a new dictionary with certain keys removed
+c = {key:a[key] for key in a.keys() - {'z', 'w'}}
+# Make a dictionary of all prices over 200
+p1 = { key:value for key, value in prices.items() if value > 200 }
+# Make a dictionary of tech stocks
+tech_names = { 'AA', 'BB', 'CC', 'DD' }
+p2 = { key:value for key,value in prices.items() if key in tech_names }
+```
+https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf
 
