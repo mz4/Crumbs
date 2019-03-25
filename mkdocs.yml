@@ -1,6 +1,7 @@
 nav:
 - 'index.md'
 - 'frontend.md'
+- 'backend.md'
 site_name: Crumbs
 site_description: Description of the documentation
 theme: slate
