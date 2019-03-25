@@ -283,3 +283,90 @@ p2 = { key:value for key,value in prices.items() if key in tech_names }
 ```
 https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf
 
+## NODE
+<h4>About</h4>
+Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.  
+
+<h4>Features of Node.js</h4>
+- Asynchronous and Event Driven  
+- Fast: based on Google Chrome's V8 JavaScript Engine  
+- Single Threaded but scalable: Event mechanism helps the server to respond in a non-blocking way  
+- No buffering  
+
+<h4>Node components</h4>
+A Node.js application consists of the following three components:  
+- Import required modules: Use the require directive to load Node.js modules.  
+- Create server: A server which will listen to client's requests similar to Apache HTTP Server.  
+- Read request and return response: Read the HTTP request made by the client which can be a browser or a console and return the response.  
+
+<h4>Node application 'Hello World'</h4>
+Import required module:
+```
+var http = require("http");
+```
+
+Create Server main.js
+```
+http.createServer(function (request, response) {
+
+ // Send the HTTP header
+ // HTTP Status: 200 : OK
+ // Content Type: text/plain
+ response.writeHead(200, {'Content-Type': 'text/plain'});
+
+ // Send the response body
+ response.end('Hello World\n');
+}).listen(8081);
+
+// Console print the message
+console.log('Server running at http://127.0.0.1:8081/');
+```
+
+Run it
+```
+node main.js
+```
+
+<h4>REPL stands for Read Eval Print Loop</h4>
+REPL stands for Read Eval Print Loop.  
+it represents a computer environment like a Windows console or Unix/Linux shell where a command is entered and the system responds with an output in an interactive mode.  
+REPL can be started by simply running node on shell/console.  
+
+<h4>NPM node package manager</h4>
+- Online repositories for node.js  
+- Command line utility to install Node.js packages  
+
+<h4>Install Modules using npm</h4>
+```
+npm install <Module Name>
+```
+
+install express
+```
+npm install express
+```
+use it as follow:
+```
+var express = require('express');
+```
+other commands
+```
+npm uninstall express
+npm update express
+npm search express
+```
+
+<h4>Callback function</h4>
+A callback function is called at the completion of a given task.  
+Node makes heavy use of callbacks.  
+All the APIs of Node are written in such a way that they support callbacks.  
+```
+var fs = require("fs");
+fs.readFile('input.txt', function (err, data) {
+ if (err) return console.error(err);
+ console.log(data.toString());
+});
+console.log("Program Ended");
+```
+
+
