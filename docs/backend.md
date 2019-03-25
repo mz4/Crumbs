@@ -369,4 +369,98 @@ fs.readFile('input.txt', function (err, data) {
 console.log("Program Ended");
 ```
 
+<h4>Events driven</h4>
+Whenever an event gets fired, its listener function starts executing.  
+EventEmitter class which is used to bind events and event-listeners.  
+Any async function accepts a callback as the last parameter and a callback function accepts an error as the first parameter.  
+```
+// Import events module
+var events = require('events');
 
+// Create an eventEmitter object
+var eventEmitter = new events.EventEmitter();
+
+// Bind event and event  handler as follows
+eventEmitter.on('eventName', eventHandler);
+```
+
+// Fire an event 
+```
+eventEmitter.emit('eventName');
+```
+
+<h4>EventEmitter</h4>
+```
+// Import events module
+var events = require('events');
+
+// Create an eventEmitter object
+var eventEmitter = new events.EventEmitter();
+```
+
+Methods
+```
+addListener(event, listener)
+on(event, listener)
+once(event, listener)
+removeListener(event, listener)
+removeAllListeners([event])
+setMaxListeners(n)
+listeners(event)
+emit(event, [arg1], [arg2], [...])
+```
+
+Class Methods
+```
+listenerCount(emitter, event)
+```
+
+Events
+```
+newListener
+removeListener
+```
+
+```
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
+// listener #1
+var listner1 = function listner1() {
+   console.log('listner1 executed.');
+}
+
+// listener #2
+var listner2 = function listner2() {
+   console.log('listner2 executed.');
+}
+
+// Bind the connection event with the listner1 function
+eventEmitter.addListener('connection', listner1);
+
+// Bind the connection event with the listner2 function
+eventEmitter.on('connection', listner2);
+
+var eventListeners = require('events').EventEmitter.listenerCount
+   (eventEmitter,'connection');
+console.log(eventListeners + " Listner(s) listening to connection event");
+
+// Fire the connection event 
+eventEmitter.emit('connection');
+
+// Remove the binding of listner1 function
+eventEmitter.removeListener('connection', listner1);
+console.log("Listner1 will not listen now.");
+
+// Fire the connection event 
+eventEmitter.emit('connection');
+
+eventListeners = require('events').EventEmitter.listenerCount(eventEmitter,'connection');
+console.log(eventListeners + " Listner(s) listening to connection event");
+
+console.log("Program Ended.");
+```
+
+```
+node main.js
+```
