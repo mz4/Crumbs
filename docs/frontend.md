@@ -689,10 +689,17 @@ export default function todosReducer(state = initialState, action) {
 
 ## REST API  
 
-A REST API consists of an assembly of interlinked resources.  
+REST stands for REpresentational State Transfer. 
+REST is web standards based architecture and uses HTTP Protocol. 
+It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.  
 A Web API conforming to the REST architectural style is a REST API.  
 Having a REST API makes a web service “RESTful.”  
 A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
+
+A web service is a collection of open protocols and standards used for exchanging data between applications or systems.  
+Web services based on REST Architecture are known as RESTful web services.  
+These webservices uses HTTP methods to implement the concept of REST architecture.  
+A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.
 
 URI Format  
 generic URI syntax as shown below:  

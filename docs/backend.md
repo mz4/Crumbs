@@ -295,6 +295,7 @@ Node.js is an open source, cross-platform runtime environment for developing ser
 
 <h4>Node components</h4>
 A Node.js application consists of the following three components:  
+
 - Import required modules: Use the require directive to load Node.js modules.  
 - Create server: A server which will listen to client's requests similar to Apache HTTP Server.  
 - Read request and return response: Read the HTTP request made by the client which can be a browser or a console and return the response.  
@@ -369,4 +370,108 @@ fs.readFile('input.txt', function (err, data) {
 console.log("Program Ended");
 ```
 
+<h4>Streams</h4>
+Streams are objects that let you continuosly read data.  
+There are 4 types of stream:
+- Readable  
+- Writable  
+- Duplex  
+- Trasform  
 
+example
+```
+var fs = require("fs");
+var data = '';
+
+// Readable stream
+var readerStream = fs.createReadStream('input.txt');
+
+// Encoding to be utf8. 
+readerStream.setEncoding('UTF8');
+
+// Stream events
+readerStream.on('data', function(chunk) {
+   data += chunk;
+});
+
+readerStream.on('end',function() {
+   console.log(data);
+});
+
+readerStream.on('error', function(err) {
+   console.log(err.stack);
+});
+
+console.log("End");
+```
+
+<h4>Modules</h4>
+Utility modules:
+- OS Module  
+- Path Module  
+- Net Module  
+- DNS Module  
+- Domain Module  
+
+<h4>Express</h4>
+Express is a minimal Node.js web application framework.  
+Allows to set up middlewares to respond to HTTP Requests.  
+Defines a routing table which is used to perform different actions based on HTTP Method and URL.  
+Allows to dynamically render HTML Pages based on passing arguments to templates.  
+
+Install Express
+```
+npm install express --save
+```
+
+Other important modules:  
+body-parser − middleware for handling JSON, Raw, Text and URL encoded form data.  
+cookie-parser − Parse Cookie header  
+multer − This is a node.js middleware for handling multipart/form-data.  
+
+```
+$ npm install body-parser --save
+$ npm install cookie-parser --save
+$ npm install multer --save
+```
+
+Express example:  
+```
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+   res.send('Hello World');
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   
+   console.log("Example app listening at http://%s:%s", host, port)
+})
+```
+Run it
+```
+node server.js
+```
+
+Return a list of users from a JSON file:  
+```
+var express = require('express');
+var app = express();
+var fs = require("fs");
+
+app.get('/listUsers', function (req, res) {
+   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+      console.log( data );
+      res.end( data );
+   });
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   console.log("Example app listening at http://%s:%s", host, port)
+})
+```
