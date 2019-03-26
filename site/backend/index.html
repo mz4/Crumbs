@@ -492,64 +492,6 @@ console.log(&quot;End&quot;);
 - Net Module<br />
 - DNS Module<br />
 - Domain Module  </p>
-<h4>Express</h4>
-
-<p>Express is a minimal Node.js web application framework.<br />
-Allows to set up middlewares to respond to HTTP Requests.<br />
-Defines a routing table which is used to perform different actions based on HTTP Method and URL.<br />
-Allows to dynamically render HTML Pages based on passing arguments to templates.  </p>
-<p>Install Express</p>
-<pre><code>npm install express --save
-</code></pre>
-
-<p>Other important modules:<br />
-body-parser − middleware for handling JSON, Raw, Text and URL encoded form data.<br />
-cookie-parser − Parse Cookie header<br />
-multer − This is a node.js middleware for handling multipart/form-data.  </p>
-<pre><code>$ npm install body-parser --save
-$ npm install cookie-parser --save
-$ npm install multer --save
-</code></pre>
-
-<p>Express example:  </p>
-<pre><code>var express = require('express');
-var app = express();
-
-app.get('/', function (req, res) {
-   res.send('Hello World');
-})
-
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-
-   console.log(&quot;Example app listening at http://%s:%s&quot;, host, port)
-})
-</code></pre>
-
-<p>Run it</p>
-<pre><code>node server.js
-</code></pre>
-
-<p>Return a list of users from a JSON file:  </p>
-<pre><code>var express = require('express');
-var app = express();
-var fs = require(&quot;fs&quot;);
-
-app.get('/listUsers', function (req, res) {
-   fs.readFile( __dirname + &quot;/&quot; + &quot;users.json&quot;, 'utf8', function (err, data) {
-      console.log( data );
-      res.end( data );
-   });
-})
-
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   console.log(&quot;Example app listening at http://%s:%s&quot;, host, port)
-})
-</code></pre>
-
 <h4>Events driven</h4>
 
 <p>Whenever an event gets fired, its listener function starts executing.<br />
@@ -638,6 +580,64 @@ console.log(&quot;Program Ended.&quot;);
 </code></pre>
 
 <pre><code>node main.js
+</code></pre>
+
+<h4>Express</h4>
+
+<p>Express is a minimal Node.js web application framework.<br />
+Allows to set up middlewares to respond to HTTP Requests.<br />
+Defines a routing table which is used to perform different actions based on HTTP Method and URL.<br />
+Allows to dynamically render HTML Pages based on passing arguments to templates.  </p>
+<p>Install Express</p>
+<pre><code>npm install express --save
+</code></pre>
+
+<p>Other important modules:<br />
+body-parser − middleware for handling JSON, Raw, Text and URL encoded form data.<br />
+cookie-parser − Parse Cookie header<br />
+multer − This is a node.js middleware for handling multipart/form-data.  </p>
+<pre><code>$ npm install body-parser --save
+$ npm install cookie-parser --save
+$ npm install multer --save
+</code></pre>
+
+<p>Express example:  </p>
+<pre><code>var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+   res.send('Hello World');
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+
+   console.log(&quot;Example app listening at http://%s:%s&quot;, host, port)
+})
+</code></pre>
+
+<p>Run it</p>
+<pre><code>node server.js
+</code></pre>
+
+<p>Return a list of users from a JSON file:  </p>
+<pre><code>var express = require('express');
+var app = express();
+var fs = require(&quot;fs&quot;);
+
+app.get('/listUsers', function (req, res) {
+   fs.readFile( __dirname + &quot;/&quot; + &quot;users.json&quot;, 'utf8', function (err, data) {
+      console.log( data );
+      res.end( data );
+   });
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   console.log(&quot;Example app listening at http://%s:%s&quot;, host, port)
+})
 </code></pre></div>
         </div>
 

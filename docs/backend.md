@@ -413,68 +413,6 @@ Utility modules:
 - DNS Module  
 - Domain Module  
 
-<h4>Express</h4>
-Express is a minimal Node.js web application framework.  
-Allows to set up middlewares to respond to HTTP Requests.  
-Defines a routing table which is used to perform different actions based on HTTP Method and URL.  
-Allows to dynamically render HTML Pages based on passing arguments to templates.  
-
-Install Express
-```
-npm install express --save
-```
-
-Other important modules:  
-body-parser − middleware for handling JSON, Raw, Text and URL encoded form data.  
-cookie-parser − Parse Cookie header  
-multer − This is a node.js middleware for handling multipart/form-data.  
-
-```
-$ npm install body-parser --save
-$ npm install cookie-parser --save
-$ npm install multer --save
-```
-
-Express example:  
-```
-var express = require('express');
-var app = express();
-
-app.get('/', function (req, res) {
-   res.send('Hello World');
-})
-
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port)
-})
-```
-Run it
-```
-node server.js
-```
-
-Return a list of users from a JSON file:  
-```
-var express = require('express');
-var app = express();
-var fs = require("fs");
-
-app.get('/listUsers', function (req, res) {
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-      console.log( data );
-      res.end( data );
-   });
-})
-
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   console.log("Example app listening at http://%s:%s", host, port)
-})
-```
 <h4>Events driven</h4>
 Whenever an event gets fired, its listener function starts executing.  
 EventEmitter class which is used to bind events and event-listeners.  
@@ -569,4 +507,67 @@ console.log("Program Ended.");
 
 ```
 node main.js
+```
+
+<h4>Express</h4>
+Express is a minimal Node.js web application framework.  
+Allows to set up middlewares to respond to HTTP Requests.  
+Defines a routing table which is used to perform different actions based on HTTP Method and URL.  
+Allows to dynamically render HTML Pages based on passing arguments to templates.  
+
+Install Express
+```
+npm install express --save
+```
+
+Other important modules:  
+body-parser − middleware for handling JSON, Raw, Text and URL encoded form data.  
+cookie-parser − Parse Cookie header  
+multer − This is a node.js middleware for handling multipart/form-data.  
+
+```
+$ npm install body-parser --save
+$ npm install cookie-parser --save
+$ npm install multer --save
+```
+
+Express example:  
+```
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+   res.send('Hello World');
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   
+   console.log("Example app listening at http://%s:%s", host, port)
+})
+```
+Run it
+```
+node server.js
+```
+
+Return a list of users from a JSON file:  
+```
+var express = require('express');
+var app = express();
+var fs = require("fs");
+
+app.get('/listUsers', function (req, res) {
+   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+      console.log( data );
+      res.end( data );
+   });
+})
+
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   console.log("Example app listening at http://%s:%s", host, port)
+})
 ```
