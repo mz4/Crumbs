@@ -689,23 +689,25 @@ export default function todosReducer(state = initialState, action) {
 
 ## REST API  
 
-REST stands for REpresentational State Transfer. 
-REST is web standards based architecture and uses HTTP Protocol. 
-It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.  
+<h4>Definition</h4>
+REST stands for Representational State Transfer. 
+It is web standards based architecture and uses HTTP Protocol. 
+ 
 A Web API conforming to the REST architectural style is a REST API.  
-Having a REST API makes a web service “RESTful.”  
-A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
-
-A web service is a collection of open protocols and standards used for exchanging data between applications or systems.  
+A web service is a collection of standards used for exchanging data between applications or systems.  
 Web services based on REST Architecture are known as RESTful web services.  
 These webservices uses HTTP methods to implement the concept of REST architecture.  
 A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.
 
-URI Format  
+A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
+
+<h4>URI Format</h4>
 generic URI syntax as shown below:  
 ```
 URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
 ```
+
+<h4>Good Practices</h4>
 Forward slash separator (/) indicates a hierarchical relationship  
 underscores (_) should not be used in uris  
 Trailing forward slash (/) should not be included in uris  
@@ -714,12 +716,12 @@ lowercase letters should be preferred in uri paths
 crud function names should not be used in uris  
 query component of a URI may be used to filter collections or stores
 
-Request Methods
+<h4>Request Methods</h4>
 CRUD requests: DELETE, GET, POST, PUT  
 HEAD retrieve metadata.  
 OPTIONS retrieve metadata of resource’s available interactions.  
 
-Some Responses status
+<h4>Some Responses status</h4>
 200 success
 201 new resource has been created
 202 Accepted, start of an asynchronous action
@@ -731,21 +733,22 @@ Some Responses status
 404 Not Found
 405 Method Not Allowed
 
-HTTP Headers
+<h4>HTTP Headers</h4>
 Various forms of metadata may be conveyed through the entity headers.    
   
-Request headers
+<h4>Request headers</h4>
 Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.  
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server  
 X-Requested-With: Mainly used to identify AJAX requests.  
 Accept-Language which languages the client is able to understand  
   
-Response headers  
+<h4>Response headers</h4>
 Content-Type  
 Content-Length  size of the response body  
 Set-Cookie used to send cookies from the server to the client.
- Body Format
+
+<h4>Body Format</h4>
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
