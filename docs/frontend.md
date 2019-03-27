@@ -752,6 +752,126 @@ Set-Cookie used to send cookies from the server to the client.
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
+<h4>API Documentation</h4>
+- Resource Description  
+  example from MailChimp Campaign resource
+  ```
+  Campaigns are how you send emails to your Mailchimp list. 
+  Use the Campaigns API calls to manage campaigns in your Mailchimp account.
+  ```
+  Resource Description consists of 1-3 sentences.
+  Resources usually have various endpoints to access the resource and multiple methods for each endpoint.  
+  Sometimes the general resource isn’t described; instead, it just groups the endpoints.
+  Although the resource isn’t described, descriptions may be added for each of the endpoints.  
+
+- Endpoint and Methods  
+  The endpoints indicate how you access the resource, 
+  The method indicates the allowed interactions (such as GET, POST, or DELETE) with the resource.  
+  Endpoints usually have brief descriptions similar to the overall resource description but shorter.  
+  ```
+  POST /campaigns	Create a new campaign
+  GET /campaigns	Get all campaigns
+  GET /campaigns/{campaign_id}	Get information about a specific campaign
+  PATCH /campaigns/{campaign_id}	Update the settings for a campaign
+  DELETE /campaigns/{campaign_id}	Delete a campaign
+  ```
+- Parameters  
+  Parameters are options you can pass with the endpoint to influence the response. 
+  There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  
+    
+  <strong>Header parameters</strong> are included in the request header. Usually, the header just includes authorization parameters.  
+
+  <strong>Path parameters</strong> are part of the endpoint itself and are not optional. For example, in the following endpoint, {user} and {bicycleId} are required path parameters:  
+  ```
+  /service/myresource/user/{user}/bicycles/{bicycleId}
+  ```
+    
+  <strong>Query string parameters</strong> appear after a question mark (?) in the endpoint. The question mark followed by the parameters and their values is referred to as the “query string.”  
+  ```
+  /surfreport/{beachId}?days=3&units=metric&time=1400
+  ```
+
+  <strong>Body parameters</strong>: with POST requests (where you’re creating something), you submit a JSON object in the request body.
+
+- Request example
+  The request example includes a sample request using the endpoint, showing some parameters configured.  
+  ```
+  curl -u "username:password" -H "Content-Type:application/json" -X GET "https://api.callfire.com/v2/texts?limit=50&offset=200"
+  ```
+- Response example  
+  The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
+  The response lets developers know if the resource contains the information they want, the format, and how that information is structured and labeled. 
+  The description of the response is known as the response schema. The response schema documents the response in a more comprehensive, general way, listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.  
+  The definition of the response is called the schema or model.
+
+  ```
+  {
+    "Context": "ualize",
+    "Destination": "http://aaaa.com/aaa",
+    "EventTypes": [
+        "StatusChange",
+        "ResourceAdded",
+        "ResourceRemoved"
+    ],
+    "Id": "3a5f20212134",
+    "Name": "EventSubscription",
+    "Oem": {},
+    "Protocol": "Redfish"
+  }
+  ```
+
+[API Documentation example](https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html)  
+[API Docs list](https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites)  
+
+<h4>OpenApi</h4>
+OpenAPI is a specification for describing REST APIs.  
+
+Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints while learning about the API.  
+With OpenAPI, you have a set of JSON objects, with a specific schema that defines their naming, order, and contents.  
+
+In the OpenAPI specification, your endpoints are paths.  
+Instead of writing following example in a text editor, use [Swagger Editor](http://editor.swagger.io/).  
+Instead of coding the OpenAPI specification document by hand, you can also auto-generate it from annotations in your programming code.  
+```json
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      operationId: listPets
+      tags:
+        - pets
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: An paged array of pets
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Pets"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+```
+After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.  
+Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  
+
+<!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
+
 ## Axios - HTTP client  
 Axios install  
 ```
