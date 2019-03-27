@@ -732,20 +732,23 @@ export default function todosReducer(state = initialState, action) {
 </code></pre>
 
 <h2 id="rest-api">REST API</h2>
-<p>REST stands for REpresentational State Transfer. 
-REST is web standards based architecture and uses HTTP Protocol. 
-It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.<br />
-A Web API conforming to the REST architectural style is a REST API.<br />
-Having a REST API makes a web service “RESTful.”<br />
-A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
-<p>A web service is a collection of open protocols and standards used for exchanging data between applications or systems.<br />
+<h4>Definition</h4>
+
+<p>REST stands for Representational State Transfer. 
+It is web standards based architecture and uses HTTP Protocol. </p>
+<p>A Web API conforming to the REST architectural style is a REST API.<br />
+A web service is a collection of standards used for exchanging data between applications or systems.<br />
 Web services based on REST Architecture are known as RESTful web services.<br />
 These webservices uses HTTP methods to implement the concept of REST architecture.<br />
 A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.</p>
-<p>URI Format<br />
-generic URI syntax as shown below:  </p>
+<p>A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
+<h4>URI Format</h4>
+
+<p>generic URI syntax as shown below:  </p>
 <pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
 </code></pre>
+
+<h4>Good Practices</h4>
 
 <p>Forward slash separator (/) indicates a hierarchical relationship<br />
 underscores (_) should not be used in uris<br />
@@ -754,12 +757,14 @@ hyphens (-) should be used to improve readability of uris<br />
 lowercase letters should be preferred in uri paths<br />
 crud function names should not be used in uris<br />
 query component of a URI may be used to filter collections or stores</p>
-<p>Request Methods
-CRUD requests: DELETE, GET, POST, PUT<br />
+<h4>Request Methods</h4>
+
+<p>CRUD requests: DELETE, GET, POST, PUT<br />
 HEAD retrieve metadata.<br />
 OPTIONS retrieve metadata of resource’s available interactions.  </p>
-<p>Some Responses status
-200 success
+<h4>Some Responses status</h4>
+
+<p>200 success
 201 new resource has been created
 202 Accepted, start of an asynchronous action
 204 No Content body left blank
@@ -769,20 +774,24 @@ OPTIONS retrieve metadata of resource’s available interactions.  </p>
 402 Forbidden
 404 Not Found
 405 Method Not Allowed</p>
-<p>HTTP Headers
-Various forms of metadata may be conveyed through the entity headers.    </p>
-<p>Request headers
-Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
+<h4>HTTP Headers</h4>
+
+<p>Various forms of metadata may be conveyed through the entity headers.    </p>
+<h4>Request headers</h4>
+
+<p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server<br />
 X-Requested-With: Mainly used to identify AJAX requests.<br />
 Accept-Language which languages the client is able to understand  </p>
-<p>Response headers<br />
-Content-Type<br />
+<h4>Response headers</h4>
+
+<p>Content-Type<br />
 Content-Length  size of the response body<br />
-Set-Cookie used to send cookies from the server to the client.
- Body Format
-A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
+Set-Cookie used to send cookies from the server to the client.</p>
+<h4>Body Format</h4>
+
+<p>A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
 Today, the most commonly used text formats is JSON.</p>
 <h2 id="axios-http-client">Axios - HTTP client</h2>
 <p>Axios install  </p>
