@@ -796,7 +796,9 @@ Today, the most commonly used text formats is JSON.
 - Request example
   The request example includes a sample request using the endpoint, showing some parameters configured.  
   ```
-  curl -u "username:password" -H "Content-Type:application/json" -X GET "https://api.callfire.com/v2/texts?limit=50&offset=200"
+  curl -u "username:password" 
+  -H "Content-Type:application/json" 
+  -X GET "https://api.callfire.com/v2/texts?limit=50&offset=200"
   ```
 - Response example  
   The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
@@ -869,6 +871,109 @@ paths:
 ```
 After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.  
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  
+
+<h4>OpenAPI root level</h4>
+- openapi  
+indicate the version of the OpenAPI spec to validate against.  
+- info  
+The info object contains basic information about your API, including the title, a description, version, link to the license, link to the terms of service, and contact information.  
+- servers  
+In the servers object, you specify the basepath used in your API requests.  
+- paths  
+listing the paths (endpoints) and their allowed operations (methods).  
+
+```
+paths:
+  /weather:
+    get:
+      tags:
+      summary:
+      description:
+      operationId:
+      externalDocs:
+      parameters:
+      responses:
+```
+
+```
+paths:
+  /pet/findByStatus:
+    get:
+      tags:
+      - "pet"
+      summary: "Finds Pets by status"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "findPetsByStatus"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "status"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
+          default: "available"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pet"
+        400:
+          description: "Invalid status value"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+```
+- components  
+```
+The components object can contain these objects:
+
+schemas
+responses
+parameters
+examples
+requestBody
+headers
+securitySchemes
+links
+callbacks
+```
+- security  
+Swagger UI supports four authorization schemes:  
+  
+- API key  
+- HTTP  
+- OAuth 2.0  
+- Open ID Connect  
+
+```
+The security object specifies the security or 
+authorization protocol used when submitting requests.
+``` 
+- tags  
+```
+At the root level, the tags object lists all the tags that are used in the operation objects
+```
+- externalDocs  
+Here’s an example of an externalDocs object:  
+```
+externalDocs:
+  description: API Documentation
+  url: https://openweathermap.org/api
+```
+
+
 
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 

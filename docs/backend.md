@@ -283,6 +283,87 @@ p2 = { key:value for key,value in prices.items() if key in tech_names }
 ```
 https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf
 
+
+
+<h4>Squashing commits into one</h4>
+to maintain a clean commit log message when merging the remote branch to master.
+
+SCRIPT:
+```
+#!/bin/bash
+#
+
+#get number of commits to squash
+squashCount=$1
+
+#get the commit message
+shift
+commitMsg=$@
+
+#regular expression to verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo "---------------------------------"
+echo "Will squash $squashCount commits"
+echo "Commit message will be '$commitMsg'"
+
+echo "...validating input"
+if ! [[ $squashCount =~ $regex ]]
+then
+    echo "Squash count must be an integer."
+elif [ -z "$commitMsg" ]
+then
+    echo "Invalid commit message.  Make sure string is not empty"
+else
+    echo "...input looks good"
+    echo "...proceeding to squash"
+    git reset --soft HEAD~$squashCount
+    git commit -m "$commitMsg"
+    echo "...done"
+fi
+
+echo
+exit 0
+```
+
+Find the directories being used in your path.  
+Run “echo $PATH” in the terminal.  
+  
+Pick a dir to put the script shown above(create it if it’s not there). For example “/home/name/bin”.  
+  
+Name the script to “git-squash.sh”. Make to make the file executable “chmod +x file_name”  
+  
+Now create an alias for git. Because I’m using zsh, I had to change my shell to run the next command.  
+  
+Run “ls -la /bin/sh” to find out the default shell. (dash in my case)  
+  
+Run “/bin/dash” to enter the shell and execute:  
+```
+git config --global alias.squash "!bash -c 'bash <path_of_script>/git-squash.sh \$1 \$2' -"  
+```
+
+USAGE:  
+  
+To squash n commits simply use, where n is the amount of commits to be squashed:  
+git squash n 'my commit message'  
+  
+To reuse a commit message, add the following command to use this, which shows the commit message for the 2nd last commit.  
+```
+git log -n 1 --skip 1 --pretty=%B  
+```
+
+You can skip as many commits as you want by change the number after the --skip flag.
+
+Combine the two commands to squash n amount of commits into one, with the specified commit message:
+```
+git squash n $(git log -n 1 --skip n --pretty=%B)
+```
+
+Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:
+```
+git push --force origin <name_of_branch>
+```
+
 ## NODE
 <h4>About</h4>
 Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.  
