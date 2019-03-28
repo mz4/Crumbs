@@ -362,6 +362,72 @@ p2 = { key:value for key,value in prices.items() if key in tech_names }
 </code></pre>
 
 <p>https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf</p>
+<h4>Squashing commits into one</h4>
+
+<p>to maintain a clean commit log message when merging the remote branch to master.</p>
+<p>SCRIPT:</p>
+<pre><code>#!/bin/bash
+#
+
+#get number of commits to squash
+squashCount=$1
+
+#get the commit message
+shift
+commitMsg=$@
+
+#regular expression to verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo &quot;---------------------------------&quot;
+echo &quot;Will squash $squashCount commits&quot;
+echo &quot;Commit message will be '$commitMsg'&quot;
+
+echo &quot;...validating input&quot;
+if ! [[ $squashCount =~ $regex ]]
+then
+    echo &quot;Squash count must be an integer.&quot;
+elif [ -z &quot;$commitMsg&quot; ]
+then
+    echo &quot;Invalid commit message.  Make sure string is not empty&quot;
+else
+    echo &quot;...input looks good&quot;
+    echo &quot;...proceeding to squash&quot;
+    git reset --soft HEAD~$squashCount
+    git commit -m &quot;$commitMsg&quot;
+    echo &quot;...done&quot;
+fi
+
+echo
+exit 0
+</code></pre>
+
+<p>Find the directories being used in your path.<br />
+Run “echo $PATH” in the terminal.  </p>
+<p>Pick a dir to put the script shown above(create it if it’s not there). For example “/home/name/bin”.  </p>
+<p>Name the script to “git-squash.sh”. Make to make the file executable “chmod +x file_name”  </p>
+<p>Now create an alias for git. Because I’m using zsh, I had to change my shell to run the next command.  </p>
+<p>Run “ls -la /bin/sh” to find out the default shell. (dash in my case)  </p>
+<p>Run “/bin/dash” to enter the shell and execute:  </p>
+<pre><code>git config --global alias.squash &quot;!bash -c 'bash &lt;path_of_script&gt;/git-squash.sh \$1 \$2' -&quot;  
+</code></pre>
+
+<p>USAGE:  </p>
+<p>To squash n commits simply use, where n is the amount of commits to be squashed:<br />
+git squash n 'my commit message'  </p>
+<p>To reuse a commit message, add the following command to use this, which shows the commit message for the 2nd last commit.  </p>
+<pre><code>git log -n 1 --skip 1 --pretty=%B  
+</code></pre>
+
+<p>You can skip as many commits as you want by change the number after the --skip flag.</p>
+<p>Combine the two commands to squash n amount of commits into one, with the specified commit message:</p>
+<pre><code>git squash n $(git log -n 1 --skip n --pretty=%B)
+</code></pre>
+
+<p>Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:</p>
+<pre><code>git push --force origin &lt;name_of_branch&gt;
+</code></pre>
+
 <h2 id="node">NODE</h2>
 <p><h4>About</h4>
 Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.  </p>

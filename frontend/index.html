@@ -830,7 +830,9 @@ Today, the most commonly used text formats is JSON.</p>
 <ul>
 <li>Request example
   The request example includes a sample request using the endpoint, showing some parameters configured.<br />
-<code>curl -u "username:password" -H "Content-Type:application/json" -X GET "https://api.callfire.com/v2/texts?limit=50&amp;offset=200"</code></li>
+<code>curl -u "username:password" 
+  -H "Content-Type:application/json" 
+  -X GET "https://api.callfire.com/v2/texts?limit=50&amp;offset=200"</code></li>
 <li>Response example<br />
   The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
   The response lets developers know if the resource contains the information they want, the format, and how that information is structured and labeled. 
@@ -897,6 +899,117 @@ Instead of coding the OpenAPI specification document by hand, you can also auto-
 
 <p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.<br />
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  </p>
+<h4>OpenAPI root level</h4>
+
+<ul>
+<li>openapi<br />
+indicate the version of the OpenAPI spec to validate against.  </li>
+<li>info<br />
+The info object contains basic information about your API, including the title, a description, version, link to the license, link to the terms of service, and contact information.  </li>
+<li>servers<br />
+In the servers object, you specify the basepath used in your API requests.  </li>
+<li>paths<br />
+listing the paths (endpoints) and their allowed operations (methods).  </li>
+</ul>
+<pre><code>paths:
+  /weather:
+    get:
+      tags:
+      summary:
+      description:
+      operationId:
+      externalDocs:
+      parameters:
+      responses:
+</code></pre>
+
+<pre><code>paths:
+  /pet/findByStatus:
+    get:
+      tags:
+      - &quot;pet&quot;
+      summary: &quot;Finds Pets by status&quot;
+      description: &quot;Multiple status values can be provided with comma separated strings&quot;
+      operationId: &quot;findPetsByStatus&quot;
+      produces:
+      - &quot;application/xml&quot;
+      - &quot;application/json&quot;
+      parameters:
+      - name: &quot;status&quot;
+        in: &quot;query&quot;
+        description: &quot;Status values that need to be considered for filter&quot;
+        required: true
+        type: &quot;array&quot;
+        items:
+          type: &quot;string&quot;
+          enum:
+          - &quot;available&quot;
+          - &quot;pending&quot;
+          - &quot;sold&quot;
+          default: &quot;available&quot;
+        collectionFormat: &quot;multi&quot;
+      responses:
+        200:
+          description: &quot;successful operation&quot;
+          schema:
+            type: &quot;array&quot;
+            items:
+              $ref: &quot;#/definitions/Pet&quot;
+        400:
+          description: &quot;Invalid status value&quot;
+      security:
+      - petstore_auth:
+        - &quot;write:pets&quot;
+        - &quot;read:pets&quot;
+</code></pre>
+
+<ul>
+<li>components  </li>
+</ul>
+<pre><code>The components object can contain these objects:
+
+schemas
+responses
+parameters
+examples
+requestBody
+headers
+securitySchemes
+links
+callbacks
+</code></pre>
+
+<ul>
+<li>
+<p>security<br />
+Swagger UI supports four authorization schemes:  </p>
+</li>
+<li>
+<p>API key  </p>
+</li>
+<li>HTTP  </li>
+<li>OAuth 2.0  </li>
+<li>Open ID Connect  </li>
+</ul>
+<pre><code>The security object specifies the security or 
+authorization protocol used when submitting requests.
+</code></pre>
+
+<ul>
+<li>tags  </li>
+</ul>
+<pre><code>At the root level, the tags object lists all the tags that are used in the operation objects
+</code></pre>
+
+<ul>
+<li>externalDocs<br />
+Here’s an example of an externalDocs object:  </li>
+</ul>
+<pre><code>externalDocs:
+  description: API Documentation
+  url: https://openweathermap.org/api
+</code></pre>
+
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
 <h2 id="axios-http-client">Axios - HTTP client</h2>
