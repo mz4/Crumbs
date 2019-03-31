@@ -293,32 +293,32 @@ SCRIPT:
 #!/bin/bash
 #
 
-#get number of commits to squash
-squashCount=$1
+#commits to squash
+commitCount=$1
 
 #get the commit message
 shift
-commitMsg=$@
+commitMessage=$@
 
-#regular expression to verify that squash number is an integer
+#verify that squash number is an integer
 regex='^[0-9]+$'
 
 echo "---------------------------------"
-echo "Will squash $squashCount commits"
-echo "Commit message will be '$commitMsg'"
+echo "Will squash $commitCount commits"
+echo "Commit message will be '$commitMessage'"
 
 echo "...validating input"
-if ! [[ $squashCount =~ $regex ]]
+if ! [[ $commitCount =~ $regex ]]
 then
     echo "Squash count must be an integer."
-elif [ -z "$commitMsg" ]
+elif [ -z "$commitMessage" ]
 then
-    echo "Invalid commit message.  Make sure string is not empty"
+    echo "Invalid, sure string is not empty"
 else
     echo "...input looks good"
     echo "...proceeding to squash"
-    git reset --soft HEAD~$squashCount
-    git commit -m "$commitMsg"
+    git reset --soft HEAD~$commitCount
+    git commit -m "$commitMessage"
     echo "...done"
 fi
 
@@ -326,34 +326,25 @@ echo
 exit 0
 ```
 
-Find the directories being used in your path.  
+Find directories being used in your path.  
 Run “echo $PATH” in the terminal.  
-  
-Pick a dir to put the script shown above(create it if it’s not there). For example “/home/name/bin”.  
-  
-Name the script to “git-squash.sh”. Make to make the file executable “chmod +x file_name”  
-  
-Now create an alias for git. Because I’m using zsh, I had to change my shell to run the next command.  
-  
-Run “ls -la /bin/sh” to find out the default shell. (dash in my case)  
-  
+Pick a dir to put the script. For example “/home/name/bin”.  
+Name script to “git-squash.sh”.  
+Make the file executable “chmod +x file_name”  
+Now create an alias for git. 
+Run “ls -la /bin/sh” to find out the default shell. (e.g. dash)
 Run “/bin/dash” to enter the shell and execute:  
 ```
 git config --global alias.squash "!bash -c 'bash <path_of_script>/git-squash.sh \$1 \$2' -"  
 ```
 
 USAGE:  
-  
-To squash n commits simply use, where n is the amount of commits to be squashed:  
-git squash n 'my commit message'  
-  
-To reuse a commit message, add the following command to use this, which shows the commit message for the 2nd last commit.  
+Squash n commits:  
 ```
-git log -n 1 --skip 1 --pretty=%B  
+git squash n 'my commit message'  
 ```
 
 You can skip as many commits as you want by change the number after the --skip flag.
-
 Combine the two commands to squash n amount of commits into one, with the specified commit message:
 ```
 git squash n $(git log -n 1 --skip n --pretty=%B)
