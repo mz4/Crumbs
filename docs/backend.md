@@ -624,17 +624,22 @@ Run it
 node server.js
 ```
 
-Return a list of users from a JSON file:  
+GET/POST a list of users from a JSON file:  
 ```
 var express = require('express');
 var app = express();
 var fs = require("fs");
 
-app.get('/listUsers', function (req, res) {
+app.get('/users', function (req, res) {
    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
       console.log( data );
       res.end( data );
    });
+})
+
+app.post('/users', function (req, res) {
+  console.log(req.body)
+  res.status(200).end()
 })
 
 var server = app.listen(8081, function () {
@@ -643,3 +648,171 @@ var server = app.listen(8081, function () {
    console.log("Example app listening at http://%s:%s", host, port)
 })
 ```
+  
+Express Middleware  
+- It is applied between a request and a response  
+- Execute functions on incoming requests  
+- Good for authentication, transforming request, tracking, error handling  
+  
+Middleware  
+```
+const log = (req, res, next) => {
+    console.log('testing');
+    next()
+}
+```
+  
+Middleware log running for a single function  
+```
+app.get('/users', log, function (req, res) {
+    res.send({ data: [1, 2, 3] })
+})
+```
+  
+Middleware log running for all endpoints  
+```
+app.use(log);
+```
+  
+Calling Array of Middleware  
+```
+app.get('/users', [log, log, log], function (req, res) {
+    res.send({ data: [1, 2, 3] })
+})
+```
+
+Routes  
+- Matching system by regex, exact, glob, parameters  
+- It supports HTTP verbs on route based level  
+- Routes match in the order they are defined  
+- Express allows to create subroutes  
+
+Declaring a router
+```
+const router = express.Router()
+```
+
+Exact Matching  
+```
+app.get('/users', log, function (req, res) {....
+```
+
+Matching parameters  
+```
+app.get('/users/:id', log, function (req, res) {...
+```
+
+Matching anything after  
+```
+app.get('/users/*', log, function (req, res) {....
+```
+
+Use sub-router for different kind of resources
+1-server.js
+```
+import express from 'express'
+import userRouter from './resources/user/user.router'
+import itemRouter from './resources/item/item.router'
+import listRouter from './resources/list/list.router'
+
+export const app = express()
+
+app.use('/api/user', userRouter)
+app.use('/api/item', itemRouter)
+app.use('/api/list', listRouter)
+
+export const start = async () => {...}
+```
+
+2-user.router.js
+```
+import { Router } from 'express'
+import { users, user } from './user.controllers'
+
+const router = Router()
+
+router.get('/', users)
+router.put('/', user)
+
+export default router
+```
+
+3-user.controllers.js
+```
+import { User } from './user.model'
+
+export const users = (req, res) => {
+  res.status(200).json({ data: req.user })
+}
+```
+
+user model
+```
+import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
+
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
+    },
+
+    password: {
+      type: String,
+      required: true
+    },
+    settings: {
+      theme: {
+        type: String,
+        required: true,
+        default: 'dark'
+      },
+      notifications: {
+        type: Boolean,
+        required: true,
+        default: true
+      },
+      compactMode: {
+        type: Boolean,
+        required: true,
+        default: false
+      }
+    }
+  },
+  { timestamps: true }
+)
+
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password')) {
+    return next()
+  }
+
+  bcrypt.hash(this.password, 8, (err, hash) => {
+    if (err) {
+      return next(err)
+    }
+
+    this.password = hash
+    next()
+  })
+})
+
+userSchema.methods.checkPassword = function(password) {
+  const passwordHash = this.password
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, passwordHash, (err, same) => {
+      if (err) {
+        return reject(err)
+      }
+
+      resolve(same)
+    })
+  })
+}
+
+export const User = mongoose.model('user', userSchema)
+```
+
