@@ -505,6 +505,23 @@ top -bn1 | grep -i swap
 echo &quot;/var/cache/swap/swapfile none swap sw 0 0&quot; | sudo tee -a /etc/fstab
 </code></pre>
 
+<p>Change permission in filder and files</p>
+<pre><code>Chmod chown
+find . -type d -exec chmod 777 {} +
+find . -type f -exec chmod 777 {} +
+</code></pre>
+
+<p>Mount/Unmount</p>
+<pre><code>cat /proc/partitions
+mknod
+mknod /dev/vdb b 252 16
+fdisk /dev/vdb
+mkfs.ext3 /dev/vdb
+mkdir  /tmp/ciao
+mount /dev/vdb /tmp/ciao
+unmount /tmp/ciao
+</code></pre>
+
 <hr />
 <h2 id="webpack">WEBPACK</h2>
 <p>webpack installation</p>
@@ -1517,5 +1534,5 @@ https://www.javascript.com/resources
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-03-31 14:17:22
+Build Date UTC : 2019-04-06 08:54:00
 -->
