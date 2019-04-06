@@ -686,16 +686,21 @@ var server = app.listen(8081, function () {
 <pre><code>node server.js
 </code></pre>
 
-<p>Return a list of users from a JSON file:  </p>
+<p>GET/POST a list of users from a JSON file:  </p>
 <pre><code>var express = require('express');
 var app = express();
 var fs = require(&quot;fs&quot;);
 
-app.get('/listUsers', function (req, res) {
+app.get('/users', function (req, res) {
    fs.readFile( __dirname + &quot;/&quot; + &quot;users.json&quot;, 'utf8', function (err, data) {
       console.log( data );
       res.end( data );
    });
+})
+
+app.post('/users', function (req, res) {
+  console.log(req.body)
+  res.status(200).end()
 })
 
 var server = app.listen(8081, function () {
@@ -703,6 +708,159 @@ var server = app.listen(8081, function () {
    var port = server.address().port
    console.log(&quot;Example app listening at http://%s:%s&quot;, host, port)
 })
+</code></pre>
+
+<p>Express Middleware<br />
+- It is applied between a request and a response<br />
+- Execute functions on incoming requests<br />
+- Good for authentication, transforming request, tracking, error handling  </p>
+<p>Middleware  </p>
+<pre><code>const log = (req, res, next) =&gt; {
+    console.log('testing');
+    next()
+}
+</code></pre>
+
+<p>Middleware log running for a single function  </p>
+<pre><code>app.get('/users', log, function (req, res) {
+    res.send({ data: [1, 2, 3] })
+})
+</code></pre>
+
+<p>Middleware log running for all endpoints  </p>
+<pre><code>app.use(log);
+</code></pre>
+
+<p>Calling Array of Middleware  </p>
+<pre><code>app.get('/users', [log, log, log], function (req, res) {
+    res.send({ data: [1, 2, 3] })
+})
+</code></pre>
+
+<p>Routes<br />
+- Matching system by regex, exact, glob, parameters<br />
+- It supports HTTP verbs on route based level<br />
+- Routes match in the order they are defined<br />
+- Express allows to create subroutes  </p>
+<p>Declaring a router</p>
+<pre><code>const router = express.Router()
+</code></pre>
+
+<p>Exact Matching  </p>
+<pre><code>app.get('/users', log, function (req, res) {....
+</code></pre>
+
+<p>Matching parameters  </p>
+<pre><code>app.get('/users/:id', log, function (req, res) {...
+</code></pre>
+
+<p>Matching anything after  </p>
+<pre><code>app.get('/users/*', log, function (req, res) {....
+</code></pre>
+
+<p>Use sub-router for different kind of resources
+1-server.js</p>
+<pre><code>import express from 'express'
+import userRouter from './resources/user/user.router'
+import itemRouter from './resources/item/item.router'
+import listRouter from './resources/list/list.router'
+
+export const app = express()
+
+app.use('/api/user', userRouter)
+app.use('/api/item', itemRouter)
+app.use('/api/list', listRouter)
+
+export const start = async () =&gt; {...}
+</code></pre>
+
+<p>2-user.router.js</p>
+<pre><code>import { Router } from 'express'
+import { users, user } from './user.controllers'
+
+const router = Router()
+
+router.get('/', users)
+router.put('/', user)
+
+export default router
+</code></pre>
+
+<p>3-user.controllers.js</p>
+<pre><code>import { User } from './user.model'
+
+export const users = (req, res) =&gt; {
+  res.status(200).json({ data: req.user })
+}
+</code></pre>
+
+<p>user model</p>
+<pre><code>import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
+
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
+    },
+
+    password: {
+      type: String,
+      required: true
+    },
+    settings: {
+      theme: {
+        type: String,
+        required: true,
+        default: 'dark'
+      },
+      notifications: {
+        type: Boolean,
+        required: true,
+        default: true
+      },
+      compactMode: {
+        type: Boolean,
+        required: true,
+        default: false
+      }
+    }
+  },
+  { timestamps: true }
+)
+
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password')) {
+    return next()
+  }
+
+  bcrypt.hash(this.password, 8, (err, hash) =&gt; {
+    if (err) {
+      return next(err)
+    }
+
+    this.password = hash
+    next()
+  })
+})
+
+userSchema.methods.checkPassword = function(password) {
+  const passwordHash = this.password
+  return new Promise((resolve, reject) =&gt; {
+    bcrypt.compare(password, passwordHash, (err, same) =&gt; {
+      if (err) {
+        return reject(err)
+      }
+
+      resolve(same)
+    })
+  })
+}
+
+export const User = mongoose.model('user', userSchema)
 </code></pre></div>
         </div>
 
