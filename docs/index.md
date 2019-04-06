@@ -421,6 +421,25 @@ top -bn1 | grep -i swap
 echo "/var/cache/swap/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 ```
 
+Change permission in filder and files
+```
+Chmod chown
+find . -type d -exec chmod 777 {} +
+find . -type f -exec chmod 777 {} +
+```
+
+Mount/Unmount
+```
+cat /proc/partitions
+mknod
+mknod /dev/vdb b 252 16
+fdisk /dev/vdb
+mkfs.ext3 /dev/vdb
+mkdir  /tmp/ciao
+mount /dev/vdb /tmp/ciao
+unmount /tmp/ciao
+```
+
 ---
 ## WEBPACK
 
