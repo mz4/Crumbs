@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Description of the documentation">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Crumbs</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">Crumbs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href=".">TOOLS</a>
+                            </li>
+                            <li >
+                                <a href="frontend/">FRONTEND</a>
+                            </li>
+                            <li >
+                                <a href="backend/">BACKEND</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="disabled">
+                                <a rel="next" >
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="frontend/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tools">TOOLS</a></li>
+            <li><a href="#git">GIT</a></li>
+            <li><a href="#linux">LINUX</a></li>
+            <li><a href="#regex">REGEX</a></li>
+            <li><a href="#webpack">WEBPACK</a></li>
+            <li><a href="#nodenpm">NODE/NPM</a></li>
+            <li><a href="#babel">BABEL</a></li>
+            <li><a href="#docker">DOCKER</a></li>
+            <li><a href="#links">LINKS</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="tools">TOOLS</h1>
+<hr />
+<p><h4>Tools and stuff useful for both frontend and backend.</h4></p>
+<h2 id="git">GIT</h2>
+<h3>Install git</h3>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+git --version
+</code></pre>
+
+<h3>Create a New Git Repository from scratch</h3>
+
+<pre><code>mkdir to create a directory to contain the project.
+cd into the new directory.
+git init.
+Write code. (The first file to create is probably a ReadMe file)
+git add to add the files.
+git commit
+</code></pre>
+
+<h3>Create New Git Repository from existing project</h3>
+
+<pre><code>cd into the directory containing the project.
+git init.
+git add to add all of the relevant files.
+create a .gitignore to indicate all of the files you don’t want to track
+git commit.
+</code></pre>
+
+<h3>Connect to github</h3>
+
+<pre><code>Go to github.
+Log in to your account.
+Click the new repository button in the top-right. 
+Click the “Create repository” button.
+git remote add origin git@github.com:username/new_repo
+git push -u origin master
+</code></pre>
+
+<h3>Create, switch and push origin new branch</h3>
+
+<pre><code>git checkout -b issue400-master
+git push -u origin issue400-master
+</code></pre>
+
+<h3>Add, Commit and Push</h3>
+
+<pre><code>git add sys_ui/css/FILE.css 
+git add sys_ui/FILE.html 
+git add app/dir/ 
+git commit
+git push
+</code></pre>
+
+<h3>Squash commits</h3>
+
+<pre><code>git reset --soft HEAD~$squashCount
+git commit -m &quot;$commitMsg&quot;
+</code></pre>
+
+<h3>Delete a local and remote branch</h3>
+
+<pre><code>git branch -d branch_name
+git push origin --delete &lt;branch_name&gt;
+</code></pre>
+
+<h3>Clone repo</h3>
+
+<pre><code>git clone USER@10.0.2.10:/home/git/repos/sys .
+</code></pre>
+
+<h3>Clone specific branch</h3>
+
+<pre><code>git clone -b &lt;branch&gt; &lt;remote_repo&gt;
+git clone -b my-branch git@github.com:user/myproject.git
+</code></pre>
+
+<h3>Show current branch</h3>
+
+<pre><code>git branch
+</code></pre>
+
+<h3>Show local and remote branch</h3>
+
+<pre><code>git branch -a
+</code></pre>
+
+<h3>Check Status</h3>
+
+<pre><code>git status
+</code></pre>
+
+<h3>Check Log</h3>
+
+<pre><code>git log
+</code></pre>
+
+<h3>Edit Last Commit Message</h3>
+
+<pre><code>git commit --amend -m &quot;New commit message&quot;
+</code></pre>
+
+<h3>Log commit subject of last 10 commits</h3>
+
+<pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
+</code></pre>
+
+<h3>Single file history</h3>
+
+<pre><code>git log -p filename
+</code></pre>
+
+<h3>Get tag</h3>
+
+<pre><code>git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
+</code></pre>
+
+<h3>Get commits by date and author</h3>
+
+<pre><code>git log --pretty=format:&quot;%ad - %an: %s&quot; --after=&quot;2010-02-15&quot; --until=&quot;2018-08-20&quot; --author=&quot;John&quot;
+</code></pre>
+
+<h3>Get number of commits by author</h3>
+
+<pre><code>git shortlog -s -n --all
+</code></pre>
+
+<h3>Remove local untracked files</h3>
+
+<pre><code>git clean -fdx
+</code></pre>
+
+<h3>Undo last commit.</h3>
+
+<p>Warning: Don't do this if you've already pushed</p>
+<pre><code> git reset HEAD~
+</code></pre>
+
+<h3>Undo last commit.</h3>
+
+<p>If you don't want the changes and blow everything away:
+Warning: Don't do this if you've already pushed</p>
+<pre><code> git reset --hard HEAD~
+</code></pre>
+
+<h3>Untrack .pyc files</h3>
+
+<pre><code>$ find . -name '*.pyc' | xargs -n 1 git rm --cached
+</code></pre>
+
+<h3>Switch to branch</h3>
+
+<pre><code>git checkout BRANCHNAME
+</code></pre>
+
+<h3>Pull from master branch</h3>
+
+<pre><code>git pull origin master
+</code></pre>
+
+<h3>Checkout master</h3>
+
+<pre><code>git chekcout master
+</code></pre>
+
+<h3>Merge branch into master</h3>
+
+<pre><code>git checkout master
+git merge user_interface
+</code></pre>
+
+<h3>Create Tags</h3>
+
+<pre><code>git tag v1.0 ec32d32
+git push origin --tags
+</code></pre>
+
+<h3>Undo a local commit</h3>
+
+<pre><code>git reset --soft HEAD^     # use --soft if you want to keep your changes
+git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
+</code></pre>
+
+<h3>Undo git add</h3>
+
+<pre><code>git reset filename.jsx
+</code></pre>
+
+<h3>Show differences after git pull</h3>
+
+<pre><code>git diff master@{1} master
+</code></pre>
+
+<h3>Lists branches merged into master</h3>
+
+<pre><code>git branch --merged master
+</code></pre>
+
+<h3>Lists branches merged into HEAD</h3>
+
+<pre><code>git branch --merged 
+</code></pre>
+
+<h3>Lists branches that have not been merged</h3>
+
+<pre><code>git branch --no-merged
+</code></pre>
+
+<h3>Checkout previous branch</h3>
+
+<pre><code>git checkout -
+</code></pre>
+
+<h3>Diff between branches</h3>
+
+<p>Diff between current branch and master:  </p>
+<pre><code>git diff master
+</code></pre>
+
+<h3>Diff between two branches:</h3>
+
+<pre><code>git diff master..staging
+</code></pre>
+
+<h3>Show only files that are different between the two branches</h3>
+
+<pre><code>git diff --name-status master..staging
+</code></pre>
+
+<h3>Create New Branch and Checkout – In One Command</h3>
+
+<pre><code>git checkout -b &lt;branch_name&gt;
+</code></pre>
+
+<h3>Revert Changes to File</h3>
+
+<pre><code>git checkout -- &lt;file&gt;
+</code></pre>
+
+<h2 id="linux">LINUX</h2>
+<p>Systems Directories</p>
+<pre><code>/ The root directory.  
+/bin Contains binaries (programs) that must be present for the system to boot and run.  
+/boot Contains Linux kernel, initial RAM disk image, and the boot loader.
+/dev This is a special directory which contains device nodes.  
+/etc configuration files / shell scripts for system services at boot time.
+/home each user is given a directory in /home
+/lib Contains shared library files used by the core system
+/lost+found used in the case of a partial recovery from a file system corruption event
+/media mount points for removable media
+/mnt On older Linux systems, mount points for removable devices
+/opt to install “optional” software.
+/proc virtual file system maintained by the Linux kernel
+/root home directory for the root account.
+/sbin “system” binaries. 
+/tmp temporary files
+/usr all the programs and support files used by regular users.
+/usr/bin /usr/bin contains the executable programs installed by your Linux distribution
+/usr/lib shared libraries for the programs in /usr/bin.
+/usr/local programs that are not included with your distribution but are intended for systemwide use are installed.
+/usr/sbin system administration programs.
+/usr/share all the shared data used by programs in /usr/bin.
+/usr/share/doc packages documentation.
+/var where data that is likely to change is stored.
+/var/log log files
+</code></pre>
+
+<p>Most used Commands</p>
+<pre><code>ls Directory listing
+ls -al Formatted listing with hidden files
+ls -lt Sorting the Formatted listing by time modification
+cd dir Change directory to dir
+cd Change to home directory
+pwd Show current working directory
+mkdir dir Creating a directory dir
+cat &gt;file Places the standard input into the file
+more file Output the contents of the file
+head file Output the first 10 lines of the file
+tail file Output the last 10 lines of the file
+tail -f file Output the contents of file as it grows,starting with the last 10 lines
+touch file Create or update file
+rm file Deleting the file
+rm -r dir Deleting the directory
+rm -f file Force to remove the file
+rm -rf dir Force to remove the directory dir
+cp file1 file2 Copy the contents of file1 to file2
+cp -r dir1 dir2 Copy dir1 to dir2;create dir2 if not present
+mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
+ln -s file link Create symbolic link link to file
+</code></pre>
+
+<p>Process Management</p>
+<pre><code>ps To display the currently working processes
+top Display all running process
+kill pid Kill the process with given pid
+killall proc Kill all the process named proc
+pkill pattern Will kill all processes matching the pattern
+bg List stopped or background jobs,resume a stopped job in the background
+fg Brings the most recent job to foreground
+fg n Brings job n to the foreground
+</code></pre>
+
+<p>File permission</p>
+<pre><code>chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
+• 4-read(r)
+• 2-write(w)
+• 1-execute(x)
+</code></pre>
+
+<p>Find how many lines for file extension</p>
+<pre><code>wc `find | grep jsx$`
+</code></pre>
+
+<p>truncate file content</p>
+<pre><code>truncate -s 0 dash.txt
+</code></pre>
+
+<p>cat long file</p>
+<pre><code>cat branch | more -d
+</code></pre>
+
+<p>Check if port is listening</p>
+<pre><code>sudo netstat -ntlp | grep :443
+</code></pre>
+
+<p>Find a string</p>
+<pre><code>grep -r &quot;test&quot; - find string
+</code></pre>
+
+<p>Find string include, exclude, ignore case</p>
+<pre><code>grep -r -i &quot;.ui&quot; --include \*.scss --exclude app.scss
+</code></pre>
+
+<p>Find Large files</p>
+<pre><code>find / -size +10M -ls
+</code></pre>
+
+<p>Directory Size</p>
+<pre><code>du -hs direcotryName
+</code></pre>
+
+<p>Show system name and kernel</p>
+<pre><code>uname -a
+</code></pre>
+
+<p>Start a screen session.</p>
+<pre><code>screen
+</code></pre>
+
+<p>Resume a screen session.</p>
+<pre><code>screen -r
+</code></pre>
+
+<p>List screen sessions.</p>
+<pre><code>screen -list
+</code></pre>
+
+<p>List All Available Packages</p>
+<pre><code>apt-cache pkgnames
+</code></pre>
+
+<p>Package Name and Description of Software</p>
+<pre><code>apt-cache search vsftpd
+</code></pre>
+
+<p>Package Information</p>
+<pre><code>apt-cache show netcat
+</code></pre>
+
+<p>Dependencies for Specific Packages</p>
+<pre><code>apt-cache showpkg vsftpd
+</code></pre>
+
+<p>Update System Packages</p>
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>Clean up disks space</p>
+<pre><code>sudo apt-get clean
+</code></pre>
+
+<p>Download only source code</p>
+<pre><code>sudo apt-get --download-only source vsftpd
+</code></pre>
+
+<p>Check broken dependencies</p>
+<pre><code>sudo apt-get check
+</code></pre>
+
+<p>Remove files containing a string</p>
+<pre><code>rm ?*foo?*
+ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
+</code></pre>
+
+<p>Create folder and cd into it</p>
+<pre><code>mkdir foo &amp;&amp; cd &quot;$_&quot;
+</code></pre>
+
+<p>Create Swap file</p>
+<pre><code>sudo mkdir -v /var/cache/swap
+cd /var/cache/swap
+sudo dd if=/dev/zero of=swapfile bs=1K count=8M
+sudo chmod 600 swapfile
+sudo mkswap swapfil
+sudo mkswap swapfile
+sudo swapon swapfile
+top -bn1 | grep -i swap
+echo &quot;/var/cache/swap/swapfile none swap sw 0 0&quot; | sudo tee -a /etc/fstab
+</code></pre>
+
+<p>Change permission in filder and files</p>
+<pre><code>Chmod chown
+find . -type d -exec chmod 777 {} +
+find . -type f -exec chmod 777 {} +
+</code></pre>
+
+<p>Mount/Unmount</p>
+<pre><code>cat /proc/partitions
+mknod
+mknod /dev/vdb b 252 16
+fdisk /dev/vdb
+mkfs.ext3 /dev/vdb
+mkdir  /tmp/ciao
+mount /dev/vdb /tmp/ciao
+unmount /tmp/ciao
+</code></pre>
+
+<h2 id="regex">REGEX</h2>
+<p><a href="https://regex101.com/">Regex checker</a><br />
+<a href="https://projects.lukehaas.me/regexhub/">Regex examples</a><br />
+<a href="https://www.keycdn.com/support/regex-cheatsheet">Regex cheatsheet</a>  </p>
+<p>Anchor Matches<br />
+Anchors are special characters that specify where in the line a match must occur to be valid.  </p>
+<pre><code>grep &quot;^GNU&quot; GPL-3 // ^ Match initial part of line
+grep &quot;and$&quot; GPL-3 // $ Match end of line
+</code></pre>
+
+<p>Matching Any Character  </p>
+<pre><code>grep &quot;..cept&quot; GPL-3 // .. 2 characters and then cept
+</code></pre>
+
+<p>Bracket Expressions  </p>
+<pre><code>grep &quot;t[wo]o&quot; GPL-3 //By placing a group of characters within brackets (&quot;[&quot; and &quot;]&quot;), we can specify that the character at that position can be any one character found within the bracket group.
+
+grep &quot;^[A-Z]&quot; GPL-3 // find every line that begins with a capital letter
+</code></pre>
+
+<p>Repeat Patterns  </p>
+<pre><code>grep &quot;([A-Za-z ]*)&quot; GPL-3 // each line that contained an opening and closing parenthesis
+</code></pre>
+
+<p>Escaping Meta-Characters  </p>
+<pre><code>grep &quot;^[A-Z].*\.$&quot; GPL-3 // find any line that begins with a capital letter and ends with a period
+</code></pre>
+
+<p>Alternation  </p>
+<pre><code>grep -E &quot;(GPL|General Public License)&quot; GPL-3 // find either &quot;GPL&quot; or &quot;General Public License&quot; 
+</code></pre>
+
+<p>Quantifiers</p>
+<pre><code>grep -E &quot;(copy)?right&quot; GPL-3 // matches &quot;copyright&quot; and &quot;right&quot; by putting &quot;copy&quot; in an optional group
+</code></pre>
+
+<p>Match Repetition</p>
+<pre><code>grep -E &quot;[AEIOUaeiou]{3}&quot; GPL-3 // contain triple-vowels
+grep -E &quot;[[:alpha:]]{16,20}&quot; GPL-3 // any words that have between 16 and 20 characters
+</code></pre>
+
+<pre><code>let regex;
+
+/* matching a specific string */
+regex = /hello/; // looks for the string between the forward slashes (case-sensitive)... matches &quot;hello&quot;, &quot;hello123&quot;, &quot;123hello123&quot;, &quot;123hello&quot;; doesn't match for &quot;hell0&quot;, &quot;Hello&quot; 
+regex = /hello/i; // looks for the string between the forward slashes (case-insensitive)... matches &quot;hello&quot;, &quot;HelLo&quot;, &quot;123HelLO&quot;
+regex = /hello/g; // looks for multiple occurrences of string between the forward slashes...
+
+/* wildcards */
+regex = /h.llo/; // the &quot;.&quot; matches any one character other than a new line character... matches &quot;hello&quot;, &quot;hallo&quot; but not &quot;h\nllo&quot;
+regex = /h.*llo/; // the &quot;*&quot; matches any character(s) zero or more times... matches &quot;hello&quot;, &quot;heeeeeello&quot;, &quot;hllo&quot;, &quot;hwarwareallo&quot;
+
+/* shorthand character classes */
+regex = /\d/;  // matches any digit
+regex = /\D/;  // matches any non-digit
+regex = /\w/;  // matches any word character (a-z, A-Z, 0-9, _)
+regex = /\W/;  // matches any non-word character
+regex = /\s/;  // matches any white space character (\r (carriage return),\n (new line), \t (tab), \f (form feed))
+regex = /\S/;  // matches any non-white space character
+
+/* specific characters */
+regex = /[aeiou]/; // matches any character in square brackets
+regex = /[ck]atherine/; // matches catherine or katherine
+regex = /[^aeiou]/; // matches anything except the characters in square brackets
+
+/* character ranges */
+regex = /[a-z]/; // matches all lowercase letters
+regex = /[A-Z]/; // matches all uppercase letters
+regex = /[e-l]/; // matches lowercase letters e to l (inclusive)
+regex = /[F-P]/; // matches all uppercase letters F to P (inclusive)
+regex = /[0-9]/; // matches all digits
+regex = /[5-9]/; // matches any digit from 5 to 9 (inclusive)
+regex = /[a-zA-Z]/; // matches all lowercase and uppercase letters
+regex = /[^a-zA-Z]/; // matches non-letters
+
+/* matching repetitions using quantifiers */
+regex = /(hello){4}/; // matches &quot;hellohellohellohello&quot;
+regex = /hello{3}/; // matches &quot;hellooo&quot; and &quot;helloooo&quot; but not &quot;helloo&quot;
+regex = /\d{3}/; // matches 3 digits (&quot;312&quot;, &quot;122&quot;, &quot;111&quot;, &quot;12312321&quot; but not &quot;12&quot;)
+regex = /\d{3,7}/; // matches digits that occur between 3 and 7 times (inclusive)
+regex = /\d{3,}/; // matches digits that occur at least 3 times
+
+/* matching repetitions using star and plus */
+regex = /ab*c/; // matches zero or more repetitions of &quot;b&quot; (matches &quot;abc&quot;, &quot;abbbbc&quot;, &quot;ac&quot;)
+regex = /ab+c/; // matches one or more repetitions of &quot;b&quot; (matches &quot;abc&quot;, &quot;abbbbc&quot;, but not &quot;ac&quot;)
+
+/* matching beginning and end items */
+regex = /^[A-Z]\w*/; // matches &quot;H&quot;, &quot;Hello&quot;, but not &quot;hey&quot;
+regex = /\w*s$/; // matches &quot;cats&quot;, &quot;dogs&quot;, &quot;avocados&quot;, but not &quot;javascript&quot;
+
+/* matching word boundaries 
+
+positions of word boundaries:
+1. before the first character in string (if first character is a word character)
+2. after the last character in the string, if the last character is a word character
+3. between two characters in string, where one is a word character and the other isn't */
+regex = /\bmeow\b/; // matches &quot;hey meow lol&quot;, &quot;hey:meow:lol&quot;, but not &quot;heymeow lol&quot;
+
+/* groups */
+regex = /it is (ice )?cold outside/; // matches &quot;it is ice cold outside&quot; and &quot;it is cold outside&quot;
+regex = /it is (?:ice )?cold outside/; // same as above except it is a non-capturing group
+regex = /do (cats) like taco \1/; // matches &quot;do cats like taco cats&quot;
+regex = /do (cats) like (taco)\? do \2 \1 like you\?/; // matches &quot;do cats like taco? do taco cats like you?&quot;
+
+//branch reset group (available in Perl, PHP, R, Delphi... commented out because this is a js file)
+// regex = /(?|(cat)|(dog))\1/; // matches &quot;catcat&quot; and &quot;dogdog&quot;
+
+/* alternative matching */
+regex = /i like (tacos|boba|guacamole)\./; // matches &quot;i like tacos.&quot;, &quot;i like boba.&quot;, and &quot;i like guacamole.&quot;
+
+/* forward reference (available in Perl, PHP, Java, Ruby, etc... commented out because this is a js file) */
+// regex = /(\2train|(choo))+/; // matches &quot;choo&quot;, &quot;choochoo&quot;, &quot;chootrain&quot;, choochootrain&quot;, but not &quot;train&quot;
+
+/* lookaheads */
+regex = /z(?=a)/; // positive lookahead... matches the &quot;z&quot; before the &quot;a&quot; in pizza&quot; but not the first &quot;z&quot;
+regex = /z(?!a)/; // negative lookahead... matches the first &quot;z&quot; but not the &quot;z&quot; before the &quot;a&quot;
+
+/* lookbehinds */
+regex = /(?&lt;=[aeiou])\w/; // positive lookbehind... matches any word character that is preceded by a vowel
+regex = /(?&lt;![aeiou])\w/; // negative lookbehind... matches any word character that is not preceded by a vowel
+
+/* functions I find useful */
+regex.test(&quot;hello&quot;); // returns true if found a match, false otherwise
+regex.exec(&quot;hello&quot;); // returns result array, null otherwise
+&quot;football&quot;.replace(/foot/,&quot;basket&quot;); // replaces matches with second argument
+</code></pre>
+
+<hr />
+<h2 id="webpack">WEBPACK</h2>
+<p>webpack installation</p>
+<pre><code>npm install --save-dev webpack
+</code></pre>
+
+<p>If you're using webpack v4 or later, you'll need to install the CLI.  </p>
+<pre><code>npm install --save-dev webpack-cli
+</code></pre>
+
+<p>Create a webpack config file e.g. webpack.config.js  </p>
+<pre><code>const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+</code></pre>
+
+<p>in package.json  </p>
+<pre><code> &quot;scripts&quot;: {
++     &quot;build&quot;: &quot;webpack&quot;
+    },
+</code></pre>
+
+<hr />
+<h2 id="nodenpm">NODE/NPM</h2>
+<p>version</p>
+<pre><code>which node
+which npm
+node --version
+npm --version
+</code></pre>
+
+<p>global install packages</p>
+<pre><code>npm install uglify-js --global
+</code></pre>
+
+<p>list global packages</p>
+<pre><code>npm list --global
+npm list -g --depth=0
+</code></pre>
+
+<p>initialize project</p>
+<pre><code>npm init
+</code></pre>
+
+<p>local install packages devDependencies</p>
+<pre><code>npm install should --save-dev
+</code></pre>
+
+<p>local install packages dependencies</p>
+<pre><code>npm install should --save
+</code></pre>
+
+<p>uninstall packages</p>
+<pre><code>npm uninstall underscore
+</code></pre>
+
+<p>install specific version</p>
+<pre><code>npm install underscore@1.8.2
+</code></pre>
+
+<p>check outdated packages</p>
+<pre><code>npm outdated
+</code></pre>
+
+<p>update packages</p>
+<pre><code>npm update underscore
+</code></pre>
+
+<p>Quick Project Setup - React, Webpack, Babel, ESLint</p>
+<p>Dependencies</p>
+<pre><code>npm install --save react react-dom
+</code></pre>
+
+<p>Dev Dependencies</p>
+<pre><code>npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-react babel-eslint css-loader node-sass sass-loader style-loader file-loader webpack webpack-dev-server eslint eslint-plugin-import eslint-plugin-react eslint-watch
+</code></pre>
+
+<p>NPM Scripts (package.json)</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;webpack-dev-server --progress --hot --inline&quot;,
+  &quot;build&quot;: &quot;webpack&quot;,
+  &quot;lint&quot;: &quot;esw webpack.config.js src&quot;,
+  &quot;lint:watch&quot;: &quot;npm run lint -- --watch&quot;,
+  &quot;fix&quot;: &quot;./node_modules/.bin/eslint src --fix&quot;
+},
+</code></pre>
+
+<p>Babel (.babelrc)</p>
+<pre><code>{
+  &quot;presets&quot;: [
+    &quot;es2015&quot;,
+    &quot;react&quot;
+  ]
+}
+</code></pre>
+
+<p>Webpack Performance codesplitting react-loadable</p>
+<pre><code>npm install --save react-loadable
+</code></pre>
+
+<pre><code>import Loadable from 'react-loadable';
+import Loading from '../../layout/Loading';
+const ComponentName = Loadable({ loader: () =&gt; import(/* webpackChunkName: &quot;ComponentName&quot; */'./subcomponents/ComponentName'), loading: Loading });
+</code></pre>
+
+<p>in webpack.config.js</p>
+<pre><code>  output: {
+    path: path.join(__dirname, 'app/static/bin'),
+    filename: 'bundle.js',
+    publicPath: '/static/bin/',
+    chunkFilename: '[name].bundle.js',
+  },
+</code></pre>
+
+<p>general performance improvements</p>
+<pre><code>React-loadable: this is a code splitting library. It allows to load components only when those are needed.  
+There are 2 main ways to split code:  
+by route
+by subcomponents
+
+Show loading icon when initial page is loading.
+The objective in this case is to give immediately a feedback to the user that page is loading.
+
+Webpack Plugin: UglifyWebpackPlugin minify js files
+(license MIT) uglifyjs-webpack-plugin
+
+Webpack Plugin: MomentLocalesPlugin remove unused locales from Moment
+(license MIT) moment-locales-webpack-plugin
+
+Webpack Plugin: BundleAnalyzerPlugin analyze build files (use http://127.0.0.1:8888 after running npm run-script build)
+(license MIT): Webpack Bundle Analyzer
+
+Babel Plugin: transform-imports import only needed modules
+(license ISC) babel-plugin-transform-imports
+
+Babel Plugin: transform-react-remove-prop-types Remove React propTypes from the production build, as they are only used in development.
+(license MIT) babel-plugin-transform-react-remove-prop-types
+</code></pre>
+
+<p>webpack treeshaking</p>
+<pre><code>npm run-script build -- --display-used-exports
+</code></pre>
+
+<p>.babelrc transform imports
+npm install --save-dev babel-plugin-transform-imports<br />
+in .babelrc</p>
+<pre><code>{
+    &quot;plugins&quot;: [
+        [&quot;transform-imports&quot;, {
+            &quot;react-bootstrap&quot;: {
+                &quot;transform&quot;: &quot;react-bootstrap/lib/${member}&quot;,
+                &quot;preventFullImport&quot;: true
+            },
+            &quot;lodash&quot;: {
+                &quot;transform&quot;: &quot;lodash/${member}&quot;,
+                &quot;preventFullImport&quot;: true
+            }
+        }]
+    ]
+}
+</code></pre>
+
+<p>.eslintrc configuration</p>
+<pre><code>module.exports = {
+    &quot;parser&quot;: &quot;babel-eslint&quot;,
+    &quot;extends&quot;: &quot;airbnb&quot;,
+    &quot;env&quot;: {
+        &quot;browser&quot;: true
+    },
+    &quot;rules&quot;: {
+      &quot;class-methods-use-this&quot;: &quot;off&quot;,
+      &quot;react/sort-comp&quot;: &quot;off&quot;
+    }
+};
+</code></pre>
+
+<p>Webpack (webpack.config.js)</p>
+<pre><code>const path = require('path');
+
+module.exports = {
+    target: 'web',
+
+    // Entry file where webpack starts the bundling process
+    entry: path.resolve(__dirname, 'src/index.js'),
+
+    // Location where bundled code will be saved
+    output: {
+
+        // Target directory for all output files
+        path: path.resolve(__dirname, './dist'),
+
+        // Name of each Output bundle file
+        filename: &quot;bundle.js&quot;,
+    },
+
+    // Webpack development server (config)
+    devServer: {
+        port: 9000,
+
+        // Directory to serve content from
+        contentBase: path.resolve(__dirname, './src'),
+
+        // Automatically open browser when local server boots up
+        open: true
+    },
+
+    // Source Map setting
+    devtool: &quot;inline-source-map&quot;,
+
+    // Modules &amp; Loaders
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /(\.css|\.scss|\.sass)$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+};
+</code></pre>
+
+<p>ESLint (.eslintrc.json)</p>
+<pre><code>{
+  &quot;root&quot;: true,
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:import/errors&quot;,
+    &quot;plugin:import/warnings&quot;
+  ],
+  &quot;plugins&quot;: [
+    &quot;react&quot;
+  ],
+  &quot;parser&quot;: &quot;babel-eslint&quot;,
+  &quot;parserOptions&quot;: {
+    &quot;ecmaVersion&quot;: 7,
+    &quot;sourceType&quot;: &quot;module&quot;,
+    &quot;ecmaFeatures&quot;: {
+      &quot;jsx&quot;: true
+    }
+  },
+  &quot;env&quot;: {
+    &quot;es6&quot;: true,
+    &quot;browser&quot;: true,
+    &quot;node&quot;: true,
+    &quot;mocha&quot;: true
+  },
+  &quot;rules&quot;: {
+    &quot;quotes&quot;: 0,
+    &quot;no-console&quot;: 1,
+    &quot;no-debugger&quot;: 1,
+    &quot;no-var&quot;: 1,
+    &quot;semi&quot;: [1, &quot;always&quot;],
+    &quot;no-trailing-spaces&quot;: 1,
+    &quot;eol-last&quot;: 0,
+    &quot;no-unused-vars&quot;: 1,
+    &quot;no-underscore-dangle&quot;: 0,
+    &quot;no-alert&quot;: 0,
+    &quot;no-lone-blocks&quot;: 0,
+    &quot;no-multi-spaces&quot;: 1,
+    &quot;jsx-quotes&quot;: 1,
+    &quot;react/display-name&quot;: [ 1, {&quot;ignoreTranspilerName&quot;: false }],
+    &quot;react/forbid-prop-types&quot;: [1, {&quot;forbid&quot;: [&quot;any&quot;]}],
+    &quot;react/jsx-boolean-value&quot;: 1,
+    &quot;react/jsx-closing-bracket-location&quot;: 1,
+    &quot;react/jsx-curly-spacing&quot;: 1,
+  }
+}
+</code></pre>
+
+<hr />
+<p>Webpack setup2
+-y takes the default</p>
+<pre><code>npm init -y
+</code></pre>
+
+<p>From root folder:</p>
+<pre><code>mkdir dist
+cd dist
+touch index.html
+</code></pre>
+
+<p>in dist/index.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;The Minimal React Webpack Babel Setup&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;./bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Install Webpack from root folder</p>
+<pre><code>npm install --save-dev webpack webpack-dev-server webpack-cli
+</code></pre>
+
+<p>Folder Structure</p>
+<pre><code>- dist
+-- index.html
+- node_modules
+- package.json
+</code></pre>
+
+<p>package.json</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;webpack-dev-server --config ./webpack.config.js --mode development&quot;,
+  ...
+},
+</code></pre>
+
+<p>Create webpack configuration file</p>
+<pre><code>touch webpack.config.js
+</code></pre>
+
+<p>webpack config content</p>
+<pre><code>module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+</code></pre>
+
+<p>Start Webpack dev server</p>
+<pre><code>npm start
+</code></pre>
+
+<h2 id="babel">BABEL</h2>
+<p>Babel transpiles back to vanilla JavaScript so that every browser can interpret it. </p>
+<pre><code>npm install --save-dev @babel/core @babel/preset-env
+</code></pre>
+
+<p>hook it to webpack</p>
+<pre><code>npm install --save-dev babel-loader
+</code></pre>
+
+<p>JSX to javasript</p>
+<pre><code>npm install --save-dev @babel/preset-react
+</code></pre>
+
+<p>package.json</p>
+<pre><code>&quot;keywords&quot;: [],
+&quot;author&quot;: &quot;&quot;,
+&quot;license&quot;: &quot;ISC&quot;,
+&quot;babel&quot;: {
+  &quot;presets&quot;: [
+    &quot;@babel/preset-env&quot;,
+    &quot;@babel/preset-react&quot;
+  ]
+</code></pre>
+
+<p>webpack.config.json</p>
+<pre><code>module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist'
+  }
+};
+</code></pre>
+
+<p>Install packages for react</p>
+<pre><code>npm install --save react react-dom
+</code></pre>
+
+<p>src/index.js</p>
+<pre><code>import React from 'react';
+import ReactDOM from 'react-dom';
+
+const title = 'My Minimal React Webpack Babel Setup';
+
+ReactDOM.render(
+  &lt;div&gt;{title}&lt;/div&gt;,
+  document.getElementById('app')
+);
+</code></pre>
+
+<p>Hot Module Replacement in React<br />
+apply changes to the browser</p>
+<pre><code>npm install --save-dev react-hot-loader
+</code></pre>
+
+<p>webpack.config.js</p>
+<pre><code>const webpack = require('webpack');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  }
+};
+</code></pre>
+
+<p>in src/index.js add at the end</p>
+<pre><code>module.hot.accept();
+</code></pre>
+
+<pre><code>npm start
+</code></pre>
+
+<hr />
+<h2 id="docker">DOCKER</h2>
+<p>Docker terminology
+- Images: The blueprints of our application which form the basis of containers.<br />
+- Containers: Created from Docker images and run the actual application. 
+- Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
+- Docker Client: The command line tool that allows the user to interact with the daemon. 
+- Docker Hub: A registry of Docker images. If required, one can host their own Docker registries and can use them for pulling images.</p>
+<ul>
+<li>Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  </li>
+<li>
+<p>Child images: are images that build on base images and add additional functionality.  </p>
+</li>
+<li>
+<p>Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  </p>
+</li>
+<li>User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  </li>
+</ul>
+<p>Install latest Docker  </p>
+<pre><code>sudo apt-get install docker-ce
+</code></pre>
+
+<p>Test your Docker installation by running the following  </p>
+<pre><code>docker run hello-world
+</code></pre>
+
+<p>The pull command fetches image from the Docker registry and saves it to system.  </p>
+<pre><code>docker pull busybox
+</code></pre>
+
+<p>Docker Hub<br />
+<a href="https://hub.docker.com/search/?q=&amp;type=image">Docker Images hub</a>  </p>
+<p>to see a list of all images on your system.  </p>
+<pre><code>docker images
+</code></pre>
+
+<p>run a container</p>
+<pre><code>docker run busybox
+docker run busybox echo &quot;hello from busybox&quot;
+</code></pre>
+
+<p>show running containers</p>
+<pre><code>docker ps
+</code></pre>
+
+<p>show containers that ran previously</p>
+<pre><code>docker ps -a
+</code></pre>
+
+<p>live tty session</p>
+<pre><code>docker run -it busybox sh
+</code></pre>
+
+<p>Remove containers from which you left</p>
+<pre><code>docker rm $(docker ps -a -q -f status=exited)
+OR
+docker container prune
+</code></pre>
+
+<p>--rm flag can be passed to docker run which automatically deletes the container once it's exited from  </p>
+<p>Run detached<br />
+-d will detach our terminal<br />
+-P will publish all exposed ports to random ports and finally<br />
+--name corresponds to a name we want to give.  </p>
+<pre><code>docker run -d -P --name static-site name/static-site
+</code></pre>
+
+<p>See the ports by running the docker port [CONTAINER] command</p>
+<pre><code>docker port static-site
+</code></pre>
+
+<p>Specify a custom port</p>
+<pre><code>docker run -p 8888:80 prakhar1989/static-site
+</code></pre>
+
+<p>Stop a container</p>
+<pre><code>docker stop static-site
+</code></pre>
+
+<p>Creating an image<br />
+A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.<br />
+CMD is to tell the container which command it should run when it is started<br />
+port number that needs to be exposed<br />
+specifying our base image. Use the FROM keyword to do that  </p>
+<pre><code> Dockerfile
+FROM python:3-onbuild
+
+ tell the port number the container should expose
+EXPOSE 5000
+
+ run the command
+CMD [&quot;python&quot;, &quot;./app.py&quot;]
+</code></pre>
+
+<p>Build image from Dockerfile</p>
+<pre><code>docker build -t mz2kh/catnip .
+</code></pre>
+
+<p>Run the container</p>
+<pre><code>run -p 8888:5000 mz2kh/catnip
+</code></pre>
+
+<p>Publish image to Docker HUB</p>
+<pre><code>docker push mz2kh/catnip
+</code></pre>
+
+<p>Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  </p>
+<pre><code>docker run -p 8888:5000 prakhar1989/catnip
+</code></pre>
+
+<p>Search for images</p>
+<pre><code>docker search elasticsearch
+</code></pre>
+
+<p>When docker is installed, it creates three networks automatically.</p>
+<pre><code>docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+77192b388b9d        bridge              bridge              local
+3a125533ca3f        host                host                local
+13e644755906        none                null                local
+</code></pre>
+
+<p>The bridge network is the network in which containers are run by default.<br />
+Inspect bridge Network:</p>
+<pre><code>docker network inspect bridge
+</code></pre>
+
+<p>Create our own network<br />
+A bridge network allows containers connected to the same bridge network to communicate,<br />
+while providing isolation from containers which are not connected to that bridge network. </p>
+<pre><code>docker network create catnip-net
+</code></pre>
+
+<p>Launch containers into network (--net foodtrucks-net)</p>
+<pre><code>$ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
+$ docker network inspect foodtrucks-net
+</code></pre>
+
+<p>Create and run container on a created Network<br />
+./setup-docker.sh</p>
+<pre><code>!/bin/bash
+
+build the flask container
+docker build -t prakhar1989/foodtrucks-web .
+
+create the network
+docker network create foodtrucks-net
+
+start the ES container
+docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+start the flask app container
+docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
+</code></pre>
+
+<p>Docker Registries &amp; Repositories<br />
+Searching an Image  </p>
+<pre><code>docker search nginx
+docker search --filter stars=3 --no-trunc nginx
+</code></pre>
+
+<p>Pulling an Image</p>
+<pre><code>docker image pull nginx
+docker image pull eon01/nginx localhost:5000/myadmin/nginx
+</code></pre>
+
+<p>Pushing an Image</p>
+<pre><code>docker image push eon01/nginx
+docker image push eon01/nginx localhost:5000/myadmin/nginx
+</code></pre>
+
+<p>Running Containers<br />
+Create and Run a Simple Container<br />
+Start an ubuntu:latest image<br />
+Bind the port 80 from the CONTAINER to port 3000 on the HOST<br />
+Mount the current directory to /data on the CONTAINER  </p>
+<pre><code>docker container run --name infinite -it -p 3000:80 -v ${PWD}:/data ubuntu:latest
+</code></pre>
+
+<p>Creating a Container  </p>
+<pre><code>docker container create -t -i eon01/infinite --name infinite
+</code></pre>
+
+<p>Running a Container  </p>
+<pre><code>docker container run -it --name infinite -d eon01/infinite
+</code></pre>
+
+<p>Renaming a Container  </p>
+<pre><code>docker container rename infinite infinity
+</code></pre>
+
+<p>Removing a Container</p>
+<pre><code>docker container rm infinite
+</code></pre>
+
+<p>Updating a Container</p>
+<pre><code>docker container update --cpu-shares 512 -m 300M infinite
+</code></pre>
+
+<p>Starting &amp; Stopping Containers<br />
+Starting  </p>
+<pre><code>docker container start nginx
+</code></pre>
+
+<p>Stopping</p>
+<pre><code>docker container stop nginx
+</code></pre>
+
+<p>Restarting</p>
+<pre><code>docker container restart nginx
+</code></pre>
+
+<p>Pausing</p>
+<pre><code>docker container pause nginx
+</code></pre>
+
+<p>Unpausing</p>
+<pre><code>docker container unpause nginx
+</code></pre>
+
+<p>Blocking a Container</p>
+<pre><code>docker container wait nginx
+</code></pre>
+
+<p>Sending a SIGKILL</p>
+<pre><code>docker container kill nginx
+</code></pre>
+
+<p>Sending another signal</p>
+<pre><code>docker container kill -s HUP nginx
+</code></pre>
+
+<p>Connecting to an Existing Container</p>
+<pre><code>docker container attach nginx
+</code></pre>
+
+<p>Getting Information about Containers
+Running Containers</p>
+<pre><code>docker container ls
+docker container ls -a
+</code></pre>
+
+<p>Container Logs
+docker logs infinite
+Follow Container Logs</p>
+<pre><code>docker container logs infinite -f
+</code></pre>
+
+<p>Inspecting Containers</p>
+<pre><code>docker container inspect infinite
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+</code></pre>
+
+<p>Containers Events</p>
+<pre><code>docker system events infinite
+</code></pre>
+
+<p>Public Ports</p>
+<pre><code>docker container port infinite
+</code></pre>
+
+<p>Running Processes</p>
+<pre><code>docker container top infinite
+</code></pre>
+
+<p>Container Resource Usage  </p>
+<pre><code>docker container stats infinite  
+</code></pre>
+
+<p>Inspecting changes to files or directories on a container’s filesystem  </p>
+<pre><code>docker container diff infinite  
+</code></pre>
+
+<p>Manipulating Images<br />
+Listing Images  </p>
+<pre><code>docker image ls
+</code></pre>
+
+<p>Building Images  </p>
+<pre><code>docker build .
+docker build github.com/creack/docker-firefox
+docker build - &lt; Dockerfile
+docker build - &lt; context.tar.gz
+docker build -t eon/infinite .
+docker build -f myOtherDockerfile .
+curl example.com/remote/Dockerfile | docker build -f - .
+</code></pre>
+
+<p>Removing an Image  </p>
+<pre><code>docker image rm nginx
+</code></pre>
+
+<p>Loading a Tarred Repository from a File or the Standard Input Stream</p>
+<pre><code>docker image load &lt; ubuntu.tar.gz
+docker image load --input ubuntu.tar
+</code></pre>
+
+<p>Save an Image to a Tar Archive</p>
+<pre><code>docker image save busybox &gt; ubuntu.tar
+</code></pre>
+
+<p>Showing the History of an Image</p>
+<pre><code>docker image history
+</code></pre>
+
+<p>Creating an Image From a Container</p>
+<pre><code>docker container commit nginx
+</code></pre>
+
+<p>Tagging an Image</p>
+<pre><code>docker image tag nginx eon01/nginx
+</code></pre>
+
+<p>Pushing an Image</p>
+<pre><code>docker image push eon01/nginx
+</code></pre>
+
+<p>Networking<br />
+Creating Networks  </p>
+<pre><code>docker network create -d overlay MyOverlayNetwork
+docker network create -d bridge MyBridgeNetwork
+docker network create -d overlay \
+  --subnet=192.168.0.0/16 \
+  --subnet=192.170.0.0/16 \
+  --gateway=192.168.0.100 \
+  --gateway=192.170.0.100 \
+  --ip-range=192.168.1.0/24 \
+  --aux-address=&quot;my-router=192.168.1.5&quot; --aux-address=&quot;my-switch=192.168.1.6&quot; \
+  --aux-address=&quot;my-printer=192.170.1.5&quot; --aux-address=&quot;my-nas=192.170.1.6&quot; \
+  MyOverlayNetwork
+</code></pre>
+
+<p>Removing a Network</p>
+<pre><code>docker network rm MyOverlayNetwork
+</code></pre>
+
+<p>Listing Networks</p>
+<pre><code>docker network ls
+</code></pre>
+
+<p>Getting Information About a Network</p>
+<pre><code>docker network inspect MyOverlayNetwork
+</code></pre>
+
+<p>Connecting a Running Container to a Network</p>
+<pre><code>docker network connect MyOverlayNetwork nginx
+</code></pre>
+
+<p>Connecting a Container to a Network When it Starts</p>
+<pre><code>docker container run -it -d --network=MyOverlayNetwork nginx
+</code></pre>
+
+<p>Disconnecting a Container from a Network</p>
+<pre><code>docker network disconnect MyOverlayNetwork nginx
+</code></pre>
+
+<p>Exposing Ports<br />
+Using Dockerfile, you can expose a port on the container using:</p>
+<pre><code>EXPOSE &lt;port_number&gt;
+You can also map the container port to a host port using:
+
+e.g.
+
+docker run -p $HOST_PORT:$CONTAINER_PORT --name infinite -t infinite
+</code></pre>
+
+<p>Cleaning Docker<br />
+Removing a Running Container  </p>
+<pre><code>docker container rm nginx
+</code></pre>
+
+<p>Removing a Container and its Volume</p>
+<pre><code>docker container rm -v nginx
+</code></pre>
+
+<p>Removing all Exited Containers</p>
+<pre><code>docker container rm $(docker container ls -a -f status=exited -q)
+</code></pre>
+
+<p>Removing All Stopped Containers</p>
+<pre><code>docker container rm `docker container ls -a -q`
+</code></pre>
+
+<p>Removing a Docker Image</p>
+<pre><code>docker image rm nginx
+</code></pre>
+
+<p>Removing Dangling Images</p>
+<pre><code>docker image rm $(docker image ls -f dangling=true -q)
+</code></pre>
+
+<p>Removing all Images</p>
+<pre><code>docker image rm $(docker image ls -a -q)
+</code></pre>
+
+<p>Removing all untagged images</p>
+<pre><code>docker image rm -f $(docker image ls | grep &quot;^&lt;none&gt;&quot; | awk &quot;{print $3}&quot;)
+</code></pre>
+
+<p>Stopping &amp; Removing all Containers</p>
+<pre><code>docker container stop $(docker container ls -a -q) &amp;&amp; docker container rm $(docker container ls -a -q)
+</code></pre>
+
+<p>Removing Dangling Volumes</p>
+<pre><code>docker volume rm $(docker volume ls -f dangling=true -q)
+</code></pre>
+
+<p>Removing all unused (containers, images, networks and volumes)</p>
+<pre><code>docker system prune -f
+</code></pre>
+
+<p>Clean all</p>
+<pre><code>docker system prune -a
+</code></pre>
+
+<h2 id="links">LINKS</h2>
+<p>React<br />
+<a href="https://github.com/enaqx/awesome-react">Awesome-react</a><br />
+<a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a>
+<a href="https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030">FreeCodeCamp: React Cocepts</a><br />
+<a href="https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today">Creativebloq: React Tips</a><br />
+<a href="https://react.christmas/">React Various articles</a><br />
+<a href="https://flaviocopes.com">Flavio Copes</a><br />
+<a href="https://alligator.io/">Articles about frontend</a><br />
+<a href="https://www.robinwieruch.de/">Frontend Articles</a><br />
+<a href="https://www.valentinog.com">Frontend Articles</a><br />
+<a href="https://nikgraf.github.io/react-hooks/">Hooks collection</a>
+<a href="https://github.com/30-seconds/30-seconds-of-react#input">30 seconds react</a></p>
+<p>CSS Links<br />
+<a href="https://cssreference.io">CSSreference.io</a><br />
+<a href="https://labs.jensimmons.com/">Jen Simmons CSS Lab</a><br />
+<a href="https://www.toptal.com/css/introduction-to-bem-methodology">BEM Block Element Modifier</a><br />
+<a href="http://animista.net">CSS Animation</a>
+<a href="https://learncssgrid.com/">CSS grids</a><br />
+<a href="https://gridbyexample.com">Grids by example</a><br />
+<a href="http://cssgridgarden.com">Grid CSS Garden</a><br />
+<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid CSS Tricks</a><br />
+<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox CSS Tricks</a><br />
+<a href="http://flexboxgrid.com/">Flexbox Grid</a>  </p>
+<p>GIT<br />
+<a href="https://git-scm.com/docs">GIT commands</a>  </p>
+<p>Linux<br />
+<a href="http://landoflinux.com/linux_basic_fundamentals.html">Linux commands</a>  </p>
+<p>Various links<br />
+<a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Github pages markdown</a><br />
+<a href="https://github.com/phw/peek">Recording Screen</a><br />
+<a href="https://www.sitepoint.com/">Site Point</a><br />
+<a href="https://devhints.io">Cheatsheets</a><br />
+<a href="https://help.github.com/">Github help</a><br />
+<a href="https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf">REST API Design Rulebook</a><br />
+<a href="https://www.mkdocs.org">Static site generator</a><br />
+<a href="https://github.com/sindresorhus/awesome#front-end-development">Awesome frontend</a><br />
+<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">Interview questions</a><br />
+<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">Deploy mkdocs to github</a><br />
+<a href="https://github.com/thoov/mock-socket">Mock socket</a><br />
+<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">Mock socket</a><br />
+<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">Socket unit testing</a><br />
+<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">Socket+jest boilerplate</a>  </p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">kubectl commands</a>
+<!--
+https://github.com/howtographql/react-apollo<br />https://www.howtographql.com/react-apollo/0-introduction/<br />https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js<br />https://www.howtographql.com/react-apollo/1-getting-started/
+https://www.javascript.com/resources
+https://github.com/rmotr/flask-api-example
+https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
+--></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-04-11 13:48:31
+-->
