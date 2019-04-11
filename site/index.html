@@ -88,6 +88,14 @@
             <li><a href="#webpack">WEBPACK</a></li>
             <li><a href="#nodenpm">NODE/NPM</a></li>
             <li><a href="#babel">BABEL</a></li>
+            <li><a href="#curl">CURL</a></li>
+        <li class="main "><a href="#set-site">SET SITE</a></li>
+        <li class="main "><a href="#token-authentication">TOKEN AUTHENTICATION</a></li>
+        <li class="main "><a href="#basic-authentication">BASIC AUTHENTICATION</a></li>
+        <li class="main "><a href="#get-users">GET USERS</a></li>
+        <li class="main "><a href="#post">POST</a></li>
+        <li class="main "><a href="#patch">PATCH</a></li>
+        <li class="main "><a href="#delete">DELETE</a></li>
             <li><a href="#docker">DOCKER</a></li>
             <li><a href="#links">LINKS</a></li>
     </ul>
@@ -1115,6 +1123,22 @@ module.exports = {
 </code></pre>
 
 <hr />
+<h2 id="curl">CURL</h2>
+<h1 id="set-site">SET SITE</h1>
+<p>SITE=localhost:8096</p>
+<h1 id="token-authentication">TOKEN AUTHENTICATION</h1>
+<p>TOKEN=<code>curl -v $SITE/api/v1/Sessions -d'{"UserName":"Admin", "Password":"pass"}' 2&gt;&amp;1|sed -n 's/.*\(X-Auth-Token:\) /\1/p'</code> &amp;&amp; echo $TOKEN</p>
+<h1 id="basic-authentication">BASIC AUTHENTICATION</h1>
+<p>curl -v -uAdmin:pass $SITE/api/v1/</p>
+<h1 id="get-users">GET USERS</h1>
+<p>curl -v -H$TOKEN $SITE/api/v1/Accounts/</p>
+<h1 id="post">POST</h1>
+<p>curl -v -H$TOKEN $SITE/api/v1/Accounts/ -d'{"UserName":"abcde", "Password":"edcba", "RoleId":"Operator"}' |python -mjson.tool</p>
+<h1 id="patch">PATCH</h1>
+<p>curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |python -mjson.tool</p>
+<h1 id="delete">DELETE</h1>
+<p>curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde</p>
+<hr />
 <h2 id="docker">DOCKER</h2>
 <p>Docker terminology
 - Images: The blueprints of our application which form the basis of containers.<br />
@@ -1662,5 +1686,5 @@ https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environment
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-04-11 13:48:31
+Build Date UTC : 2019-04-11 14:21:15
 -->

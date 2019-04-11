@@ -1076,6 +1076,28 @@ module.hot.accept();
 ```
 npm start
 ```
+---
+## CURL
+
+# SET SITE
+SITE=localhost:8096
+
+# TOKEN AUTHENTICATION
+TOKEN=`curl -v $SITE/api/v1/Sessions -d'{"UserName":"Admin", "Password":"pass"}' 2>&1|sed -n 's/.*\(X-Auth-Token:\) /\1/p'` && echo $TOKEN
+# BASIC AUTHENTICATION
+curl -v -uAdmin:pass $SITE/api/v1/
+
+# GET USERS
+curl -v -H$TOKEN $SITE/api/v1/Accounts/
+
+# POST
+curl -v -H$TOKEN $SITE/api/v1/Accounts/ -d'{"UserName":"abcde", "Password":"edcba", "RoleId":"Operator"}' |python -mjson.tool
+
+# PATCH 
+curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |python -mjson.tool
+
+# DELETE
+curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
 
 --- 
 ## DOCKER  
