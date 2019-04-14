@@ -13,6 +13,28 @@ PVM iterates through bytecode.
 It is the runtime engine of Python; it’s always present as part of thePython system, and is the component that truly runs your scripts.  
 Technically, it’s just the last step of what is called the Python interpreter.  
 
+<h4>Imports</h4>
+On imports the first thing Python will do is look up the name abc in sys.modules.  
+This is a cache of all modules that have been previously imported.  
+Python will proceed to search through a list of built-in modules.  
+pre-installed with Python and can be found in the Python Standard Library.  
+Python then searches for it in a list of directories defined by sys.path.  
+This list usually includes the current directory, which is searched first.  
+
+import the resource directly
+```
+import abc
+```
+import the resource from another package or module
+```
+from abc import xyz
+from flask import Flask, request
+```
+rename an imported resource
+```
+import abc as other_name
+```
+
 <h4>Built-in datatypes</h4>
 - Numbers
 - Strings
@@ -353,6 +375,48 @@ git squash n $(git log -n 1 --skip n --pretty=%B)
 Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:
 ```
 git push --force origin <name_of_branch>
+```
+
+<h4>REST API</h4>
+<h5>Examples using Flask</h5>
+```python
+@app.route('/accounts', methods=['GET'])
+@authorization_required('Login')
+    """
+    Return a list of accounts.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+      GET /accounts HTTP/1.1
+      Host: localhost
+      Accept: application/json
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Vary: Accept
+      Content-Type: application/json
+
+      [
+          {
+              "role": "Administrator",
+              "username": "Admin"
+          },
+          {
+              "role": "operator",
+              "username": "accountA"
+          }
+      ]
+
+    :resheader Content-Type: application/json
+    :reqheader Authorization: OAuth token to authenticate
+    :status 200: Accounts Found
+    """
+    return json.dumps(app.accounts_manager.get_accounts())
 ```
 
 ## NODE
