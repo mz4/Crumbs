@@ -1580,5 +1580,7 @@ https://www.howtographql.com/react-apollo/1-getting-started/
 https://www.javascript.com/resources
 https://github.com/rmotr/flask-api-example
 https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
+python https://www.programcreek.com
+python https://www.journaldev.com/
 -->
 

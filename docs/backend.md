@@ -419,6 +419,36 @@ git push --force origin <name_of_branch>
     return json.dumps(app.accounts_manager.get_accounts())
 ```
 
+<h4>creating your application using a function.</h4>
+This allows you to pass in different configuration settings.  
+```python
+from flask import Flask
+from sqlalchemy import create_engine
+
+from myapp import config
+from myapp.views import frontend
+
+def create_app(database_uri, debug=False):
+    app = Flask(__name__)
+    app.debug = debug
+
+    # set up your database
+    app.engine = create_engine(database_uri)
+
+    # add your modules
+    app.register_module(frontend)
+    
+    # other setup tasks
+
+    return app
+```
+<h4>Main</h4>
+```python
+if __name__ == "__main__":
+    app = create_app(config.DATABASE_URI, debug=True)
+    app.run()
+```
+
 ## NODE
 <h4>About</h4>
 Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.  
