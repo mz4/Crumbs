@@ -13,6 +13,28 @@ PVM iterates through bytecode.
 It is the runtime engine of Python; it’s always present as part of thePython system, and is the component that truly runs your scripts.  
 Technically, it’s just the last step of what is called the Python interpreter.  
 
+<h4>Imports</h4>
+On imports the first thing Python will do is look up the name abc in sys.modules.  
+This is a cache of all modules that have been previously imported.  
+Python will proceed to search through a list of built-in modules.  
+pre-installed with Python and can be found in the Python Standard Library.  
+Python then searches for it in a list of directories defined by sys.path.  
+This list usually includes the current directory, which is searched first.  
+
+import the resource directly
+```
+import abc
+```
+import the resource from another package or module
+```
+from abc import xyz
+from flask import Flask, request
+```
+rename an imported resource
+```
+import abc as other_name
+```
+
 <h4>Built-in datatypes</h4>
 - Numbers
 - Strings
@@ -353,6 +375,78 @@ git squash n $(git log -n 1 --skip n --pretty=%B)
 Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:
 ```
 git push --force origin <name_of_branch>
+```
+
+<h4>REST API</h4>
+<h5>Examples using Flask</h5>
+```python
+@app.route('/accounts', methods=['GET'])
+@authorization_required('Login')
+    """
+    Return a list of accounts.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+      GET /accounts HTTP/1.1
+      Host: localhost
+      Accept: application/json
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Vary: Accept
+      Content-Type: application/json
+
+      [
+          {
+              "role": "Administrator",
+              "username": "Admin"
+          },
+          {
+              "role": "operator",
+              "username": "accountA"
+          }
+      ]
+
+    :resheader Content-Type: application/json
+    :reqheader Authorization: OAuth token to authenticate
+    :status 200: Accounts Found
+    """
+    return json.dumps(app.accounts_manager.get_accounts())
+```
+
+<h4>creating your application using a function.</h4>
+This allows you to pass in different configuration settings.  
+```python
+from flask import Flask
+from sqlalchemy import create_engine
+
+from myapp import config
+from myapp.views import frontend
+
+def create_app(database_uri, debug=False):
+    app = Flask(__name__)
+    app.debug = debug
+
+    # set up your database
+    app.engine = create_engine(database_uri)
+
+    # add your modules
+    app.register_module(frontend)
+    
+    # other setup tasks
+
+    return app
+```
+<h4>Main</h4>
+```python
+if __name__ == "__main__":
+    app = create_app(config.DATABASE_URI, debug=True)
+    app.run()
 ```
 
 ## NODE
