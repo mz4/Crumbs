@@ -241,6 +241,78 @@ git checkout -b <branch_name>
 git checkout -- <file>
 ```
 
+<h4>Squashing commits into one</h4>
+to maintain a clean commit log message when merging the remote branch to master.
+
+SCRIPT:
+```
+#!/bin/bash
+#
+
+#commits to squash
+commitCount=$1
+
+#get the commit message
+shift
+commitMessage=$@
+
+#verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo "---------------------------------"
+echo "Will squash $commitCount commits"
+echo "Commit message will be '$commitMessage'"
+
+echo "...validating input"
+if ! [[ $commitCount =~ $regex ]]
+then
+    echo "Squash count must be an integer."
+elif [ -z "$commitMessage" ]
+then
+    echo "Invalid, sure string is not empty"
+else
+    echo "...input looks good"
+    echo "...proceeding to squash"
+    git reset --soft HEAD~$commitCount
+    git commit -m "$commitMessage"
+    echo "...done"
+fi
+
+echo
+exit 0
+```
+
+Find directories being used in your path.  
+```
+echo $PATH
+```
+Pick a dir to put the script. For example “/home/name/bin”.  
+Name script to “git-squash.sh”.  
+Make the file executable “chmod +x file_name”  
+Now create an alias for git. 
+Run “ls -la /bin/sh” to find out the default shell. (e.g. dash)
+Run “/bin/dash” to enter the shell and execute:  
+```
+git config --global alias.squash "!bash -c 'bash <path_of_script>/git-squash.sh \$1 \$2' -"  
+```
+
+USAGE:  
+Squash n commits:  
+```
+git squash n 'my commit message'  
+```
+
+You can skip as many commits as you want by change the number after the --skip flag.
+Combine the two commands to squash n amount of commits into one, with the specified commit message:
+```
+git squash n $(git log -n 1 --skip n --pretty=%B)
+```
+
+Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:
+```
+git push --force origin <name_of_branch>
+```
+
 ## LINUX
 
 Systems Directories
@@ -438,6 +510,55 @@ mkfs.ext3 /dev/vdb
 mkdir  /tmp/ciao
 mount /dev/vdb /tmp/ciao
 unmount /tmp/ciao
+```
+
+Compress/Uncompress  Files
+Create a tar archive of a directory
+```
+tar -cvf tarball_name.tar  /path/to/directory
+```
+
+c - Used for creating a new .tar file  
+v - Verbosely outputs the creation of the .tar file  
+f - Defines the file name of the archive file  
+  
+Create a tar.gz archive file
+```
+tar -cvzf james.tar.gz  /home/james/
+```
+
+create a bz2 archiv (j option)
+```
+tar -cvjf james.tar.bz2  /home/james/
+```
+
+---
+
+To uncompress or untar a .tar file , use the x option  
+```
+tar -xvf james.tar
+```
+
+To extract the file to a different directory, use the -C + path  
+```
+tar -xvf james.tar  -C /opt
+```
+
+Uncompressing a tar.gz file  
+```
+tar -xvf james.tar.gz
+```
+Sample output
+
+---
+List contents of a tar file  
+```
+tar -tvf james.tar
+```
+
+List contents of a tar.bz2
+```
+tar -tvf james.tar.bz2
 ```
 
 ## REGEX
@@ -1079,26 +1200,34 @@ npm start
 ---
 ## CURL
 
-# SET SITE
+<h4>SET SITE</h4>
+```
 SITE=localhost:8096
-
-# TOKEN AUTHENTICATION
+```
+<h4>TOKEN AUTHENTICATION</h4>
+```
 TOKEN=`curl -v $SITE/api/v1/Sessions -d'{"UserName":"Admin", "Password":"pass"}' 2>&1|sed -n 's/.*\(X-Auth-Token:\) /\1/p'` && echo $TOKEN
-# BASIC AUTHENTICATION
+```
+<h4>BASIC AUTHENTICATION</h4>
+```
 curl -v -uAdmin:pass $SITE/api/v1/
-
-# GET USERS
+```
+<h4>GET USERS</h4>
+```
 curl -v -H$TOKEN $SITE/api/v1/Accounts/
-
-# POST
+```
+<h4>POST</h4>
+```
 curl -v -H$TOKEN $SITE/api/v1/Accounts/ -d'{"UserName":"abcde", "Password":"edcba", "RoleId":"Operator"}' |python -mjson.tool
-
-# PATCH 
+```
+<h4>PATCH</h4>
+```
 curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |python -mjson.tool
-
-# DELETE
+```
+<h4>DELETE</h4>
+```
 curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
-
+```
 --- 
 ## DOCKER  
 

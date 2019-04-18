@@ -241,6 +241,12 @@ update([other])	Update the dictionary with the key/value pairs from other, overw
 values()	Return a new view of the dictionary's values
 ```
 
+<h4>Loop dict and get selected attributes</h4>
+```
+events = [{action: 'aaa', type: 'bbb'}, {action: 'addaa', type: 'ddbbb'}]
+ret = [{'action': ev['action'], 'type': ev['type']} for ev in events]
+```
+
 <h4>Sets</h4>
 A set is an unordered collection of items. Every element is unique (no duplicates) and must be immutable (which cannot be changed).  
 However, the set itself is mutable. We can add or remove items from it.  
