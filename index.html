@@ -89,13 +89,6 @@
             <li><a href="#nodenpm">NODE/NPM</a></li>
             <li><a href="#babel">BABEL</a></li>
             <li><a href="#curl">CURL</a></li>
-        <li class="main "><a href="#set-site">SET SITE</a></li>
-        <li class="main "><a href="#token-authentication">TOKEN AUTHENTICATION</a></li>
-        <li class="main "><a href="#basic-authentication">BASIC AUTHENTICATION</a></li>
-        <li class="main "><a href="#get-users">GET USERS</a></li>
-        <li class="main "><a href="#post">POST</a></li>
-        <li class="main "><a href="#patch">PATCH</a></li>
-        <li class="main "><a href="#delete">DELETE</a></li>
             <li><a href="#docker">DOCKER</a></li>
             <li><a href="#links">LINKS</a></li>
     </ul>
@@ -343,6 +336,73 @@ git reset --hard HEAD^     # use --hard if you don't care about keeping the chan
 <pre><code>git checkout -- &lt;file&gt;
 </code></pre>
 
+<h4>Squashing commits into one</h4>
+
+<p>to maintain a clean commit log message when merging the remote branch to master.</p>
+<p>SCRIPT:</p>
+<pre><code>#!/bin/bash
+#
+
+#commits to squash
+commitCount=$1
+
+#get the commit message
+shift
+commitMessage=$@
+
+#verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo &quot;---------------------------------&quot;
+echo &quot;Will squash $commitCount commits&quot;
+echo &quot;Commit message will be '$commitMessage'&quot;
+
+echo &quot;...validating input&quot;
+if ! [[ $commitCount =~ $regex ]]
+then
+    echo &quot;Squash count must be an integer.&quot;
+elif [ -z &quot;$commitMessage&quot; ]
+then
+    echo &quot;Invalid, sure string is not empty&quot;
+else
+    echo &quot;...input looks good&quot;
+    echo &quot;...proceeding to squash&quot;
+    git reset --soft HEAD~$commitCount
+    git commit -m &quot;$commitMessage&quot;
+    echo &quot;...done&quot;
+fi
+
+echo
+exit 0
+</code></pre>
+
+<p>Find directories being used in your path.  </p>
+<pre><code>echo $PATH
+</code></pre>
+
+<p>Pick a dir to put the script. For example “/home/name/bin”.<br />
+Name script to “git-squash.sh”.<br />
+Make the file executable “chmod +x file_name”<br />
+Now create an alias for git. 
+Run “ls -la /bin/sh” to find out the default shell. (e.g. dash)
+Run “/bin/dash” to enter the shell and execute:  </p>
+<pre><code>git config --global alias.squash &quot;!bash -c 'bash &lt;path_of_script&gt;/git-squash.sh \$1 \$2' -&quot;  
+</code></pre>
+
+<p>USAGE:<br />
+Squash n commits:  </p>
+<pre><code>git squash n 'my commit message'  
+</code></pre>
+
+<p>You can skip as many commits as you want by change the number after the --skip flag.
+Combine the two commands to squash n amount of commits into one, with the specified commit message:</p>
+<pre><code>git squash n $(git log -n 1 --skip n --pretty=%B)
+</code></pre>
+
+<p>Now that the commit has been squashed into one, you can push to the remote branch on gitlab, by running this command:</p>
+<pre><code>git push --force origin &lt;name_of_branch&gt;
+</code></pre>
+
 <h2 id="linux">LINUX</h2>
 <p>Systems Directories</p>
 <pre><code>/ The root directory.  
@@ -529,6 +589,45 @@ mkfs.ext3 /dev/vdb
 mkdir  /tmp/ciao
 mount /dev/vdb /tmp/ciao
 unmount /tmp/ciao
+</code></pre>
+
+<p>Compress/Uncompress  Files
+Create a tar archive of a directory</p>
+<pre><code>tar -cvf tarball_name.tar  /path/to/directory
+</code></pre>
+
+<p>c - Used for creating a new .tar file<br />
+v - Verbosely outputs the creation of the .tar file<br />
+f - Defines the file name of the archive file  </p>
+<p>Create a tar.gz archive file</p>
+<pre><code>tar -cvzf james.tar.gz  /home/james/
+</code></pre>
+
+<p>create a bz2 archiv (j option)</p>
+<pre><code>tar -cvjf james.tar.bz2  /home/james/
+</code></pre>
+
+<hr />
+<p>To uncompress or untar a .tar file , use the x option  </p>
+<pre><code>tar -xvf james.tar
+</code></pre>
+
+<p>To extract the file to a different directory, use the -C + path  </p>
+<pre><code>tar -xvf james.tar  -C /opt
+</code></pre>
+
+<p>Uncompressing a tar.gz file  </p>
+<pre><code>tar -xvf james.tar.gz
+</code></pre>
+
+<p>Sample output</p>
+<hr />
+<p>List contents of a tar file  </p>
+<pre><code>tar -tvf james.tar
+</code></pre>
+
+<p>List contents of a tar.bz2</p>
+<pre><code>tar -tvf james.tar.bz2
 </code></pre>
 
 <h2 id="regex">REGEX</h2>
@@ -1124,20 +1223,41 @@ module.exports = {
 
 <hr />
 <h2 id="curl">CURL</h2>
-<h1 id="set-site">SET SITE</h1>
-<p>SITE=localhost:8096</p>
-<h1 id="token-authentication">TOKEN AUTHENTICATION</h1>
-<p>TOKEN=<code>curl -v $SITE/api/v1/Sessions -d'{"UserName":"Admin", "Password":"pass"}' 2&gt;&amp;1|sed -n 's/.*\(X-Auth-Token:\) /\1/p'</code> &amp;&amp; echo $TOKEN</p>
-<h1 id="basic-authentication">BASIC AUTHENTICATION</h1>
-<p>curl -v -uAdmin:pass $SITE/api/v1/</p>
-<h1 id="get-users">GET USERS</h1>
-<p>curl -v -H$TOKEN $SITE/api/v1/Accounts/</p>
-<h1 id="post">POST</h1>
-<p>curl -v -H$TOKEN $SITE/api/v1/Accounts/ -d'{"UserName":"abcde", "Password":"edcba", "RoleId":"Operator"}' |python -mjson.tool</p>
-<h1 id="patch">PATCH</h1>
-<p>curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |python -mjson.tool</p>
-<h1 id="delete">DELETE</h1>
-<p>curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde</p>
+<h4>SET SITE</h4>
+
+<pre><code>SITE=localhost:8096
+</code></pre>
+
+<h4>TOKEN AUTHENTICATION</h4>
+
+<pre><code>TOKEN=`curl -v $SITE/api/v1/Sessions -d'{&quot;UserName&quot;:&quot;Admin&quot;, &quot;Password&quot;:&quot;pass&quot;}' 2&gt;&amp;1|sed -n 's/.*\(X-Auth-Token:\) /\1/p'` &amp;&amp; echo $TOKEN
+</code></pre>
+
+<h4>BASIC AUTHENTICATION</h4>
+
+<pre><code>curl -v -uAdmin:pass $SITE/api/v1/
+</code></pre>
+
+<h4>GET USERS</h4>
+
+<pre><code>curl -v -H$TOKEN $SITE/api/v1/Accounts/
+</code></pre>
+
+<h4>POST</h4>
+
+<pre><code>curl -v -H$TOKEN $SITE/api/v1/Accounts/ -d'{&quot;UserName&quot;:&quot;abcde&quot;, &quot;Password&quot;:&quot;edcba&quot;, &quot;RoleId&quot;:&quot;Operator&quot;}' |python -mjson.tool
+</code></pre>
+
+<h4>PATCH</h4>
+
+<pre><code>curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{&quot;Password&quot;:&quot;zyxwv&quot;}' |python -mjson.tool
+</code></pre>
+
+<h4>DELETE</h4>
+
+<pre><code>curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
+</code></pre>
+
 <hr />
 <h2 id="docker">DOCKER</h2>
 <p>Docker terminology
@@ -1688,5 +1808,5 @@ python https://www.journaldev.com/
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-04-15 09:39:51
+Build Date UTC : 2019-04-18 08:52:32
 -->
