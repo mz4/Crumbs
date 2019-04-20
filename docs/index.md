@@ -1733,5 +1733,8 @@ https://github.com/rmotr/flask-api-example
 https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
 python https://www.programcreek.com
 python https://www.geeksforgeeks.org
+python https://www.journaldev.com/
+https://www.fullstackpython.com/
+https://realpython.com/
 -->
 
