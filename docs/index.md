@@ -1736,5 +1736,6 @@ python https://www.geeksforgeeks.org
 python https://www.journaldev.com/
 https://www.fullstackpython.com/
 https://realpython.com/
+https://www.journaldev.com/17752/python-main-function
 -->
 

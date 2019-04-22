@@ -4,14 +4,42 @@
 ## PYTHON
 
 <h4>Byte code compilation</h4>
-Internally, Python compiles sourcecode into a format called bytecode.  
+Python compiles sourcecode into a format called bytecode.  
 Compilation is simply a translation step, and byte code is a lower-level, and platform-independent,representation of your source code.  
 This byte code translation is performed to speed execution.  
 
-byte code it is executed to something called PythonVirtual Machine.  
+byte code it is executed to something called Python Virtual Machine.  
 PVM iterates through bytecode.  
-It is the runtime engine of Python; it’s always present as part of thePython system, and is the component that truly runs your scripts.  
+It is the runtime engine of Python; it’s always present as part of the Python system, and is the component that truly runs your scripts.  
 Technically, it’s just the last step of what is called the Python interpreter.  
+
+<h4>Main</h4>
+Python main function is executed only when it’s being executed as a python program.  
+We can also import a python program as a module, in that case python main method should not execute.  
+
+```
+import sys
+
+print("Hello")
+
+print("__name__ value: ", __name__)
+
+
+def main():
+    print("python main function")
+
+
+if __name__ == '__main__':
+    print sys.argv
+    main()
+```
+It is going to print:
+```
+Hello
+('__name__ value: ', '__main__')
+['prova.py', 'start']
+python main function
+```
 
 <h4>Imports</h4>
 On imports the first thing Python will do is look up the name abc in sys.modules.  
@@ -33,6 +61,20 @@ from flask import Flask, request
 rename an imported resource
 ```
 import abc as other_name
+```
+
+<h4>List of available Modules</h4>
+From python shell:  
+```
+> help()
+```
+type "modules", "keywords", or "topics"
+```
+> modules
+```
+Get information about a specific module:
+```
+> sys
 ```
 
 <h4>Built-in datatypes</h4>
@@ -310,6 +352,147 @@ tech_names = { 'AA', 'BB', 'CC', 'DD' }
 p2 = { key:value for key,value in prices.items() if key in tech_names }
 ```
 https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf
+
+<h4>Lambda functions</h4>
+Keyword lambda in python is used to create anonymous functions.  
+```python
+lambda arguments: expression
+```
+same as:
+```python
+def functionName( arguments ):
+	statements...
+	return something
+```
+example:
+```python
+def squareof(x):
+   return x*x
+
+p = squareof(5)
+print(p)
+```
+example with filter:
+```python
+weekdays = ['sun', 'mon', 'tues', 'wed', 'thurs' 'fri']
+days = filter(lambda day: day if len(day)==3 else '', weekdays)
+for d in days:
+   print(d)
+```
+example with map:
+```python
+numbers = [ 74, 85, 14, 23, 56, 31,44 ]
+
+remainders = map(lambda num: num%5, numbers)
+for i in remainders:
+   print(i)
+```
+
+---
+
+<h4>Python Inheritance</h4>
+```python
+class Person:  
+    name = ""  
+    age = 0  
+    def __init__(self, personName, personAge):  
+        self.name = personName  
+        self.age = personAge  
+    def showName(self):  
+        print(self.name)  
+    def showAge(self):  
+        print(self.age)  
+  
+class Student(Person):
+    studentId = ""  
+    def __init__(self, studentName, studentAge, studentId):  
+        Person.__init__(self, studentName, studentAge)
+        self.studentId = studentId  
+    def getId(self):  
+        return self.studentId
+  
+person1 = Person("Richard", 23)
+person1.showAge()  
+student1 = Student("Max", 22, "102")
+print(student1.getId())  
+student1.showName()
+```
+
+<h4>Logging in Python</h4>
+Logging is a way of tracking events in a program when it runs and is in execution.  
+```python
+import logging
+
+# Configure file
+logging.basicConfig(filename='my_logs.log', filemode='w',
+                    format='%(levelname)s -> %(asctime)s: %(message)s', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+logger.info("Using custom logger.")
+shubham = {'name': 'Shubham', 'roll': 123}
+logger.debug("Shubham: %s", shubham)
+```
+
+
+<h4>Daemon</h4>
+A daemon is a process that runs in the background.  
+A daemon thread will shut down immediately when the program exits.  
+If a program is running Threads that are not daemons, then the program will wait for those threads to complete before it terminates.  
+Threads that are daemons, however, are just killed wherever they are when the program is exiting.  
+
+
+<h4>Thread</h4>
+A process is an instance of program.  
+Processes spawn threads (sub-processes) to handle subtasks.  
+Threads live inside processes and share the same memory space.  
+Python threading allows you to have different parts of your program run concurrently.  
+GIL essentially limit one Python thread to run at a time.  
+
+Tasks that spend much of their time waiting for external events are generally good candidates for threading.  
+Problems that require heavy CPU computation and spend little time waiting for external events might not run faster at all.
+
+```python
+import time
+from threading import Thread
+
+def sleepMe(i):
+    print("Thread %i sleep for 5 seconds." % i)
+    time.sleep(5)
+    print("Thread %i is awake now. " % i)
+
+for i in range(10):
+    th = Thread(target=sleepMe, args=(i, ))
+    th.start()
+    print("Current Thread count: %i." % threading.active_count())
+```
+
+example 2 with logging:
+```python
+import logging
+import threading
+import time
+
+def thread_function(name):
+    logging.info("Thread %s: starting", name)
+    time.sleep(2)
+    logging.info("Thread %s: finishing", name)
+
+if __name__ == "__main__":
+    format = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format, level=logging.INFO,
+                        datefmt="%H:%M:%S")
+
+    logging.info("Main    : before creating thread")
+    x = threading.Thread(target=thread_function, args=(1,))
+    logging.info("Main    : before running thread")
+    x.start()
+    logging.info("Main    : wait for the thread to finish")
+    # x.join()
+    logging.info("Main    : all done")
+```
+
+---
+---
 
 <h4>REST API</h4>
 <h5>Examples using Flask</h5>
