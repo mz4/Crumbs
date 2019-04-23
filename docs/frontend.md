@@ -1,4 +1,5 @@
 # FRONTEND
+
 ---
   
 ## JAVASCRIPT
@@ -163,6 +164,8 @@ Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     });
 ```
 
+---
+
 ## ES6
 Spread Operator 1  
 ```javascript
@@ -276,6 +279,8 @@ const smartPhones = [
 const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
+
+---
 
 ## REACT
 
@@ -687,6 +692,8 @@ export default function todosReducer(state = initialState, action) {
 }
 ```
 
+---
+
 ## REST API  
 
 <h4>Definition</h4>
@@ -977,7 +984,7 @@ externalDocs:
 
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
-## Axios - HTTP client  
+<h4>Axios - HTTP client</h4>
 Axios install  
 ```
 npm install axios --save
@@ -1008,6 +1015,8 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
   console.log(values);
 });
 ```
+
+---
 
 ## GRAPHQL
 GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  
@@ -1108,6 +1117,8 @@ const Courses = () => (
 export default Courses;
 ```
 
+---
+
 ## SOCKET
 
 socket client
@@ -1160,6 +1171,7 @@ def upload_license_action(args):
             kwargs={'data': data, 'sid': sid, 'uuid': uuid})
 ```
 
+---
 
 ## CSS3/SASS
 
@@ -1508,6 +1520,7 @@ div ~ p {
 }
 ```
 
+---
 
 ## TESTING
 Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  

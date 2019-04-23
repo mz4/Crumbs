@@ -1,6 +1,5 @@
 # TOOLS  
 ---
-<h4>Tools and stuff useful for both frontend and backend.</h4>
 
 ## GIT
 
@@ -313,7 +312,9 @@ Now that the commit has been squashed into one, you can push to the remote branc
 git push --force origin <name_of_branch>
 ```
 
-## LINUX
+---
+
+## LINUX TIPS
 
 Systems Directories
 ```
@@ -561,8 +562,7 @@ List contents of a tar.bz2
 tar -tvf james.tar.bz2
 ```
 
-## REGEX
-  
+<h4>REGEX</h4>
 [Regex checker](https://regex101.com/)  
 [Regex examples](https://projects.lukehaas.me/regexhub/)  
 [Regex cheatsheet](https://www.keycdn.com/support/regex-cheatsheet)  
@@ -701,8 +701,8 @@ regex.exec("hello"); // returns result array, null otherwise
 "football".replace(/foot/,"basket"); // replaces matches with second argument
 ```
 
-
 ---
+
 ## WEBPACK
 
 webpack installation
@@ -729,12 +729,12 @@ module.exports = {
 in package.json  
 ```
  "scripts": {
-+     "build": "webpack"
+      "build": "webpack"
     },
 ```
 
 ---
-## NODE/NPM  
+## NODE / NPM  
 
 version
 ```
@@ -1083,6 +1083,8 @@ Start Webpack dev server
 npm start
 ```
 
+---
+
 ## BABEL
 
 Babel transpiles back to vanilla JavaScript so that every browser can interpret it. 
@@ -1197,7 +1199,9 @@ module.hot.accept();
 ```
 npm start
 ```
+
 ---
+
 ## CURL
 
 <h4>SET SITE</h4>
@@ -1228,7 +1232,9 @@ curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |
 ```
 curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
 ```
+
 --- 
+
 ## DOCKER  
 
 Docker terminology
@@ -1672,6 +1678,8 @@ Clean all
 ```
 docker system prune -a
 ```
+
+---
 
 ## LINKS
 

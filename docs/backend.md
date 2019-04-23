@@ -1,4 +1,5 @@
 # BACKEND
+
 ---
   
 ## PYTHON
@@ -492,7 +493,6 @@ if __name__ == "__main__":
 ```
 
 ---
----
 
 <h4>REST API</h4>
 <h5>Examples using Flask</h5>
@@ -565,6 +565,8 @@ if __name__ == "__main__":
     app = create_app(config.DATABASE_URI, debug=True)
     app.run()
 ```
+
+---
 
 ## NODE
 <h4>About</h4>
