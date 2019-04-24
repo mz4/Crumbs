@@ -850,6 +850,27 @@ npm list -g --depth=0
 },
 </code></pre>
 
+<p>NVM: manage different versions of Node:</p>
+<pre><code>$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+</code></pre>
+
+<pre><code>$ export NVM_DIR=”$HOME/.nvm”
+$ [ -s “$NVM_DIR/nvm.sh” ] &amp;&amp; \. “$NVM_DIR/nvm.sh”
+$ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bash_completion&quot;
+</code></pre>
+
+<p>Install a new version</p>
+<pre><code>nvm install 8.9.4
+</code></pre>
+
+<p>Show available versions of node</p>
+<pre><code>nvm ls
+</code></pre>
+
+<p>Use a particular version</p>
+<pre><code>nvm use 10.15.3
+</code></pre>
+
 <p>Babel (.babelrc)</p>
 <pre><code>{
   &quot;presets&quot;: [
@@ -1731,6 +1752,7 @@ python https://www.journaldev.com/
 https://www.fullstackpython.com/
 https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
+CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 --></p></div>
         </div>
 
@@ -1814,5 +1836,5 @@ https://www.journaldev.com/17752/python-main-function
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-04-23 20:11:53
+Build Date UTC : 2019-04-24 17:05:39
 -->
