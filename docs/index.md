@@ -813,6 +813,33 @@ NPM Scripts (package.json)
 },
 ```
 
+NVM: manage different versions of Node:
+```
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+```
+
+```
+$ export NVM_DIR=”$HOME/.nvm”
+$ [ -s “$NVM_DIR/nvm.sh” ] && \. “$NVM_DIR/nvm.sh”
+$ [ -s "$NVM_DIR/bash_completion" ] && \.   "$NVM_DIR/bash_completion"
+```
+
+Install a new version
+```
+nvm install 8.9.4
+```
+
+Show available versions of node
+```
+nvm ls
+```
+
+Use a particular version
+```
+nvm use 10.15.3
+```
+
+
 Babel (.babelrc)
 ```
 {
@@ -1745,5 +1772,6 @@ python https://www.journaldev.com/
 https://www.fullstackpython.com/
 https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
+CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 -->
 
