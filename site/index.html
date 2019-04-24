@@ -83,10 +83,9 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#tools">TOOLS</a></li>
             <li><a href="#git">GIT</a></li>
-            <li><a href="#linux">LINUX</a></li>
-            <li><a href="#regex">REGEX</a></li>
+            <li><a href="#linux-tips">LINUX TIPS</a></li>
             <li><a href="#webpack">WEBPACK</a></li>
-            <li><a href="#nodenpm">NODE/NPM</a></li>
+            <li><a href="#node-npm">NODE / NPM</a></li>
             <li><a href="#babel">BABEL</a></li>
             <li><a href="#curl">CURL</a></li>
             <li><a href="#docker">DOCKER</a></li>
@@ -97,7 +96,6 @@
 
 <h1 id="tools">TOOLS</h1>
 <hr />
-<p><h4>Tools and stuff useful for both frontend and backend.</h4></p>
 <h2 id="git">GIT</h2>
 <h3>Install git</h3>
 
@@ -403,7 +401,8 @@ Combine the two commands to squash n amount of commits into one, with the specif
 <pre><code>git push --force origin &lt;name_of_branch&gt;
 </code></pre>
 
-<h2 id="linux">LINUX</h2>
+<hr />
+<h2 id="linux-tips">LINUX TIPS</h2>
 <p>Systems Directories</p>
 <pre><code>/ The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
@@ -630,7 +629,8 @@ f - Defines the file name of the archive file  </p>
 <pre><code>tar -tvf james.tar.bz2
 </code></pre>
 
-<h2 id="regex">REGEX</h2>
+<h4>REGEX</h4>
+
 <p><a href="https://regex101.com/">Regex checker</a><br />
 <a href="https://projects.lukehaas.me/regexhub/">Regex examples</a><br />
 <a href="https://www.keycdn.com/support/regex-cheatsheet">Regex cheatsheet</a>  </p>
@@ -781,12 +781,12 @@ module.exports = {
 
 <p>in package.json  </p>
 <pre><code> &quot;scripts&quot;: {
-+     &quot;build&quot;: &quot;webpack&quot;
+      &quot;build&quot;: &quot;webpack&quot;
     },
 </code></pre>
 
 <hr />
-<h2 id="nodenpm">NODE/NPM</h2>
+<h2 id="node-npm">NODE / NPM</h2>
 <p>version</p>
 <pre><code>which node
 which npm
@@ -848,6 +848,27 @@ npm list -g --depth=0
   &quot;lint:watch&quot;: &quot;npm run lint -- --watch&quot;,
   &quot;fix&quot;: &quot;./node_modules/.bin/eslint src --fix&quot;
 },
+</code></pre>
+
+<p>NVM: manage different versions of Node:</p>
+<pre><code>$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+</code></pre>
+
+<pre><code>$ export NVM_DIR=”$HOME/.nvm”
+$ [ -s “$NVM_DIR/nvm.sh” ] &amp;&amp; \. “$NVM_DIR/nvm.sh”
+$ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bash_completion&quot;
+</code></pre>
+
+<p>Install a new version</p>
+<pre><code>nvm install 8.9.4
+</code></pre>
+
+<p>Show available versions of node</p>
+<pre><code>nvm ls
+</code></pre>
+
+<p>Use a particular version</p>
+<pre><code>nvm use 10.15.3
 </code></pre>
 
 <p>Babel (.babelrc)</p>
@@ -1111,6 +1132,7 @@ touch index.html
 <pre><code>npm start
 </code></pre>
 
+<hr />
 <h2 id="babel">BABEL</h2>
 <p>Babel transpiles back to vanilla JavaScript so that every browser can interpret it. </p>
 <pre><code>npm install --save-dev @babel/core @babel/preset-env
@@ -1674,6 +1696,7 @@ Removing a Running Container  </p>
 <pre><code>docker system prune -a
 </code></pre>
 
+<hr />
 <h2 id="links">LINKS</h2>
 <p>React<br />
 <a href="https://github.com/enaqx/awesome-react">Awesome-react</a><br />
@@ -1729,6 +1752,7 @@ python https://www.journaldev.com/
 https://www.fullstackpython.com/
 https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
+CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 --></p></div>
         </div>
 
@@ -1812,5 +1836,5 @@ https://www.journaldev.com/17752/python-main-function
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-04-23 19:46:18
+Build Date UTC : 2019-04-24 17:05:39
 -->
