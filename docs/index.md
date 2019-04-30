@@ -703,37 +703,6 @@ regex.exec("hello"); // returns result array, null otherwise
 
 ---
 
-## WEBPACK
-
-webpack installation
-```
-npm install --save-dev webpack
-```
-If you're using webpack v4 or later, you'll need to install the CLI.  
-```
-npm install --save-dev webpack-cli
-```
-Create a webpack config file e.g. webpack.config.js  
-```
-const path = require('path');
-
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  }
-};
-```
-
-in package.json  
-```
- "scripts": {
-      "build": "webpack"
-    },
-```
-
----
 ## NODE / NPM  
 
 version
@@ -849,6 +818,36 @@ Babel (.babelrc)
   ]
 }
 ```
+
+## WEBPACK
+
+webpack installation
+```
+npm install --save-dev webpack
+```
+If you're using webpack v4 or later, you'll need to install the CLI.  
+```
+npm install --save-dev webpack-cli
+```
+Create a webpack config file e.g. webpack.config.js  
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+in package.json  
+```
+ "scripts": {
+      "build": "webpack"
+    },
+```
+
 Webpack Performance codesplitting react-loadable
 ```
 npm install --save react-loadable
