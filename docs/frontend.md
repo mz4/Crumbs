@@ -4,15 +4,15 @@
   
 ## JAVASCRIPT
 
-<h4>Execution Context</h4>
+<h3>Execution Context</h3>
 the environment in which code is running. It is created when your code is executed.  
 <br>
-<h4>Global Execution Context creates</h4>
+<h3>Global Execution Context creates</h3>
 - Global Object Window (browser)  
 - Special Object 'this'  
 - Ref to outer environment  
 <br>
-<h4>JS Engine</h4>
+<h3>JS Engine</h3>
 it performs following two steps while executing any code:  
 <h5>Creation Phase</h5>
 - Run through your code & identifies variables & functions  
@@ -49,16 +49,16 @@ $ ("button").click (user.clickHandler);
 - Local Scope  
 - Block Scope (let)  
 
-<h4>Old school JavaScript</h4>
+<h3>Old school JavaScript</h3>
 Traditionally, JavaScript really only has two types of scope :  
-<h4>Global Scope</h4>
+<h3>Global Scope</h3>
 Variables are known throughout the application, from the start of the application  
-<h4>Functional Scope</h4>
+<h3>Functional Scope</h3>
 Variables are known within the function they are declared in, from the start of the function  
 
 <h3>Modern JavaScript</h3>
 The most recent JavaScript specs now also allow a third scope :  
-<h4>Block Scope</h4>
+<h3>Block Scope</h3>
 Variables are known within the block they are declared in, from the moment they are declared onwards  
 let myVariable = "Some text";  
 const myVar = "val";  
@@ -94,7 +94,7 @@ This function should take two functions as parameters.
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.  
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  
 
-<h4>Promise example 1</h4>
+<h3>Promise example 1</h3>
 ```javascript
 get('supplyData.json').then(function(response) {
   console.log("Success!", response);
@@ -103,7 +103,7 @@ get('supplyData.json').then(function(response) {
 })
 ```
   
-<h4>Promise example 2</h4>
+<h3>Promise example 2</h3>
 ```javascript
 var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -120,7 +120,7 @@ console.log(promise1);
 // expected output: [object Promise]
 ```
 
-<h4>Promise example 3</h4>
+<h3>Promise example 3</h3>
 ```javascript
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -138,14 +138,14 @@ You can’t know when a user is going to click a button, so what you do is, you 
 This is the so-called callback.  
 A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  
 
-<h4>Callback example 1</h4>
+<h3>Callback example 1</h3>
 ```javascript
 document.getElementById('button').addEventListener('click', () => {
   //item clicked
 })
 ```
 
-<h4>Callback example 2</h4>
+<h3>Callback example 2</h3>
 ```javascript
 setTimeout(() => {
   // runs after 2 seconds
@@ -155,7 +155,7 @@ setTimeout(() => {
 
 <h3>Promises vs Callbacks</h3>
 
-<h4>Random number</h4>
+<h3>Random number</h3>
 ```javascript
 Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     graphData = graphData.map((graph) => {
@@ -692,11 +692,158 @@ export default function todosReducer(state = initialState, action) {
 }
 ```
 
+
+<h3>React Hooks</h3>
+Hooks are a new addition in React 16.8.  
+They let you use state and other React features without writing a class.  
+Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes.  
+Our goal is for Hooks to cover all use cases for classes as soon as possible.  
+It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.  
+
+Lifecycle methods
+constructor: Function components don’t need a constructor.  
+componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these (including less common cases)  
+
+We recommend to split state into multiple state variables based on which values tend to change together.  
+```javascript
+function Box() {
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+  const [size, setSize] = useState({ width: 100, height: 100 });
+
+  useEffect(() => {
+    function handleWindowMouseMove(e) {
+      setPosition({ left: e.pageX, top: e.pageY });
+    }
+    // ...
+```
+
+<h3>State Hooks</h3>
+```javascript
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+<h3>Declaring multiple state variables</h3>
+
+```javascript
+function ExampleWithManyStates() {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // ...
+}
+```
+
+<h3>Effect Hook</h3>
+
+The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API.  
+By default, React runs the effects after every render — including the first render.  
+
+Effects may also optionally specify how to “clean up” after them by returning a function.  
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+```
+
+<h3>Reuse logic in another component.</h3>
+It takes friendID as an argument, and returns whether our friend is online.  
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
+```
+
+Reuse fried online/offline in multiple components
+
+```javascript
+function FriendStatus(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+```
+
+```javascript
+function FriendListItem(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  return (
+    <li style={{ color: isOnline ? 'green' : 'black' }}>
+      {props.friend.name}
+    </li>
+  );
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## REST API  
 
-<h4>Definition</h4>
+<h3>Definition</h3>
 REST stands for Representational State Transfer. 
 It is web standards based architecture and uses HTTP Protocol. 
  
@@ -708,13 +855,13 @@ A RESTful web service usually defines a URI, Uniform Resource Identifier a servi
 
 A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
 
-<h4>URI Format</h4>
+<h3>URI Format</h3>
 generic URI syntax as shown below:  
 ```
 URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
 ```
 
-<h4>Good Practices</h4>
+<h3>Good Practices</h3>
 Forward slash separator (/) indicates a hierarchical relationship  
 underscores (_) should not be used in uris  
 Trailing forward slash (/) should not be included in uris  
@@ -723,12 +870,12 @@ lowercase letters should be preferred in uri paths
 crud function names should not be used in uris  
 query component of a URI may be used to filter collections or stores
 
-<h4>Request Methods</h4>
+<h3>Request Methods</h3>
 CRUD requests: DELETE, GET, POST, PUT  
 HEAD retrieve metadata.  
 OPTIONS retrieve metadata of resource’s available interactions.  
 
-<h4>Some Responses status</h4>
+<h3>Some Responses status</h3>
 200 success
 201 new resource has been created
 202 Accepted, start of an asynchronous action
@@ -740,26 +887,26 @@ OPTIONS retrieve metadata of resource’s available interactions.
 404 Not Found
 405 Method Not Allowed
 
-<h4>HTTP Headers</h4>
+<h3>HTTP Headers</h3>
 Various forms of metadata may be conveyed through the entity headers.    
   
-<h4>Request headers</h4>
+<h3>Request headers</h3>
 Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.  
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server  
 X-Requested-With: Mainly used to identify AJAX requests.  
 Accept-Language which languages the client is able to understand  
   
-<h4>Response headers</h4>
+<h3>Response headers</h3>
 Content-Type  
 Content-Length  size of the response body  
 Set-Cookie used to send cookies from the server to the client.
 
-<h4>Body Format</h4>
+<h3>Body Format</h3>
 A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
 Today, the most commonly used text formats is JSON.
 
-<h4>API Documentation</h4>
+<h3>API Documentation</h3>
 - Resource Description  
   example from MailChimp Campaign resource
   ```
@@ -832,7 +979,7 @@ Today, the most commonly used text formats is JSON.
 [API Documentation example](https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html)  
 [API Docs list](https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites)  
 
-<h4>OpenApi</h4>
+<h3>OpenApi</h3>
 OpenAPI is a specification for describing REST APIs.  
 
 Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints while learning about the API.  
@@ -879,7 +1026,7 @@ paths:
 After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.  
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  
 
-<h4>OpenAPI root level</h4>
+<h3>OpenAPI root level</h3>
 - openapi  
 indicate the version of the OpenAPI spec to validate against.  
 - info  
@@ -984,7 +1131,7 @@ externalDocs:
 
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
-<h4>Axios - HTTP client</h4>
+<h3>Axios - HTTP client</h3>
 Axios install  
 ```
 npm install axios --save
@@ -1176,13 +1323,13 @@ def upload_license_action(args):
 ## CSS3/SASS
 
 <h3>Responsive Design</h3>
-<h4>Defined by three characteristics</h4>
+<h3>Defined by three characteristics</h3>
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
 
 <h3>FLEXBOX</h3>
-<h4>Parent Flex Container</h4>
+<h3>Parent Flex Container</h3>
 ```
 display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
@@ -1192,7 +1339,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
 ```
 
-<h4>Children Flex Items</h4>
+<h3>Children Flex Items</h3>
 ```
 order: <integer>;
 flex-grow: <number>;
@@ -1203,7 +1350,7 @@ align-self: overrides alignment set on parent
 ```
 
 <h3>GRID</h3>
-<h4>Grid Container</h4>
+<h3>Grid Container</h3>
 ```
 display: grid | inline-grid;
 grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
@@ -1225,7 +1372,7 @@ grid-auto-flow: row | column | row dense | column dense
 grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
 ```
 
-<h4>Grid Items</h4>
+<h3>Grid Items</h3>
 ```
 grid-column-start: <number> | <name> | span <number> | span <name> | auto
 grid-column-end: <number> | <name> | span <number> | span <name> | auto
@@ -1344,7 +1491,7 @@ place-self: center;
 $ npm install sass-loader node-sass --save-dev
 ```
 
-<h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
+<h3>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h3>
 ```scss
 Module:{
      Rules:[
@@ -1410,7 +1557,7 @@ $zMessage: 5050;
 ```
 
 <h3>SCSS Extend</h3>
-<h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
+<h3>Extending should be used when we need similarly styled elements, which still differ in some detail. </h3>
 ```scss
 .dialog-button {
   box-sizing: border-box;
@@ -1434,7 +1581,7 @@ $zMessage: 5050;
 ```
 
 <h3>SCSS Nesting</h3>
-<h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
+<h3>Organize your stylesheet in a way that resembles the HTML more closely.</h3>
 ```scss
 ul {
   list-style: none;
@@ -1488,7 +1635,7 @@ $width: 800px;
 
 <h3>Selectors</h3>
 
-<h4>Descendant Selector</h4>
+<h3>Descendant Selector</h3>
 all p elements inside div elements  
 ```
 div p {
@@ -1496,7 +1643,7 @@ div p {
 }
 ```
   
-<h4>Child Selector</h4>
+<h3>Child Selector</h3>
 all p elements that are immediate children of a div element  
 ```
 div > p {
@@ -1504,7 +1651,7 @@ div > p {
 }
 ```
 
-<h4>Adjacent Sibling Selector</h4>
+<h3>Adjacent Sibling Selector</h3>
 all p elements that are placed immediately after div elements  
 ```
 div + p {
@@ -1512,7 +1659,7 @@ div + p {
 }
 ```
 
-<h4>General Sibling Selector</h4>
+<h3>General Sibling Selector</h3>
 all p elements that are siblings of div elements  
 ```
 div ~ p {
