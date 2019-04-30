@@ -84,8 +84,8 @@
         <li class="main active"><a href="#tools">TOOLS</a></li>
             <li><a href="#git">GIT</a></li>
             <li><a href="#linux-tips">LINUX TIPS</a></li>
-            <li><a href="#webpack">WEBPACK</a></li>
             <li><a href="#node-npm">NODE / NPM</a></li>
+            <li><a href="#webpack">WEBPACK</a></li>
             <li><a href="#babel">BABEL</a></li>
             <li><a href="#curl">CURL</a></li>
             <li><a href="#docker">DOCKER</a></li>
@@ -758,34 +758,6 @@ regex.exec(&quot;hello&quot;); // returns result array, null otherwise
 </code></pre>
 
 <hr />
-<h2 id="webpack">WEBPACK</h2>
-<p>webpack installation</p>
-<pre><code>npm install --save-dev webpack
-</code></pre>
-
-<p>If you're using webpack v4 or later, you'll need to install the CLI.  </p>
-<pre><code>npm install --save-dev webpack-cli
-</code></pre>
-
-<p>Create a webpack config file e.g. webpack.config.js  </p>
-<pre><code>const path = require('path');
-
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  }
-};
-</code></pre>
-
-<p>in package.json  </p>
-<pre><code> &quot;scripts&quot;: {
-      &quot;build&quot;: &quot;webpack&quot;
-    },
-</code></pre>
-
-<hr />
 <h2 id="node-npm">NODE / NPM</h2>
 <p>version</p>
 <pre><code>which node
@@ -878,6 +850,33 @@ $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bas
     &quot;react&quot;
   ]
 }
+</code></pre>
+
+<h2 id="webpack">WEBPACK</h2>
+<p>webpack installation</p>
+<pre><code>npm install --save-dev webpack
+</code></pre>
+
+<p>If you're using webpack v4 or later, you'll need to install the CLI.  </p>
+<pre><code>npm install --save-dev webpack-cli
+</code></pre>
+
+<p>Create a webpack config file e.g. webpack.config.js  </p>
+<pre><code>const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+</code></pre>
+
+<p>in package.json  </p>
+<pre><code> &quot;scripts&quot;: {
+      &quot;build&quot;: &quot;webpack&quot;
+    },
 </code></pre>
 
 <p>Webpack Performance codesplitting react-loadable</p>
@@ -1857,5 +1856,5 @@ CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-ap
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-04-30 21:42:02
+Build Date UTC : 2019-04-30 21:49:54
 -->
