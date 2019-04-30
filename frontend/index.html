@@ -97,16 +97,16 @@
 <h1 id="frontend">FRONTEND</h1>
 <hr />
 <h2 id="javascript">JAVASCRIPT</h2>
-<h4>Execution Context</h4>
+<h3>Execution Context</h3>
 
 <p>the environment in which code is running. It is created when your code is executed.<br />
 <br>
-<h4>Global Execution Context creates</h4>
+<h3>Global Execution Context creates</h3>
 - Global Object Window (browser)<br />
 - Special Object 'this'<br />
 - Ref to outer environment<br />
 <br>
-<h4>JS Engine</h4>
+<h3>JS Engine</h3>
 it performs following two steps while executing any code:<br />
 <h5>Creation Phase</h5>
 - Run through your code &amp; identifies variables &amp; functions<br />
@@ -143,17 +143,17 @@ $ (&quot;button&quot;).click (user.clickHandler);
 <li>Local Scope  </li>
 <li>Block Scope (let)  </li>
 </ul>
-<h4>Old school JavaScript</h4>
+<h3>Old school JavaScript</h3>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
-<h4>Global Scope</h4>
+<h3>Global Scope</h3>
 Variables are known throughout the application, from the start of the application<br />
-<h4>Functional Scope</h4>
+<h3>Functional Scope</h3>
 Variables are known within the function they are declared in, from the start of the function  </p>
 <h3>Modern JavaScript</h3>
 
 <p>The most recent JavaScript specs now also allow a third scope :<br />
-<h4>Block Scope</h4>
+<h3>Block Scope</h3>
 Variables are known within the block they are declared in, from the moment they are declared onwards<br />
 let myVariable = "Some text";<br />
 const myVar = "val";  </p>
@@ -185,7 +185,7 @@ This constructor takes as its argument a function, called the "executor function
 This function should take two functions as parameters.<br />
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.<br />
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  </p>
-<h4>Promise example 1</h4>
+<h3>Promise example 1</h3>
 
 <pre><code class="javascript">get('supplyData.json').then(function(response) {
   console.log(&quot;Success!&quot;, response);
@@ -194,7 +194,7 @@ The second (reject) is called when the task fails, and returns the reason for fa
 })
 </code></pre>
 
-<h4>Promise example 2</h4>
+<h3>Promise example 2</h3>
 
 <pre><code class="javascript">var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -211,7 +211,7 @@ console.log(promise1);
 // expected output: [object Promise]
 </code></pre>
 
-<h4>Promise example 3</h4>
+<h3>Promise example 3</h3>
 
 <pre><code class="javascript">function myAsyncFunction(url) {
   return new Promise((resolve, reject) =&gt; {
@@ -229,14 +229,14 @@ console.log(promise1);
 <p>You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.<br />
 This is the so-called callback.<br />
 A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  </p>
-<h4>Callback example 1</h4>
+<h3>Callback example 1</h3>
 
 <pre><code class="javascript">document.getElementById('button').addEventListener('click', () =&gt; {
   //item clicked
 })
 </code></pre>
 
-<h4>Callback example 2</h4>
+<h3>Callback example 2</h3>
 
 <pre><code class="javascript">setTimeout(() =&gt; {
   // runs after 2 seconds
@@ -245,7 +245,7 @@ A callback is a simple function that’s passed as a value to another function, 
 
 <h3>Promises vs Callbacks</h3>
 
-<h4>Random number</h4>
+<h3>Random number</h3>
 
 <pre><code class="javascript">Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     graphData = graphData.map((graph) =&gt; {
@@ -732,9 +732,135 @@ export default function todosReducer(state = initialState, action) {
 }
 </code></pre>
 
+<h3>React Hooks</h3>
+
+<p>Hooks are a new addition in React 16.8.<br />
+They let you use state and other React features without writing a class.<br />
+Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes.<br />
+Our goal is for Hooks to cover all use cases for classes as soon as possible.<br />
+It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.  </p>
+<p>Lifecycle methods
+constructor: Function components don’t need a constructor.<br />
+componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these (including less common cases)  </p>
+<p>We recommend to split state into multiple state variables based on which values tend to change together.  </p>
+<pre><code class="javascript">function Box() {
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+  const [size, setSize] = useState({ width: 100, height: 100 });
+
+  useEffect(() =&gt; {
+    function handleWindowMouseMove(e) {
+      setPosition({ left: e.pageX, top: e.pageY });
+    }
+    // ...
+</code></pre>
+
+<h3>State Hooks</h3>
+
+<pre><code class="javascript">import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call &quot;count&quot;
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<h3>Declaring multiple state variables</h3>
+
+<pre><code class="javascript">function ExampleWithManyStates() {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // ...
+}
+</code></pre>
+
+<h3>Effect Hook</h3>
+
+<p>The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API.<br />
+By default, React runs the effects after every render — including the first render.  </p>
+<p>Effects may also optionally specify how to “clean up” after them by returning a function.  </p>
+<pre><code class="javascript">import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() =&gt; {
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+
+    return () =&gt; {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+</code></pre>
+
+<h3>Reuse logic in another component.</h3>
+
+<p>It takes friendID as an argument, and returns whether our friend is online.  </p>
+<pre><code class="javascript">import React, { useState, useEffect } from 'react';
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() =&gt; {
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+    return () =&gt; {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
+</code></pre>
+
+<p>Reuse fried online/offline in multiple components</p>
+<pre><code class="javascript">function FriendStatus(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+</code></pre>
+
+<pre><code class="javascript">function FriendListItem(props) {
+  const isOnline = useFriendStatus(props.friend.id);
+
+  return (
+    &lt;li style={{ color: isOnline ? 'green' : 'black' }}&gt;
+      {props.friend.name}
+    &lt;/li&gt;
+  );
+}
+</code></pre>
+
 <hr />
 <h2 id="rest-api">REST API</h2>
-<h4>Definition</h4>
+<h3>Definition</h3>
 
 <p>REST stands for Representational State Transfer. 
 It is web standards based architecture and uses HTTP Protocol. </p>
@@ -744,13 +870,13 @@ Web services based on REST Architecture are known as RESTful web services.<br />
 These webservices uses HTTP methods to implement the concept of REST architecture.<br />
 A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.</p>
 <p>A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
-<h4>URI Format</h4>
+<h3>URI Format</h3>
 
 <p>generic URI syntax as shown below:  </p>
 <pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
 </code></pre>
 
-<h4>Good Practices</h4>
+<h3>Good Practices</h3>
 
 <p>Forward slash separator (/) indicates a hierarchical relationship<br />
 underscores (_) should not be used in uris<br />
@@ -759,12 +885,12 @@ hyphens (-) should be used to improve readability of uris<br />
 lowercase letters should be preferred in uri paths<br />
 crud function names should not be used in uris<br />
 query component of a URI may be used to filter collections or stores</p>
-<h4>Request Methods</h4>
+<h3>Request Methods</h3>
 
 <p>CRUD requests: DELETE, GET, POST, PUT<br />
 HEAD retrieve metadata.<br />
 OPTIONS retrieve metadata of resource’s available interactions.  </p>
-<h4>Some Responses status</h4>
+<h3>Some Responses status</h3>
 
 <p>200 success
 201 new resource has been created
@@ -776,26 +902,26 @@ OPTIONS retrieve metadata of resource’s available interactions.  </p>
 402 Forbidden
 404 Not Found
 405 Method Not Allowed</p>
-<h4>HTTP Headers</h4>
+<h3>HTTP Headers</h3>
 
 <p>Various forms of metadata may be conveyed through the entity headers.    </p>
-<h4>Request headers</h4>
+<h3>Request headers</h3>
 
 <p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server<br />
 X-Requested-With: Mainly used to identify AJAX requests.<br />
 Accept-Language which languages the client is able to understand  </p>
-<h4>Response headers</h4>
+<h3>Response headers</h3>
 
 <p>Content-Type<br />
 Content-Length  size of the response body<br />
 Set-Cookie used to send cookies from the server to the client.</p>
-<h4>Body Format</h4>
+<h3>Body Format</h3>
 
 <p>A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
 Today, the most commonly used text formats is JSON.</p>
-<h4>API Documentation</h4>
+<h3>API Documentation</h3>
 
 <ul>
 <li>
@@ -856,7 +982,7 @@ Today, the most commonly used text formats is JSON.</p>
   }</code></p>
 <p><a href="https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html">API Documentation example</a><br />
 <a href="https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites">API Docs list</a>  </p>
-<h4>OpenApi</h4>
+<h3>OpenApi</h3>
 
 <p>OpenAPI is a specification for describing REST APIs.  </p>
 <p>Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints while learning about the API.<br />
@@ -901,7 +1027,7 @@ Instead of coding the OpenAPI specification document by hand, you can also auto-
 
 <p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.<br />
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  </p>
-<h4>OpenAPI root level</h4>
+<h3>OpenAPI root level</h3>
 
 <ul>
 <li>openapi<br />
@@ -1014,7 +1140,7 @@ Here’s an example of an externalDocs object:  </li>
 
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
-<h4>Axios - HTTP client</h4>
+<h3>Axios - HTTP client</h3>
 
 <p>Axios install  </p>
 <pre><code>npm install axios --save
@@ -1183,7 +1309,7 @@ def upload_license_action(args):
 <h2 id="css3sass">CSS3/SASS</h2>
 <h3>Responsive Design</h3>
 
-<h4>Defined by three characteristics</h4>
+<h3>Defined by three characteristics</h3>
 
 <ul>
 <li>Flexible grid-based layout  </li>
@@ -1192,7 +1318,7 @@ def upload_license_action(args):
 </ul>
 <h3>FLEXBOX</h3>
 
-<h4>Parent Flex Container</h4>
+<h3>Parent Flex Container</h3>
 
 <pre><code>display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
@@ -1202,7 +1328,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
 </code></pre>
 
-<h4>Children Flex Items</h4>
+<h3>Children Flex Items</h3>
 
 <pre><code>order: &lt;integer&gt;;
 flex-grow: &lt;number&gt;;
@@ -1214,7 +1340,7 @@ align-self: overrides alignment set on parent
 
 <h3>GRID</h3>
 
-<h4>Grid Container</h4>
+<h3>Grid Container</h3>
 
 <pre><code>display: grid | inline-grid;
 grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
@@ -1236,7 +1362,7 @@ grid-auto-flow: row | column | row dense | column dense
 grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
 </code></pre>
 
-<h4>Grid Items</h4>
+<h3>Grid Items</h3>
 
 <pre><code>grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
 grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
@@ -1355,7 +1481,7 @@ place-self: center;
 <pre><code>$ npm install sass-loader node-sass --save-dev
 </code></pre>
 
-<h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
+<h3>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h3>
 
 <pre><code class="scss">Module:{
      Rules:[
@@ -1422,7 +1548,7 @@ $zMessage: 5050;
 
 <h3>SCSS Extend</h3>
 
-<h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
+<h3>Extending should be used when we need similarly styled elements, which still differ in some detail. </h3>
 
 <pre><code class="scss">.dialog-button {
   box-sizing: border-box;
@@ -1447,7 +1573,7 @@ $zMessage: 5050;
 
 <h3>SCSS Nesting</h3>
 
-<h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
+<h3>Organize your stylesheet in a way that resembles the HTML more closely.</h3>
 
 <pre><code class="scss">ul {
   list-style: none;
@@ -1501,7 +1627,7 @@ $zMessage: 5050;
 
 <h3>Selectors</h3>
 
-<h4>Descendant Selector</h4>
+<h3>Descendant Selector</h3>
 
 <p>all p elements inside div elements  </p>
 <pre><code>div p {
@@ -1509,7 +1635,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h4>Child Selector</h4>
+<h3>Child Selector</h3>
 
 <p>all p elements that are immediate children of a div element  </p>
 <pre><code>div &gt; p {
@@ -1517,7 +1643,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h4>Adjacent Sibling Selector</h4>
+<h3>Adjacent Sibling Selector</h3>
 
 <p>all p elements that are placed immediately after div elements  </p>
 <pre><code>div + p {
@@ -1525,7 +1651,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h4>General Sibling Selector</h4>
+<h3>General Sibling Selector</h3>
 
 <p>all p elements that are siblings of div elements  </p>
 <pre><code>div ~ p {
