@@ -1811,5 +1811,6 @@ https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
 https://itnext.io/
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
+https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
 -->
 
