@@ -1262,74 +1262,191 @@ curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
 --- 
 
 ## DOCKER  
+Docker is a technology to speed up the development and deployment processes.  
+Dockerize a React app.  
 
-Docker terminology
-- Images: The blueprints of our application which form the basis of containers.  
-- Containers: Created from Docker images and run the actual application. 
-- Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
-- Docker Client: The command line tool that allows the user to interact with the daemon. 
-- Docker Hub: A registry of Docker images. If required, one can host their own Docker registries and can use them for pulling images.
-  
-- Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  
-- Child images: are images that build on base images and add additional functionality.  
-  
-- Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  
-- User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  
-  
-Install latest Docker  
+- Set up a development environment with code hot-reloading
+- Configuring a production-ready image
+
+<h4>Install create-react-app</h4>
 ```
-sudo apt-get install docker-ce
+npm install -g create-react-app@1.5.2
 ```
 
-Test your Docker installation by running the following  
+<h4>Create a new app</h4>
+```
+create-react-app sample-app
+cd sample-app
+```
+
+<h4>Add Dockerfile to project root</h4>
+```
+# base image
+FROM node:9.6.1
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@1.1.1 -g --silent
+
+# start app
+CMD ["npm", "start"]
+```
+
+<h4>Add a .dockerignore:</h4>
+```
+node_modules
+```
+
+<h4>Build and tag the Docker image</h4>
+```
+docker build -t sample-app .
+```
+
+<h4>Spin up the container</h4>
+```
+sudo docker run -it -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --rm sample-app
+```
+
+<h4>Check the app</h4>
+Open your browser to: 
+```
+http://localhost:3000/
+```
+
+<h4>Docker compose</h4>
+add docker-compose.yml
+```
+version: '3.5'
+
+services:
+
+  sample-app:
+    container_name: sample-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+```
+
+<h4>Build image and fire container</h4>
+```
+docker-compose up -d --build
+```
+
+<h4>Stop container</h4>
+```
+docker-compose stop
+```
+<!--
+https://mherman.org/blog/dockerizing-a-react-app/
+https://testdriven.io/courses/microservices-with-docker-flask-and-react/
+-->
+
+<!--
+<h4>Docker terminology</h4>
+Images: Executable to run containers.  
+Containers: Running instance of a Docker image.  
+
+Docker Daemon: background service to manage building, running and distributing containers.  
+Docker Client: The command line tool that allows the user to interact with the daemon.  
+Docker Hub: A registry of Docker images.  
+
+---
+
+<h4>Images Type</h4>
+Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  
+Child images: are images that build on base images and add additional functionality.  
+Official images: are images that are officially maintained and supported by the folks at Docker
+User images: images created and shared by users.
+
+---
+
+<h4>Install latest Docker</h4>
+```
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+sudo add-apt-repository deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable
+sudo apt-get update
+apt-cache madison docker-ce
+docker-ce | 17.03.0~ce-0~ubuntu-xenial | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+sudo apt-get install docker-ce=<VERSION>
+```
+
+or
+
+```
+ sudo apt-get update
+ sudo apt-get remove docker docker-engine docker.io
+ sudo apt install docker.io
+ sudo systemctl start docker
+ docker --version
+```
+
+<h4>Test your Docker installation by running the following</h4>
 ```
 docker run hello-world
 ```
   
-The pull command fetches image from the Docker registry and saves it to system.  
+<h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 ```
 docker pull busybox
 ```
 
-Docker Hub  
+<h4>Docker Hub</h4>  
 [Docker Images hub](https://hub.docker.com/search/?q=&type=image)  
 
-to see a list of all images on your system.  
+<h4>List of all images on your system.</h4>  
 ```
 docker images
 ```
 
-run a container
+<h4>Run a container</h4>
 ```
 docker run busybox
 docker run busybox echo "hello from busybox"
 ```
 
-show running containers
+<h4>Show running containers</h4>
 ```
 docker ps
 ```
 
-show containers that ran previously
+<h4>Show containers that ran previously</h4>
 ```
 docker ps -a
 ```
 
-live tty session
+<h4>Live tty session</h4>
 ```
 docker run -it busybox sh
 ```
 
-Remove containers from which you left
+<h4>Remove containers from which you left</h4>
+--rm flag can be passed to docker run which automatically deletes the container once it's exited from  
+
 ```
 docker rm $(docker ps -a -q -f status=exited)
-OR
+```
+or  
+```
 docker container prune
 ```
 
---rm flag can be passed to docker run which automatically deletes the container once it's exited from  
-
-Run detached  
+<h4>Run detached</h4>  
 -d will detach our terminal  
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
@@ -1337,22 +1454,22 @@ Run detached
 docker run -d -P --name static-site name/static-site
 ```
 
-See the ports by running the docker port [CONTAINER] command
+<h4>See the ports by running the docker port [CONTAINER] command</h4>
 ```
 docker port static-site
 ```
 
-Specify a custom port
+<h4>Specify a custom port</h4>
 ```
 docker run -p 8888:80 prakhar1989/static-site
 ```
 
-Stop a container
+<h4>Stop a container</h4>
 ```
 docker stop static-site
 ```
 
-Creating an image  
+<h4>Creating an image</h4>  
 A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.  
 CMD is to tell the container which command it should run when it is started  
 port number that needs to be exposed  
@@ -1368,17 +1485,29 @@ EXPOSE 5000
 CMD ["python", "./app.py"]
 ```
 
-Build image from Dockerfile
+Dockerfile example
+```
+# Dockerfile  
+FROM node:8  
+WORKDIR /app  
+COPY package.json /app  
+RUN npm install  
+COPY . /app  
+EXPOSE 8081  
+CMD node index.js
+```
+
+<h4>Build image from Dockerfile</h4>
 ```
 docker build -t mz2kh/catnip .
 ```
 
-Run the container
+<h4>Run the container</h4>
 ```
 run -p 8888:5000 mz2kh/catnip
 ```
   
-Publish image to Docker HUB
+<h4>Publish image to Docker HUB</h4>
 ```
 docker push mz2kh/catnip
 ```
@@ -1388,12 +1517,12 @@ Now that your image is online, anyone who has docker installed can play with you
 docker run -p 8888:5000 prakhar1989/catnip
 ```
 
-Search for images
+<h4>Search for images</h4>
 ```
 docker search elasticsearch
 ```
 
-When docker is installed, it creates three networks automatically.
+<h4>When docker is installed, it creates three networks automatically.</h4>
 ```
 docker network ls
 NETWORK ID          NAME                DRIVER              SCOPE
@@ -1403,26 +1532,26 @@ NETWORK ID          NAME                DRIVER              SCOPE
 ```
 
 The bridge network is the network in which containers are run by default.  
-Inspect bridge Network:
+<h4>Inspect bridge Network</h4>
 ```
 docker network inspect bridge
 ```
 
-Create our own network  
+<h4>Create our own network</h4>  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 ```
 docker network create catnip-net
 ```
 
-Launch containers into network (--net foodtrucks-net)
+<h4>Launch containers into network (--net foodtrucks-net)</h4>
 ```
 $ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
 $ docker network inspect foodtrucks-net
 ```
 
-Create and run container on a created Network  
+<h4>Create and run container on a created Network</h4>
 ./setup-docker.sh
 ```
 !/bin/bash
@@ -1441,22 +1570,24 @@ docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar198
 ```
 
 Docker Registries & Repositories  
-Searching an Image  
+<h4>Searching an Image</h4>  
 ```
 docker search nginx
 docker search --filter stars=3 --no-trunc nginx
 ```
-Pulling an Image
+
+<h4>Pulling an Image</h4>
 ```
 docker image pull nginx
 docker image pull eon01/nginx localhost:5000/myadmin/nginx
 ```
-Pushing an Image
+
+<h4>Pushing an Image</h4>
 ```
 docker image push eon01/nginx
 docker image push eon01/nginx localhost:5000/myadmin/nginx
 ```
-Running Containers  
+<h4>Running Containers`</h4>
 Create and Run a Simple Container  
 Start an ubuntu:latest image  
 Bind the port 80 from the CONTAINER to port 3000 on the HOST  
@@ -1465,108 +1596,130 @@ Mount the current directory to /data on the CONTAINER
 docker container run --name infinite -it -p 3000:80 -v ${PWD}:/data ubuntu:latest
 ```
 
-Creating a Container  
+<h4>Creating a Container</h4>
 ```
 docker container create -t -i eon01/infinite --name infinite
 ```
-Running a Container  
+
+<h4>Running a Container</h4>
 ```
 docker container run -it --name infinite -d eon01/infinite
 ```
-Renaming a Container  
+
+<h4>Renaming a Container</h4>
 ```
 docker container rename infinite infinity
 ```
-Removing a Container
+
+<h4>Removing a Container</h4>
 ```
 docker container rm infinite
 ```
-Updating a Container
+
+<h4>Updating a Container</h4>
 ```
 docker container update --cpu-shares 512 -m 300M infinite
 ```
 
-Starting & Stopping Containers  
-Starting  
+<h4>Starting & Stopping Containers</h4>
 ```
 docker container start nginx
 ```
 
-Stopping
 ```
 docker container stop nginx
 ```
-Restarting
+
+
+<h4>Restarting</h4>
 ```
 docker container restart nginx
 ```
-Pausing
+
+<h4>Pausing</h4>
 ```
 docker container pause nginx
 ```
-Unpausing
+
+<h4>Unpausing</h4>
 ```
 docker container unpause nginx
 ```
-Blocking a Container
+
+<h4>Blocking a Container</h4>
 ```
 docker container wait nginx
 ```
-Sending a SIGKILL
+
+<h4>Sending a SIGKILL</h4>
 ```
 docker container kill nginx
 ```
-Sending another signal
+
+<h4>Sending another signal</h4>
 ```
 docker container kill -s HUP nginx
 ```
-Connecting to an Existing Container
+
+<h4>Connecting to an Existing Container</h4>
 ```
 docker container attach nginx
 ```
-Getting Information about Containers
-Running Containers
+
+<h4>Getting Information about Containers</h4>
+
+<h4>Running Containers</h4>
 ```
 docker container ls
 docker container ls -a
 ```
-Container Logs
+
+<h4>Container Logs</h4>
 docker logs infinite
 Follow Container Logs
 ```
 docker container logs infinite -f
 ```
-Inspecting Containers
+
+<h4>Inspecting Containers</h4>
 ```
 docker container inspect infinite
 docker container inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 ```
-Containers Events
+
+<h4>Containers Events</h4>
 ```
 docker system events infinite
 ```
-Public Ports
+
+<h4>Public Ports</h4>
 ```
 docker container port infinite
 ```
-Running Processes
+
+<h4>Running Processes</h4>
 ```
 docker container top infinite
 ```
-Container Resource Usage  
+
+<h4>Container Resource Usage</h4>
 ```
 docker container stats infinite  
 ```
-Inspecting changes to files or directories on a container’s filesystem  
+
+<h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 ```
 docker container diff infinite  
 ```
-Manipulating Images  
-Listing Images  
+
+<h4>Manipulating Images</h4>
+
+<h4>Listing Images</h4>
 ```
 docker image ls
 ```
-Building Images  
+
+<h4>Building Images</h4>
 ```
 docker build .
 docker build github.com/creack/docker-firefox
@@ -1576,37 +1729,44 @@ docker build -t eon/infinite .
 docker build -f myOtherDockerfile .
 curl example.com/remote/Dockerfile | docker build -f - .
 ```
-Removing an Image  
+
+<h4>Removing an Image</h4>
 ```
 docker image rm nginx
 ```
-Loading a Tarred Repository from a File or the Standard Input Stream
+
+<h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 ```
 docker image load < ubuntu.tar.gz
 docker image load --input ubuntu.tar
 ```
-Save an Image to a Tar Archive
+
+<h4>Save an Image to a Tar Archive</h4>
 ```
 docker image save busybox > ubuntu.tar
 ```
-Showing the History of an Image
+
+<h4>Showing the History of an Image</h4>
 ```
 docker image history
 ```
-Creating an Image From a Container
+
+<h4>Creating an Image From a Container</h4>
 ```
 docker container commit nginx
 ```
-Tagging an Image
+
+<h4>Tagging an Image</h4>
 ```
 docker image tag nginx eon01/nginx
 ```
-Pushing an Image
+
+<h4>Pushing an Image</h4>
 ```
 docker image push eon01/nginx
 ```
-Networking  
-Creating Networks  
+
+<h4>Creating Networks</h4>  
 ```
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
@@ -1620,31 +1780,38 @@ docker network create -d overlay \
   --aux-address="my-printer=192.170.1.5" --aux-address="my-nas=192.170.1.6" \
   MyOverlayNetwork
 ```
-Removing a Network
+
+<h4>Removing a Network</h4>
 ```
 docker network rm MyOverlayNetwork
 ```
-Listing Networks
+
+<h4>Listing Networks</h4>
 ```
 docker network ls
 ```
-Getting Information About a Network
+
+<h4>Getting Information About a Network</h4>
 ```
 docker network inspect MyOverlayNetwork
 ```
-Connecting a Running Container to a Network
+
+<h4>Connecting a Running Container to a Network</h4>
 ```
 docker network connect MyOverlayNetwork nginx
 ```
-Connecting a Container to a Network When it Starts
+
+<h4>Connecting a Container to a Network When it Starts</h4>
 ```
 docker container run -it -d --network=MyOverlayNetwork nginx
 ```
-Disconnecting a Container from a Network
+
+<h4>Disconnecting a Container from a Network</h4>
 ```
 docker network disconnect MyOverlayNetwork nginx
 ```
-Exposing Ports  
+
+<h4>Exposing Ports</h4>  
 Using Dockerfile, you can expose a port on the container using:
 ```
 EXPOSE <port_number>
@@ -1655,55 +1822,67 @@ e.g.
 docker run -p $HOST_PORT:$CONTAINER_PORT --name infinite -t infinite
 ```
 
-Cleaning Docker  
-Removing a Running Container  
+<h4>Cleaning Docker</h4>  
+<h4>Removing a Running Container </h4> 
 ```
 docker container rm nginx
 ```
-Removing a Container and its Volume
+
+<h4>Removing a Container and its Volume</h4>
 ```
 docker container rm -v nginx
 ```
-Removing all Exited Containers
+
+<h4>Removing all Exited Containers</h4>
 ```
 docker container rm $(docker container ls -a -f status=exited -q)
 ```
-Removing All Stopped Containers
+
+<h4>Removing All Stopped Containers</h4>
 ```
 docker container rm `docker container ls -a -q`
 ```
-Removing a Docker Image
+
+<h4>Removing a Docker Image</h4>
 ```
 docker image rm nginx
 ```
-Removing Dangling Images
+
+<h4>Removing Dangling Images</h4>
 ```
 docker image rm $(docker image ls -f dangling=true -q)
 ```
-Removing all Images
+
+<h4>Removing all Images</h4>
 ```
 docker image rm $(docker image ls -a -q)
 ```
-Removing all untagged images
+
+<h4>Removing all untagged images</h4>
 ```
 docker image rm -f $(docker image ls | grep "^<none>" | awk "{print $3}")
 ```
-Stopping & Removing all Containers
+
+<h4>Stopping & Removing all Containers</h4>
 ```
 docker container stop $(docker container ls -a -q) && docker container rm $(docker container ls -a -q)
 ```
-Removing Dangling Volumes
+
+<h4>Removing Dangling Volumes</h4>
 ```
 docker volume rm $(docker volume ls -f dangling=true -q)
 ```
-Removing all unused (containers, images, networks and volumes)
+
+<h4>Removing all unused (containers, images, networks and volumes)</h4>
 ```
 docker system prune -f
 ```
-Clean all
+
+<h4>Clean all</h4>
 ```
 docker system prune -a
 ```
+-->
 
 ---
 
@@ -1711,7 +1890,7 @@ docker system prune -a
 
 React  
 [Awesome-react](https://github.com/enaqx/awesome-react)  
-[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)
+[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)  
 [FreeCodeCamp: React Cocepts](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
 [Creativebloq: React Tips](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
 [React Various articles](https://react.christmas/)  
@@ -1719,14 +1898,14 @@ React
 [Articles about frontend](https://alligator.io/)  
 [Frontend Articles](https://www.robinwieruch.de/)  
 [Frontend Articles](https://www.valentinog.com)  
-[Hooks collection](https://nikgraf.github.io/react-hooks/)
-[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)
+[Hooks collection](https://nikgraf.github.io/react-hooks/)  
+[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)  
   
 CSS Links  
 [CSSreference.io](https://cssreference.io)  
 [Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
 [BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
-[CSS Animation](http://animista.net)
+[CSS Animation](http://animista.net)  
 [CSS grids](https://learncssgrid.com/)  
 [Grids by example](https://gridbyexample.com)  
 [Grid CSS Garden](http://cssgridgarden.com)  
@@ -1740,6 +1919,7 @@ GIT
 Linux  
 [Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
+<!--
 Various links  
 [Github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)  
@@ -1755,9 +1935,8 @@ Various links
 [Mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)  
 [Socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)  
 [Socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)  
-
 [kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-<!--
+
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
 https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
@@ -1771,10 +1950,8 @@ python https://www.journaldev.com/
 https://www.fullstackpython.com/
 https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
-<<<<<<< HEAD
 https://itnext.io/
-=======
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
->>>>>>> 1713a31af8c05cbda99ec93c7eb74fb28d95dec1
+https://frontendmasters.com/books/front-end-handbook/2019/
 -->
 
