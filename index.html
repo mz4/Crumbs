@@ -1282,419 +1282,558 @@ module.exports = {
 
 <hr />
 <h2 id="docker">DOCKER</h2>
-<p>Docker terminology
-- Images: The blueprints of our application which form the basis of containers.<br />
-- Containers: Created from Docker images and run the actual application. 
-- Docker Daemon: The background service running on the host that manages building, running and distributing Docker containers. 
-- Docker Client: The command line tool that allows the user to interact with the daemon. 
-- Docker Hub: A registry of Docker images. If required, one can host their own Docker registries and can use them for pulling images.</p>
+<p>Docker is a technology to speed up the development and deployment processes.<br />
+Dockerize a React app.  </p>
 <ul>
-<li>Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  </li>
-<li>
-<p>Child images: are images that build on base images and add additional functionality.  </p>
-</li>
-<li>
-<p>Official images: are images that are officially maintained and supported by the folks at Docker. These are typically one word long.  </p>
-</li>
-<li>User images: images created and shared by users. They build on base images and add additional functionality. Typically, these are formatted as user/image-name.  </li>
+<li>Set up a development environment with code hot-reloading</li>
+<li>Configuring a production-ready image</li>
 </ul>
-<p>Install latest Docker  </p>
-<pre><code>sudo apt-get install docker-ce
+<h4>Install create-react-app</h4>
+
+<pre><code>npm install -g create-react-app@1.5.2
 </code></pre>
 
-<p>Test your Docker installation by running the following  </p>
-<pre><code>docker run hello-world
+<h4>Create a new app</h4>
+
+<pre><code>create-react-app sample-app
+cd sample-app
 </code></pre>
 
-<p>The pull command fetches image from the Docker registry and saves it to system.  </p>
-<pre><code>docker pull busybox
+<h4>Add Dockerfile to project root</h4>
+
+<pre><code># base image
+FROM node:9.6.1
+
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@1.1.1 -g --silent
+
+# start app
+CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
 
-<p>Docker Hub<br />
-<a href="https://hub.docker.com/search/?q=&amp;type=image">Docker Images hub</a>  </p>
-<p>to see a list of all images on your system.  </p>
-<pre><code>docker images
+<h4>Add a .dockerignore:</h4>
+
+<pre><code>node_modules
 </code></pre>
 
-<p>run a container</p>
-<pre><code>docker run busybox
-docker run busybox echo &quot;hello from busybox&quot;
+<h4>Build and tag the Docker image</h4>
+
+<pre><code>docker build -t sample-app .
 </code></pre>
 
-<p>show running containers</p>
-<pre><code>docker ps
+<h4>Spin up the container</h4>
+
+<pre><code>sudo docker run -it -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --rm sample-app
 </code></pre>
 
-<p>show containers that ran previously</p>
-<pre><code>docker ps -a
+<h4>Check the app</h4>
+
+<p>Open your browser to: </p>
+<pre><code>http://localhost:3000/
 </code></pre>
 
-<p>live tty session</p>
-<pre><code>docker run -it busybox sh
+<h4>Docker compose</h4>
+
+<p>add docker-compose.yml</p>
+<pre><code>version: '3.5'
+
+services:
+
+  sample-app:
+    container_name: sample-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
 </code></pre>
 
-<p>Remove containers from which you left</p>
-<pre><code>docker rm $(docker ps -a -q -f status=exited)
-OR
-docker container prune
+<h4>Build image and fire container</h4>
+
+<pre><code>docker-compose up -d --build
 </code></pre>
 
-<p>--rm flag can be passed to docker run which automatically deletes the container once it's exited from  </p>
-<p>Run detached<br />
--d will detach our terminal<br />
--P will publish all exposed ports to random ports and finally<br />
---name corresponds to a name we want to give.  </p>
-<pre><code>docker run -d -P --name static-site name/static-site
+<h4>Stop container</h4>
+
+<pre><code>docker-compose stop
 </code></pre>
 
-<p>See the ports by running the docker port [CONTAINER] command</p>
-<pre><code>docker port static-site
-</code></pre>
+<!--
+https://mherman.org/blog/dockerizing-a-react-app/
+https://testdriven.io/courses/microservices-with-docker-flask-and-react/
+-->
 
-<p>Specify a custom port</p>
-<pre><code>docker run -p 8888:80 prakhar1989/static-site
-</code></pre>
+<!--
+<h4>Docker terminology</h4>
+Images: Executable to run containers.  
+Containers: Running instance of a Docker image.
 
-<p>Stop a container</p>
-<pre><code>docker stop static-site
-</code></pre>
+Docker Daemon: background service to manage building, running and distributing containers.  
+Docker Client: The command line tool that allows the user to interact with the daemon.  
+Docker Hub: A registry of Docker images.  
 
-<p>Creating an image<br />
-A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.<br />
-CMD is to tell the container which command it should run when it is started<br />
-port number that needs to be exposed<br />
-specifying our base image. Use the FROM keyword to do that  </p>
-<pre><code> Dockerfile
-FROM python:3-onbuild
+---
 
- tell the port number the container should expose
-EXPOSE 5000
+<h4>Images Type</h4>
+Base images: are images that have no parent image, usually images with an OS like ubuntu, busybox or debian.  
+Child images: are images that build on base images and add additional functionality.  
+Official images: are images that are officially maintained and supported by the folks at Docker
+User images: images created and shared by users.
 
- run the command
-CMD [&quot;python&quot;, &quot;./app.py&quot;]
-</code></pre>
+---
 
-<p>Build image from Dockerfile</p>
-<pre><code>docker build -t mz2kh/catnip .
-</code></pre>
+<h4>Install latest Docker</h4>
 
-<p>Run the container</p>
-<pre><code>run -p 8888:5000 mz2kh/catnip
-</code></pre>
+wzxhzdk:162
 
-<p>Publish image to Docker HUB</p>
-<pre><code>docker push mz2kh/catnip
-</code></pre>
 
-<p>Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  </p>
-<pre><code>docker run -p 8888:5000 prakhar1989/catnip
-</code></pre>
+or
 
-<p>Search for images</p>
-<pre><code>docker search elasticsearch
-</code></pre>
 
-<p>When docker is installed, it creates three networks automatically.</p>
-<pre><code>docker network ls
-NETWORK ID          NAME                DRIVER              SCOPE
-77192b388b9d        bridge              bridge              local
-3a125533ca3f        host                host                local
-13e644755906        none                null                local
-</code></pre>
+wzxhzdk:163
 
-<p>The bridge network is the network in which containers are run by default.<br />
-Inspect bridge Network:</p>
-<pre><code>docker network inspect bridge
-</code></pre>
 
-<p>Create our own network<br />
-A bridge network allows containers connected to the same bridge network to communicate,<br />
-while providing isolation from containers which are not connected to that bridge network. </p>
-<pre><code>docker network create catnip-net
-</code></pre>
+<h4>Test your Docker installation by running the following</h4>
 
-<p>Launch containers into network (--net foodtrucks-net)</p>
-<pre><code>$ docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.3.2
-13d6415f73c8d88bddb1f236f584b63dbaf2c3051f09863a3f1ba219edba3673
-$ docker network inspect foodtrucks-net
-</code></pre>
+wzxhzdk:164
 
-<p>Create and run container on a created Network<br />
-./setup-docker.sh</p>
-<pre><code>!/bin/bash
 
-build the flask container
-docker build -t prakhar1989/foodtrucks-web .
+<h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 
-create the network
-docker network create foodtrucks-net
+wzxhzdk:165
 
-start the ES container
-docker run -d --name es --net foodtrucks-net -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 
-start the flask app container
-docker run -d --net foodtrucks-net -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
-</code></pre>
+<h4>Docker Hub</h4>  
+[Docker Images hub](https://hub.docker.com/search/?q=&type=image)  
 
-<p>Docker Registries &amp; Repositories<br />
-Searching an Image  </p>
-<pre><code>docker search nginx
-docker search --filter stars=3 --no-trunc nginx
-</code></pre>
+<h4>List of all images on your system.</h4>  
 
-<p>Pulling an Image</p>
-<pre><code>docker image pull nginx
-docker image pull eon01/nginx localhost:5000/myadmin/nginx
-</code></pre>
+wzxhzdk:166
 
-<p>Pushing an Image</p>
-<pre><code>docker image push eon01/nginx
-docker image push eon01/nginx localhost:5000/myadmin/nginx
-</code></pre>
 
-<p>Running Containers<br />
-Create and Run a Simple Container<br />
-Start an ubuntu:latest image<br />
-Bind the port 80 from the CONTAINER to port 3000 on the HOST<br />
-Mount the current directory to /data on the CONTAINER  </p>
-<pre><code>docker container run --name infinite -it -p 3000:80 -v ${PWD}:/data ubuntu:latest
-</code></pre>
+<h4>Run a container</h4>
 
-<p>Creating a Container  </p>
-<pre><code>docker container create -t -i eon01/infinite --name infinite
-</code></pre>
+wzxhzdk:167
 
-<p>Running a Container  </p>
-<pre><code>docker container run -it --name infinite -d eon01/infinite
-</code></pre>
 
-<p>Renaming a Container  </p>
-<pre><code>docker container rename infinite infinity
-</code></pre>
+<h4>Show running containers</h4>
 
-<p>Removing a Container</p>
-<pre><code>docker container rm infinite
-</code></pre>
+wzxhzdk:168
 
-<p>Updating a Container</p>
-<pre><code>docker container update --cpu-shares 512 -m 300M infinite
-</code></pre>
 
-<p>Starting &amp; Stopping Containers<br />
-Starting  </p>
-<pre><code>docker container start nginx
-</code></pre>
+<h4>Show containers that ran previously</h4>
 
-<p>Stopping</p>
-<pre><code>docker container stop nginx
-</code></pre>
+wzxhzdk:169
 
-<p>Restarting</p>
-<pre><code>docker container restart nginx
-</code></pre>
 
-<p>Pausing</p>
-<pre><code>docker container pause nginx
-</code></pre>
+<h4>Live tty session</h4>
 
-<p>Unpausing</p>
-<pre><code>docker container unpause nginx
-</code></pre>
+wzxhzdk:170
 
-<p>Blocking a Container</p>
-<pre><code>docker container wait nginx
-</code></pre>
 
-<p>Sending a SIGKILL</p>
-<pre><code>docker container kill nginx
-</code></pre>
+<h4>Remove containers from which you left</h4>
+--rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
-<p>Sending another signal</p>
-<pre><code>docker container kill -s HUP nginx
-</code></pre>
 
-<p>Connecting to an Existing Container</p>
-<pre><code>docker container attach nginx
-</code></pre>
+wzxhzdk:171
 
-<p>Getting Information about Containers
-Running Containers</p>
-<pre><code>docker container ls
-docker container ls -a
-</code></pre>
+or  
 
-<p>Container Logs
+wzxhzdk:172
+
+
+<h4>Run detached</h4>  
+-d will detach our terminal  
+-P will publish all exposed ports to random ports and finally  
+--name corresponds to a name we want to give.  
+
+wzxhzdk:173
+
+
+<h4>See the ports by running the docker port [CONTAINER] command</h4>
+
+wzxhzdk:174
+
+
+<h4>Specify a custom port</h4>
+
+wzxhzdk:175
+
+
+<h4>Stop a container</h4>
+
+wzxhzdk:176
+
+
+<h4>Creating an image</h4>  
+A Dockerfile is a simple text-file that contains a list of commands that the Docker client calls while creating an image.  
+CMD is to tell the container which command it should run when it is started  
+port number that needs to be exposed  
+specifying our base image. Use the FROM keyword to do that  
+
+wzxhzdk:177
+
+
+Dockerfile example
+
+wzxhzdk:178
+
+
+<h4>Build image from Dockerfile</h4>
+
+wzxhzdk:179
+
+
+<h4>Run the container</h4>
+
+wzxhzdk:180
+
+
+<h4>Publish image to Docker HUB</h4>
+
+wzxhzdk:181
+
+
+Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
+
+wzxhzdk:182
+
+
+<h4>Search for images</h4>
+
+wzxhzdk:183
+
+
+<h4>When docker is installed, it creates three networks automatically.</h4>
+
+wzxhzdk:184
+
+
+The bridge network is the network in which containers are run by default.  
+<h4>Inspect bridge Network</h4>
+
+wzxhzdk:185
+
+
+<h4>Create our own network</h4>  
+A bridge network allows containers connected to the same bridge network to communicate,  
+while providing isolation from containers which are not connected to that bridge network. 
+
+wzxhzdk:186
+
+
+<h4>Launch containers into network (--net foodtrucks-net)</h4>
+
+wzxhzdk:187
+
+
+<h4>Create and run container on a created Network</h4>
+./setup-docker.sh
+
+wzxhzdk:188
+
+
+Docker Registries & Repositories  
+<h4>Searching an Image</h4>  
+
+wzxhzdk:189
+
+
+<h4>Pulling an Image</h4>
+
+wzxhzdk:190
+
+
+<h4>Pushing an Image</h4>
+
+wzxhzdk:191
+
+<h4>Running Containers`</h4>
+Create and Run a Simple Container  
+Start an ubuntu:latest image  
+Bind the port 80 from the CONTAINER to port 3000 on the HOST  
+Mount the current directory to /data on the CONTAINER  
+
+wzxhzdk:192
+
+
+<h4>Creating a Container</h4>
+
+wzxhzdk:193
+
+
+<h4>Running a Container</h4>
+
+wzxhzdk:194
+
+
+<h4>Renaming a Container</h4>
+
+wzxhzdk:195
+
+
+<h4>Removing a Container</h4>
+
+wzxhzdk:196
+
+
+<h4>Updating a Container</h4>
+
+wzxhzdk:197
+
+
+<h4>Starting & Stopping Containers</h4>
+
+wzxhzdk:198
+
+
+
+wzxhzdk:199
+
+
+
+<h4>Restarting</h4>
+
+wzxhzdk:200
+
+
+<h4>Pausing</h4>
+
+wzxhzdk:201
+
+
+<h4>Unpausing</h4>
+
+wzxhzdk:202
+
+
+<h4>Blocking a Container</h4>
+
+wzxhzdk:203
+
+
+<h4>Sending a SIGKILL</h4>
+
+wzxhzdk:204
+
+
+<h4>Sending another signal</h4>
+
+wzxhzdk:205
+
+
+<h4>Connecting to an Existing Container</h4>
+
+wzxhzdk:206
+
+
+<h4>Getting Information about Containers</h4>
+
+<h4>Running Containers</h4>
+
+wzxhzdk:207
+
+
+<h4>Container Logs</h4>
 docker logs infinite
-Follow Container Logs</p>
-<pre><code>docker container logs infinite -f
-</code></pre>
+Follow Container Logs
 
-<p>Inspecting Containers</p>
-<pre><code>docker container inspect infinite
-docker container inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
-</code></pre>
+wzxhzdk:208
 
-<p>Containers Events</p>
-<pre><code>docker system events infinite
-</code></pre>
 
-<p>Public Ports</p>
-<pre><code>docker container port infinite
-</code></pre>
+<h4>Inspecting Containers</h4>
 
-<p>Running Processes</p>
-<pre><code>docker container top infinite
-</code></pre>
+wzxhzdk:209
 
-<p>Container Resource Usage  </p>
-<pre><code>docker container stats infinite  
-</code></pre>
 
-<p>Inspecting changes to files or directories on a container’s filesystem  </p>
-<pre><code>docker container diff infinite  
-</code></pre>
+<h4>Containers Events</h4>
 
-<p>Manipulating Images<br />
-Listing Images  </p>
-<pre><code>docker image ls
-</code></pre>
+wzxhzdk:210
 
-<p>Building Images  </p>
-<pre><code>docker build .
-docker build github.com/creack/docker-firefox
-docker build - &lt; Dockerfile
-docker build - &lt; context.tar.gz
-docker build -t eon/infinite .
-docker build -f myOtherDockerfile .
-curl example.com/remote/Dockerfile | docker build -f - .
-</code></pre>
 
-<p>Removing an Image  </p>
-<pre><code>docker image rm nginx
-</code></pre>
+<h4>Public Ports</h4>
 
-<p>Loading a Tarred Repository from a File or the Standard Input Stream</p>
-<pre><code>docker image load &lt; ubuntu.tar.gz
-docker image load --input ubuntu.tar
-</code></pre>
+wzxhzdk:211
 
-<p>Save an Image to a Tar Archive</p>
-<pre><code>docker image save busybox &gt; ubuntu.tar
-</code></pre>
 
-<p>Showing the History of an Image</p>
-<pre><code>docker image history
-</code></pre>
+<h4>Running Processes</h4>
 
-<p>Creating an Image From a Container</p>
-<pre><code>docker container commit nginx
-</code></pre>
+wzxhzdk:212
 
-<p>Tagging an Image</p>
-<pre><code>docker image tag nginx eon01/nginx
-</code></pre>
 
-<p>Pushing an Image</p>
-<pre><code>docker image push eon01/nginx
-</code></pre>
+<h4>Container Resource Usage</h4>
 
-<p>Networking<br />
-Creating Networks  </p>
-<pre><code>docker network create -d overlay MyOverlayNetwork
-docker network create -d bridge MyBridgeNetwork
-docker network create -d overlay \
-  --subnet=192.168.0.0/16 \
-  --subnet=192.170.0.0/16 \
-  --gateway=192.168.0.100 \
-  --gateway=192.170.0.100 \
-  --ip-range=192.168.1.0/24 \
-  --aux-address=&quot;my-router=192.168.1.5&quot; --aux-address=&quot;my-switch=192.168.1.6&quot; \
-  --aux-address=&quot;my-printer=192.170.1.5&quot; --aux-address=&quot;my-nas=192.170.1.6&quot; \
-  MyOverlayNetwork
-</code></pre>
+wzxhzdk:213
 
-<p>Removing a Network</p>
-<pre><code>docker network rm MyOverlayNetwork
-</code></pre>
 
-<p>Listing Networks</p>
-<pre><code>docker network ls
-</code></pre>
+<h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 
-<p>Getting Information About a Network</p>
-<pre><code>docker network inspect MyOverlayNetwork
-</code></pre>
+wzxhzdk:214
 
-<p>Connecting a Running Container to a Network</p>
-<pre><code>docker network connect MyOverlayNetwork nginx
-</code></pre>
 
-<p>Connecting a Container to a Network When it Starts</p>
-<pre><code>docker container run -it -d --network=MyOverlayNetwork nginx
-</code></pre>
+<h4>Manipulating Images</h4>
 
-<p>Disconnecting a Container from a Network</p>
-<pre><code>docker network disconnect MyOverlayNetwork nginx
-</code></pre>
+<h4>Listing Images</h4>
 
-<p>Exposing Ports<br />
-Using Dockerfile, you can expose a port on the container using:</p>
-<pre><code>EXPOSE &lt;port_number&gt;
-You can also map the container port to a host port using:
+wzxhzdk:215
 
-e.g.
 
-docker run -p $HOST_PORT:$CONTAINER_PORT --name infinite -t infinite
-</code></pre>
+<h4>Building Images</h4>
 
-<p>Cleaning Docker<br />
-Removing a Running Container  </p>
-<pre><code>docker container rm nginx
-</code></pre>
+wzxhzdk:216
 
-<p>Removing a Container and its Volume</p>
-<pre><code>docker container rm -v nginx
-</code></pre>
 
-<p>Removing all Exited Containers</p>
-<pre><code>docker container rm $(docker container ls -a -f status=exited -q)
-</code></pre>
+<h4>Removing an Image</h4>
 
-<p>Removing All Stopped Containers</p>
-<pre><code>docker container rm `docker container ls -a -q`
-</code></pre>
+wzxhzdk:217
 
-<p>Removing a Docker Image</p>
-<pre><code>docker image rm nginx
-</code></pre>
 
-<p>Removing Dangling Images</p>
-<pre><code>docker image rm $(docker image ls -f dangling=true -q)
-</code></pre>
+<h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 
-<p>Removing all Images</p>
-<pre><code>docker image rm $(docker image ls -a -q)
-</code></pre>
+wzxhzdk:218
 
-<p>Removing all untagged images</p>
-<pre><code>docker image rm -f $(docker image ls | grep &quot;^&lt;none&gt;&quot; | awk &quot;{print $3}&quot;)
-</code></pre>
 
-<p>Stopping &amp; Removing all Containers</p>
-<pre><code>docker container stop $(docker container ls -a -q) &amp;&amp; docker container rm $(docker container ls -a -q)
-</code></pre>
+<h4>Save an Image to a Tar Archive</h4>
 
-<p>Removing Dangling Volumes</p>
-<pre><code>docker volume rm $(docker volume ls -f dangling=true -q)
-</code></pre>
+wzxhzdk:219
 
-<p>Removing all unused (containers, images, networks and volumes)</p>
-<pre><code>docker system prune -f
-</code></pre>
 
-<p>Clean all</p>
-<pre><code>docker system prune -a
-</code></pre>
+<h4>Showing the History of an Image</h4>
+
+wzxhzdk:220
+
+
+<h4>Creating an Image From a Container</h4>
+
+wzxhzdk:221
+
+
+<h4>Tagging an Image</h4>
+
+wzxhzdk:222
+
+
+<h4>Pushing an Image</h4>
+
+wzxhzdk:223
+
+
+<h4>Creating Networks</h4>  
+
+wzxhzdk:224
+
+
+<h4>Removing a Network</h4>
+
+wzxhzdk:225
+
+
+<h4>Listing Networks</h4>
+
+wzxhzdk:226
+
+
+<h4>Getting Information About a Network</h4>
+
+wzxhzdk:227
+
+
+<h4>Connecting a Running Container to a Network</h4>
+
+wzxhzdk:228
+
+
+<h4>Connecting a Container to a Network When it Starts</h4>
+
+wzxhzdk:229
+
+
+<h4>Disconnecting a Container from a Network</h4>
+
+wzxhzdk:230
+
+
+<h4>Exposing Ports</h4>  
+Using Dockerfile, you can expose a port on the container using:
+
+wzxhzdk:231
+
+
+<h4>Cleaning Docker</h4>  
+<h4>Removing a Running Container </h4> 
+
+wzxhzdk:232
+
+
+<h4>Removing a Container and its Volume</h4>
+
+wzxhzdk:233
+
+
+<h4>Removing all Exited Containers</h4>
+
+wzxhzdk:234
+
+
+<h4>Removing All Stopped Containers</h4>
+
+wzxhzdk:235
+
+
+<h4>Removing a Docker Image</h4>
+
+wzxhzdk:236
+
+
+<h4>Removing Dangling Images</h4>
+
+wzxhzdk:237
+
+
+<h4>Removing all Images</h4>
+
+wzxhzdk:238
+
+
+<h4>Removing all untagged images</h4>
+
+wzxhzdk:239
+
+
+<h4>Stopping & Removing all Containers</h4>
+
+wzxhzdk:240
+
+
+<h4>Removing Dangling Volumes</h4>
+
+wzxhzdk:241
+
+
+<h4>Removing all unused (containers, images, networks and volumes)</h4>
+
+wzxhzdk:242
+
+
+<h4>Clean all</h4>
+
+wzxhzdk:243
+
+-->
 
 <hr />
 <h2 id="vs-code">VS Code</h2>
@@ -1736,7 +1875,7 @@ Press F6 for pause  </p>
 <h2 id="links">LINKS</h2>
 <p>React<br />
 <a href="https://github.com/enaqx/awesome-react">Awesome-react</a><br />
-<a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a>
+<a href="https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png">React Learning Roadmap</a><br />
 <a href="https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030">FreeCodeCamp: React Cocepts</a><br />
 <a href="https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today">Creativebloq: React Tips</a><br />
 <a href="https://react.christmas/">React Various articles</a><br />
@@ -1744,13 +1883,13 @@ Press F6 for pause  </p>
 <a href="https://alligator.io/">Articles about frontend</a><br />
 <a href="https://www.robinwieruch.de/">Frontend Articles</a><br />
 <a href="https://www.valentinog.com">Frontend Articles</a><br />
-<a href="https://nikgraf.github.io/react-hooks/">Hooks collection</a>
-<a href="https://github.com/30-seconds/30-seconds-of-react#input">30 seconds react</a></p>
+<a href="https://nikgraf.github.io/react-hooks/">Hooks collection</a><br />
+<a href="https://github.com/30-seconds/30-seconds-of-react#input">30 seconds react</a>  </p>
 <p>CSS Links<br />
 <a href="https://cssreference.io">CSSreference.io</a><br />
 <a href="https://labs.jensimmons.com/">Jen Simmons CSS Lab</a><br />
 <a href="https://www.toptal.com/css/introduction-to-bem-methodology">BEM Block Element Modifier</a><br />
-<a href="http://animista.net">CSS Animation</a>
+<a href="http://animista.net">CSS Animation</a><br />
 <a href="https://learncssgrid.com/">CSS grids</a><br />
 <a href="https://gridbyexample.com">Grids by example</a><br />
 <a href="http://cssgridgarden.com">Grid CSS Garden</a><br />
@@ -1761,24 +1900,28 @@ Press F6 for pause  </p>
 <a href="https://git-scm.com/docs">GIT commands</a>  </p>
 <p>Linux<br />
 <a href="http://landoflinux.com/linux_basic_fundamentals.html">Linux commands</a>  </p>
-<p>Various links<br />
-<a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Github pages markdown</a><br />
-<a href="https://github.com/phw/peek">Recording Screen</a><br />
-<a href="https://www.sitepoint.com/">Site Point</a><br />
-<a href="https://devhints.io">Cheatsheets</a><br />
-<a href="https://help.github.com/">Github help</a><br />
-<a href="https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf">REST API Design Rulebook</a><br />
-<a href="https://www.mkdocs.org">Static site generator</a><br />
-<a href="https://github.com/sindresorhus/awesome#front-end-development">Awesome frontend</a><br />
-<a href="https://github.com/MaximAbramchuck/awesome-interview-questions">Interview questions</a><br />
-<a href="https://www.sitepoint.com/building-product-documentation-mkdocs/">Deploy mkdocs to github</a><br />
-<a href="https://github.com/thoov/mock-socket">Mock socket</a><br />
-<a href="https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest">Mock socket</a><br />
-<a href="https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6">Socket unit testing</a><br />
-<a href="https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73">Socket+jest boilerplate</a>  </p>
-<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">kubectl commands</a>
 <!--
-https://github.com/howtographql/react-apollo<br />https://www.howtographql.com/react-apollo/0-introduction/<br />https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js<br />https://www.howtographql.com/react-apollo/1-getting-started/
+Various links  
+[Github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
+[Recording Screen](https://github.com/phw/peek)  
+[Site Point](https://www.sitepoint.com/)  
+[Cheatsheets](https://devhints.io)  
+[Github help](https://help.github.com/)  
+[REST API Design Rulebook](https://pepa.holla.cz/wp-content/uploads/2016/01/REST-API-Design-Rulebook.pdf)  
+[Static site generator](https://www.mkdocs.org)  
+[Awesome frontend](https://github.com/sindresorhus/awesome#front-end-development)  
+[Interview questions](https://github.com/MaximAbramchuck/awesome-interview-questions)  
+[Deploy mkdocs to github](https://www.sitepoint.com/building-product-documentation-mkdocs/)  
+[Mock socket](https://github.com/thoov/mock-socket)  
+[Mock socket](https://stackoverflow.com/questions/42867183/mocking-websocket-in-jest)  
+[Socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)  
+[Socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)  
+[kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+https://github.com/howtographql/react-apollo  
+https://www.howtographql.com/react-apollo/0-introduction/  
+https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
+https://www.howtographql.com/react-apollo/1-getting-started/
 https://www.javascript.com/resources
 https://github.com/rmotr/flask-api-example
 https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
@@ -1790,7 +1933,9 @@ https://realpython.com/
 https://www.journaldev.com/17752/python-main-function
 https://itnext.io/
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
---></p></div>
+https://frontendmasters.com/books/front-end-handbook/2019/
+https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
+--></div>
         </div>
 
         <footer class="col-md-12">
@@ -1873,5 +2018,5 @@ CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-ap
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-03 10:32:12
+Build Date UTC : 2019-05-04 17:59:55
 -->
