@@ -1883,6 +1883,44 @@ docker system prune -f
 docker system prune -a
 ```
 -->
+---
+
+## VS Code
+<h3>Debug code through Chrome Debugger extension</h3>
+Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  
+```
+ext install msjsdiag.debugger-for-chrome
+```
+
+<h3>Create a launch file for the Visual Studio Code Debugger.</h3>
+Click gear icon on debug section (Ctr+Shift+D).  
+Select option "Chrome"  
+Insert a configuration file  
+Insert url, root, name  
+```
+{
+     "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://127.0.0.1:8887",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+Add breakpoints in VS Code, by click on the left of row number  
+Press F5 to start debugging  
+A new chrome window will open  
+
+In VS Code
+Open debug panel ctlr+shift+D
+Press F10 for step over  
+Press F11 for step into  
+Press shift + F11 for step out  
+Press F6 for pause  
 
 ---
 
@@ -1953,5 +1991,6 @@ https://www.journaldev.com/17752/python-main-function
 https://itnext.io/
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 https://frontendmasters.com/books/front-end-handbook/2019/
+https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
 -->
 
