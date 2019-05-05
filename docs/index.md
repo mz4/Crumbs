@@ -1262,7 +1262,172 @@ curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
 --- 
 
 ## DOCKER  
-Docker is a technology to speed up the development and deployment processes.  
+Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers.  
+A container is launched by running an image.  
+An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.  
+
+Develop a new project which involves both a Node backend and a React front-end in Docker containers.
+- Run both the Node and the React app in its own Docker container.
+- Communicate between the two apps running in containers.
+- Every edit in the local IDE will automatically be reflected in the apps running in containers.
+
+1. Create a repository with a backend and frontend folder
+2. Add outside both folders a docker-compose.yml file to build and spin up the two containers
+3. Add a .env file providing default values of environment variables for both apps.
+4. Add a Dockerfile in the client folder and also one in the server folder
+
+For Client
+```
+# base image
+FROM node:8.7.0-alpine
+
+# set working directory
+RUN mkdir -p /usr/src/appclient
+WORKDIR /usr/src/appclient
+
+# install dependencies
+COPY package.json /usr/src/appclient
+COPY package-lock.json /usr/src/appclient
+
+RUN npm install
+
+COPY . /usr/src/appclient
+
+# start app
+CMD ["npm", "start"]
+```
+
+For Server
+```
+# base image
+FROM node:8.7.0-alpine
+
+# set working directory
+RUN mkdir -p /usr/src/appserver
+WORKDIR /usr/src/appserver
+
+# install dependencies
+COPY package.json /usr/src/appserver
+COPY package-lock.json /usr/src/appserver
+
+RUN npm install
+
+COPY . /usr/src/appserver
+
+# start app
+CMD ["npm", "run", "dev"]
+```
+
+a. FROM node:8.7.0-alpine Tell Docker we want to use Node v8.7.0 installed in a alpine Linux image.  
+b. RUN mkdir -p /app/directory/path Create a directory in the container to hold the app.  
+c. WORKDIR /app/directory/path Go into the app folder by making it the working directory  
+d. COPY package.json and COPY package-lock.json Copy the local package.json and package-lock.json files into the container  
+e. RUN npm install install the node modules that the project needs  
+f. COPY . /app/directory/path Copy local code into the container  
+g. CMD ["npm", "start"] Now our app lives in the container, we can run the command npm start.  
+  
+e. The Dockerfile in the server folder is nearly the same, except that in the last line the command to run is npm run dev , which is an npm script  defined in the package.json file that starts the Node app using nodemon instead of node to trigger recompiling the app server every time I edit something in the local server source code.  
+
+<h4>Create the docker-compose.yml file</h4> 
+This will make the two containers communicative.
+
+```
+version: '3.5'
+
+services:
+################################
+# Setup node container
+################################
+  server:
+    build: ./server
+    espose: 
+      - ${APP_SERVER_PORT}
+    environment:
+      API_HOST: ${API_HOST}
+      APP_SERVER_PORT: ${APP_SERVER_PORT}
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    volumes:
+      - ./server/src:/srv/appserver/src
+    command: npm run dev
+################################
+# Setup client container
+################################
+  client:
+    build: ./client
+    environment:
+      REACT_APP_PORT: ${REACT_APP_PORT}
+    espose: 
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./client/src:/srv/appclient/src
+    links:
+      - server
+    command: npm run start
+```
+
+Variables are defined in an external files .env:
+```
+API_HOST="http://localhost:3000"
+APP_SERVER_PORT=8000
+REACT_APP_PORT=4000
+```
+
+a. ports: Then we map container port to a port on the host machine so that we can access the running containers from the local environment  
+b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container, so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.  
+c. command: The command to run after the container is up. What’s specified here will override the CMD part in the Dockerfile.  
+
+<!-- 
+https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 Dockerize a React app.  
 
 - Set up a development environment with code hot-reloading
@@ -1280,6 +1445,7 @@ cd sample-app
 ```
 
 <h4>Add Dockerfile to project root</h4>
+Dockerfile defines what goes on in the environment inside your container.  
 ```
 # base image
 FROM node:9.6.1
@@ -1351,6 +1517,105 @@ docker-compose up -d --build
 ```
 docker-compose stop
 ```
+
+---
+
+<h4>Docker example</h4>
+Build an image, run container, publish image:
+```
+docker build -t friendlyhello .  # Create image using this directory's Dockerfile
+docker run -p 4000:80 friendlyhello  # Run "friendlyhello" mapping port 4000 to 80
+docker run -d -p 4000:80 friendlyhello         # Same thing, but in detached mode
+docker container ls                                # List all running containers
+docker container ls -a             # List all containers, even those not running
+docker container stop <hash>           # Gracefully stop the specified container
+docker container kill <hash>         # Force shutdown of the specified container
+docker container rm <hash>        # Remove specified container from this machine
+docker container rm $(docker container ls -a -q)         # Remove all containers
+docker image ls -a                             # List all images on this machine
+docker image rm <image id>            # Remove specified image from this machine
+docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker login             # Log in this CLI session using your Docker credentials
+docker tag <image> username/repository:tag  # Tag <image> for upload to registry
+docker push username/repository:tag            # Upload tagged image to registry
+docker run username/repository:tag                   # Run image from a registry
+```
+
+<h4>Docker Compose</h4>
+Compose is a tool for defining and running multi-container Docker applications.  
+With Compose, you use a YAML file to configure your application’s services.  
+
+<h4>Services</h4>
+
+In a distributed application, different pieces of the app are called “services”.  
+To define, run, and scale services:  
+1. Pull the image from the registry.
+2. Run 5 instances of that image as a service called web.
+3. Immediately restart containers if one fails.
+4. Map port 4000 on the host to web’s port 80.
+5. Instruct web’s containers to share port 80 via a load-balanced network called webnet.  
+
+docker-compose.yml  
+```yml
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: username/repo:tag
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:80"
+    networks:
+      - webnet
+networks:
+  webnet:
+```
+
+Initialize containers service
+```
+docker swarm init
+```
+
+Run it
+```
+docker stack deploy -c docker-compose.yml getstartedlab
+```
+
+The single service stack is running 5 container instances of our deployed image on one host. 
+
+<h4>Services cheatsheet</h4>
+```
+docker stack ls                                            # List stacks or apps
+docker stack deploy -c <composefile> <appname>  # Run the specified Compose file
+docker service ls                 # List running services associated with an app
+docker service ps <service>                  # List tasks associated with an app
+docker inspect <task or container>                   # Inspect task or container
+docker container ls -q                                      # List container IDs
+docker stack rm <appname>                             # Tear down an application
+docker swarm leave --force      # Take down a single node swarm from the manager
+```
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 <!--
 https://mherman.org/blog/dockerizing-a-react-app/
 https://testdriven.io/courses/microservices-with-docker-flask-and-react/
