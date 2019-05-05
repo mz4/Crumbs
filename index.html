@@ -1282,96 +1282,224 @@ module.exports = {
 
 <hr />
 <h2 id="docker">DOCKER</h2>
-<p>Docker is a technology to speed up the development and deployment processes.<br />
-Dockerize a React app.  </p>
-<ul>
-<li>Set up a development environment with code hot-reloading</li>
-<li>Configuring a production-ready image</li>
-</ul>
-<h4>Install create-react-app</h4>
-
-<pre><code>npm install -g create-react-app@1.5.2
-</code></pre>
-
-<h4>Create a new app</h4>
-
-<pre><code>create-react-app sample-app
-cd sample-app
-</code></pre>
-
-<h4>Add Dockerfile to project root</h4>
-
+<p>Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers.<br />
+A container is launched by running an image.<br />
+An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.  </p>
+<p>Develop a new project which involves both a Node backend and a React front-end in Docker containers.
+- Run both the Node and the React app in its own Docker container.
+- Communicate between the two apps running in containers.
+- Every edit in the local IDE will automatically be reflected in the apps running in containers.</p>
+<ol>
+<li>Create a repository with a backend and frontend folder</li>
+<li>Add outside both folders a docker-compose.yml file to build and spin up the two containers</li>
+<li>Add a .env file providing default values of environment variables for both apps.</li>
+<li>Add a Dockerfile in the client folder and also one in the server folder</li>
+</ol>
+<p>For Client</p>
 <pre><code># base image
-FROM node:9.6.1
+FROM node:8.7.0-alpine
 
 # set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/appclient
+WORKDIR /usr/src/appclient
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# install dependencies
+COPY package.json /usr/src/appclient
+COPY package-lock.json /usr/src/appclient
 
-# install and cache app dependencies
-COPY package.json /usr/src/app/package.json
-RUN npm install --silent
-RUN npm install react-scripts@1.1.1 -g --silent
+RUN npm install
+
+COPY . /usr/src/appclient
 
 # start app
 CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
 
-<h4>Add a .dockerignore:</h4>
+<p>For Server</p>
+<pre><code># base image
+FROM node:8.7.0-alpine
 
-<pre><code>node_modules
+# set working directory
+RUN mkdir -p /usr/src/appserver
+WORKDIR /usr/src/appserver
+
+# install dependencies
+COPY package.json /usr/src/appserver
+COPY package-lock.json /usr/src/appserver
+
+RUN npm install
+
+COPY . /usr/src/appserver
+
+# start app
+CMD [&quot;npm&quot;, &quot;run&quot;, &quot;dev&quot;]
 </code></pre>
 
-<h4>Build and tag the Docker image</h4>
+<p>a. FROM node:8.7.0-alpine Tell Docker we want to use Node v8.7.0 installed in a alpine Linux image.<br />
+b. RUN mkdir -p /app/directory/path Create a directory in the container to hold the app.<br />
+c. WORKDIR /app/directory/path Go into the app folder by making it the working directory<br />
+d. COPY package.json and COPY package-lock.json Copy the local package.json and package-lock.json files into the container<br />
+e. RUN npm install install the node modules that the project needs<br />
+f. COPY . /app/directory/path Copy local code into the container<br />
+g. CMD ["npm", "start"] Now our app lives in the container, we can run the command npm start.  </p>
+<p>e. The Dockerfile in the server folder is nearly the same, except that in the last line the command to run is npm run dev , which is an npm script  defined in the package.json file that starts the Node app using nodemon instead of node to trigger recompiling the app server every time I edit something in the local server source code.  </p>
+<h4>Create the docker-compose.yml file</h4>
 
-<pre><code>docker build -t sample-app .
-</code></pre>
-
-<h4>Spin up the container</h4>
-
-<pre><code>sudo docker run -it -v ${PWD}:/usr/src/app -v /usr/src/app/node_modules -p 3000:3000 --rm sample-app
-</code></pre>
-
-<h4>Check the app</h4>
-
-<p>Open your browser to: </p>
-<pre><code>http://localhost:3000/
-</code></pre>
-
-<h4>Docker compose</h4>
-
-<p>add docker-compose.yml</p>
+<p>This will make the two containers communicative.</p>
 <pre><code>version: '3.5'
 
 services:
-
-  sample-app:
-    container_name: sample-app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
-    ports:
-      - '3000:3000'
+################################
+# Setup node container
+################################
+  server:
+    build: ./server
+    espose: 
+      - ${APP_SERVER_PORT}
     environment:
-      - NODE_ENV=development
+      API_HOST: ${API_HOST}
+      APP_SERVER_PORT: ${APP_SERVER_PORT}
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    volumes:
+      - ./server/src:/srv/appserver/src
+    command: npm run dev
+################################
+# Setup client container
+################################
+  client:
+    build: ./client
+    environment:
+      REACT_APP_PORT: ${REACT_APP_PORT}
+    espose: 
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./client/src:/srv/appclient/src
+    links:
+      - server
+    command: npm run start
 </code></pre>
+
+<p>Variables are defined in an external files .env:</p>
+<pre><code>API_HOST=&quot;http://localhost:3000&quot;
+APP_SERVER_PORT=8000
+REACT_APP_PORT=4000
+</code></pre>
+
+<p>a. ports: Then we map container port to a port on the host machine so that we can access the running containers from the local environment<br />
+b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container, so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.<br />
+c. command: The command to run after the container is up. What’s specified here will override the CMD part in the Dockerfile.  </p>
+<!-- 
+https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
+-->
+
+<!--
+Dockerize a React app.
+
+- Set up a development environment with code hot-reloading
+- Configuring a production-ready image
+
+<h4>Install create-react-app</h4>
+
+wzxhzdk:156
+
+
+<h4>Create a new app</h4>
+
+wzxhzdk:157
+
+
+<h4>Add Dockerfile to project root</h4>
+Dockerfile defines what goes on in the environment inside your container.  
+
+wzxhzdk:158
+
+
+<h4>Add a .dockerignore:</h4>
+
+wzxhzdk:159
+
+
+<h4>Build and tag the Docker image</h4>
+
+wzxhzdk:160
+
+
+<h4>Spin up the container</h4>
+
+wzxhzdk:161
+
+
+<h4>Check the app</h4>
+Open your browser to: 
+
+wzxhzdk:162
+
+
+<h4>Docker compose</h4>
+add docker-compose.yml
+
+wzxhzdk:163
+
 
 <h4>Build image and fire container</h4>
 
-<pre><code>docker-compose up -d --build
-</code></pre>
+wzxhzdk:164
+
 
 <h4>Stop container</h4>
 
-<pre><code>docker-compose stop
-</code></pre>
+wzxhzdk:165
 
+
+---
+
+<h4>Docker example</h4>
+Build an image, run container, publish image:
+
+wzxhzdk:166
+
+
+<h4>Docker Compose</h4>
+Compose is a tool for defining and running multi-container Docker applications.  
+With Compose, you use a YAML file to configure your application’s services.  
+
+<h4>Services</h4>
+
+In a distributed application, different pieces of the app are called “services”.  
+To define, run, and scale services:  
+1. Pull the image from the registry.
+2. Run 5 instances of that image as a service called web.
+3. Immediately restart containers if one fails.
+4. Map port 4000 on the host to web’s port 80.
+5. Instruct web’s containers to share port 80 via a load-balanced network called webnet.  
+
+docker-compose.yml  
+
+wzxhzdk:167
+
+
+Initialize containers service
+
+wzxhzdk:168
+
+
+Run it
+
+wzxhzdk:169
+
+
+The single service stack is running 5 container instances of our deployed image on one host. 
+
+<h4>Services cheatsheet</h4>
+
+wzxhzdk:170
+
+-->
+
+<hr />
 <!--
 https://mherman.org/blog/dockerizing-a-react-app/
 https://testdriven.io/courses/microservices-with-docker-flask-and-react/
@@ -1398,23 +1526,23 @@ User images: images created and shared by users.
 
 <h4>Install latest Docker</h4>
 
-wzxhzdk:162
+wzxhzdk:171
 
 
 or
 
 
-wzxhzdk:163
+wzxhzdk:172
 
 
 <h4>Test your Docker installation by running the following</h4>
 
-wzxhzdk:164
+wzxhzdk:173
 
 
 <h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 
-wzxhzdk:165
+wzxhzdk:174
 
 
 <h4>Docker Hub</h4>  
@@ -1422,38 +1550,38 @@ or
 
 <h4>List of all images on your system.</h4>  
 
-wzxhzdk:166
+wzxhzdk:175
 
 
 <h4>Run a container</h4>
 
-wzxhzdk:167
+wzxhzdk:176
 
 
 <h4>Show running containers</h4>
 
-wzxhzdk:168
+wzxhzdk:177
 
 
 <h4>Show containers that ran previously</h4>
 
-wzxhzdk:169
+wzxhzdk:178
 
 
 <h4>Live tty session</h4>
 
-wzxhzdk:170
+wzxhzdk:179
 
 
 <h4>Remove containers from which you left</h4>
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
 
-wzxhzdk:171
+wzxhzdk:180
 
 or  
 
-wzxhzdk:172
+wzxhzdk:181
 
 
 <h4>Run detached</h4>  
@@ -1461,22 +1589,22 @@ or
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
 
-wzxhzdk:173
+wzxhzdk:182
 
 
 <h4>See the ports by running the docker port [CONTAINER] command</h4>
 
-wzxhzdk:174
+wzxhzdk:183
 
 
 <h4>Specify a custom port</h4>
 
-wzxhzdk:175
+wzxhzdk:184
 
 
 <h4>Stop a container</h4>
 
-wzxhzdk:176
+wzxhzdk:185
 
 
 <h4>Creating an image</h4>  
@@ -1485,82 +1613,82 @@ CMD is to tell the container which command it should run when it is started
 port number that needs to be exposed  
 specifying our base image. Use the FROM keyword to do that  
 
-wzxhzdk:177
+wzxhzdk:186
 
 
 Dockerfile example
 
-wzxhzdk:178
+wzxhzdk:187
 
 
 <h4>Build image from Dockerfile</h4>
 
-wzxhzdk:179
+wzxhzdk:188
 
 
 <h4>Run the container</h4>
 
-wzxhzdk:180
+wzxhzdk:189
 
 
 <h4>Publish image to Docker HUB</h4>
 
-wzxhzdk:181
+wzxhzdk:190
 
 
 Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 
-wzxhzdk:182
+wzxhzdk:191
 
 
 <h4>Search for images</h4>
 
-wzxhzdk:183
+wzxhzdk:192
 
 
 <h4>When docker is installed, it creates three networks automatically.</h4>
 
-wzxhzdk:184
+wzxhzdk:193
 
 
 The bridge network is the network in which containers are run by default.  
 <h4>Inspect bridge Network</h4>
 
-wzxhzdk:185
+wzxhzdk:194
 
 
 <h4>Create our own network</h4>  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 
-wzxhzdk:186
+wzxhzdk:195
 
 
 <h4>Launch containers into network (--net foodtrucks-net)</h4>
 
-wzxhzdk:187
+wzxhzdk:196
 
 
 <h4>Create and run container on a created Network</h4>
 ./setup-docker.sh
 
-wzxhzdk:188
+wzxhzdk:197
 
 
 Docker Registries & Repositories  
 <h4>Searching an Image</h4>  
 
-wzxhzdk:189
+wzxhzdk:198
 
 
 <h4>Pulling an Image</h4>
 
-wzxhzdk:190
+wzxhzdk:199
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:191
+wzxhzdk:200
 
 <h4>Running Containers`</h4>
 Create and Run a Simple Container  
@@ -1568,270 +1696,270 @@ Start an ubuntu:latest image
 Bind the port 80 from the CONTAINER to port 3000 on the HOST  
 Mount the current directory to /data on the CONTAINER  
 
-wzxhzdk:192
+wzxhzdk:201
 
 
 <h4>Creating a Container</h4>
 
-wzxhzdk:193
+wzxhzdk:202
 
 
 <h4>Running a Container</h4>
 
-wzxhzdk:194
+wzxhzdk:203
 
 
 <h4>Renaming a Container</h4>
 
-wzxhzdk:195
+wzxhzdk:204
 
 
 <h4>Removing a Container</h4>
 
-wzxhzdk:196
+wzxhzdk:205
 
 
 <h4>Updating a Container</h4>
 
-wzxhzdk:197
+wzxhzdk:206
 
 
 <h4>Starting & Stopping Containers</h4>
 
-wzxhzdk:198
+wzxhzdk:207
 
 
 
-wzxhzdk:199
+wzxhzdk:208
 
 
 
 <h4>Restarting</h4>
 
-wzxhzdk:200
+wzxhzdk:209
 
 
 <h4>Pausing</h4>
 
-wzxhzdk:201
+wzxhzdk:210
 
 
 <h4>Unpausing</h4>
 
-wzxhzdk:202
+wzxhzdk:211
 
 
 <h4>Blocking a Container</h4>
 
-wzxhzdk:203
+wzxhzdk:212
 
 
 <h4>Sending a SIGKILL</h4>
 
-wzxhzdk:204
+wzxhzdk:213
 
 
 <h4>Sending another signal</h4>
 
-wzxhzdk:205
+wzxhzdk:214
 
 
 <h4>Connecting to an Existing Container</h4>
 
-wzxhzdk:206
+wzxhzdk:215
 
 
 <h4>Getting Information about Containers</h4>
 
 <h4>Running Containers</h4>
 
-wzxhzdk:207
+wzxhzdk:216
 
 
 <h4>Container Logs</h4>
 docker logs infinite
 Follow Container Logs
 
-wzxhzdk:208
+wzxhzdk:217
 
 
 <h4>Inspecting Containers</h4>
 
-wzxhzdk:209
+wzxhzdk:218
 
 
 <h4>Containers Events</h4>
 
-wzxhzdk:210
+wzxhzdk:219
 
 
 <h4>Public Ports</h4>
 
-wzxhzdk:211
+wzxhzdk:220
 
 
 <h4>Running Processes</h4>
 
-wzxhzdk:212
+wzxhzdk:221
 
 
 <h4>Container Resource Usage</h4>
 
-wzxhzdk:213
+wzxhzdk:222
 
 
 <h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 
-wzxhzdk:214
+wzxhzdk:223
 
 
 <h4>Manipulating Images</h4>
 
 <h4>Listing Images</h4>
 
-wzxhzdk:215
+wzxhzdk:224
 
 
 <h4>Building Images</h4>
 
-wzxhzdk:216
+wzxhzdk:225
 
 
 <h4>Removing an Image</h4>
 
-wzxhzdk:217
+wzxhzdk:226
 
 
 <h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 
-wzxhzdk:218
+wzxhzdk:227
 
 
 <h4>Save an Image to a Tar Archive</h4>
 
-wzxhzdk:219
+wzxhzdk:228
 
 
 <h4>Showing the History of an Image</h4>
 
-wzxhzdk:220
+wzxhzdk:229
 
 
 <h4>Creating an Image From a Container</h4>
 
-wzxhzdk:221
+wzxhzdk:230
 
 
 <h4>Tagging an Image</h4>
 
-wzxhzdk:222
+wzxhzdk:231
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:223
+wzxhzdk:232
 
 
 <h4>Creating Networks</h4>  
 
-wzxhzdk:224
+wzxhzdk:233
 
 
 <h4>Removing a Network</h4>
 
-wzxhzdk:225
+wzxhzdk:234
 
 
 <h4>Listing Networks</h4>
 
-wzxhzdk:226
+wzxhzdk:235
 
 
 <h4>Getting Information About a Network</h4>
 
-wzxhzdk:227
+wzxhzdk:236
 
 
 <h4>Connecting a Running Container to a Network</h4>
 
-wzxhzdk:228
+wzxhzdk:237
 
 
 <h4>Connecting a Container to a Network When it Starts</h4>
 
-wzxhzdk:229
+wzxhzdk:238
 
 
 <h4>Disconnecting a Container from a Network</h4>
 
-wzxhzdk:230
+wzxhzdk:239
 
 
 <h4>Exposing Ports</h4>  
 Using Dockerfile, you can expose a port on the container using:
 
-wzxhzdk:231
+wzxhzdk:240
 
 
 <h4>Cleaning Docker</h4>  
 <h4>Removing a Running Container </h4> 
 
-wzxhzdk:232
+wzxhzdk:241
 
 
 <h4>Removing a Container and its Volume</h4>
 
-wzxhzdk:233
+wzxhzdk:242
 
 
 <h4>Removing all Exited Containers</h4>
 
-wzxhzdk:234
+wzxhzdk:243
 
 
 <h4>Removing All Stopped Containers</h4>
 
-wzxhzdk:235
+wzxhzdk:244
 
 
 <h4>Removing a Docker Image</h4>
 
-wzxhzdk:236
+wzxhzdk:245
 
 
 <h4>Removing Dangling Images</h4>
 
-wzxhzdk:237
+wzxhzdk:246
 
 
 <h4>Removing all Images</h4>
 
-wzxhzdk:238
+wzxhzdk:247
 
 
 <h4>Removing all untagged images</h4>
 
-wzxhzdk:239
+wzxhzdk:248
 
 
 <h4>Stopping & Removing all Containers</h4>
 
-wzxhzdk:240
+wzxhzdk:249
 
 
 <h4>Removing Dangling Volumes</h4>
 
-wzxhzdk:241
+wzxhzdk:250
 
 
 <h4>Removing all unused (containers, images, networks and volumes)</h4>
 
-wzxhzdk:242
+wzxhzdk:251
 
 
 <h4>Clean all</h4>
 
-wzxhzdk:243
+wzxhzdk:252
 
 -->
 
@@ -2018,5 +2146,5 @@ https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-04 17:59:55
+Build Date UTC : 2019-05-05 17:37:43
 -->
