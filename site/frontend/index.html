@@ -256,26 +256,29 @@ A callback is a simple function that’s passed as a value to another function, 
 
 <hr />
 <h2 id="es6">ES6</h2>
-<p>Spread Operator 1  </p>
+<p><h3>Spread Operator 1</h3>  </p>
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
 const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
 console.log(res);  // { isAuthenticated: true } 
 </code></pre>
 
-<p>Spread Operator 2</p>
+<h3>Spread Operator 2</h3>
+
 <pre><code class="javascript">var mid = [3, 4];  
 var arr = [1, 2, ...mid, 5, 6];  
 console.log(arr);  // [ 1, 2, 3, 4, 5, 6 ]
 </code></pre>
 
-<p>Spread Operator 3</p>
+<h3>Spread Operator 3</h3>
+
 <pre><code class="javascript">let nums = [1, 2, 3];
 let abcs = ['a', 'b', 'c'];
 let alphanum = [ ...nums, ...abs ]; // [1, 2, 3, 'a', 'b', 'c']
 </code></pre>
 
-<p>Destructuring 1</p>
+<h3>Destructuring 1</h3>
+
 <pre><code class="javascript">var address = {
   city: &quot;London&quot;,
   state: &quot;UK&quot;,
@@ -288,7 +291,8 @@ log(state); // 'UK'
 log(zip); // 1334
 </code></pre>
 
-<p>Destructuring 2</p>
+<h3>Destructuring 2</h3>
+
 <pre><code class="javascript">var address = {
   city: &quot;London&quot;,
   state: &quot;UK&quot;,
@@ -298,7 +302,8 @@ let {city: c, state: s, zip: z} = address;
 log(c, s, z); // 'London UK 1334'
 </code></pre>
 
-<p>Destructuring 3</p>
+<h3>Destructuring 3</h3>
+
 <pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
 displayPerson(person);
 
@@ -307,14 +312,16 @@ function displayPerson({name, age}) {
 }
 </code></pre>
 
-<p>Destructuring 4</p>
+<h3>Destructuring 4</h3>
+
 <pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
 let {name, age, address} = person; // error!
 let {name, age, ?address} = person; // OK
 let ?{name, age, address} = person; // OK
 </code></pre>
 
-<p>Destructuring 5</p>
+<h3>Destructuring 5</h3>
+
 <pre><code class="javascript">var nums = [1, 2, 3, 4];
 doSomething(nums);
 
@@ -325,27 +332,32 @@ function doSomething([first, second, ...others]){
 }
 </code></pre>
 
-<p>Arrow functions 1
-Specifying parameters:</p>
+<h3>Arrow functions 1</h3>
+
+<p>Specifying parameters:</p>
 <pre><code class="javascript">    () =&gt; { ... } // no parameter
      x =&gt; { ... } // one parameter, an identifier
 (x, y) =&gt; { ... } // several parameters
 </code></pre>
 
-<p>Specifying a body:</p>
+<h3>Specifying a body:</h3>
+
 <pre><code class="javascript">x =&gt; { return x * x }  // block
 x =&gt; x * x  // expression, equivalent to previous line
 </code></pre>
 
-<p>Arrow function 2</p>
+<h3>Arrow function 2</h3>
+
 <pre><code class="javascript">const phraseSplitterEs6 = phrase =&gt; phrase.split(&quot; &quot;);
 </code></pre>
 
-<p>Arrow function 3</p>
+<h3>Arrow function 3</h3>
+
 <pre><code class="javascript">var docLogEs6 = () =&gt; { console.log(document); };
 </code></pre>
 
-<p>Arrow function 4</p>
+<h3>Arrow function 4</h3>
+
 <pre><code class="javascript">const smartPhones = [
   { name:'iphone', price:649 },
   { name:'Galaxy S6', price:576 },
@@ -359,24 +371,30 @@ console.log(prices); // [649, 576, 489]
 
 <hr />
 <h2 id="react">REACT</h2>
-<p>State<br />
-React is all about one-way data flow down the component hierarchy.<br />
+<h3>State</h3>
+
+<p>React is all about one-way data flow down the component hierarchy.<br />
 State is created in the component and stays in the component.<br />
 It can be passed to a children as its props.  </p>
-<p>Basic Concepts
-- JSX
-- Rendering Elements
-- Components Functional/Container
-- State and Lifecycle
-- Handling Events
-- Conditional Rendering
-- Lists and Keys
-- Forms</p>
-<p>JSX</p>
+<h3>Basic Concepts</h3>
+
+<ul>
+<li>JSX</li>
+<li>Rendering Elements</li>
+<li>Components Functional/Container</li>
+<li>State and Lifecycle</li>
+<li>Handling Events</li>
+<li>Conditional Rendering</li>
+<li>Lists and Keys</li>
+<li>Forms</li>
+</ul>
+<h3>JSX</h3>
+
 <pre><code class="javascript">&lt;MyComponent message={'hello world'} /&gt;
 </code></pre>
 
-<p>Rendering elements</p>
+<h3>Rendering elements</h3>
+
 <pre><code class="javascript">class TodoList extends React.Component {
   render() {
     return (
@@ -390,7 +408,8 @@ It can be passed to a children as its props.  </p>
 }
 </code></pre>
 
-<p>Stateless function component - sfc</p>
+<h3>Stateless function component - sfc</h3>
+
 <pre><code class="javascript">const | = props =&gt; {
   return ( | );
 };
@@ -398,24 +417,30 @@ It can be passed to a children as its props.  </p>
 export default |;
 </code></pre>
 
-<p>State and lifecycle
-Mounting<br />
-These methods are called in the following order:<br />
-<em> constructor()<br />
-</em> static getDerivedStateFromProps()<br />
-<em> render()<br />
-</em> componentDidMount()<br />
-Updating<br />
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:<br />
-<em> static getDerivedStateFromProps()<br />
-</em> shouldComponentUpdate()<br />
-<em> render()<br />
-</em> getSnapshotBeforeUpdate()<br />
-<em> componentDidUpdate()<br />
-Unmounting<br />
-This method is called when a component is being removed from the DOM:<br />
-</em> componentWillUnmount()  </p>
-<p>Handling events</p>
+<h3>State and lifecycle</h3>
+
+<pre><code>Mounting  
+These methods are called in the following order:  
+* constructor()  
+* static getDerivedStateFromProps()  
+* render()  
+* componentDidMount()  
+
+Updating  
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:  
+* static getDerivedStateFromProps()  
+* shouldComponentUpdate()  
+* render()  
+* getSnapshotBeforeUpdate()  
+* componentDidUpdate()    
+
+Unmounting  
+This method is called when a component is being removed from the DOM:  
+* componentWillUnmount()  
+</code></pre>
+
+<h3>Handling events</h3>
+
 <pre><code class="javascript">function ActionLink() {
   function handleClick(e) {
     e.preventDefault();
@@ -430,7 +455,8 @@ This method is called when a component is being removed from the DOM:<br />
 }
 </code></pre>
 
-<p>Conditional rendering</p>
+<h3>Conditional rendering</h3>
+
 <pre><code class="javascript">render() {
   const isLoggedIn = this.state.isLoggedIn;
   return (
@@ -441,7 +467,8 @@ This method is called when a component is being removed from the DOM:<br />
 }
 </code></pre>
 
-<p>List and Keys</p>
+<h3>List and Keys</h3>
+
 <pre><code class="javascript">function NumberList(props) {
   const numbers = props.numbers;
   return (
@@ -456,7 +483,8 @@ This method is called when a component is being removed from the DOM:<br />
 }
 </code></pre>
 
-<p>Forms</p>
+<h3>Forms</h3>
+
 <pre><code class="javascript">class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -489,11 +517,13 @@ This method is called when a component is being removed from the DOM:<br />
 }
 </code></pre>
 
-<p>Import CSS</p>
+<h3>Import CSS</h3>
+
 <pre><code>import './styles/style.css'
 </code></pre>
 
-<p>Declare state</p>
+<h3>Declare state</h3>
+
 <pre><code>export class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -501,7 +531,8 @@ This method is called when a component is being removed from the DOM:<br />
   }
 </code></pre>
 
-<p>defaultProps example</p>
+<h3>defaultProps example</h3>
+
 <pre><code class="javascript">Notification.defaultProps = {
   actionTitle: '',
   selectedElements: {},
@@ -509,7 +540,8 @@ This method is called when a component is being removed from the DOM:<br />
 };
 </code></pre>
 
-<p>propTypes example</p>
+<h3>propTypes example</h3>
+
 <pre><code class="javascript">Notification.propTypes = {
   actionTitle: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
@@ -519,15 +551,18 @@ This method is called when a component is being removed from the DOM:<br />
 };
 </code></pre>
 
-<p>Import statement - imr</p>
+<h3>Import statement - imr</h3>
+
 <pre><code class="javascript">import React from 'react';
 </code></pre>
 
-<p>Import React and Component - imrc</p>
+<h3>Import React and Component - imrc</h3>
+
 <pre><code class="javascript">import React, { Component } from 'react';
 </code></pre>
 
-<p>Make a Class Component and export - cc</p>
+<h3>Make a Class Component and export - cc</h3>
+
 <pre><code class="javascript">class | extends Component {
   state = { | },
   render() {
@@ -538,23 +573,27 @@ This method is called when a component is being removed from the DOM:<br />
 export default |;
 </code></pre>
 
-<p>componentDidMount - cdm</p>
+<h3>componentDidMount - cdm</h3>
+
 <pre><code class="javascript">componentDidMount() {
   |
 }
 </code></pre>
 
-<p>componentDidUpdate - cdu</p>
+<h3>componentDidUpdate - cdu</h3>
+
 <pre><code class="javascript">componentDidUpdate(prevProps, prevState) {
   |
 }
 </code></pre>
 
-<p>setState - ss</p>
+<h3>setState - ss</h3>
+
 <pre><code class="javascript">this.setState({ | : | });
 </code></pre>
 
-<p>render - ren</p>
+<h3>render - ren</h3>
+
 <pre><code class="javascript">render() {
   return (
     |
@@ -562,11 +601,13 @@ export default |;
 }
 </code></pre>
 
-<p>export example with mapStateToProps, mapDispatchToProps</p>
+<h3>export example with mapStateToProps, mapDispatchToProps</h3>
+
 <pre><code class="javascript">export default connect(mapStateToProps, mapDispatchToProps)(Name);
 </code></pre>
 
-<p>mapStateToProps example</p>
+<h3>mapStateToProps example</h3>
+
 <pre><code class="javascript">const mapStateToProps = (state) =&gt; {
   return {
     elements: state.refreshRaidElements.raidElements,
@@ -576,16 +617,19 @@ export default |;
 };
 </code></pre>
 
-<p>mapDispatchToProps
-Import actions  </p>
+<h3>mapDispatchToProps</h3>
+
+<p>Import actions  </p>
 <pre><code class="javascript">import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
 </code></pre>
 
-<p>Emit action  </p>
+<h3>Emit action </h3>
+
 <pre><code class="javascript">this.props.selectedRaidIndex(id);
 </code></pre>
 
-<p>Dispatch actions  </p>
+<h3>Dispatch actions</h3>
+
 <pre><code class="javascript">const mapDispatchToProps = (dispatch) =&gt; {
   return {
     checkboxClicked: id =&gt; dispatch(checkboxClicked(id)),
@@ -594,7 +638,8 @@ Import actions  </p>
 };
 </code></pre>
 
-<p>React Redux Thunk  </p>
+<h3>React Redux Thunk</h3>
+
 <p>Actions in Redux are dispatched synchronously. <br />
 Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  </p>
 <p><strong>Redux Thunk is a middleware</strong> that lets you call action creators that return a function instead of an action object.<br />
@@ -603,7 +648,8 @@ That function receives the store’s dispatch method, which is then used to disp
 <pre><code>npm install redux-thunk
 </code></pre>
 
-<p>Apply middleware to app store.  </p>
+<h3>Apply middleware to app store.</h3>
+
 <pre><code class="javascript">import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -732,6 +778,73 @@ export default function todosReducer(state = initialState, action) {
 }
 </code></pre>
 
+<h3>React Portals</h3>
+
+<p>Portals provide a way to render children into any DOM node.<br />
+The first argument is any renderable child.<br />
+The second argument should be a reference to the DOM node where the renderable child will be rendered.  </p>
+<pre><code class="javascript">ReactDOM.createPortal(child, container)
+</code></pre>
+
+<p>React portal example</p>
+<pre><code class="javascript">import React from &quot;react&quot;;
+import ReactDOM, { render } from &quot;react-dom&quot;;
+import { overlay, overlayContent } from &quot;./overlayStyles&quot;;
+
+class Overlay extends React.Component {
+  constructor(props) {
+    super(props);
+    // Create container DOM element and append to DOM.
+    this.overlayContainer = document.createElement(&quot;div&quot;);
+    document.body.appendChild(this.overlayContainer);
+  }
+
+  componentWillUnmount() {
+    document.body.removeChild(this.overlayContainer);
+  }
+
+  render() {
+    return ReactDOM.createPortal(
+      &lt;div style={overlay}&gt;
+        &lt;div style={overlayContent}&gt;{this.props.children}&lt;/div&gt;
+      &lt;/div&gt;,
+      this.overlayContainer
+    );
+  }
+}
+
+class App extends React.Component {
+  state = {
+    showOverlay: false
+  };
+
+  toggleOverlay = () =&gt; {
+    this.setState(prevState =&gt; {
+      return { showOverlay: !prevState.showOverlay };
+    });
+  };
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;Dashboard&lt;/h1&gt;
+        {this.state.showOverlay &amp;&amp; (
+          &lt;Overlay&gt;
+            &lt;div&gt;
+              Overlay Content{&quot; &quot;}
+              &lt;button onClick={this.toggleOverlay}&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/Overlay&gt;
+        )}
+        &lt;button onClick={this.toggleOverlay}&gt;Open Overlay&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+render(&lt;App /&gt;, document.getElementById(&quot;root&quot;));
+</code></pre>
+
 <h3>React Hooks</h3>
 
 <p>Hooks are a new addition in React 16.8.<br />
@@ -836,7 +949,7 @@ function useFriendStatus(friendID) {
 }
 </code></pre>
 
-<p>Reuse fried online/offline in multiple components</p>
+<p>Reuse friend online/offline in multiple components</p>
 <pre><code class="javascript">function FriendStatus(props) {
   const isOnline = useFriendStatus(props.friend.id);
 
