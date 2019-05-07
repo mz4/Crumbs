@@ -99,7 +99,7 @@
 <h2 id="javascript">JAVASCRIPT</h2>
 <h3>Execution Context</h3>
 
-<p>the environment in which code is running. It is created when your code is executed.<br />
+<p>The environment in which code is running. It is created when your code is executed.<br />
 <br>
 <h3>Global Execution Context creates</h3>
 - Global Object Window (browser)<br />
@@ -243,8 +243,6 @@ A callback is a simple function that’s passed as a value to another function, 
 }, 2000)
 </code></pre>
 
-<h3>Promises vs Callbacks</h3>
-
 <h3>Random number</h3>
 
 <pre><code class="javascript">Math.floor(Math.random() * (100 - 1 + 1)) + 1;
@@ -369,6 +367,39 @@ const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
 console.log(prices); // [649, 576, 489]
 </code></pre>
 
+<h3>Nested keys</h3>
+
+<p>Check existance of nested keys.</p>
+<pre><code class="javascript">var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
+if (update_progress !== null) {
+    console.log(JSON.stringify(data));
+}
+</code></pre>
+
+<h3>Difference setInterval and setTimeout</h3>
+
+<p>setTimeout(): It is a function that execute a JavaScript statement AFTER x interval.</p>
+<pre><code class="js">setTimeout(function () {
+    something();
+}, 1000); // Execute something() 1 second later.
+</code></pre>
+
+<p>setInterval(): It is a function that execute a JavaScript statement EVERY x interval.</p>
+<pre><code class="js">setInterval(function () {
+    somethingElse();
+}, 2000); // Execute somethingElse() every 2 seconds.
+</code></pre>
+
+<h3>Performance analysis</h3>
+
+<pre><code class="js">console.time(&quot;start&quot;);
+</code></pre>
+
+<p>// do something</p>
+<pre><code class="js">console.timeEnd(&quot;end&quot;)
+</code></pre>
+
+<p>// this will cause the browser to print time elapsed between start and end.</p>
 <hr />
 <h2 id="react">REACT</h2>
 <h3>State</h3>
