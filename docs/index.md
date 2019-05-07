@@ -172,6 +172,19 @@ git checkout master
 git merge user_interface
 ```
 
+<h3>Rebase</h3>
+git-rebase - Reapply commits on top of another base tip
+```
+git checkout branchname
+git rebase master
+```
+
+In case of conflicts, fix them and then:
+```
+git add namefile.jsx
+git rebase --continue
+```
+
 <h3>Create Tags</h3>
 ```
 git tag v1.0 ec32d32
@@ -560,6 +573,11 @@ tar -tvf james.tar
 List contents of a tar.bz2
 ```
 tar -tvf james.tar.bz2
+```
+
+Set Default folder for screenshots
+```
+gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/username/Pictures/GUI/"
 ```
 
 <h4>REGEX</h4>

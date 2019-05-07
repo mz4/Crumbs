@@ -5,7 +5,7 @@
 ## JAVASCRIPT
 
 <h3>Execution Context</h3>
-the environment in which code is running. It is created when your code is executed.  
+The environment in which code is running. It is created when your code is executed.  
 <br>
 <h3>Global Execution Context creates</h3>
 - Global Object Window (browser)  
@@ -26,6 +26,7 @@ it performs following two steps while executing any code:
 <h3>Bind</h3>
 We use the Bind () method primarily to call a function with the this value set explicitly.  
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
+
 
 ```javascript
 // <button>Get Random Person</button>
@@ -152,9 +153,6 @@ setTimeout(() => {
 }, 2000)
 ```
 
-
-<h3>Promises vs Callbacks</h3>
-
 <h3>Random number</h3>
 ```javascript
 Math.floor(Math.random() * (100 - 1 + 1)) + 1;
@@ -280,6 +278,61 @@ const smartPhones = [
 const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
+
+<h3>Nested keys</h3>
+Check existance of nested keys.
+```javascript
+var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
+if (update_progress !== null) {
+    console.log(JSON.stringify(data));
+}
+```
+
+<h3>Difference setInterval and setTimeout</h3>
+setTimeout(): It is a function that execute a JavaScript statement AFTER x interval.
+```js
+setTimeout(function () {
+    something();
+}, 1000); // Execute something() 1 second later.
+```
+
+setInterval(): It is a function that execute a JavaScript statement EVERY x interval.
+```js
+setInterval(function () {
+    somethingElse();
+}, 2000); // Execute somethingElse() every 2 seconds.
+```
+
+<h3>Performance analysis</h3>
+```js
+console.time("start");
+```
+// do something
+```js
+console.timeEnd("end")
+```
+// this will cause the browser to print time elapsed between start and end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
