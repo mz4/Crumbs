@@ -67,6 +67,13 @@ git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
+<h3>Clean Local branch</h3>
+```
+git reset
+git checkout .
+git clean -fdx
+```
+
 <h3>Clone repo</h3>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
@@ -98,14 +105,14 @@ git status
 git log
 ```
 
-<h3>Edit Last Commit Message</h3>
-```
-git commit --amend -m "New commit message"
-```
-
 <h3>Log commit subject of last 10 commits</h3>
 ```
 git log -10 --pretty=format:"%h %s"
+```
+
+<h3>Edit Last Commit Message</h3>
+```
+git commit --amend -m "New commit message"
 ```
 
 <h3>Single file history</h3>
@@ -136,14 +143,14 @@ git clean -fdx
 <h3>Undo last commit.</h3>
 Warning: Don't do this if you've already pushed
 ```
- git reset HEAD~
+git reset HEAD~
 ```
 
 <h3>Undo last commit.</h3>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
 ```	
- git reset --hard HEAD~
+git reset --hard HEAD~
 ```
 
 <h3>Untrack .pyc files</h3>
@@ -200,6 +207,12 @@ git reset --hard HEAD^     # use --hard if you don't care about keeping the chan
 <h3>Undo git add</h3>
 ```
 git reset filename.jsx
+```
+
+<h3>Make a copy of local branch</h3>
+```
+git checkout old_branch
+git branch new_branch
 ```
 
 <h3>Show differences after git pull</h3>
