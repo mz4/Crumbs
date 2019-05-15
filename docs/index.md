@@ -67,6 +67,13 @@ git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
+<h3>Clean Local branch</h3>
+```
+git reset
+git checkout .
+git clean -fdx
+```
+
 <h3>Clone repo</h3>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
@@ -98,14 +105,19 @@ git status
 git log
 ```
 
-<h3>Edit Last Commit Message</h3>
+<h3>Graphical Log</h3>
 ```
-git commit --amend -m "New commit message"
+git log --graph --decorate
 ```
 
 <h3>Log commit subject of last 10 commits</h3>
 ```
 git log -10 --pretty=format:"%h %s"
+```
+
+<h3>Edit Last Commit Message</h3>
+```
+git commit --amend -m "New commit message"
 ```
 
 <h3>Single file history</h3>
@@ -136,14 +148,14 @@ git clean -fdx
 <h3>Undo last commit.</h3>
 Warning: Don't do this if you've already pushed
 ```
- git reset HEAD~
+git reset HEAD~
 ```
 
 <h3>Undo last commit.</h3>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
 ```	
- git reset --hard HEAD~
+git reset --hard HEAD~
 ```
 
 <h3>Untrack .pyc files</h3>
@@ -200,6 +212,12 @@ git reset --hard HEAD^     # use --hard if you don't care about keeping the chan
 <h3>Undo git add</h3>
 ```
 git reset filename.jsx
+```
+
+<h3>Make a copy of local branch</h3>
+```
+git checkout old_branch
+git branch new_branch
 ```
 
 <h3>Show differences after git pull</h3>
@@ -329,7 +347,7 @@ git push --force origin <name_of_branch>
 
 ## LINUX TIPS
 
-Systems Directories
+<h3>Systems Directories</h3>
 ```
 / The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
@@ -357,7 +375,7 @@ Systems Directories
 /var/log log files
 ```
 
-Most used Commands
+<h3>Most used Commands</h3>
 ```
 ls Directory listing
 ls -al Formatted listing with hidden files
@@ -729,6 +747,13 @@ which node
 which npm
 node --version
 npm --version
+```
+
+Update to latest version
+```
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 ```
 
 global install packages
@@ -2275,6 +2300,20 @@ https://itnext.io/
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 https://frontendmasters.com/books/front-end-handbook/2019/
 https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
+https://searchstorage.techtarget.com/definition/all-flash-array
+https://www.orosk.com/what-is-afa-all-flash-array/
+https://reactjsexample.com
+https://material-components.github.io/material-components-web-catalog/#/
+https://cloud.google.com/kubernetes-engine/docs/tutorials/
+https://github.com/kristoferjoseph/flexboxgrid
+https://codepen.io/marcolago/pen/lqGFb
+
+https://github.com/Mybridge/react-articles
+https://github.com/Mybridge/react-articles/blob/master/src/02-2018.md
+https://github.com/streamich/libreact
+https://github.com/Oblosys/react-lifecycle-visualizer
+https://www.react-spring.io/docs/hooks/examples
+https://medium.mybridge.co/amazing-react-js-open-source-of-the-year-v-2019-364d057ac3f3
 -->
 
 <!--
