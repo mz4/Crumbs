@@ -200,6 +200,11 @@ git clone -b my-branch git@github.com:user/myproject.git
 <pre><code>git log
 </code></pre>
 
+<h3>Graphical Log</h3>
+
+<pre><code>git log --graph --decorate
+</code></pre>
+
 <h3>Log commit subject of last 10 commits</h3>
 
 <pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
@@ -429,7 +434,8 @@ Combine the two commands to squash n amount of commits into one, with the specif
 
 <hr />
 <h2 id="linux-tips">LINUX TIPS</h2>
-<p>Systems Directories</p>
+<h3>Systems Directories</h3>
+
 <pre><code>/ The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
 /boot Contains Linux kernel, initial RAM disk image, and the boot loader.
@@ -456,7 +462,8 @@ Combine the two commands to squash n amount of commits into one, with the specif
 /var/log log files
 </code></pre>
 
-<p>Most used Commands</p>
+<h3>Most used Commands</h3>
+
 <pre><code>ls Directory listing
 ls -al Formatted listing with hidden files
 ls -lt Sorting the Formatted listing by time modification
@@ -794,6 +801,12 @@ regex.exec(&quot;hello&quot;); // returns result array, null otherwise
 which npm
 node --version
 npm --version
+</code></pre>
+
+<p>Update to latest version</p>
+<pre><code>sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 </code></pre>
 
 <p>global install packages</p>
@@ -1432,55 +1445,55 @@ Dockerize a React app.
 
 <h4>Install create-react-app</h4>
 
-wzxhzdk:161
+wzxhzdk:163
 
 
 <h4>Create a new app</h4>
 
-wzxhzdk:162
+wzxhzdk:164
 
 
 <h4>Add Dockerfile to project root</h4>
 Dockerfile defines what goes on in the environment inside your container.  
 
-wzxhzdk:163
+wzxhzdk:165
 
 
 <h4>Add a .dockerignore:</h4>
 
-wzxhzdk:164
+wzxhzdk:166
 
 
 <h4>Build and tag the Docker image</h4>
 
-wzxhzdk:165
+wzxhzdk:167
 
 
 <h4>Spin up the container</h4>
 
-wzxhzdk:166
+wzxhzdk:168
 
 
 <h4>Check the app</h4>
 Open your browser to: 
 
-wzxhzdk:167
+wzxhzdk:169
 
 
 <h4>Docker compose</h4>
 add docker-compose.yml
 
-wzxhzdk:168
+wzxhzdk:170
 
 
 <h4>Build image and fire container</h4>
 
-wzxhzdk:169
+wzxhzdk:171
 
 
 <h4>Stop container</h4>
 
-wzxhzdk:170
+wzxhzdk:172
 
 
 ---
@@ -1488,7 +1501,7 @@ add docker-compose.yml
 <h4>Docker example</h4>
 Build an image, run container, publish image:
 
-wzxhzdk:171
+wzxhzdk:173
 
 
 <h4>Docker Compose</h4>
@@ -1507,24 +1520,24 @@ To define, run, and scale services:
 
 docker-compose.yml  
 
-wzxhzdk:172
+wzxhzdk:174
 
 
 Initialize containers service
 
-wzxhzdk:173
+wzxhzdk:175
 
 
 Run it
 
-wzxhzdk:174
+wzxhzdk:176
 
 
 The single service stack is running 5 container instances of our deployed image on one host. 
 
 <h4>Services cheatsheet</h4>
 
-wzxhzdk:175
+wzxhzdk:177
 
 -->
 
@@ -1555,23 +1568,23 @@ User images: images created and shared by users.
 
 <h4>Install latest Docker</h4>
 
-wzxhzdk:176
+wzxhzdk:178
 
 
 or
 
 
-wzxhzdk:177
+wzxhzdk:179
 
 
 <h4>Test your Docker installation by running the following</h4>
 
-wzxhzdk:178
+wzxhzdk:180
 
 
 <h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 
-wzxhzdk:179
+wzxhzdk:181
 
 
 <h4>Docker Hub</h4>  
@@ -1579,38 +1592,38 @@ or
 
 <h4>List of all images on your system.</h4>  
 
-wzxhzdk:180
+wzxhzdk:182
 
 
 <h4>Run a container</h4>
 
-wzxhzdk:181
+wzxhzdk:183
 
 
 <h4>Show running containers</h4>
 
-wzxhzdk:182
+wzxhzdk:184
 
 
 <h4>Show containers that ran previously</h4>
 
-wzxhzdk:183
+wzxhzdk:185
 
 
 <h4>Live tty session</h4>
 
-wzxhzdk:184
+wzxhzdk:186
 
 
 <h4>Remove containers from which you left</h4>
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
 
-wzxhzdk:185
+wzxhzdk:187
 
 or  
 
-wzxhzdk:186
+wzxhzdk:188
 
 
 <h4>Run detached</h4>  
@@ -1618,22 +1631,22 @@ or
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
 
-wzxhzdk:187
+wzxhzdk:189
 
 
 <h4>See the ports by running the docker port [CONTAINER] command</h4>
 
-wzxhzdk:188
+wzxhzdk:190
 
 
 <h4>Specify a custom port</h4>
 
-wzxhzdk:189
+wzxhzdk:191
 
 
 <h4>Stop a container</h4>
 
-wzxhzdk:190
+wzxhzdk:192
 
 
 <h4>Creating an image</h4>  
@@ -1642,82 +1655,82 @@ CMD is to tell the container which command it should run when it is started
 port number that needs to be exposed  
 specifying our base image. Use the FROM keyword to do that  
 
-wzxhzdk:191
+wzxhzdk:193
 
 
 Dockerfile example
 
-wzxhzdk:192
+wzxhzdk:194
 
 
 <h4>Build image from Dockerfile</h4>
 
-wzxhzdk:193
+wzxhzdk:195
 
 
 <h4>Run the container</h4>
 
-wzxhzdk:194
+wzxhzdk:196
 
 
 <h4>Publish image to Docker HUB</h4>
 
-wzxhzdk:195
+wzxhzdk:197
 
 
 Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 
-wzxhzdk:196
+wzxhzdk:198
 
 
 <h4>Search for images</h4>
 
-wzxhzdk:197
+wzxhzdk:199
 
 
 <h4>When docker is installed, it creates three networks automatically.</h4>
 
-wzxhzdk:198
+wzxhzdk:200
 
 
 The bridge network is the network in which containers are run by default.  
 <h4>Inspect bridge Network</h4>
 
-wzxhzdk:199
+wzxhzdk:201
 
 
 <h4>Create our own network</h4>  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 
-wzxhzdk:200
+wzxhzdk:202
 
 
 <h4>Launch containers into network (--net foodtrucks-net)</h4>
 
-wzxhzdk:201
+wzxhzdk:203
 
 
 <h4>Create and run container on a created Network</h4>
 ./setup-docker.sh
 
-wzxhzdk:202
+wzxhzdk:204
 
 
 Docker Registries & Repositories  
 <h4>Searching an Image</h4>  
 
-wzxhzdk:203
+wzxhzdk:205
 
 
 <h4>Pulling an Image</h4>
 
-wzxhzdk:204
+wzxhzdk:206
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:205
+wzxhzdk:207
 
 <h4>Running Containers`</h4>
 Create and Run a Simple Container  
@@ -1725,270 +1738,270 @@ Start an ubuntu:latest image
 Bind the port 80 from the CONTAINER to port 3000 on the HOST  
 Mount the current directory to /data on the CONTAINER  
 
-wzxhzdk:206
+wzxhzdk:208
 
 
 <h4>Creating a Container</h4>
 
-wzxhzdk:207
+wzxhzdk:209
 
 
 <h4>Running a Container</h4>
 
-wzxhzdk:208
+wzxhzdk:210
 
 
 <h4>Renaming a Container</h4>
 
-wzxhzdk:209
+wzxhzdk:211
 
 
 <h4>Removing a Container</h4>
 
-wzxhzdk:210
+wzxhzdk:212
 
 
 <h4>Updating a Container</h4>
 
-wzxhzdk:211
+wzxhzdk:213
 
 
 <h4>Starting & Stopping Containers</h4>
 
-wzxhzdk:212
+wzxhzdk:214
 
 
 
-wzxhzdk:213
+wzxhzdk:215
 
 
 
 <h4>Restarting</h4>
 
-wzxhzdk:214
+wzxhzdk:216
 
 
 <h4>Pausing</h4>
 
-wzxhzdk:215
+wzxhzdk:217
 
 
 <h4>Unpausing</h4>
 
-wzxhzdk:216
+wzxhzdk:218
 
 
 <h4>Blocking a Container</h4>
 
-wzxhzdk:217
+wzxhzdk:219
 
 
 <h4>Sending a SIGKILL</h4>
 
-wzxhzdk:218
+wzxhzdk:220
 
 
 <h4>Sending another signal</h4>
 
-wzxhzdk:219
+wzxhzdk:221
 
 
 <h4>Connecting to an Existing Container</h4>
 
-wzxhzdk:220
+wzxhzdk:222
 
 
 <h4>Getting Information about Containers</h4>
 
 <h4>Running Containers</h4>
 
-wzxhzdk:221
+wzxhzdk:223
 
 
 <h4>Container Logs</h4>
 docker logs infinite
 Follow Container Logs
 
-wzxhzdk:222
+wzxhzdk:224
 
 
 <h4>Inspecting Containers</h4>
 
-wzxhzdk:223
+wzxhzdk:225
 
 
 <h4>Containers Events</h4>
 
-wzxhzdk:224
+wzxhzdk:226
 
 
 <h4>Public Ports</h4>
 
-wzxhzdk:225
+wzxhzdk:227
 
 
 <h4>Running Processes</h4>
 
-wzxhzdk:226
+wzxhzdk:228
 
 
 <h4>Container Resource Usage</h4>
 
-wzxhzdk:227
+wzxhzdk:229
 
 
 <h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 
-wzxhzdk:228
+wzxhzdk:230
 
 
 <h4>Manipulating Images</h4>
 
 <h4>Listing Images</h4>
 
-wzxhzdk:229
+wzxhzdk:231
 
 
 <h4>Building Images</h4>
 
-wzxhzdk:230
+wzxhzdk:232
 
 
 <h4>Removing an Image</h4>
 
-wzxhzdk:231
+wzxhzdk:233
 
 
 <h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 
-wzxhzdk:232
+wzxhzdk:234
 
 
 <h4>Save an Image to a Tar Archive</h4>
 
-wzxhzdk:233
+wzxhzdk:235
 
 
 <h4>Showing the History of an Image</h4>
 
-wzxhzdk:234
+wzxhzdk:236
 
 
 <h4>Creating an Image From a Container</h4>
 
-wzxhzdk:235
+wzxhzdk:237
 
 
 <h4>Tagging an Image</h4>
 
-wzxhzdk:236
+wzxhzdk:238
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:237
+wzxhzdk:239
 
 
 <h4>Creating Networks</h4>  
 
-wzxhzdk:238
+wzxhzdk:240
 
 
 <h4>Removing a Network</h4>
 
-wzxhzdk:239
+wzxhzdk:241
 
 
 <h4>Listing Networks</h4>
 
-wzxhzdk:240
+wzxhzdk:242
 
 
 <h4>Getting Information About a Network</h4>
 
-wzxhzdk:241
+wzxhzdk:243
 
 
 <h4>Connecting a Running Container to a Network</h4>
 
-wzxhzdk:242
+wzxhzdk:244
 
 
 <h4>Connecting a Container to a Network When it Starts</h4>
 
-wzxhzdk:243
+wzxhzdk:245
 
 
 <h4>Disconnecting a Container from a Network</h4>
 
-wzxhzdk:244
+wzxhzdk:246
 
 
 <h4>Exposing Ports</h4>  
 Using Dockerfile, you can expose a port on the container using:
 
-wzxhzdk:245
+wzxhzdk:247
 
 
 <h4>Cleaning Docker</h4>  
 <h4>Removing a Running Container </h4> 
 
-wzxhzdk:246
+wzxhzdk:248
 
 
 <h4>Removing a Container and its Volume</h4>
 
-wzxhzdk:247
+wzxhzdk:249
 
 
 <h4>Removing all Exited Containers</h4>
 
-wzxhzdk:248
+wzxhzdk:250
 
 
 <h4>Removing All Stopped Containers</h4>
 
-wzxhzdk:249
+wzxhzdk:251
 
 
 <h4>Removing a Docker Image</h4>
 
-wzxhzdk:250
+wzxhzdk:252
 
 
 <h4>Removing Dangling Images</h4>
 
-wzxhzdk:251
+wzxhzdk:253
 
 
 <h4>Removing all Images</h4>
 
-wzxhzdk:252
+wzxhzdk:254
 
 
 <h4>Removing all untagged images</h4>
 
-wzxhzdk:253
+wzxhzdk:255
 
 
 <h4>Stopping & Removing all Containers</h4>
 
-wzxhzdk:254
+wzxhzdk:256
 
 
 <h4>Removing Dangling Volumes</h4>
 
-wzxhzdk:255
+wzxhzdk:257
 
 
 <h4>Removing all unused (containers, images, networks and volumes)</h4>
 
-wzxhzdk:256
+wzxhzdk:258
 
 
 <h4>Clean all</h4>
 
-wzxhzdk:257
+wzxhzdk:259
 
 -->
 
@@ -2092,6 +2105,20 @@ https://itnext.io/
 CRUD https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack
 https://frontendmasters.com/books/front-end-handbook/2019/
 https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
+https://searchstorage.techtarget.com/definition/all-flash-array
+https://www.orosk.com/what-is-afa-all-flash-array/
+https://reactjsexample.com
+https://material-components.github.io/material-components-web-catalog/#/
+https://cloud.google.com/kubernetes-engine/docs/tutorials/
+https://github.com/kristoferjoseph/flexboxgrid
+https://codepen.io/marcolago/pen/lqGFb
+
+https://github.com/Mybridge/react-articles
+https://github.com/Mybridge/react-articles/blob/master/src/02-2018.md
+https://github.com/streamich/libreact
+https://github.com/Oblosys/react-lifecycle-visualizer
+https://www.react-spring.io/docs/hooks/examples
+https://medium.mybridge.co/amazing-react-js-open-source-of-the-year-v-2019-364d057ac3f3
 --></div>
         </div>
 
@@ -2175,5 +2202,5 @@ https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-10 16:04:27
+Build Date UTC : 2019-05-15 14:45:03
 -->
