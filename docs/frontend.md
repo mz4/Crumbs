@@ -1559,7 +1559,9 @@ export default Courses;
 <h4>Example 2</h4>
 ```
 
-<!-- https://www.howtographql.com/react-apollo/1-getting-started/ -->
+<!-- 
+  https://www.howtographql.com/react-apollo/1-getting-started/
+-->
 
 ```
 

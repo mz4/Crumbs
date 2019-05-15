@@ -2277,3 +2277,68 @@ https://frontendmasters.com/books/front-end-handbook/2019/
 https://dev.to/peterj/run-a-react-app-in-a-docker-container-kjn
 -->
 
+<!--
+<h4>Event delegation</h4>
+Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. 
+
+<h4>How this works in JavaScript</h4>
+It depends on the contxt.
+In case of Explicit Binding we explicitly say to a function what object it should use for this .
+
+<h4>Prototypal inheritance</h4>
+Every single JavaScript object has a property, called prototype, which points to a different object.
+When a property is accessed on an object and if the property is not found on that object, the JavaScript engine looks at the object's prototype, and the prototype's prototype and so on.
+
+<h4>What is IIFE</h4>
+IIFE stands for Immediately Invoked Function Expressions.
+
+<h4>What's the difference between a variable that is: null, undefined or undeclared?</h4>
+undeclared: without using var, let or const.
+undefined: declared, but not assigned a value.
+null: explicitly assigned to the null value.
+
+<h4>What is a closure</h4>
+A closure gives you access to an outer function’s scope from an inner function.
+To avoid the usage of global variables, use the local variables and wrap your code in the closure.
+The closure closes over a block of code in order to hide it from the "outside world"s.
+
+<h4>Difference between a .forEach loop and a .map() loop</h4>
+.map() returns a new array.
+forEach
+Iterates through the elements in an array.
+Executes a callback for each element.
+Does not return a value.
+```
+const a = [1, 2, 3];
+const doubled = a.forEach((num, index) => {
+  // Do something with num and/or index.
+});
+// doubled = undefined
+```
+
+map
+Iterates through the elements in an array.
+"Maps" each element to a new element by calling the function on each element, creating a new array as a result.
+```
+const a = [1, 2, 3];
+const doubled = a.map(num => {
+  return num * 2;
+});
+// doubled = [2, 4, 6]
+```
+
+<h4>use case for anonymous functions?</h4>
+As a callback that is used once and does not need to be used anywhere else.
+```
+setTimeout(function() {
+  console.log('Hello world!');
+}, 1000);
+```
+
+<h4>How do you organize your code?</h4>
+I use React/Redux which utilize a single-directional data flow based on Flux architecture.
+
+<h4>Difference between host objects and native objects?</h4>
+Native: Ecmas script specification (String, Math, RegExp, Object, Function)
+Host: are provided by the runtime environment (browser or Node), such as window, XMLHTTPRequest
+-->
