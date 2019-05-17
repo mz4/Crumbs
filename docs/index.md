@@ -1426,7 +1426,7 @@ c. command: The command to run after the container is up. What’s specified her
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
 -->
 
-# DevOps Model Defined
+# DEVOPS
 DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  
   
 These practices are used to automate processes that historically have been manual and slow. They use a technology stack and tooling which help them operate and evolve applications quickly and reliably.  
@@ -2235,7 +2235,7 @@ docker system prune -a
 -->
 ---
 
-## VS Code
+## VSCODE
 <h3>Debug code through Chrome Debugger extension</h3>
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  
 ```
