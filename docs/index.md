@@ -1426,7 +1426,7 @@ c. command: The command to run after the container is up. What’s specified her
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
 -->
 
-<h4>DevOps Model Defined</h4>
+# DevOps Model Defined
 DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  
   
 These practices are used to automate processes that historically have been manual and slow. They use a technology stack and tooling which help them operate and evolve applications quickly and reliably.  
