@@ -548,6 +548,20 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
+<h3>React Fragment</h3>
+
+<p>Fragments let you group a list of children without adding extra nodes to the DOM.</p>
+<pre><code class="js">render() {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;ChildA /&gt;
+      &lt;ChildB /&gt;
+      &lt;ChildC /&gt;
+    &lt;/React.Fragment&gt;
+  );
+}
+</code></pre>
+
 <h3>Import CSS</h3>
 
 <pre><code>import './styles/style.css'
@@ -1563,7 +1577,9 @@ export default Courses;
 <h4>Example 2</h4>
 
 <pre><code>
-&lt;!-- https://www.howtographql.com/react-apollo/1-getting-started/ --&gt;
+&lt;!-- 
+  https://www.howtographql.com/react-apollo/1-getting-started/
+--&gt;
 
 </code></pre>
 
