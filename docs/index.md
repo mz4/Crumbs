@@ -1426,7 +1426,9 @@ c. command: The command to run after the container is up. What’s specified her
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
 -->
 
-# DEVOPS
+---
+
+## DEVOPS
 DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  
   
 These practices are used to automate processes that historically have been manual and slow. They use a technology stack and tooling which help them operate and evolve applications quickly and reliably.  
@@ -1470,7 +1472,79 @@ Communication and Collaboration
 Below you can learn more about each particular practice.  
 Continuous Integration  
 
+---
 
+## VSCODE
+<h3>Debug code through Chrome Debugger extension</h3>
+Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  
+```
+ext install msjsdiag.debugger-for-chrome
+```
+
+<h3>Create a launch file for the Visual Studio Code Debugger.</h3>
+Click gear icon on debug section (Ctr+Shift+D).  
+Select option "Chrome"  
+Insert a configuration file  
+Insert url, root, name  
+```
+{
+     "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://127.0.0.1:8887",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+Add breakpoints in VS Code, by click on the left of row number  
+Press F5 to start debugging  
+A new chrome window will open  
+
+In VS Code
+Open debug panel ctlr+shift+D
+Press F10 for step over  
+Press F11 for step into  
+Press shift + F11 for step out  
+Press F6 for pause  
+
+---
+
+## LINKS
+
+React  
+[Awesome-react](https://github.com/enaqx/awesome-react)  
+[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)  
+[FreeCodeCamp: React Cocepts](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
+[Creativebloq: React Tips](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
+[React Various articles](https://react.christmas/)  
+[Flavio Copes](https://flaviocopes.com)  
+[Articles about frontend](https://alligator.io/)  
+[Frontend Articles](https://www.robinwieruch.de/)  
+[Frontend Articles](https://www.valentinog.com)  
+[Hooks collection](https://nikgraf.github.io/react-hooks/)  
+[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)  
+  
+CSS Links  
+[CSSreference.io](https://cssreference.io)  
+[Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
+[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
+[CSS Animation](http://animista.net)  
+[CSS grids](https://learncssgrid.com/)  
+[Grids by example](https://gridbyexample.com)  
+[Grid CSS Garden](http://cssgridgarden.com)  
+[Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
+[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
+[Flexbox Grid](http://flexboxgrid.com/)  
+
+GIT  
+[GIT commands](https://git-scm.com/docs)  
+
+Linux  
+[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
 
 
@@ -2233,81 +2307,15 @@ docker system prune -f
 docker system prune -a
 ```
 -->
----
 
-## VSCODE
-<h3>Debug code through Chrome Debugger extension</h3>
-Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  
-```
-ext install msjsdiag.debugger-for-chrome
-```
-
-<h3>Create a launch file for the Visual Studio Code Debugger.</h3>
-Click gear icon on debug section (Ctr+Shift+D).  
-Select option "Chrome"  
-Insert a configuration file  
-Insert url, root, name  
-```
-{
-     "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://127.0.0.1:8887",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
-}
-```
-Add breakpoints in VS Code, by click on the left of row number  
-Press F5 to start debugging  
-A new chrome window will open  
-
-In VS Code
-Open debug panel ctlr+shift+D
-Press F10 for step over  
-Press F11 for step into  
-Press shift + F11 for step out  
-Press F6 for pause  
-
----
-
-## LINKS
-
-React  
-[Awesome-react](https://github.com/enaqx/awesome-react)  
-[React Learning Roadmap](https://raw.githubusercontent.com/adam-golab/react-developer-roadmap/master/roadmap.png)  
-[FreeCodeCamp: React Cocepts](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030)  
-[Creativebloq: React Tips](https://www.creativebloq.com/news/5-expert-reactjs-tips-that-you-need-to-know-today)  
-[React Various articles](https://react.christmas/)  
-[Flavio Copes](https://flaviocopes.com)  
-[Articles about frontend](https://alligator.io/)  
-[Frontend Articles](https://www.robinwieruch.de/)  
-[Frontend Articles](https://www.valentinog.com)  
-[Hooks collection](https://nikgraf.github.io/react-hooks/)  
-[30 seconds react](https://github.com/30-seconds/30-seconds-of-react#input)  
-  
-CSS Links  
-[CSSreference.io](https://cssreference.io)  
-[Jen Simmons CSS Lab](https://labs.jensimmons.com/)  
-[BEM Block Element Modifier](https://www.toptal.com/css/introduction-to-bem-methodology)  
-[CSS Animation](http://animista.net)  
-[CSS grids](https://learncssgrid.com/)  
-[Grids by example](https://gridbyexample.com)  
-[Grid CSS Garden](http://cssgridgarden.com)  
-[Grid CSS Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)  
-[Flexbox CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)  
-[Flexbox Grid](http://flexboxgrid.com/)  
-
-GIT  
-[GIT commands](https://git-scm.com/docs)  
-
-Linux  
-[Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
 
 <!--
+Interview questions
+https://github.com/sudheerj/reactjs-interview-questions#what-is-react
+
+Callback, promises, async
+https://medium.com/front-end-weekly/callbacks-promises-and-async-await-ad4756e01d90
+
 Various links  
 [Github pages markdown](https://help.github.com/articles/basic-writing-and-formatting-syntax/)  
 [Recording Screen](https://github.com/phw/peek)  
@@ -2356,6 +2364,8 @@ https://github.com/streamich/libreact
 https://github.com/Oblosys/react-lifecycle-visualizer
 https://www.react-spring.io/docs/hooks/examples
 https://medium.mybridge.co/amazing-react-js-open-source-of-the-year-v-2019-364d057ac3f3
+
+https://css-tricks.com/what-are-higher-order-components-in-react/
 -->
 
 <!--

@@ -134,24 +134,79 @@ function myAsyncFunction(url) {
 }
 ```
 
-<h3>Callback</h3>
-You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.  
-This is the so-called callback.  
-A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  
+<h3>Callback, Promises and Async</h3>
+  
+<h4>Callback:</h4>
+A callback is a function that is passed to another function.  
+When the first function is done, it will run the second function.  
 
-<h3>Callback example 1</h3>
-```javascript
-document.getElementById('button').addEventListener('click', () => {
-  //item clicked
-})
+Print a string after a random amount of time:
+```js
+function printString(string, callback){
+  setTimeout(
+    () => {
+      console.log(string)
+      callback()
+    }, 
+    Math.floor(Math.random() * 100) + 1
+  )
+}
 ```
 
-<h3>Callback example 2</h3>
-```javascript
-setTimeout(() => {
-  // runs after 2 seconds
-}, 2000)
+Let’s try to print the letters A, B, C in that order:
+```js
+function printAll(){
+  printString("A", () => {
+    printString("B", () => {
+      printString("C", () => {})
+    })
+  })
+}
+printAll()
 ```
+---
+
+<h4>Promises:</h4>
+Promises try to fix callback nesting problem. 
+In our function lets use Promises:
+```js
+function printString(string){
+  return new Promise((resolve, reject) => {
+    setTimeout(
+      () => {
+       console.log(string)
+       resolve()
+      }, 
+     Math.floor(Math.random() * 100) + 1
+    )
+  })
+}
+```
+
+```js
+function printAll(){
+  printString("A")
+  .then(() => {
+    return printString("B")
+  })
+  .then(() => {
+    return printString("C")
+  })
+}
+printAll()
+```
+
+<h4>Await:</h4>
+```js
+async function printAll(){
+  await printString("A")
+  await printString("B")
+  await printString("C")
+}
+printAll()
+```
+
+---
 
 <h3>Random number</h3>
 ```javascript
