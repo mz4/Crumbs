@@ -2433,3 +2433,16 @@ I use React/Redux which utilize a single-directional data flow based on Flux arc
 Native: Ecmas script specification (String, Math, RegExp, Object, Function)
 Host: are provided by the runtime environment (browser or Node), such as window, XMLHTTPRequest
 -->
+
+
+
+
+<!--
+https://cssreference.io/
+https://speckyboy.com/100-css-libraries-frameworks-tools/
+https://scrimba.com/g/gR8PTE
+https://scrimba.com
+https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook
+https://grid.layoutit.com/
+http://patrickbrosset.com/lab/2018-01-10-css-alignment-cheatsheet/
+-->
