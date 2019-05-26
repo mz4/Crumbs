@@ -224,25 +224,76 @@ console.log(promise1);
 }
 </code></pre>
 
-<h3>Callback</h3>
+<h3>Callback, Promises and Async</h3>
 
-<p>You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered.<br />
-This is the so-called callback.<br />
-A callback is a simple function that’s passed as a value to another function, and will only be executed when the event happens.  </p>
-<h3>Callback example 1</h3>
+<h4>Callback:</h4>
 
-<pre><code class="javascript">document.getElementById('button').addEventListener('click', () =&gt; {
-  //item clicked
-})
+<p>A callback is a function that is passed to another function.<br />
+When the first function is done, it will run the second function.  </p>
+<p>Print a string after a random amount of time:</p>
+<pre><code class="js">function printString(string, callback){
+  setTimeout(
+    () =&gt; {
+      console.log(string)
+      callback()
+    }, 
+    Math.floor(Math.random() * 100) + 1
+  )
+}
 </code></pre>
 
-<h3>Callback example 2</h3>
-
-<pre><code class="javascript">setTimeout(() =&gt; {
-  // runs after 2 seconds
-}, 2000)
+<p>Let’s try to print the letters A, B, C in that order:</p>
+<pre><code class="js">function printAll(){
+  printString(&quot;A&quot;, () =&gt; {
+    printString(&quot;B&quot;, () =&gt; {
+      printString(&quot;C&quot;, () =&gt; {})
+    })
+  })
+}
+printAll()
 </code></pre>
 
+<hr />
+<h4>Promises:</h4>
+
+<p>Promises try to fix callback nesting problem. 
+In our function lets use Promises:</p>
+<pre><code class="js">function printString(string){
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(
+      () =&gt; {
+       console.log(string)
+       resolve()
+      }, 
+     Math.floor(Math.random() * 100) + 1
+    )
+  })
+}
+</code></pre>
+
+<pre><code class="js">function printAll(){
+  printString(&quot;A&quot;)
+  .then(() =&gt; {
+    return printString(&quot;B&quot;)
+  })
+  .then(() =&gt; {
+    return printString(&quot;C&quot;)
+  })
+}
+printAll()
+</code></pre>
+
+<h4>Await:</h4>
+
+<pre><code class="js">async function printAll(){
+  await printString(&quot;A&quot;)
+  await printString(&quot;B&quot;)
+  await printString(&quot;C&quot;)
+}
+printAll()
+</code></pre>
+
+<hr />
 <h3>Random number</h3>
 
 <pre><code class="javascript">Math.floor(Math.random() * (100 - 1 + 1)) + 1;
