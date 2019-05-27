@@ -2435,6 +2435,53 @@ Host: are provided by the runtime environment (browser or Node), such as window,
 -->
 
 
+<!-- 
+Terraform enables users to define and provision a datacenter infrastructure using a high-level configuration language known as Hashicorp Configuration Language (HCL), or optionally JSON.  
+  
+Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY.  
+
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.  
+
+In a containerized architecture, the different services that constitute an application are packaged into separate containers and deployed across a cluster of physical or virtual machines.  
+K8s automates the deployment, management, scaling, networking, and availability of container-based applications.
+
+Cluster: The highest-level Kubernetes abstraction, the cluster, refers to the group of machines running Kubernetes.  
+Nodes: Each cluster contains Kubernetes nodes. Nodes might be physical machines or VMs.  
+Pods: add a layer of abstraction to grouped containers, which helps you schedule workloads and provide necessary services—like networking and storage—to those containers.  
+Each pod represents a single instance of an application or running process in Kubernetes, and consists of one or more containers.  
+Service: A service in Kubernetes describes how a given group of pods (or other Kubernetes objects) can be accessed via the network.  
+The controller manager ensures that the state of the system—applications, workloads, etc.—matches the desired state defined in Etcd’s configuration settings. Ingress is an API that manages external access to a cluster’s services, typically via HTTP.  
+
+One of the most basic duties Kubernetes takes off your hands is the busywork of keeping an application up, running, and responsive to user demands. Apps that become “unhealthy,” or don’t conform to the definition of health you describe for them, can be automatically healed.  
+Maximize hardware resources needed to run your enterprise apps.  
+Helm is essentially a package manager for Kubernetes.  
+
+On-disk files in a Container are ephemeral, which presents some problems for non-trivial applications.  
+Kubernetes provides abstractions to allow containers and apps to deal with storage in the same decoupled way as other resources. Many common kinds of storage, from Amazon EBS volumes to plain old NFS shares, can be accessed via Kubernetes storage drivers, called volumes.  
+
+Kubernetes also needs to integrate with networking, storage, security, telemetry and other services to provide a comprehensive container infrastructure.  
+
+With the help of other open source projects like heapster you can orchestrate all parts of your container infrastructure.  
+  
+With Kubernetes you can:  
+  
+Manage containers across multiple hosts.  
+Maximize hardware resources needed to run your enterprise apps.  
+Control and automate application deployments and updates.  
+Mount and add storage to run stateful apps.  
+Scale containerized applications and their resources on the fly.  
+Declaratively manage services, which guarantees the deployed applications are always running how you deployed them.  
+Health-check and self-heal your apps with autoplacement, autorestart, autoreplication, and autoscaling.  
+  
+Kubernetes, however, relies on other projects to fully provide these orchestrated services.  
+  
+Kubernetes glossary: https://kubernetes.io/docs/reference/glossary/?fundamental=true  
+https://towardsdatascience.com/key-kubernetes-concepts-62939f4bc08e  
+https://medium.freecodecamp.org/learn-kubernetes-in-under-3-hours-a-detailed-guide-to-orchestrating-containers-114ff420e882  
+https://matthewpalmer.net/kubernetes-app-developer/#purchase-the-ebook
+
+-->
+
 
 
 <!--
