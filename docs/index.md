@@ -3,7 +3,7 @@
 
 ## GIT
 
-<h3>Install git</h3>
+<h4>Install git</h4>
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -11,7 +11,7 @@ sudo apt-get install git
 git --version
 ```
 
-<h3>Create a New Git Repository from scratch</h3>
+<h4>Create a New Git Repository from scratch</h4>
 ```
 mkdir to create a directory to contain the project.
 cd into the new directory.
@@ -21,7 +21,7 @@ git add to add the files.
 git commit
 ```
 
-<h3>Create New Git Repository from existing project</h3>
+<h4>Create New Git Repository from existing project</h4>
 ```
 cd into the directory containing the project.
 git init.
@@ -30,7 +30,7 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 ```
 
-<h3>Connect to github</h3>
+<h4>Connect to github</h4>
 ```
 Go to github.
 Log in to your account.
@@ -40,13 +40,13 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 ```
 
-<h3>Create, switch and push origin new branch</h3>
+<h4>Create, switch and push origin new branch</h4>
 ```
 git checkout -b issue400-master
 git push -u origin issue400-master
 ```
 
-<h3>Add, Commit and Push</h3>
+<h4>Add, Commit and Push</h4>
 ```
 git add sys_ui/css/FILE.css 
 git add sys_ui/FILE.html 
@@ -55,136 +55,136 @@ git commit
 git push
 ```
 
-<h3>Squash commits</h3>
+<h4>Squash commits</h4>
 ```
 git reset --soft HEAD~$squashCount
 git commit -m "$commitMsg"
 ```
 
-<h3>Delete a local and remote branch</h3>
+<h4>Delete a local and remote branch</h4>
 ```
 git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
-<h3>Clean Local branch</h3>
+<h4>Clean Local branch</h4>
 ```
 git reset
 git checkout .
 git clean -fdx
 ```
 
-<h3>Clone repo</h3>
+<h4>Clone repo</h4>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
 
-<h3>Clone specific branch</h3>
+<h4>Clone specific branch</h4>
 ```
 git clone -b <branch> <remote_repo>
 git clone -b my-branch git@github.com:user/myproject.git
 ```
 
-<h3>Show current branch</h3>
+<h4>Show current branch</h4>
 ```
 git branch
 ```
 
-<h3>Show local and remote branch</h3>
+<h4>Show local and remote branch</h4>
 ```
 git branch -a
 ```
 
-<h3>Check Status</h3>
+<h4>Check Status</h4>
 ```
 git status
 ```
 
-<h3>Check Log</h3>
+<h4>Check Log</h4>
 ```
 git log
 ```
 
-<h3>Graphical Log</h3>
+<h4>Graphical Log</h4>
 ```
 git log --graph --decorate
 ```
 
-<h3>Log commit subject of last 10 commits</h3>
+<h4>Log commit subject of last 10 commits</h4>
 ```
 git log -10 --pretty=format:"%h %s"
 ```
 
-<h3>Edit Last Commit Message</h3>
+<h4>Edit Last Commit Message</h4>
 ```
 git commit --amend -m "New commit message"
 ```
 
-<h3>Single file history</h3>
+<h4>Single file history</h4>
 ```
 git log -p filename
 ```
 
-<h3>Get tag</h3>
+<h4>Get tag</h4>
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
 
-<h3>Get commits by date and author</h3>
+<h4>Get commits by date and author</h4>
 ```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
 ```
 
-<h3>Get number of commits by author</h3>
+<h4>Get number of commits by author</h4>
 ```
 git shortlog -s -n --all
 ```
 
-<h3>Remove local untracked files</h3>
+<h4>Remove local untracked files</h4>
 ```
 git clean -fdx
 ```
 
-<h3>Undo last commit.</h3>
+<h4>Undo last commit.</h4>
 Warning: Don't do this if you've already pushed
 ```
 git reset HEAD~
 ```
 
-<h3>Undo last commit.</h3>
+<h4>Undo last commit.</h4>
 If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed
 ```	
 git reset --hard HEAD~
 ```
 
-<h3>Untrack .pyc files</h3>
+<h4>Untrack .pyc files</h4>
 ```
 $ find . -name '*.pyc' | xargs -n 1 git rm --cached
 ```
 
-<h3>Switch to branch</h3>
+<h4>Switch to branch</h4>
 ```
 git checkout BRANCHNAME
 ```
 
-<h3>Pull from master branch</h3>
+<h4>Pull from master branch</h4>
 ```
 git pull origin master
 ```
 
-<h3>Checkout master</h3>
+<h4>Checkout master</h4>
 ```
 git chekcout master
 ```
 
-<h3>Merge branch into master</h3>
+<h4>Merge branch into master</h4>
 ```
 git checkout master
 git merge user_interface
 ```
 
-<h3>Rebase</h3>
+<h4>Rebase</h4>
 git-rebase - Reapply commits on top of another base tip
 ```
 git checkout branchname
@@ -197,76 +197,76 @@ git add namefile.jsx
 git rebase --continue
 ```
 
-<h3>Create Tags</h3>
+<h4>Create Tags</h4>
 ```
 git tag v1.0 ec32d32
 git push origin --tags
 ```
 
-<h3>Undo a local commit</h3>
+<h4>Undo a local commit</h4>
 ```
 git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 ```
 
-<h3>Undo git add</h3>
+<h4>Undo git add</h4>
 ```
 git reset filename.jsx
 ```
 
-<h3>Make a copy of local branch</h3>
+<h4>Make a copy of local branch</h4>
 ```
 git checkout old_branch
 git branch new_branch
 ```
 
-<h3>Show differences after git pull</h3>
+<h4>Show differences after git pull</h4>
 ```
 git diff master@{1} master
 ```
 
-<h3>Lists branches merged into master</h3>
+<h4>Lists branches merged into master</h4>
 ```
 git branch --merged master
 ```
 
-<h3>Lists branches merged into HEAD</h3>
+<h4>Lists branches merged into HEAD</h4>
 ```
 git branch --merged 
 ```
 
-<h3>Lists branches that have not been merged</h3>
+<h4>Lists branches that have not been merged</h4>
 ```
 git branch --no-merged
 ```
 
-<h3>Checkout previous branch</h3>
+<h4>Checkout previous branch</h4>
 ```
 git checkout -
 ```
 
-<h3>Diff between branches</h3>
+<h4>Diff between branches</h4>
 Diff between current branch and master:  
 ```
 git diff master
 ```
 
-<h3>Diff between two branches:</h3>
+<h4>Diff between two branches:</h4>
 ```
 git diff master..staging
 ```
 
-<h3>Show only files that are different between the two branches</h3>
+<h4>Show only files that are different between the two branches</h4>
 ```
 git diff --name-status master..staging
 ```
 
-<h3>Create New Branch and Checkout – In One Command</h3>
+<h4>Create New Branch and Checkout – In One Command</h4>
 ```
 git checkout -b <branch_name>
 ```
 
-<h3>Revert Changes to File</h3>
+<h4>Revert Changes to File</h4>
 ```
 git checkout -- <file>
 ```
@@ -347,7 +347,7 @@ git push --force origin <name_of_branch>
 
 ## LINUX TIPS
 
-<h3>Systems Directories</h3>
+<h4>Systems Directories</h4>
 ```
 / The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
@@ -375,7 +375,7 @@ git push --force origin <name_of_branch>
 /var/log log files
 ```
 
-<h3>Most used Commands</h3>
+<h4>Most used Commands</h4>
 ```
 ls Directory listing
 ls -al Formatted listing with hidden files
@@ -1475,13 +1475,13 @@ Continuous Integration
 ---
 
 ## VSCODE
-<h3>Debug code through Chrome Debugger extension</h3>
+<h4>Debug code through Chrome Debugger extension</h4>
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  
 ```
 ext install msjsdiag.debugger-for-chrome
 ```
 
-<h3>Create a launch file for the Visual Studio Code Debugger.</h3>
+<h4>Create a launch file for the Visual Studio Code Debugger.</h4>
 Click gear icon on debug section (Ctr+Shift+D).  
 Select option "Chrome"  
 Insert a configuration file  

@@ -4,7 +4,7 @@
   
 ## PYTHON
 
-<h3>Byte code compilation</h3>
+<h4>Byte code compilation</h4>
 Python compiles sourcecode into a format called bytecode.  
 Compilation is simply a translation step, and byte code is a lower-level, and platform-independent,representation of your source code.  
 This byte code translation is performed to speed execution.  
@@ -14,7 +14,7 @@ PVM iterates through bytecode.
 It is the runtime engine of Python; it’s always present as part of the Python system, and is the component that truly runs your scripts.  
 Technically, it’s just the last step of what is called the Python interpreter.  
 
-<h3>Main</h3>
+<h4>Main</h4>
 Python main function is executed only when it’s being executed as a python program.  
 We can also import a python program as a module, in that case python main method should not execute.  
 
@@ -42,7 +42,7 @@ Hello
 python main function
 ```
 
-<h3>Imports</h3>
+<h4>Imports</h4>
 On imports the first thing Python will do is look up the name abc in sys.modules.  
 This is a cache of all modules that have been previously imported.  
 Python will proceed to search through a list of built-in modules.  
@@ -64,7 +64,7 @@ rename an imported resource
 import abc as other_name
 ```
 
-<h3>List of available Modules</h3>
+<h4>List of available Modules</h4>
 From python shell:  
 ```
 > help()
@@ -78,13 +78,13 @@ Get information about a specific module:
 > sys
 ```
 
-<h3>Built-in datatypes</h3>
+<h4>Built-in datatypes</h4>
 - Numbers
 - Strings
 - Lists and Dictionaries
 - Tuples, Files...
 
-<h3>Strings</h3>
+<h4>Strings</h4>
 String Methods
 ```
 capitalize() - Returns the string with first letter capitalized and the rest lowercased.
@@ -133,7 +133,7 @@ upper() - Return a copy of all uppercased string.
 zfill() - Return a numeric string left filled with zeros in the provided width.
 ```
 
-<h3>Lists</h3>
+<h4>Lists</h4>
 List methods
 ```
 append() - Add an element to the end of the list
@@ -175,7 +175,7 @@ sorted()	Return a new sorted list (does not sort the list itself).
 sum()	Return the sum of all elements in the list.
 ```
 
-<h3>Tuples</h3>
+<h4>Tuples</h4>
 The difference between the two is that we cannot change the elements of a tuple once it is assigned  
 ```
 # tuple having integers
@@ -184,7 +184,7 @@ my_tuple = (1, 2, 3)
 print(my_tuple)
 ```
 
-<h3>Dictionaries</h3>
+<h4>Dictionaries</h4>
 Python dictionary is an unordered collection of items. While other compound data types have only value as an element, a dictionary has a key: value pair.  
 ```python
 # empty dictionary
@@ -284,13 +284,13 @@ update([other])	Update the dictionary with the key/value pairs from other, overw
 values()	Return a new view of the dictionary's values
 ```
 
-<h3>Loop dict and get selected attributes</h3>
+<h4>Loop dict and get selected attributes</h4>
 ```
 events = [{action: 'aaa', type: 'bbb'}, {action: 'addaa', type: 'ddbbb'}]
 ret = [{'action': ev['action'], 'type': ev['type']} for ev in events]
 ```
 
-<h3>Sets</h3>
+<h4>Sets</h4>
 A set is an unordered collection of items. Every element is unique (no duplicates) and must be immutable (which cannot be changed).  
 However, the set itself is mutable. We can add or remove items from it.  
 ```python
@@ -354,7 +354,7 @@ p2 = { key:value for key,value in prices.items() if key in tech_names }
 ```
 https://d.cxcore.net/Python/Python_Cookbook_3rd_Edition.pdf
 
-<h3>Lambda functions</h3>
+<h4>Lambda functions</h4>
 Keyword lambda in python is used to create anonymous functions.  
 ```python
 lambda arguments: expression
@@ -391,7 +391,7 @@ for i in remainders:
 
 ---
 
-<h3>Python Inheritance</h3>
+<h4>Python Inheritance</h4>
 ```python
 class Person:  
     name = ""  
@@ -419,7 +419,7 @@ print(student1.getId())
 student1.showName()
 ```
 
-<h3>Logging in Python</h3>
+<h4>Logging in Python</h4>
 Logging is a way of tracking events in a program when it runs and is in execution.  
 ```python
 import logging
@@ -435,14 +435,14 @@ logger.debug("Shubham: %s", shubham)
 ```
 
 
-<h3>Daemon</h3>
+<h4>Daemon</h4>
 A daemon is a process that runs in the background.  
 A daemon thread will shut down immediately when the program exits.  
 If a program is running Threads that are not daemons, then the program will wait for those threads to complete before it terminates.  
 Threads that are daemons, however, are just killed wherever they are when the program is exiting.  
 
 
-<h3>Thread</h3>
+<h4>Thread</h4>
 A process is an instance of program.  
 Processes spawn threads (sub-processes) to handle subtasks.  
 Threads live inside processes and share the same memory space.  
@@ -494,7 +494,7 @@ if __name__ == "__main__":
 
 ---
 
-<h3>REST API</h3>
+<h4>REST API</h4>
 <h5>Examples using Flask</h5>
 ```python
 @app.route('/accounts', methods=['GET'])
@@ -536,7 +536,7 @@ if __name__ == "__main__":
     return json.dumps(app.accounts_manager.get_accounts())
 ```
 
-<h3>creating your application using a function.</h3>
+<h4>creating your application using a function.</h4>
 This allows you to pass in different configuration settings.  
 ```python
 from flask import Flask
@@ -559,7 +559,7 @@ def create_app(database_uri, debug=False):
 
     return app
 ```
-<h3>Main</h3>
+<h4>Main</h4>
 ```python
 if __name__ == "__main__":
     app = create_app(config.DATABASE_URI, debug=True)
@@ -569,23 +569,23 @@ if __name__ == "__main__":
 ---
 
 ## NODE
-<h3>About</h3>
+<h4>About</h4>
 Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications.  
 
-<h3>Features of Node.js</h3>
+<h4>Features of Node.js</h4>
 - Asynchronous and Event Driven  
 - Fast: based on Google Chrome's V8 JavaScript Engine  
 - Single Threaded but scalable: Event mechanism helps the server to respond in a non-blocking way  
 - No buffering  
 
-<h3>Node components</h3>
+<h4>Node components</h4>
 A Node.js application consists of the following three components:  
 
 - Import required modules: Use the require directive to load Node.js modules.  
 - Create server: A server which will listen to client's requests similar to Apache HTTP Server.  
 - Read request and return response: Read the HTTP request made by the client which can be a browser or a console and return the response.  
 
-<h3>Node application 'Hello World'</h3>
+<h4>Node application 'Hello World'</h4>
 Import required module:
 ```
 var http = require("http");
@@ -613,16 +613,16 @@ Run it
 node main.js
 ```
 
-<h3>REPL stands for Read Eval Print Loop</h3>
+<h4>REPL stands for Read Eval Print Loop</h4>
 REPL stands for Read Eval Print Loop.  
 it represents a computer environment like a Windows console or Unix/Linux shell where a command is entered and the system responds with an output in an interactive mode.  
 REPL can be started by simply running node on shell/console.  
 
-<h3>NPM node package manager</h3>
+<h4>NPM node package manager</h4>
 - Online repositories for node.js  
 - Command line utility to install Node.js packages  
 
-<h3>Install Modules using npm</h3>
+<h4>Install Modules using npm</h4>
 ```
 npm install <Module Name>
 ```
@@ -642,7 +642,7 @@ npm update express
 npm search express
 ```
 
-<h3>Callback function</h3>
+<h4>Callback function</h4>
 A callback function is called at the completion of a given task.  
 Node makes heavy use of callbacks.  
 All the APIs of Node are written in such a way that they support callbacks.  
@@ -655,7 +655,7 @@ fs.readFile('input.txt', function (err, data) {
 console.log("Program Ended");
 ```
 
-<h3>Streams</h3>
+<h4>Streams</h4>
 Streams are objects that let you continuosly read data.  
 There are 4 types of stream:
 - Readable  
@@ -690,7 +690,7 @@ readerStream.on('error', function(err) {
 console.log("End");
 ```
 
-<h3>Modules</h3>
+<h4>Modules</h4>
 Utility modules:
 - OS Module  
 - Path Module  
@@ -698,7 +698,7 @@ Utility modules:
 - DNS Module  
 - Domain Module  
 
-<h3>Events driven</h3>
+<h4>Events driven</h4>
 Whenever an event gets fired, its listener function starts executing.  
 EventEmitter class which is used to bind events and event-listeners.  
 Any async function accepts a callback as the last parameter and a callback function accepts an error as the first parameter.  
@@ -718,7 +718,7 @@ eventEmitter.on('eventName', eventHandler);
 eventEmitter.emit('eventName');
 ```
 
-<h3>EventEmitter</h3>
+<h4>EventEmitter</h4>
 ```
 // Import events module
 var events = require('events');
@@ -794,7 +794,7 @@ console.log("Program Ended.");
 node main.js
 ```
 
-<h3>Express</h3>
+<h4>Express</h4>
 Express is a minimal Node.js web application framework.  
 Allows to set up middlewares to respond to HTTP Requests.  
 Defines a routing table which is used to perform different actions based on HTTP Method and URL.  
