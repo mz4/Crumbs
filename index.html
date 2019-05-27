@@ -99,7 +99,7 @@
 <h1 id="tools">TOOLS</h1>
 <hr />
 <h2 id="git">GIT</h2>
-<h3>Install git</h3>
+<h4>Install git</h4>
 
 <pre><code>sudo apt-get update
 sudo apt-get upgrade
@@ -107,7 +107,7 @@ sudo apt-get install git
 git --version
 </code></pre>
 
-<h3>Create a New Git Repository from scratch</h3>
+<h4>Create a New Git Repository from scratch</h4>
 
 <pre><code>mkdir to create a directory to contain the project.
 cd into the new directory.
@@ -117,7 +117,7 @@ git add to add the files.
 git commit
 </code></pre>
 
-<h3>Create New Git Repository from existing project</h3>
+<h4>Create New Git Repository from existing project</h4>
 
 <pre><code>cd into the directory containing the project.
 git init.
@@ -126,7 +126,7 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 </code></pre>
 
-<h3>Connect to github</h3>
+<h4>Connect to github</h4>
 
 <pre><code>Go to github.
 Log in to your account.
@@ -136,13 +136,13 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 </code></pre>
 
-<h3>Create, switch and push origin new branch</h3>
+<h4>Create, switch and push origin new branch</h4>
 
 <pre><code>git checkout -b issue400-master
 git push -u origin issue400-master
 </code></pre>
 
-<h3>Add, Commit and Push</h3>
+<h4>Add, Commit and Push</h4>
 
 <pre><code>git add sys_ui/css/FILE.css 
 git add sys_ui/FILE.html 
@@ -151,136 +151,136 @@ git commit
 git push
 </code></pre>
 
-<h3>Squash commits</h3>
+<h4>Squash commits</h4>
 
 <pre><code>git reset --soft HEAD~$squashCount
 git commit -m &quot;$commitMsg&quot;
 </code></pre>
 
-<h3>Delete a local and remote branch</h3>
+<h4>Delete a local and remote branch</h4>
 
 <pre><code>git branch -d branch_name
 git push origin --delete &lt;branch_name&gt;
 </code></pre>
 
-<h3>Clean Local branch</h3>
+<h4>Clean Local branch</h4>
 
 <pre><code>git reset
 git checkout .
 git clean -fdx
 </code></pre>
 
-<h3>Clone repo</h3>
+<h4>Clone repo</h4>
 
 <pre><code>git clone USER@10.0.2.10:/home/git/repos/sys .
 </code></pre>
 
-<h3>Clone specific branch</h3>
+<h4>Clone specific branch</h4>
 
 <pre><code>git clone -b &lt;branch&gt; &lt;remote_repo&gt;
 git clone -b my-branch git@github.com:user/myproject.git
 </code></pre>
 
-<h3>Show current branch</h3>
+<h4>Show current branch</h4>
 
 <pre><code>git branch
 </code></pre>
 
-<h3>Show local and remote branch</h3>
+<h4>Show local and remote branch</h4>
 
 <pre><code>git branch -a
 </code></pre>
 
-<h3>Check Status</h3>
+<h4>Check Status</h4>
 
 <pre><code>git status
 </code></pre>
 
-<h3>Check Log</h3>
+<h4>Check Log</h4>
 
 <pre><code>git log
 </code></pre>
 
-<h3>Graphical Log</h3>
+<h4>Graphical Log</h4>
 
 <pre><code>git log --graph --decorate
 </code></pre>
 
-<h3>Log commit subject of last 10 commits</h3>
+<h4>Log commit subject of last 10 commits</h4>
 
 <pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
 </code></pre>
 
-<h3>Edit Last Commit Message</h3>
+<h4>Edit Last Commit Message</h4>
 
 <pre><code>git commit --amend -m &quot;New commit message&quot;
 </code></pre>
 
-<h3>Single file history</h3>
+<h4>Single file history</h4>
 
 <pre><code>git log -p filename
 </code></pre>
 
-<h3>Get tag</h3>
+<h4>Get tag</h4>
 
 <pre><code>git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 </code></pre>
 
-<h3>Get commits by date and author</h3>
+<h4>Get commits by date and author</h4>
 
 <pre><code>git log --pretty=format:&quot;%ad - %an: %s&quot; --after=&quot;2010-02-15&quot; --until=&quot;2018-08-20&quot; --author=&quot;John&quot;
 </code></pre>
 
-<h3>Get number of commits by author</h3>
+<h4>Get number of commits by author</h4>
 
 <pre><code>git shortlog -s -n --all
 </code></pre>
 
-<h3>Remove local untracked files</h3>
+<h4>Remove local untracked files</h4>
 
 <pre><code>git clean -fdx
 </code></pre>
 
-<h3>Undo last commit.</h3>
+<h4>Undo last commit.</h4>
 
 <p>Warning: Don't do this if you've already pushed</p>
 <pre><code>git reset HEAD~
 </code></pre>
 
-<h3>Undo last commit.</h3>
+<h4>Undo last commit.</h4>
 
 <p>If you don't want the changes and blow everything away:
 Warning: Don't do this if you've already pushed</p>
 <pre><code>git reset --hard HEAD~
 </code></pre>
 
-<h3>Untrack .pyc files</h3>
+<h4>Untrack .pyc files</h4>
 
 <pre><code>$ find . -name '*.pyc' | xargs -n 1 git rm --cached
 </code></pre>
 
-<h3>Switch to branch</h3>
+<h4>Switch to branch</h4>
 
 <pre><code>git checkout BRANCHNAME
 </code></pre>
 
-<h3>Pull from master branch</h3>
+<h4>Pull from master branch</h4>
 
 <pre><code>git pull origin master
 </code></pre>
 
-<h3>Checkout master</h3>
+<h4>Checkout master</h4>
 
 <pre><code>git chekcout master
 </code></pre>
 
-<h3>Merge branch into master</h3>
+<h4>Merge branch into master</h4>
 
 <pre><code>git checkout master
 git merge user_interface
 </code></pre>
 
-<h3>Rebase</h3>
+<h4>Rebase</h4>
 
 <p>git-rebase - Reapply commits on top of another base tip</p>
 <pre><code>git checkout branchname
@@ -292,76 +292,76 @@ git rebase master
 git rebase --continue
 </code></pre>
 
-<h3>Create Tags</h3>
+<h4>Create Tags</h4>
 
 <pre><code>git tag v1.0 ec32d32
 git push origin --tags
 </code></pre>
 
-<h3>Undo a local commit</h3>
+<h4>Undo a local commit</h4>
 
 <pre><code>git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 </code></pre>
 
-<h3>Undo git add</h3>
+<h4>Undo git add</h4>
 
 <pre><code>git reset filename.jsx
 </code></pre>
 
-<h3>Make a copy of local branch</h3>
+<h4>Make a copy of local branch</h4>
 
 <pre><code>git checkout old_branch
 git branch new_branch
 </code></pre>
 
-<h3>Show differences after git pull</h3>
+<h4>Show differences after git pull</h4>
 
 <pre><code>git diff master@{1} master
 </code></pre>
 
-<h3>Lists branches merged into master</h3>
+<h4>Lists branches merged into master</h4>
 
 <pre><code>git branch --merged master
 </code></pre>
 
-<h3>Lists branches merged into HEAD</h3>
+<h4>Lists branches merged into HEAD</h4>
 
 <pre><code>git branch --merged 
 </code></pre>
 
-<h3>Lists branches that have not been merged</h3>
+<h4>Lists branches that have not been merged</h4>
 
 <pre><code>git branch --no-merged
 </code></pre>
 
-<h3>Checkout previous branch</h3>
+<h4>Checkout previous branch</h4>
 
 <pre><code>git checkout -
 </code></pre>
 
-<h3>Diff between branches</h3>
+<h4>Diff between branches</h4>
 
 <p>Diff between current branch and master:  </p>
 <pre><code>git diff master
 </code></pre>
 
-<h3>Diff between two branches:</h3>
+<h4>Diff between two branches:</h4>
 
 <pre><code>git diff master..staging
 </code></pre>
 
-<h3>Show only files that are different between the two branches</h3>
+<h4>Show only files that are different between the two branches</h4>
 
 <pre><code>git diff --name-status master..staging
 </code></pre>
 
-<h3>Create New Branch and Checkout – In One Command</h3>
+<h4>Create New Branch and Checkout – In One Command</h4>
 
 <pre><code>git checkout -b &lt;branch_name&gt;
 </code></pre>
 
-<h3>Revert Changes to File</h3>
+<h4>Revert Changes to File</h4>
 
 <pre><code>git checkout -- &lt;file&gt;
 </code></pre>
@@ -435,7 +435,7 @@ Combine the two commands to squash n amount of commits into one, with the specif
 
 <hr />
 <h2 id="linux-tips">LINUX TIPS</h2>
-<h3>Systems Directories</h3>
+<h4>Systems Directories</h4>
 
 <pre><code>/ The root directory.  
 /bin Contains binaries (programs) that must be present for the system to boot and run.  
@@ -463,7 +463,7 @@ Combine the two commands to squash n amount of commits into one, with the specif
 /var/log log files
 </code></pre>
 
-<h3>Most used Commands</h3>
+<h4>Most used Commands</h4>
 
 <pre><code>ls Directory listing
 ls -al Formatted listing with hidden files
@@ -1473,12 +1473,12 @@ Below you can learn more about each particular practice.<br />
 Continuous Integration  </p>
 <hr />
 <h2 id="vscode">VSCODE</h2>
-<p><h3>Debug code through Chrome Debugger extension</h3>
+<p><h4>Debug code through Chrome Debugger extension</h4>
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.  </p>
 <pre><code>ext install msjsdiag.debugger-for-chrome
 </code></pre>
 
-<h3>Create a launch file for the Visual Studio Code Debugger.</h3>
+<h4>Create a launch file for the Visual Studio Code Debugger.</h4>
 
 <p>Click gear icon on debug section (Ctr+Shift+D).<br />
 Select option "Chrome"<br />
@@ -2357,5 +2357,5 @@ http://patrickbrosset.com/lab/2018-01-10-css-alignment-cheatsheet/
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-27 08:56:09
+Build Date UTC : 2019-05-27 22:21:16
 -->
