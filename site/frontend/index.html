@@ -97,16 +97,16 @@
 <h1 id="frontend">FRONTEND</h1>
 <hr />
 <h2 id="javascript">JAVASCRIPT</h2>
-<h3>Execution Context</h3>
+<h4>Execution Context</h4>
 
-<p>The environment in which code is running. It is created when your code is executed.<br />
+<p>The environment in which code is executed.<br />
 <br>
-<h3>Global Execution Context creates</h3>
+<h4>Execution Context Global/Functional </h4>
 - Global Object Window (browser)<br />
 - Special Object 'this'<br />
 - Ref to outer environment<br />
 <br>
-<h3>JS Engine</h3>
+<h4>JS Engine</h4>
 it performs following two steps while executing any code:<br />
 <h5>Creation Phase</h5>
 - Run through your code &amp; identifies variables &amp; functions<br />
@@ -117,7 +117,7 @@ it performs following two steps while executing any code:<br />
 - When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context<br />
 - Variable assignment are done in this phase 
 <br>
-<h3>Bind</h3>
+<h4>Bind</h4>
 We use the Bind () method primarily to call a function with the this value set explicitly.<br />
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
@@ -136,56 +136,74 @@ var user = {
 $ (&quot;button&quot;).click (user.clickHandler);
 </code></pre>
 
-<h3>Scopes in javascript</h3>
+<h4>Scopes in javascript</h4>
 
 <ul>
 <li>Global Scope  </li>
 <li>Local Scope  </li>
 <li>Block Scope (let)  </li>
 </ul>
-<h3>Old school JavaScript</h3>
+<h4>Old school JavaScript</h4>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
-<h3>Global Scope</h3>
+<h4>Global Scope</h4>
 Variables are known throughout the application, from the start of the application<br />
-<h3>Functional Scope</h3>
+<h4>Functional Scope</h4>
 Variables are known within the function they are declared in, from the start of the function  </p>
-<h3>Modern JavaScript</h3>
+<h4>Modern JavaScript</h4>
 
 <p>The most recent JavaScript specs now also allow a third scope :<br />
-<h3>Block Scope</h3>
+<h4>Block Scope</h4>
 Variables are known within the block they are declared in, from the moment they are declared onwards<br />
 let myVariable = "Some text";<br />
 const myVar = "val";  </p>
-<h3>Difference Between Function and Block Scope</h3>
+<h4>Difference Between Function and Block Scope</h4>
 
 <p>Function scope is within the function. (var is function scope.)<br />
 Block scope is within curly brackets. (let and const are block scope.)  </p>
-<h3>Variable hoisting</h3>
+<h4>Variable hoisting</h4>
 
 <p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  </p>
-<h3>Scope chain</h3>
+<h4>Scope chain</h4>
 
 <p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  </p>
-<h3>Closures</h3>
+<hr />
+<h4>Closures</h4>
 
 <p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  </p>
-<h3>Promise</h3>
+<pre><code class="javascript">&lt;script&gt;
+  var updateClickCount=(function(){
+  var counter=0;
 
-<p>A promise is commonly defined as a proxy for a value that will eventually become available.<br />
-Promises are one way to deal with asynchronous code, without writing too many callbacks in your code.<br />
-Although they’ve been around for years, they were standardized and introduced in ES2015, and now they have been superseded in ES2017 by async functions.<br />
-Async functions use the promises API as their building block, so understanding them is fundamental even if in newer code you’ll likely use async functions instead of promises.  </p>
-<p>A Promise is in one of these states:  </p>
-<p>pending: initial state, neither fulfilled nor rejected.<br />
-fulfilled: meaning that the operation completed successfully.<br />
-rejected: meaning that the operation failed.  </p>
+  return function(){
+    ++counter;
+     document.getElementById(&quot;spnCount&quot;).innerHTML=counter;
+    }
+})();
+&lt;/script&gt;
+
+&lt;html&gt;
+ &lt;button onclick=&quot;updateClickCount()&quot;&gt;click me&lt;/button&gt;
+  &lt;div&gt; you've clicked 
+    &lt;span id=&quot;spnCount&quot;&gt; 0 &lt;/span&gt; times!
+ &lt;/div&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr />
+<h4>Promise</h4>
+
+<p>Promises are one way to deal with asynchronous code.<br />
+A Promise is in one of these states:<br />
+Pending: initial state, neither fulfilled nor rejected.<br />
+Fulfilled: meaning that the operation completed successfully.<br />
+Rejected: meaning that the operation failed.  </p>
 <p>A Promise object is created using the new keyword and its constructor.<br />
 This constructor takes as its argument a function, called the "executor function".<br />
 This function should take two functions as parameters.<br />
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.<br />
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  </p>
-<h3>Promise example 1</h3>
+<h4>Promise example 1</h4>
 
 <pre><code class="javascript">get('supplyData.json').then(function(response) {
   console.log(&quot;Success!&quot;, response);
@@ -194,7 +212,7 @@ The second (reject) is called when the task fails, and returns the reason for fa
 })
 </code></pre>
 
-<h3>Promise example 2</h3>
+<h4>Promise example 2</h4>
 
 <pre><code class="javascript">var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -211,7 +229,7 @@ console.log(promise1);
 // expected output: [object Promise]
 </code></pre>
 
-<h3>Promise example 3</h3>
+<h4>Promise example 3</h4>
 
 <pre><code class="javascript">function myAsyncFunction(url) {
   return new Promise((resolve, reject) =&gt; {
@@ -224,7 +242,7 @@ console.log(promise1);
 }
 </code></pre>
 
-<h3>Callback, Promises and Async</h3>
+<h4>Callback, Promises and Async</h4>
 
 <h4>Callback:</h4>
 
@@ -294,39 +312,29 @@ printAll()
 </code></pre>
 
 <hr />
-<h3>Random number</h3>
-
-<pre><code class="javascript">Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-    graphData = graphData.map((graph) =&gt; {
-      graph.read_bytes = Math.floor(Math.random() * (10000 - 1024 + 1)) + 1024;
-      return graph;
-    });
-</code></pre>
-
-<hr />
 <h2 id="es6">ES6</h2>
-<p><h3>Spread Operator 1</h3>  </p>
+<p><h4>Spread Operator 1</h4>  </p>
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
 const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
 console.log(res);  // { isAuthenticated: true } 
 </code></pre>
 
-<h3>Spread Operator 2</h3>
+<h4>Spread Operator 2</h4>
 
 <pre><code class="javascript">var mid = [3, 4];  
 var arr = [1, 2, ...mid, 5, 6];  
 console.log(arr);  // [ 1, 2, 3, 4, 5, 6 ]
 </code></pre>
 
-<h3>Spread Operator 3</h3>
+<h4>Spread Operator 3</h4>
 
 <pre><code class="javascript">let nums = [1, 2, 3];
 let abcs = ['a', 'b', 'c'];
 let alphanum = [ ...nums, ...abs ]; // [1, 2, 3, 'a', 'b', 'c']
 </code></pre>
 
-<h3>Destructuring 1</h3>
+<h4>Destructuring 1</h4>
 
 <pre><code class="javascript">var address = {
   city: &quot;London&quot;,
@@ -340,7 +348,7 @@ log(state); // 'UK'
 log(zip); // 1334
 </code></pre>
 
-<h3>Destructuring 2</h3>
+<h4>Destructuring 2</h4>
 
 <pre><code class="javascript">var address = {
   city: &quot;London&quot;,
@@ -351,7 +359,7 @@ let {city: c, state: s, zip: z} = address;
 log(c, s, z); // 'London UK 1334'
 </code></pre>
 
-<h3>Destructuring 3</h3>
+<h4>Destructuring 3</h4>
 
 <pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
 displayPerson(person);
@@ -361,7 +369,7 @@ function displayPerson({name, age}) {
 }
 </code></pre>
 
-<h3>Destructuring 4</h3>
+<h4>Destructuring 4</h4>
 
 <pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
 let {name, age, address} = person; // error!
@@ -369,7 +377,7 @@ let {name, age, ?address} = person; // OK
 let ?{name, age, address} = person; // OK
 </code></pre>
 
-<h3>Destructuring 5</h3>
+<h4>Destructuring 5</h4>
 
 <pre><code class="javascript">var nums = [1, 2, 3, 4];
 doSomething(nums);
@@ -381,7 +389,7 @@ function doSomething([first, second, ...others]){
 }
 </code></pre>
 
-<h3>Arrow functions 1</h3>
+<h4>Arrow functions 1</h4>
 
 <p>Specifying parameters:</p>
 <pre><code class="javascript">    () =&gt; { ... } // no parameter
@@ -389,23 +397,23 @@ function doSomething([first, second, ...others]){
 (x, y) =&gt; { ... } // several parameters
 </code></pre>
 
-<h3>Specifying a body:</h3>
+<h4>Specifying a body:</h4>
 
 <pre><code class="javascript">x =&gt; { return x * x }  // block
 x =&gt; x * x  // expression, equivalent to previous line
 </code></pre>
 
-<h3>Arrow function 2</h3>
+<h4>Arrow function 2</h4>
 
 <pre><code class="javascript">const phraseSplitterEs6 = phrase =&gt; phrase.split(&quot; &quot;);
 </code></pre>
 
-<h3>Arrow function 3</h3>
+<h4>Arrow function 3</h4>
 
 <pre><code class="javascript">var docLogEs6 = () =&gt; { console.log(document); };
 </code></pre>
 
-<h3>Arrow function 4</h3>
+<h4>Arrow function 4</h4>
 
 <pre><code class="javascript">const smartPhones = [
   { name:'iphone', price:649 },
@@ -418,7 +426,7 @@ const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
 console.log(prices); // [649, 576, 489]
 </code></pre>
 
-<h3>Nested keys</h3>
+<h4>Nested keys</h4>
 
 <p>Check existance of nested keys.</p>
 <pre><code class="javascript">var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
@@ -427,7 +435,7 @@ if (update_progress !== null) {
 }
 </code></pre>
 
-<h3>Difference setInterval and setTimeout</h3>
+<h4>Difference setInterval and setTimeout</h4>
 
 <p>setTimeout(): It is a function that execute a JavaScript statement AFTER x interval.</p>
 <pre><code class="js">setTimeout(function () {
@@ -441,7 +449,7 @@ if (update_progress !== null) {
 }, 2000); // Execute somethingElse() every 2 seconds.
 </code></pre>
 
-<h3>Performance analysis</h3>
+<h4>Performance analysis</h4>
 
 <pre><code class="js">console.time(&quot;start&quot;);
 </code></pre>
@@ -452,13 +460,96 @@ if (update_progress !== null) {
 
 <p>// this will cause the browser to print time elapsed between start and end.</p>
 <hr />
+<h4>Various examples of Loops, Promises, callback</h4>
+
+<p>Promise</p>
+<pre><code class="javascript">const promise = new Promise (
+  function(resolve, reject) {
+    if (...something) {
+      resolve('data');
+    }
+    if (...somethingelse) {
+      reject('error');
+    }
+  }
+)
+
+promise.then(
+  function(data) {...}
+).catch(
+  function(error) {...}
+)
+</code></pre>
+
+<p>Axios</p>
+<pre><code class="javascript">axios.get('http://.....')
+  .then(
+    function(response) {
+      ....
+    }
+  )
+  .catch(
+    function(error) {
+      ....
+    }
+  )
+  .finally(
+    function() {
+      ....
+    }
+  )
+</code></pre>
+
+<pre><code class="js">async function getUser() {
+  try {
+    const output = await axios.get()
+  }
+  catch {
+    ...
+  }
+}
+</code></pre>
+
+<hr />
+<p>Callback functions  </p>
+<p>setInterval</p>
+<pre><code class="js">setInterval(function(){
+  console.log('hello);
+}, 1000);
+</code></pre>
+
+<pre><code class="js">const list = ['uno', 'due', 'tre'];
+
+const newList = list.map(function(v) {
+  return v + 'a';
+}).filter(function(v) {
+  return v.value &gt; 'aa';
+}
+)
+</code></pre>
+
+<pre><code class="js">button.addEventListener('click', function(e){
+  ...
+})
+</code></pre>
+
+<pre><code class="js">setTimeout(func, 1000);
+</code></pre>
+
+<pre><code class="js">Object.entries(users).forEach(entry, val) =&gt;
+{
+  const [key, value] = entry;
+}
+</code></pre>
+
+<hr />
 <h2 id="react">REACT</h2>
-<h3>State</h3>
+<h4>State</h4>
 
 <p>React is all about one-way data flow down the component hierarchy.<br />
 State is created in the component and stays in the component.<br />
 It can be passed to a children as its props.  </p>
-<h3>Basic Concepts</h3>
+<h4>Basic Concepts</h4>
 
 <ul>
 <li>JSX</li>
@@ -470,12 +561,12 @@ It can be passed to a children as its props.  </p>
 <li>Lists and Keys</li>
 <li>Forms</li>
 </ul>
-<h3>JSX</h3>
+<h4>JSX</h4>
 
 <pre><code class="javascript">&lt;MyComponent message={'hello world'} /&gt;
 </code></pre>
 
-<h3>Rendering elements</h3>
+<h4>Rendering elements</h4>
 
 <pre><code class="javascript">class TodoList extends React.Component {
   render() {
@@ -490,7 +581,7 @@ It can be passed to a children as its props.  </p>
 }
 </code></pre>
 
-<h3>Stateless function component - sfc</h3>
+<h4>Stateless function component - sfc</h4>
 
 <pre><code class="javascript">const | = props =&gt; {
   return ( | );
@@ -499,7 +590,7 @@ It can be passed to a children as its props.  </p>
 export default |;
 </code></pre>
 
-<h3>State and lifecycle</h3>
+<h4>State and lifecycle</h4>
 
 <pre><code>Mounting  
 These methods are called in the following order:  
@@ -521,7 +612,7 @@ This method is called when a component is being removed from the DOM:
 * componentWillUnmount()  
 </code></pre>
 
-<h3>Handling events</h3>
+<h4>Handling events</h4>
 
 <pre><code class="javascript">function ActionLink() {
   function handleClick(e) {
@@ -537,7 +628,7 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
-<h3>Conditional rendering</h3>
+<h4>Conditional rendering</h4>
 
 <pre><code class="javascript">render() {
   const isLoggedIn = this.state.isLoggedIn;
@@ -549,7 +640,7 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
-<h3>List and Keys</h3>
+<h4>List and Keys</h4>
 
 <pre><code class="javascript">function NumberList(props) {
   const numbers = props.numbers;
@@ -565,7 +656,7 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
-<h3>Forms</h3>
+<h4>Forms</h4>
 
 <pre><code class="javascript">class NameForm extends React.Component {
   constructor(props) {
@@ -599,7 +690,7 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
-<h3>React Fragment</h3>
+<h4>React Fragment</h4>
 
 <p>Fragments let you group a list of children without adding extra nodes to the DOM.</p>
 <pre><code class="js">render() {
@@ -613,12 +704,12 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
-<h3>Import CSS</h3>
+<h4>Import CSS</h4>
 
 <pre><code>import './styles/style.css'
 </code></pre>
 
-<h3>Declare state</h3>
+<h4>Declare state</h4>
 
 <pre><code>export class Counter extends React.Component {
   constructor(props) {
@@ -627,7 +718,7 @@ This method is called when a component is being removed from the DOM:
   }
 </code></pre>
 
-<h3>defaultProps example</h3>
+<h4>defaultProps example</h4>
 
 <pre><code class="javascript">Notification.defaultProps = {
   actionTitle: '',
@@ -636,7 +727,7 @@ This method is called when a component is being removed from the DOM:
 };
 </code></pre>
 
-<h3>propTypes example</h3>
+<h4>propTypes example</h4>
 
 <pre><code class="javascript">Notification.propTypes = {
   actionTitle: PropTypes.string,
@@ -647,17 +738,17 @@ This method is called when a component is being removed from the DOM:
 };
 </code></pre>
 
-<h3>Import statement - imr</h3>
+<h4>Import statement - imr</h4>
 
 <pre><code class="javascript">import React from 'react';
 </code></pre>
 
-<h3>Import React and Component - imrc</h3>
+<h4>Import React and Component - imrc</h4>
 
 <pre><code class="javascript">import React, { Component } from 'react';
 </code></pre>
 
-<h3>Make a Class Component and export - cc</h3>
+<h4>Make a Class Component and export - cc</h4>
 
 <pre><code class="javascript">class | extends Component {
   state = { | },
@@ -669,26 +760,26 @@ This method is called when a component is being removed from the DOM:
 export default |;
 </code></pre>
 
-<h3>componentDidMount - cdm</h3>
+<h4>componentDidMount - cdm</h4>
 
 <pre><code class="javascript">componentDidMount() {
   |
 }
 </code></pre>
 
-<h3>componentDidUpdate - cdu</h3>
+<h4>componentDidUpdate - cdu</h4>
 
 <pre><code class="javascript">componentDidUpdate(prevProps, prevState) {
   |
 }
 </code></pre>
 
-<h3>setState - ss</h3>
+<h4>setState - ss</h4>
 
 <pre><code class="javascript">this.setState({ | : | });
 </code></pre>
 
-<h3>render - ren</h3>
+<h4>render - ren</h4>
 
 <pre><code class="javascript">render() {
   return (
@@ -697,12 +788,12 @@ export default |;
 }
 </code></pre>
 
-<h3>export example with mapStateToProps, mapDispatchToProps</h3>
+<h4>export example with mapStateToProps, mapDispatchToProps</h4>
 
 <pre><code class="javascript">export default connect(mapStateToProps, mapDispatchToProps)(Name);
 </code></pre>
 
-<h3>mapStateToProps example</h3>
+<h4>mapStateToProps example</h4>
 
 <pre><code class="javascript">const mapStateToProps = (state) =&gt; {
   return {
@@ -713,18 +804,18 @@ export default |;
 };
 </code></pre>
 
-<h3>mapDispatchToProps</h3>
+<h4>mapDispatchToProps</h4>
 
 <p>Import actions  </p>
 <pre><code class="javascript">import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
 </code></pre>
 
-<h3>Emit action </h3>
+<h4>Emit action </h4>
 
 <pre><code class="javascript">this.props.selectedRaidIndex(id);
 </code></pre>
 
-<h3>Dispatch actions</h3>
+<h4>Dispatch actions</h4>
 
 <pre><code class="javascript">const mapDispatchToProps = (dispatch) =&gt; {
   return {
@@ -734,7 +825,7 @@ export default |;
 };
 </code></pre>
 
-<h3>React Redux Thunk</h3>
+<h4>React Redux Thunk</h4>
 
 <p>Actions in Redux are dispatched synchronously. <br />
 Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  </p>
@@ -744,7 +835,7 @@ That function receives the store’s dispatch method, which is then used to disp
 <pre><code>npm install redux-thunk
 </code></pre>
 
-<h3>Apply middleware to app store.</h3>
+<h4>Apply middleware to app store.</h4>
 
 <pre><code class="javascript">import React from 'react';
 import ReactDOM from 'react-dom';
@@ -874,7 +965,7 @@ export default function todosReducer(state = initialState, action) {
 }
 </code></pre>
 
-<h3>React Portals</h3>
+<h4>React Portals</h4>
 
 <p>Portals provide a way to render children into any DOM node.<br />
 The first argument is any renderable child.<br />
@@ -941,7 +1032,7 @@ class App extends React.Component {
 render(&lt;App /&gt;, document.getElementById(&quot;root&quot;));
 </code></pre>
 
-<h3>React Hooks</h3>
+<h4>React Hooks</h4>
 
 <p>Hooks are a new addition in React 16.8.<br />
 They let you use state and other React features without writing a class.<br />
@@ -963,7 +1054,7 @@ componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook 
     // ...
 </code></pre>
 
-<h3>State Hooks</h3>
+<h4>State Hooks</h4>
 
 <pre><code class="javascript">import React, { useState } from 'react';
 
@@ -982,7 +1073,7 @@ function Example() {
 }
 </code></pre>
 
-<h3>Declaring multiple state variables</h3>
+<h4>Declaring multiple state variables</h4>
 
 <pre><code class="javascript">function ExampleWithManyStates() {
   // Declare multiple state variables!
@@ -993,7 +1084,7 @@ function Example() {
 }
 </code></pre>
 
-<h3>Effect Hook</h3>
+<h4>Effect Hook</h4>
 
 <p>The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API.<br />
 By default, React runs the effects after every render — including the first render.  </p>
@@ -1022,7 +1113,7 @@ function FriendStatus(props) {
 }
 </code></pre>
 
-<h3>Reuse logic in another component.</h3>
+<h4>Reuse logic in another component.</h4>
 
 <p>It takes friendID as an argument, and returns whether our friend is online.  </p>
 <pre><code class="javascript">import React, { useState, useEffect } from 'react';
@@ -1069,7 +1160,7 @@ function useFriendStatus(friendID) {
 
 <hr />
 <h2 id="rest-api">REST API</h2>
-<h3>Definition</h3>
+<h4>Definition</h4>
 
 <p>REST stands for Representational State Transfer. 
 It is web standards based architecture and uses HTTP Protocol. </p>
@@ -1079,13 +1170,13 @@ Web services based on REST Architecture are known as RESTful web services.<br />
 These webservices uses HTTP methods to implement the concept of REST architecture.<br />
 A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.</p>
 <p>A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
-<h3>URI Format</h3>
+<h4>URI Format</h4>
 
 <p>generic URI syntax as shown below:  </p>
 <pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
 </code></pre>
 
-<h3>Good Practices</h3>
+<h4>Good Practices</h4>
 
 <p>Forward slash separator (/) indicates a hierarchical relationship<br />
 underscores (_) should not be used in uris<br />
@@ -1094,12 +1185,12 @@ hyphens (-) should be used to improve readability of uris<br />
 lowercase letters should be preferred in uri paths<br />
 crud function names should not be used in uris<br />
 query component of a URI may be used to filter collections or stores</p>
-<h3>Request Methods</h3>
+<h4>Request Methods</h4>
 
 <p>CRUD requests: DELETE, GET, POST, PUT<br />
 HEAD retrieve metadata.<br />
 OPTIONS retrieve metadata of resource’s available interactions.  </p>
-<h3>Some Responses status</h3>
+<h4>Some Responses status</h4>
 
 <p>200 success
 201 new resource has been created
@@ -1111,26 +1202,26 @@ OPTIONS retrieve metadata of resource’s available interactions.  </p>
 402 Forbidden
 404 Not Found
 405 Method Not Allowed</p>
-<h3>HTTP Headers</h3>
+<h4>HTTP Headers</h4>
 
 <p>Various forms of metadata may be conveyed through the entity headers.    </p>
-<h3>Request headers</h3>
+<h4>Request headers</h4>
 
 <p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server<br />
 X-Requested-With: Mainly used to identify AJAX requests.<br />
 Accept-Language which languages the client is able to understand  </p>
-<h3>Response headers</h3>
+<h4>Response headers</h4>
 
 <p>Content-Type<br />
 Content-Length  size of the response body<br />
 Set-Cookie used to send cookies from the server to the client.</p>
-<h3>Body Format</h3>
+<h4>Body Format</h4>
 
 <p>A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
 Today, the most commonly used text formats is JSON.</p>
-<h3>API Documentation</h3>
+<h4>API Documentation</h4>
 
 <ul>
 <li>
@@ -1191,7 +1282,7 @@ Today, the most commonly used text formats is JSON.</p>
   }</code></p>
 <p><a href="https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html">API Documentation example</a><br />
 <a href="https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites">API Docs list</a>  </p>
-<h3>OpenApi</h3>
+<h4>OpenApi</h4>
 
 <p>OpenAPI is a specification for describing REST APIs.  </p>
 <p>Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints while learning about the API.<br />
@@ -1236,7 +1327,7 @@ Instead of coding the OpenAPI specification document by hand, you can also auto-
 
 <p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.<br />
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  </p>
-<h3>OpenAPI root level</h3>
+<h4>OpenAPI root level</h4>
 
 <ul>
 <li>openapi<br />
@@ -1349,7 +1440,7 @@ Here’s an example of an externalDocs object:  </li>
 
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
-<h3>Axios - HTTP client</h3>
+<h4>Axios - HTTP client</h4>
 
 <p>Axios install  </p>
 <pre><code>npm install axios --save
@@ -1381,7 +1472,7 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 
 <hr />
 <h2 id="graphql">GRAPHQL</h2>
-<p><h3>About</h3>
+<p><h4>About</h4>
 GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  </p>
 <ul>
 <li>Open source and created by Facebook  </li>
@@ -1392,7 +1483,7 @@ GraphQL is a query language for your API, and a server-side runtime for executin
 GraphQL was developed to cope with the need for more flexibility and efficiency! It solves many of the shortcomings and inefficiencies that developers experience when interacting with REST APIs.<br />
 When working with REST APIs, data is loaded from specific endpoints.<br />
 Instead of having multiple endpoints that return fixed data structures, GraphQL APIs typically only expose a single endpoint. This works because the structure of the data that’s returned is not fixed. Instead, it’s completely flexible and lets the client decide what data is actually needed.</p>
-<h3>GraphQL vs REST</h3>
+<h4>GraphQL vs REST</h4>
 
 <ul>
 <li>GraphQL only has one URL.<br />
@@ -1404,7 +1495,7 @@ Instead of having multiple endpoints that return fixed data structures, GraphQL 
 <li>In REST, the shape of the response is determined by whom ever created the server, <br />
   in GraphQL the shape is determined by the query  </li>
 </ul>
-<h3>Terminology</h3>
+<h4>Terminology</h4>
 
 <p>- Query - Queries specify which endpoints we want to call, how we want the response to look<br />
 - Fields - Properties that comprise the shape of a response<br />
@@ -1413,7 +1504,7 @@ Instead of having multiple endpoints that return fixed data structures, GraphQL 
 - Schema - A special kind of document that describes how a GraphQL endpoint can receive and send information<br />
 - Query Language - The syntax we use to write GraphQL queries that retrieve data from an endpoint<br />
 - Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </p>
-<h3>Basic Query</h3>
+<h4>Basic Query</h4>
 
 <pre><code>{
   allPersons {
@@ -1455,7 +1546,7 @@ For example, the allPersons field could have a last parameter to only return up 
 }
 </code></pre>
 
-<h3>Mutations</h3>
+<h4>Mutations</h4>
 
 <p>It allows to reate, update and delete.
 Create a new Person:</p>
@@ -1483,7 +1574,7 @@ Create a new Person:</p>
 }
 </code></pre>
 
-<h3>Subscriptions</h3>
+<h4>Subscriptions</h4>
 
 <p>Realtime connection to the server in order to get immediately informed about important events.<br />
 Subscriptions represent a stream of data sent over to the client.  </p>
@@ -1506,7 +1597,7 @@ Then, whenever a new mutation is performed that creates a new Person, the server
 }
 </code></pre>
 
-<h3>Schema</h3>
+<h4>Schema</h4>
 
 <p>It specifies the capabilities of the API and defines how clients can request the data.<br />
 There are some special root types:  </p>
@@ -1680,18 +1771,18 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
-<h3>Responsive Design</h3>
+<h4>Responsive Design</h4>
 
-<h3>Defined by three characteristics</h3>
+<h4>Defined by three characteristics</h4>
 
 <ul>
 <li>Flexible grid-based layout  </li>
 <li>Media queries (CSS3)  </li>
 <li>Images that resize  </li>
 </ul>
-<h3>FLEXBOX</h3>
+<h4>FLEXBOX</h4>
 
-<h3>Parent Flex Container</h3>
+<h4>Parent Flex Container</h4>
 
 <pre><code>display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
@@ -1701,7 +1792,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 align-content (cross axis - adjust to largest item): flex-start | flex-end | center | stretch | spacebetween | space-around;
 </code></pre>
 
-<h3>Children Flex Items</h3>
+<h4>Children Flex Items</h4>
 
 <pre><code>order: &lt;integer&gt;;
 flex-grow: &lt;number&gt;;
@@ -1711,9 +1802,9 @@ flex: shorthand for grow, shrink, and basis (default: 0 1 auto)
 align-self: overrides alignment set on parent
 </code></pre>
 
-<h3>GRID</h3>
+<h4>GRID</h4>
 
-<h3>Grid Container</h3>
+<h4>Grid Container</h4>
 
 <pre><code>display: grid | inline-grid;
 grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
@@ -1735,7 +1826,7 @@ grid-auto-flow: row | column | row dense | column dense
 grid: A shorthand for setting all of the following properties in a single declaration: grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, and grid-auto-flow
 </code></pre>
 
-<h3>Grid Items</h3>
+<h4>Grid Items</h4>
 
 <pre><code>grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
 grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
@@ -1749,7 +1840,7 @@ align-self: start | end | center | stretch;
 place-self: center;
 </code></pre>
 
-<h3>Media Queries</h3>
+<h4>Media Queries</h4>
 
 <pre><code>/* 
   ##Device = Desktops
@@ -1783,7 +1874,7 @@ place-self: center;
 @media (min-width: 320px) and (max-width: 480px) {}
 </code></pre>
 
-<h3>BEM (Block Element Modifier)</h3>
+<h4>BEM (Block Element Modifier)</h4>
 
 <pre><code>&lt;div class=&quot;block__element block__element--modifier&quot;&gt;
   Hallo
@@ -1800,7 +1891,7 @@ place-self: center;
 }
 </code></pre>
 
-<h3>BEM with Sass</h3>
+<h4>BEM with Sass</h4>
 
 <pre><code>.person {
   &amp;__hand {/* Styles */}
@@ -1849,12 +1940,12 @@ place-self: center;
 }
 </code></pre>
 
-<h3>Install SASS</h3>
+<h4>Install SASS</h4>
 
 <pre><code>$ npm install sass-loader node-sass --save-dev
 </code></pre>
 
-<h3>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h3>
+<h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
 
 <pre><code class="scss">Module:{
      Rules:[
@@ -1866,12 +1957,12 @@ place-self: center;
    },
 </code></pre>
 
-<h3>SCSS Import</h3>
+<h4>SCSS Import</h4>
 
 <pre><code class="scss">@import 'reset';
 </code></pre>
 
-<h3>SCSS Variables</h3>
+<h4>SCSS Variables</h4>
 
 <pre><code class="scss">$zHeader: 2000;
 $zOverlay: 5000;
@@ -1888,7 +1979,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>SCSS Mixins</h3>
+<h4>SCSS Mixins</h4>
 
 <pre><code class="scss">@mixin square($size, $color) {
   width: $size;
@@ -1905,7 +1996,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>SCSS CrossBrowser Mixins</h3>
+<h4>SCSS CrossBrowser Mixins</h4>
 
 <pre><code class="scss">@mixin transform-tilt() {
   $tilt: rotate(15deg);
@@ -1919,9 +2010,9 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>SCSS Extend</h3>
+<h4>SCSS Extend</h4>
 
-<h3>Extending should be used when we need similarly styled elements, which still differ in some detail. </h3>
+<h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
 
 <pre><code class="scss">.dialog-button {
   box-sizing: border-box;
@@ -1944,9 +2035,9 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>SCSS Nesting</h3>
+<h4>SCSS Nesting</h4>
 
-<h3>Organize your stylesheet in a way that resembles the HTML more closely.</h3>
+<h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
 
 <pre><code class="scss">ul {
   list-style: none;
@@ -1964,7 +2055,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>Nested Pseudo Classes and Pseudo Elements </h3>
+<h4>Nested Pseudo Classes and Pseudo Elements </h4>
 
 <pre><code class="scss">.weather {
   @extend %module;
@@ -1981,7 +2072,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>SCSS Operations  </h3>
+<h4>SCSS Operations  </h4>
 
 <pre><code class="scss">$width: 800px;
 
@@ -1998,9 +2089,9 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>Selectors</h3>
+<h4>Selectors</h4>
 
-<h3>Descendant Selector</h3>
+<h4>Descendant Selector</h4>
 
 <p>all p elements inside div elements  </p>
 <pre><code>div p {
@@ -2008,7 +2099,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>Child Selector</h3>
+<h4>Child Selector</h4>
 
 <p>all p elements that are immediate children of a div element  </p>
 <pre><code>div &gt; p {
@@ -2016,7 +2107,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>Adjacent Sibling Selector</h3>
+<h4>Adjacent Sibling Selector</h4>
 
 <p>all p elements that are placed immediately after div elements  </p>
 <pre><code>div + p {
@@ -2024,7 +2115,7 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<h3>General Sibling Selector</h3>
+<h4>General Sibling Selector</h4>
 
 <p>all p elements that are siblings of div elements  </p>
 <pre><code>div ~ p {
