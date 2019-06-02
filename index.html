@@ -900,22 +900,105 @@ $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bas
 </code></pre>
 
 <h2 id="webpack">WEBPACK</h2>
-<p>webpack installation</p>
+<p>Webpack is a static module bundler for modern JavaScript applications.<br />
+It internally builds a dependency graph which maps every module your project needs and generates one or more bundles.<br />
+Any time one file depends on another, webpack treats this as a dependency.<br />
+Core Concepts:  </p>
+<ul>
+<li>Entry<br />
+An entry point indicates which module webpack should use to begin building out its internal dependency graph.  </li>
+</ul>
+<pre><code class="js">module.exports = {
+  entry: './path/to/my/entry/file.js'
+};
+</code></pre>
+
+<ul>
+<li>Output<br />
+The output property tells webpack where to emit the bundles it creates and how to name these files.  </li>
+</ul>
+<pre><code class="js">module.exports = {
+  output: {
+    filename: 'bundle.js',
+  }
+};
+</code></pre>
+
+<ul>
+<li>Loaders<br />
+Loaders allow webpack to process other types of files and convert them into modules.<br />
+For example, you can use loaders to tell webpack to load a CSS file or to convert TypeScript to JavaScript. To do this, you would start by installing the loaders you need:  </li>
+</ul>
+<pre><code>npm install --save-dev css-loader
+npm install --save-dev ts-loader
+</code></pre>
+
+<pre><code class="js">module.exports = {
+  module: {
+    rules: [
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.ts$/, use: 'ts-loader' }
+    ]
+  }
+};
+</code></pre>
+
+<ul>
+<li>Plugins<br />
+Plugins can be leveraged to perform a wider range of tasks like bundle optimization<br />
+Since plugins can take arguments/options, you must pass a new instance to the plugins property in your webpack configuration.  </li>
+</ul>
+<pre><code class="js">const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
+const webpack = require('webpack'); //to access built-in plugins
+const path = require('path');
+
+module.exports = {
+  entry: './path/to/my/entry/file.js',
+  output: {
+    filename: 'my-first-webpack.bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader'
+      }
+    ]
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ]
+};
+</code></pre>
+
+<ul>
+<li>Mode<br />
+By setting the mode parameter to either development, production or none, you can enable webpack's built-in optimizations that correspond to each environment.</li>
+<li>Browser Compatibility<br />
+Webpack supports all browsers that are ES5-compliant (IE8 and below are not supported).</li>
+</ul>
+<hr />
+<h4>Webpack installation</h4>
+
 <pre><code>npm install --save-dev webpack
 </code></pre>
 
-<p>If you're using webpack v4 or later, you'll need to install the CLI.  </p>
+<p>Webpack Client</p>
 <pre><code>npm install --save-dev webpack-cli
 </code></pre>
 
-<p>Create a webpack config file e.g. webpack.config.js  </p>
-<pre><code>const path = require('path');
+<p>Minimal webpack configuration<br />
+file e.g. webpack.config.js  </p>
+<pre><code>var path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  entry: './foo.js',
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'foo.bundle.js'
   }
 };
 </code></pre>
@@ -926,7 +1009,9 @@ module.exports = {
     },
 </code></pre>
 
-<p>Webpack Performance codesplitting react-loadable</p>
+<hr />
+<h4>Webpack Performance codesplitting react-loadable</h4>
+
 <pre><code>npm install --save react-loadable
 </code></pre>
 
@@ -944,16 +1029,9 @@ const ComponentName = Loadable({ loader: () =&gt; import(/* webpackChunkName: &q
   },
 </code></pre>
 
-<p>general performance improvements</p>
-<pre><code>React-loadable: this is a code splitting library. It allows to load components only when those are needed.  
-There are 2 main ways to split code:  
-by route
-by subcomponents
+<h4>Performance improvements</h4>
 
-Show loading icon when initial page is loading.
-The objective in this case is to give immediately a feedback to the user that page is loading.
-
-Webpack Plugin: UglifyWebpackPlugin minify js files
+<pre><code>Webpack Plugin: UglifyWebpackPlugin minify js files
 (license MIT) uglifyjs-webpack-plugin
 
 Webpack Plugin: MomentLocalesPlugin remove unused locales from Moment
@@ -1550,61 +1628,61 @@ Dockerize a React app.
 
 <h4>Install create-react-app</h4>
 
-wzxhzdk:165
+wzxhzdk:170
 
 
 <h4>Create a new app</h4>
 
-wzxhzdk:166
+wzxhzdk:171
 
 
 <h4>Add Dockerfile to project root</h4>
 Dockerfile defines what goes on in the environment inside your container.  
 
-wzxhzdk:167
+wzxhzdk:172
 
 
 <h4>Add a .dockerignore:</h4>
 
-wzxhzdk:168
+wzxhzdk:173
 
 
 <h4>Build and tag the Docker image</h4>
 
-wzxhzdk:169
+wzxhzdk:174
 
 
 <h4>Spin up the container</h4>
 
-wzxhzdk:170
+wzxhzdk:175
 
 
 <h4>Check the app</h4>
 Open your browser to: 
 
-wzxhzdk:171
+wzxhzdk:176
 
 
 <h4>Docker compose</h4>
 add docker-compose.yml
 
-wzxhzdk:172
+wzxhzdk:177
 
 
 <h4>Build image and fire container</h4>
 
-wzxhzdk:173
+wzxhzdk:178
 
 
 <h4>Stop container</h4>
 
-wzxhzdk:174
+wzxhzdk:179
 
 
 <h4>Docker example</h4>
 Build an image, run container, publish image:
 
-wzxhzdk:175
+wzxhzdk:180
 
 
 <h4>Docker Compose</h4>
@@ -1623,24 +1701,24 @@ To define, run, and scale services:
 
 docker-compose.yml  
 
-wzxhzdk:176
+wzxhzdk:181
 
 
 Initialize containers service
 
-wzxhzdk:177
+wzxhzdk:182
 
 
 Run it
 
-wzxhzdk:178
+wzxhzdk:183
 
 
 The single service stack is running 5 container instances of our deployed image on one host. 
 
 <h4>Services cheatsheet</h4>
 
-wzxhzdk:179
+wzxhzdk:184
 
 -->
 
@@ -1671,23 +1749,23 @@ User images: images created and shared by users.
 
 <h4>Install latest Docker</h4>
 
-wzxhzdk:180
+wzxhzdk:185
 
 
 or
 
 
-wzxhzdk:181
+wzxhzdk:186
 
 
 <h4>Test your Docker installation by running the following</h4>
 
-wzxhzdk:182
+wzxhzdk:187
 
 
 <h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 
-wzxhzdk:183
+wzxhzdk:188
 
 
 <h4>Docker Hub</h4>  
@@ -1695,38 +1773,38 @@ or
 
 <h4>List of all images on your system.</h4>  
 
-wzxhzdk:184
+wzxhzdk:189
 
 
 <h4>Run a container</h4>
 
-wzxhzdk:185
+wzxhzdk:190
 
 
 <h4>Show running containers</h4>
 
-wzxhzdk:186
+wzxhzdk:191
 
 
 <h4>Show containers that ran previously</h4>
 
-wzxhzdk:187
+wzxhzdk:192
 
 
 <h4>Live tty session</h4>
 
-wzxhzdk:188
+wzxhzdk:193
 
 
 <h4>Remove containers from which you left</h4>
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
 
-wzxhzdk:189
+wzxhzdk:194
 
 or  
 
-wzxhzdk:190
+wzxhzdk:195
 
 
 <h4>Run detached</h4>  
@@ -1734,22 +1812,22 @@ or
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
 
-wzxhzdk:191
+wzxhzdk:196
 
 
 <h4>See the ports by running the docker port [CONTAINER] command</h4>
 
-wzxhzdk:192
+wzxhzdk:197
 
 
 <h4>Specify a custom port</h4>
 
-wzxhzdk:193
+wzxhzdk:198
 
 
 <h4>Stop a container</h4>
 
-wzxhzdk:194
+wzxhzdk:199
 
 
 <h4>Creating an image</h4>  
@@ -1758,82 +1836,82 @@ CMD is to tell the container which command it should run when it is started
 port number that needs to be exposed  
 specifying our base image. Use the FROM keyword to do that  
 
-wzxhzdk:195
+wzxhzdk:200
 
 
 Dockerfile example
 
-wzxhzdk:196
+wzxhzdk:201
 
 
 <h4>Build image from Dockerfile</h4>
 
-wzxhzdk:197
+wzxhzdk:202
 
 
 <h4>Run the container</h4>
 
-wzxhzdk:198
+wzxhzdk:203
 
 
 <h4>Publish image to Docker HUB</h4>
 
-wzxhzdk:199
+wzxhzdk:204
 
 
 Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 
-wzxhzdk:200
+wzxhzdk:205
 
 
 <h4>Search for images</h4>
 
-wzxhzdk:201
+wzxhzdk:206
 
 
 <h4>When docker is installed, it creates three networks automatically.</h4>
 
-wzxhzdk:202
+wzxhzdk:207
 
 
 The bridge network is the network in which containers are run by default.  
 <h4>Inspect bridge Network</h4>
 
-wzxhzdk:203
+wzxhzdk:208
 
 
 <h4>Create our own network</h4>  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 
-wzxhzdk:204
+wzxhzdk:209
 
 
 <h4>Launch containers into network (--net foodtrucks-net)</h4>
 
-wzxhzdk:205
+wzxhzdk:210
 
 
 <h4>Create and run container on a created Network</h4>
 ./setup-docker.sh
 
-wzxhzdk:206
+wzxhzdk:211
 
 
 Docker Registries & Repositories  
 <h4>Searching an Image</h4>  
 
-wzxhzdk:207
+wzxhzdk:212
 
 
 <h4>Pulling an Image</h4>
 
-wzxhzdk:208
+wzxhzdk:213
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:209
+wzxhzdk:214
 
 <h4>Running Containers`</h4>
 Create and Run a Simple Container  
@@ -1841,270 +1919,270 @@ Start an ubuntu:latest image
 Bind the port 80 from the CONTAINER to port 3000 on the HOST  
 Mount the current directory to /data on the CONTAINER  
 
-wzxhzdk:210
+wzxhzdk:215
 
 
 <h4>Creating a Container</h4>
 
-wzxhzdk:211
+wzxhzdk:216
 
 
 <h4>Running a Container</h4>
 
-wzxhzdk:212
+wzxhzdk:217
 
 
 <h4>Renaming a Container</h4>
 
-wzxhzdk:213
+wzxhzdk:218
 
 
 <h4>Removing a Container</h4>
 
-wzxhzdk:214
+wzxhzdk:219
 
 
 <h4>Updating a Container</h4>
 
-wzxhzdk:215
+wzxhzdk:220
 
 
 <h4>Starting & Stopping Containers</h4>
 
-wzxhzdk:216
+wzxhzdk:221
 
 
 
-wzxhzdk:217
+wzxhzdk:222
 
 
 
 <h4>Restarting</h4>
 
-wzxhzdk:218
+wzxhzdk:223
 
 
 <h4>Pausing</h4>
 
-wzxhzdk:219
+wzxhzdk:224
 
 
 <h4>Unpausing</h4>
 
-wzxhzdk:220
+wzxhzdk:225
 
 
 <h4>Blocking a Container</h4>
 
-wzxhzdk:221
+wzxhzdk:226
 
 
 <h4>Sending a SIGKILL</h4>
 
-wzxhzdk:222
+wzxhzdk:227
 
 
 <h4>Sending another signal</h4>
 
-wzxhzdk:223
+wzxhzdk:228
 
 
 <h4>Connecting to an Existing Container</h4>
 
-wzxhzdk:224
+wzxhzdk:229
 
 
 <h4>Getting Information about Containers</h4>
 
 <h4>Running Containers</h4>
 
-wzxhzdk:225
+wzxhzdk:230
 
 
 <h4>Container Logs</h4>
 docker logs infinite
 Follow Container Logs
 
-wzxhzdk:226
+wzxhzdk:231
 
 
 <h4>Inspecting Containers</h4>
 
-wzxhzdk:227
+wzxhzdk:232
 
 
 <h4>Containers Events</h4>
 
-wzxhzdk:228
+wzxhzdk:233
 
 
 <h4>Public Ports</h4>
 
-wzxhzdk:229
+wzxhzdk:234
 
 
 <h4>Running Processes</h4>
 
-wzxhzdk:230
+wzxhzdk:235
 
 
 <h4>Container Resource Usage</h4>
 
-wzxhzdk:231
+wzxhzdk:236
 
 
 <h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 
-wzxhzdk:232
+wzxhzdk:237
 
 
 <h4>Manipulating Images</h4>
 
 <h4>Listing Images</h4>
 
-wzxhzdk:233
+wzxhzdk:238
 
 
 <h4>Building Images</h4>
 
-wzxhzdk:234
+wzxhzdk:239
 
 
 <h4>Removing an Image</h4>
 
-wzxhzdk:235
+wzxhzdk:240
 
 
 <h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 
-wzxhzdk:236
+wzxhzdk:241
 
 
 <h4>Save an Image to a Tar Archive</h4>
 
-wzxhzdk:237
+wzxhzdk:242
 
 
 <h4>Showing the History of an Image</h4>
 
-wzxhzdk:238
+wzxhzdk:243
 
 
 <h4>Creating an Image From a Container</h4>
 
-wzxhzdk:239
+wzxhzdk:244
 
 
 <h4>Tagging an Image</h4>
 
-wzxhzdk:240
+wzxhzdk:245
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:241
+wzxhzdk:246
 
 
 <h4>Creating Networks</h4>  
 
-wzxhzdk:242
+wzxhzdk:247
 
 
 <h4>Removing a Network</h4>
 
-wzxhzdk:243
+wzxhzdk:248
 
 
 <h4>Listing Networks</h4>
 
-wzxhzdk:244
+wzxhzdk:249
 
 
 <h4>Getting Information About a Network</h4>
 
-wzxhzdk:245
+wzxhzdk:250
 
 
 <h4>Connecting a Running Container to a Network</h4>
 
-wzxhzdk:246
+wzxhzdk:251
 
 
 <h4>Connecting a Container to a Network When it Starts</h4>
 
-wzxhzdk:247
+wzxhzdk:252
 
 
 <h4>Disconnecting a Container from a Network</h4>
 
-wzxhzdk:248
+wzxhzdk:253
 
 
 <h4>Exposing Ports</h4>  
 Using Dockerfile, you can expose a port on the container using:
 
-wzxhzdk:249
+wzxhzdk:254
 
 
 <h4>Cleaning Docker</h4>  
 <h4>Removing a Running Container </h4> 
 
-wzxhzdk:250
+wzxhzdk:255
 
 
 <h4>Removing a Container and its Volume</h4>
 
-wzxhzdk:251
+wzxhzdk:256
 
 
 <h4>Removing all Exited Containers</h4>
 
-wzxhzdk:252
+wzxhzdk:257
 
 
 <h4>Removing All Stopped Containers</h4>
 
-wzxhzdk:253
+wzxhzdk:258
 
 
 <h4>Removing a Docker Image</h4>
 
-wzxhzdk:254
+wzxhzdk:259
 
 
 <h4>Removing Dangling Images</h4>
 
-wzxhzdk:255
+wzxhzdk:260
 
 
 <h4>Removing all Images</h4>
 
-wzxhzdk:256
+wzxhzdk:261
 
 
 <h4>Removing all untagged images</h4>
 
-wzxhzdk:257
+wzxhzdk:262
 
 
 <h4>Stopping & Removing all Containers</h4>
 
-wzxhzdk:258
+wzxhzdk:263
 
 
 <h4>Removing Dangling Volumes</h4>
 
-wzxhzdk:259
+wzxhzdk:264
 
 
 <h4>Removing all unused (containers, images, networks and volumes)</h4>
 
-wzxhzdk:260
+wzxhzdk:265
 
 
 <h4>Clean all</h4>
 
-wzxhzdk:261
+wzxhzdk:266
 
 -->
 
@@ -2218,20 +2296,20 @@ Iterates through the elements in an array.
 Executes a callback for each element.
 Does not return a value.
 
-wzxhzdk:262
+wzxhzdk:267
 
 
 map
 Iterates through the elements in an array.
 "Maps" each element to a new element by calling the function on each element, creating a new array as a result.
 
-wzxhzdk:263
+wzxhzdk:268
 
 
 <h4>use case for anonymous functions?</h4>
 As a callback that is used once and does not need to be used anywhere else.
 
-wzxhzdk:264
+wzxhzdk:269
 
 
 <h4>How do you organize your code?</h4>
@@ -2380,5 +2458,5 @@ https://medium.com/@georgelai/minikube-playing-with-local-kubernetes-cluster-d93
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-28 22:02:58
+Build Date UTC : 2019-06-02 18:57:49
 -->
