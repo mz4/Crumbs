@@ -864,23 +864,108 @@ Babel (.babelrc)
 
 ## WEBPACK
 
-webpack installation
+Webpack is a static module bundler for modern JavaScript applications.  
+It internally builds a dependency graph which maps every module your project needs and generates one or more bundles.  
+Any time one file depends on another, webpack treats this as a dependency.  
+Core Concepts:  
+  
+- Entry  
+An entry point indicates which module webpack should use to begin building out its internal dependency graph.  
+```js
+module.exports = {
+  entry: './path/to/my/entry/file.js'
+};
 ```
-npm install --save-dev webpack
+  
+- Output  
+The output property tells webpack where to emit the bundles it creates and how to name these files.  
+```js
+module.exports = {
+  output: {
+    filename: 'bundle.js',
+  }
+};
 ```
-If you're using webpack v4 or later, you'll need to install the CLI.  
+
+- Loaders  
+Loaders allow webpack to process other types of files and convert them into modules.  
+For example, you can use loaders to tell webpack to load a CSS file or to convert TypeScript to JavaScript. To do this, you would start by installing the loaders you need:  
 ```
-npm install --save-dev webpack-cli
+npm install --save-dev css-loader
+npm install --save-dev ts-loader
 ```
-Create a webpack config file e.g. webpack.config.js  
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.ts$/, use: 'ts-loader' }
+    ]
+  }
+};
 ```
+
+- Plugins  
+Plugins can be leveraged to perform a wider range of tasks like bundle optimization  
+Since plugins can take arguments/options, you must pass a new instance to the plugins property in your webpack configuration.  
+
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
+const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './path/to/my/entry/file.js',
   output: {
-    filename: 'main.js',
+    filename: 'my-first-webpack.bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader'
+      }
+    ]
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ]
+};
+```
+  
+- Mode  
+By setting the mode parameter to either development, production or none, you can enable webpack's built-in optimizations that correspond to each environment.
+- Browser Compatibility  
+Webpack supports all browsers that are ES5-compliant (IE8 and below are not supported).
+
+
+
+---
+
+<h4>Webpack installation</h4>
+```
+npm install --save-dev webpack
+```
+
+Webpack Client
+```
+npm install --save-dev webpack-cli
+```
+
+Minimal webpack configuration  
+file e.g. webpack.config.js  
+```
+var path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: './foo.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'foo.bundle.js'
   }
 };
 ```
@@ -891,7 +976,28 @@ in package.json
     },
 ```
 
-Webpack Performance codesplitting react-loadable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<h4>Webpack Performance codesplitting react-loadable</h4>
 ```
 npm install --save react-loadable
 ```
@@ -901,6 +1007,7 @@ import Loadable from 'react-loadable';
 import Loading from '../../layout/Loading';
 const ComponentName = Loadable({ loader: () => import(/* webpackChunkName: "ComponentName" */'./subcomponents/ComponentName'), loading: Loading });
 ```
+
 in webpack.config.js
 ```
   output: {
@@ -911,16 +1018,8 @@ in webpack.config.js
   },
 ```
 
-general performance improvements
+<h4>Performance improvements</h4>
 ```
-React-loadable: this is a code splitting library. It allows to load components only when those are needed.  
-There are 2 main ways to split code:  
-by route
-by subcomponents
-
-Show loading icon when initial page is loading.
-The objective in this case is to give immediately a feedback to the user that page is loading.
-
 Webpack Plugin: UglifyWebpackPlugin minify js files
 (license MIT) uglifyjs-webpack-plugin
 
