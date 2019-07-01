@@ -1772,11 +1772,68 @@ def upload_license_action(args):
 
 ## CSS3/SASS
 
+<h4>Formatting CSS - based on Airbnb style guide</h4>
+- Use soft tabs (2 spaces) for indentation.
+- Prefer dashes over camelCasing in class names.
+- Underscores and PascalCasing are okay if you are using BEM (see OOCSS and BEM below).
+- Do not use ID selectors.
+- When using multiple selectors in a rule declaration, give each selector its own line.
+- Put a space before the opening brace { in rule declarations.
+- In properties, put a space after, but not before, the : character.
+- Put closing braces } of rule declarations on a new line.
+- Put blank lines between rule declarations.
+- Prefer line comments (// in Sass-land) to block comments.
+
+Bad
+```
+.avatar{
+    border-radius:50%;
+    border:2px solid white; }
+.no, .nope, .not_good {
+    // ...
+}
+#lol-no {
+  // ...
+}
+```
+
+Good
+```
+.avatar {
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.one,
+.selector,
+.per-line {
+  // ...
+}
+```
+
+<h4>Use a combination of OOCSS and BEM</h4>
+- OOCSS, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.  
+  It is based on two main principles:  
+  a. Separate structure from skin  
+  b. Separate containers from content (you should avoid using child selectors whenever it’s possible.)
+  
+- BEM, or “Block-Element-Modifier”, is a naming convention for classes in HTML and CSS.  
+
 <h4>Responsive Design</h4>
 <h4>Defined by three characteristics</h4>
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
+
+
+<h4>SMACSS</h4>
+SMACSS method consists on organizing CSS rules and five different categories:  
+Basic: Default styles.  
+Layout: It divides the content into sections.  
+Module: Those components that can be reused.  
+State: The rules that establish the state of our modules.  
+Theme: This last category is an optional one. It would allow the more visual aspects of the project.  
+
 
 <h4>FLEXBOX</h4>
 <h4>Parent Flex Container</h4>
