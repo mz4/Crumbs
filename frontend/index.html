@@ -1774,6 +1774,58 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
+<h4>Formatting CSS - based on Airbnb style guide</h4>
+
+<ul>
+<li>Use soft tabs (2 spaces) for indentation.</li>
+<li>Prefer dashes over camelCasing in class names.</li>
+<li>Underscores and PascalCasing are okay if you are using BEM (see OOCSS and BEM below).</li>
+<li>Do not use ID selectors.</li>
+<li>When using multiple selectors in a rule declaration, give each selector its own line.</li>
+<li>Put a space before the opening brace { in rule declarations.</li>
+<li>In properties, put a space after, but not before, the : character.</li>
+<li>Put closing braces } of rule declarations on a new line.</li>
+<li>Put blank lines between rule declarations.</li>
+<li>Prefer line comments (// in Sass-land) to block comments.</li>
+</ul>
+<p>Bad</p>
+<pre><code>.avatar{
+    border-radius:50%;
+    border:2px solid white; }
+.no, .nope, .not_good {
+    // ...
+}
+#lol-no {
+  // ...
+}
+</code></pre>
+
+<p>Good</p>
+<pre><code>.avatar {
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.one,
+.selector,
+.per-line {
+  // ...
+}
+</code></pre>
+
+<h4>Use a combination of OOCSS and BEM</h4>
+
+<ul>
+<li>
+<p>OOCSS, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.<br />
+  It is based on two main principles:<br />
+  a. Separate structure from skin<br />
+  b. Separate containers from content (you should avoid using child selectors whenever it’s possible.)</p>
+</li>
+<li>
+<p>BEM, or “Block-Element-Modifier”, is a naming convention for classes in HTML and CSS.  </p>
+</li>
+</ul>
 <h4>Responsive Design</h4>
 
 <h4>Defined by three characteristics</h4>
@@ -1783,6 +1835,14 @@ def upload_license_action(args):
 <li>Media queries (CSS3)  </li>
 <li>Images that resize  </li>
 </ul>
+<h4>SMACSS</h4>
+
+<p>SMACSS method consists on organizing CSS rules and five different categories:<br />
+Basic: Default styles.<br />
+Layout: It divides the content into sections.<br />
+Module: Those components that can be reused.<br />
+State: The rules that establish the state of our modules.<br />
+Theme: This last category is an optional one. It would allow the more visual aspects of the project.  </p>
 <h4>FLEXBOX</h4>
 
 <h4>Parent Flex Container</h4>
