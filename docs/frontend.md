@@ -5,24 +5,40 @@
 ## JAVASCRIPT
 
 <h4>Execution Context</h4>
-The environment in which code is executed.  
+
+The environment in which any code is run.  
+Javscript engine wraps the code into an execution context.
 <br>
-<h4>Execution Context Global/Functional </h4>
+<h4>Javscript engine creates in the Execution Context</h4>
 - Global Object Window (browser)  
 - Special Object 'this'  
 - Ref to outer environment  
 <br>
-<h4>JS Engine</h4>
+
+<h4>Javscript Engine</h4>
 it performs following two steps while executing any code:  
+
 <h5>Creation Phase</h5>
 - Run through your code & identifies variables & functions  
 - Setup memory space for Variables & Functions - "Hoisting"  
 - Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
+  ("undefined" is a special value assigned to variables that exists in the code but have not been set)
 <br>
 <h5>Execution Phase</h5>
 - When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
 - Variable assignment are done in this phase 
 <br>
+
+<h4>Single Threaded (One command at the time) & Synchonous</h4>  
+Javascript for programmers behaves in a single threaded manner.  
+And it is Synchronous, one line of code being executed at the time.
+
+<h4>Function invocations and execution stack</h4>
+
+
+
+
+
 <h4>Bind</h4>
 We use the Bind () method primarily to call a function with the this value set explicitly.  
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
@@ -1108,16 +1124,6 @@ function FriendListItem(props) {
   );
 }
 ```
-
-
-
-
-
-
-
-
-
-
 
 ---
 
