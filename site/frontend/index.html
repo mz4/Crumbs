@@ -102,26 +102,39 @@
 <h2 id="javascript">JAVASCRIPT</h2>
 <h4>Execution Context</h4>
 
-<p>The environment in which code is executed.<br />
+<p>The environment in which any code is run.<br />
+Javscript engine wraps the code into an execution context.
 <br>
-<h4>Execution Context Global/Functional </h4>
+<h4>Javscript engine creates in the Execution Context</h4>
 - Global Object Window (browser)<br />
 - Special Object 'this'<br />
 - Ref to outer environment<br />
-<br>
-<h4>JS Engine</h4>
-it performs following two steps while executing any code:<br />
+<br></p>
+<h4>Javscript Engine</h4>
+
+<p>it performs following two steps while executing any code:  </p>
 <h5>Creation Phase</h5>
-- Run through your code &amp; identifies variables &amp; functions<br />
-- Setup memory space for Variables &amp; Functions - "Hoisting"<br />
-- Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
+
+<ul>
+<li>Run through your code &amp; identifies variables &amp; functions  </li>
+<li>Setup memory space for Variables &amp; Functions - "Hoisting"  </li>
+<li>Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
+  ("undefined" is a special value assigned to variables that exists in the code but have not been set)
 <br>
-<h5>Execution Phase</h5>
-- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context<br />
-- Variable assignment are done in this phase 
-<br>
+<h5>Execution Phase</h5></li>
+<li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
+<li>Variable assignment are done in this phase 
+<br></li>
+</ul>
+<h4>Single Threaded (One command at the time) & Synchonous</h4>
+
+<p>Javascript for programmers behaves in a single threaded manner.<br />
+And it is Synchronous, one line of code being executed at the time.</p>
+<h4>Function invocations and execution stack</h4>
+
 <h4>Bind</h4>
-We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
 // &lt;input type=&quot;text&quot;&gt;
@@ -169,11 +182,15 @@ Block scope is within curly brackets. (let and const are block scope.)  </p>
 <p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  </p>
 <h4>Scope chain</h4>
 
-<p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.  </p>
+<p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there,<br />
+it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it<br />
+reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.   </p>
 <hr />
 <h4>Closures</h4>
 
-<p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  </p>
+<p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
+it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,<br />
+and it has access to the global variables.  </p>
 <pre><code class="javascript">&lt;script&gt;
   var updateClickCount=(function(){
   var counter=0;
@@ -832,8 +849,9 @@ export default |;
 
 <p>Actions in Redux are dispatched synchronously. <br />
 Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  </p>
-<p><strong>Redux Thunk is a middleware</strong> that lets you call action creators that return a function instead of an action object.<br />
-That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.  </p>
+<p><strong>Redux Thunk is a middleware</strong> that lets you call action creators that return a function instead of an action object. <br />
+That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside<br />
+the body of the function once the asynchronous operations have completed.  </p>
 <p>Install redux-thunk  </p>
 <pre><code>npm install redux-thunk
 </code></pre>
@@ -1089,8 +1107,8 @@ function Example() {
 
 <h4>Effect Hook</h4>
 
-<p>The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API.<br />
-By default, React runs the effects after every render — including the first render.  </p>
+<p>The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes,<br />
+but unified into a single API.  By default, React runs the effects after every render — including the first render.  </p>
 <p>Effects may also optionally specify how to “clean up” after them by returning a function.  </p>
 <pre><code class="javascript">import React, { useState, useEffect } from 'react';
 
@@ -1171,7 +1189,8 @@ It is web standards based architecture and uses HTTP Protocol. </p>
 A web service is a collection of standards used for exchanging data between applications or systems.<br />
 Web services based on REST Architecture are known as RESTful web services.<br />
 These webservices uses HTTP methods to implement the concept of REST architecture.<br />
-A RESTful web service usually defines a URI, Uniform Resource Identifier a service, which provides resource representation such as JSON and set of HTTP Methods.</p>
+A RESTful web service usually defines a URI, Uniform Resource Identifier a service,<br />
+which provides resource representation such as JSON and set of HTTP Methods.</p>
 <p>A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
 <h4>URI Format</h4>
 
@@ -1210,7 +1229,8 @@ OPTIONS retrieve metadata of resource’s available interactions.  </p>
 <p>Various forms of metadata may be conveyed through the entity headers.    </p>
 <h4>Request headers</h4>
 
-<p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request. The client may store it and send it back with the next request to the same server.<br />
+<p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request.<br />
+The client may store it and send it back with the next request to the same server.<br />
 User-Agent: identify the application type, operating system, software vendor
 Host: The Host request header specifies the domain name of the server<br />
 X-Requested-With: Mainly used to identify AJAX requests.<br />
@@ -1253,9 +1273,11 @@ Today, the most commonly used text formats is JSON.</p>
   There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  </li>
 </ul>
 <p><strong>Header parameters</strong> are included in the request header. Usually, the header just includes authorization parameters.  </p>
-<p><strong>Path parameters</strong> are part of the endpoint itself and are not optional. For example, in the following endpoint, {user} and {bicycleId} are required path parameters:<br />
+<p><strong>Path parameters</strong> are part of the endpoint itself and are not optional. For example, in the following endpoint,<br />
+  {user} and {bicycleId} are required path parameters:<br />
 <code>/service/myresource/user/{user}/bicycles/{bicycleId}</code></p>
-<p><strong>Query string parameters</strong> appear after a question mark (?) in the endpoint. The question mark followed by the parameters and their values is referred to as the “query string.”<br />
+<p><strong>Query string parameters</strong> appear after a question mark (?) in the endpoint. The question mark followed by the parameters and<br />
+  their values is referred to as the “query string.”<br />
 <code>/surfreport/{beachId}?days=3&amp;units=metric&amp;time=1400</code></p>
 <p><strong>Body parameters</strong>: with POST requests (where you’re creating something), you submit a JSON object in the request body.</p>
 <ul>
@@ -1267,7 +1289,8 @@ Today, the most commonly used text formats is JSON.</p>
 <li>Response example<br />
   The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
   The response lets developers know if the resource contains the information they want, the format, and how that information is structured and labeled. 
-  The description of the response is known as the response schema. The response schema documents the response in a more comprehensive, general way, listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.<br />
+  The description of the response is known as the response schema. The response schema documents the response in a more comprehensive, general way,<br />
+  listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.<br />
   The definition of the response is called the schema or model.</li>
 </ul>
 <p><code>{
@@ -1288,7 +1311,8 @@ Today, the most commonly used text formats is JSON.</p>
 <h4>OpenApi</h4>
 
 <p>OpenAPI is a specification for describing REST APIs.  </p>
-<p>Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints while learning about the API.<br />
+<p>Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints<br />
+while learning about the API.<br />
 With OpenAPI, you have a set of JSON objects, with a specific schema that defines their naming, order, and contents.  </p>
 <p>In the OpenAPI specification, your endpoints are paths.<br />
 Instead of writing following example in a text editor, use <a href="http://editor.swagger.io/">Swagger Editor</a>.<br />
@@ -1328,7 +1352,8 @@ Instead of coding the OpenAPI specification document by hand, you can also auto-
                 $ref: &quot;#/components/schemas/Error&quot;
 </code></pre>
 
-<p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools to parse it and generate the interactive documentation.<br />
+<p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools<br />
+to parse it and generate the interactive documentation.<br />
 Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  </p>
 <h4>OpenAPI root level</h4>
 
@@ -1336,7 +1361,8 @@ Probably the most common tool used to parse the OpenAPI specification is Swagger
 <li>openapi<br />
 indicate the version of the OpenAPI spec to validate against.  </li>
 <li>info<br />
-The info object contains basic information about your API, including the title, a description, version, link to the license, link to the terms of service, and contact information.  </li>
+The info object contains basic information about your API, including the title, a description, version, link to the license,<br />
+link to the terms of service, and contact information.  </li>
 <li>servers<br />
 In the servers object, you specify the basepath used in your API requests.  </li>
 <li>paths<br />
@@ -1774,6 +1800,179 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
+<h4>Display property</h4>
+
+<ul>
+<li>block: element starts on a new line and stretches out to the left and right as far as it can. </li>
+<li>inline: element not on a new line and doesnt stretch.</li>
+<li>inline-block: element can have width and height. </li>
+<li>flex: Displays an element as a block-level flex container.</li>
+<li>grid: Displays an element as a block-level grid container.</li>
+<li>...</li>
+</ul>
+<h4>Position</h4>
+
+<ul>
+<li>static: is not positioned in any special way.</li>
+<li>relative: the element is positioned relative to its normal position.</li>
+<li>fixed - the element is positioned related to the browser window.</li>
+<li>absolute - the element is positioned absolutely to its first positioned parent.</li>
+</ul>
+<h4>Box Model</h4>
+
+<ul>
+<li>Content: The content of the box, where text and images appear</li>
+<li>Padding: Clears an area around the content. The padding is transparent</li>
+<li>Border: A border that goes around the padding and content</li>
+<li>Margin: Clears an area outside the border. The margin is transparent</li>
+</ul>
+<h4>Box sizing</h4>
+
+<p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
+padding and border add the width of an object.<br />
+With box sizing the padding and border of that element no longer increase its width.</p>
+<pre><code class="css">html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+</code></pre>
+
+<h4>Centering Things</h4>
+
+<ul>
+<li>Centering line of texts:  </li>
+</ul>
+<pre><code class="css">p { text-align: center }
+</code></pre>
+
+<ul>
+<li>Centering a block or image:  </li>
+</ul>
+<pre><code class="css">p.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+}
+&lt;p class=&quot;blocktext&quot;&gt;
+</code></pre>
+
+<ul>
+<li>Centering vertically:<br />
+The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  </li>
+</ul>
+<pre><code class="css">DIV.container {
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+&lt;DIV class=&quot;container&quot;&gt;
+  &lt;P&gt;This small paragraph
+&lt;/DIV&gt;
+</code></pre>
+
+<ul>
+<li>Centering vertically CSS3:</li>
+</ul>
+<pre><code class="css">&lt;div class=container3&gt;
+  &lt;p&gt;This paragraph…
+&lt;/div&gt;
+
+div.container3 {
+  height: 10em;
+  position: relative 
+}
+div.container3 p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%) 
+}
+</code></pre>
+
+<ul>
+<li>Centering with flex:</li>
+</ul>
+<pre><code class="css">div.container5 {
+  height: 10em;
+  display: flex;
+  align-items: center 
+}
+div.container5 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically with css level 3</li>
+</ul>
+<pre><code class="css">&lt;div class=container4&gt;
+  &lt;p&gt;Centered!
+&lt;/div&gt;
+
+div.container4 {
+  height: 10em;
+  position: relative 
+}
+
+div.container4 p {
+  margin: 0;
+  background: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically in flex</li>
+</ul>
+<pre><code class="css">div.container6 {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center 
+}
+div.container6 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering in the viewport in css 3</li>
+</ul>
+<pre><code class="css">&lt;html&gt;
+  &lt;style&gt;
+    body {
+      background: white 
+    }
+    section {
+      background: black;
+      color: white;
+      border-radius: 1em;
+      padding: 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%) 
+    }
+  &lt;/style&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Nicely centered&lt;/h1&gt;
+    &lt;p&gt;This text block is vertically centered.
+    &lt;p&gt;Horizontally, too, if the window is wide enough.
+  &lt;/section&gt;
+</code></pre>
+
 <h4>Formatting CSS - based on Airbnb style guide</h4>
 
 <ul>
@@ -1817,7 +2016,8 @@ def upload_license_action(args):
 
 <ul>
 <li>
-<p>OOCSS, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.<br />
+<p>OOCSS, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”:<br />
+reusable, repeatable snippets that can be used independently throughout a website.<br />
   It is based on two main principles:<br />
   a. Separate structure from skin<br />
   b. Separate containers from content (you should avoid using child selectors whenever it’s possible.)</p>

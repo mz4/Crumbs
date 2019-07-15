@@ -617,7 +617,8 @@ grep "..cept" GPL-3 // .. 2 characters and then cept
   
 Bracket Expressions  
 ```
-grep "t[wo]o" GPL-3 //By placing a group of characters within brackets ("[" and "]"), we can specify that the character at that position can be any one character found within the bracket group.
+grep "t[wo]o" GPL-3 //By placing a group of characters within brackets ("[" and "]"), 
+we can specify that the character at that position can be any one character found within the bracket group.
 
 grep "^[A-Z]" GPL-3 // find every line that begins with a capital letter
 ```
@@ -975,25 +976,6 @@ in package.json
       "build": "webpack"
     },
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
@@ -1518,7 +1500,8 @@ REACT_APP_PORT=4000
 ```
 
 a. ports: Then we map container port to a port on the host machine so that we can access the running containers from the local environment  
-b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container, so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.  
+b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container,  
+so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.  
 c. command: The command to run after the container is up. What’s specified here will override the CMD part in the Dockerfile.  
 
 <!-- 
