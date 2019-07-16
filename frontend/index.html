@@ -1800,6 +1800,19 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
+<h4>CSS Architecture</h4>
+
+<h4>SMACSS</h4>
+
+<p>SMACSS method consists on organizing CSS rules in five different categories:  </p>
+<ul>
+<li>Basic: Default elements styles. It doesn’t include any class or ID selectors.</li>
+<li>Layout: It divides the content into sections (header, footer, primary content).</li>
+<li>Module: Those components that can be reused. Modules sit inside Layout components.</li>
+<li>State: The rules that establish the state of our modules. A state is something that augments and overrides all other styles.</li>
+<li>Theme: It would allow the more visual aspects of the project.</li>
+</ul>
+<hr />
 <h4>Display property</h4>
 
 <ul>
@@ -1988,7 +2001,7 @@ div.container6 p {
 <li>Prefer line comments (// in Sass-land) to block comments.</li>
 </ul>
 <p>Bad</p>
-<pre><code>.avatar{
+<pre><code class="css">.avatar{
     border-radius:50%;
     border:2px solid white; }
 .no, .nope, .not_good {
@@ -2000,7 +2013,7 @@ div.container6 p {
 </code></pre>
 
 <p>Good</p>
-<pre><code>.avatar {
+<pre><code class="css">.avatar {
   border-radius: 50%;
   border: 2px solid white;
 }
@@ -2035,14 +2048,6 @@ reusable, repeatable snippets that can be used independently throughout a websit
 <li>Media queries (CSS3)  </li>
 <li>Images that resize  </li>
 </ul>
-<h4>SMACSS</h4>
-
-<p>SMACSS method consists on organizing CSS rules and five different categories:<br />
-Basic: Default styles.<br />
-Layout: It divides the content into sections.<br />
-Module: Those components that can be reused.<br />
-State: The rules that establish the state of our modules.<br />
-Theme: This last category is an optional one. It would allow the more visual aspects of the project.  </p>
 <h4>FLEXBOX</h4>
 
 <h4>Parent Flex Container</h4>
