@@ -1787,6 +1787,18 @@ def upload_license_action(args):
 
 ## CSS3/SASS
 
+<h4>CSS Architecture</h4>
+<h4>SMACSS</h4>
+SMACSS method consists on organizing CSS rules in five different categories:  
+
+- Basic: Default elements styles. It doesn’t include any class or ID selectors.
+- Layout: It divides the content into sections (header, footer, primary content).
+- Module: Those components that can be reused. Modules sit inside Layout components.
+- State: The rules that establish the state of our modules. A state is something that augments and overrides all other styles.
+- Theme: It would allow the more visual aspects of the project.
+
+---
+
 <h4>Display property</h4>
 - block: element starts on a new line and stretches out to the left and right as far as it can. 
 - inline: element not on a new line and doesnt stretch.
@@ -1960,7 +1972,7 @@ div.container6 p {
 - Prefer line comments (// in Sass-land) to block comments.
 
 Bad
-```
+```css
 .avatar{
     border-radius:50%;
     border:2px solid white; }
@@ -1973,7 +1985,7 @@ Bad
 ```
 
 Good
-```
+```css
 .avatar {
   border-radius: 50%;
   border: 2px solid white;
@@ -2000,15 +2012,6 @@ reusable, repeatable snippets that can be used independently throughout a websit
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
-
-
-<h4>SMACSS</h4>
-SMACSS method consists on organizing CSS rules and five different categories:  
-Basic: Default styles.  
-Layout: It divides the content into sections.  
-Module: Those components that can be reused.  
-State: The rules that establish the state of our modules.  
-Theme: This last category is an optional one. It would allow the more visual aspects of the project.  
 
 
 <h4>FLEXBOX</h4>
