@@ -863,6 +863,28 @@ Babel (.babelrc)
 }
 ```
 
+---
+
+Move a module from devDependencies to dependencies:
+```
+npm install <module_name> --save-prod
+```
+or  
+```
+yarn remove <module_name> --dev&yarn add <module_name> 
+```
+
+Move a module from dependencies to devDependencies :
+```
+npm install <module_name> --save-dev
+```
+or  
+```
+yarn remove <module_name>&yarn add <module_name> --dev
+```
+
+---
+
 ## WEBPACK
 
 Webpack is a static module bundler for modern JavaScript applications.  
