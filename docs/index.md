@@ -2620,4 +2620,6 @@ https://serverless.css-tricks.com/
 https://www.linux.org
 
 https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
+
+.js or .jsx https://github.com/airbnb/javascript/pull/985
 -->

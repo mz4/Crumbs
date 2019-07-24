@@ -242,7 +242,169 @@ async function printAll(){
 printAll()
 ```
 
+<h4>Object is an array?</h4>
+```
+var d = []
+console.log(Object.prototype.toString.call(d));
+```
+
 ---
+
+<h4>this keyword</h4>
+It's a special identifier keyword that's automatically defined in the scope of every function.    
+It is based on how the function is called.
+Call-site because it's the only thing that matters for this binding.  
+
+```javascript
+function baz() {
+    // call-stack is: `baz`
+    // so, our call-site is in the global scope
+
+    console.log( "baz" );
+    bar(); // <-- call-site for `bar`
+}
+
+function bar() {
+    // call-stack is: `baz` -> `bar`
+    // so, our call-site is in `baz`
+
+    console.log( "bar" );
+    foo(); // <-- call-site for `foo`
+}
+
+function foo() {
+    // call-stack is: `baz` -> `bar` -> `foo`
+    // so, our call-site is in `bar`
+
+    console.log( "foo" );
+}
+
+baz(); // <-- call-site for `baz`
+```
+
+<h4>Default binding</h4>
+Standalone function invocation.  
+In this case "this" points at the global object.  
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var a = 2;
+
+foo(); // 2
+```
+
+<h4>Implicit Binding</h4>
+Because obj is the this for the foo() call, this.a is synonymous with obj.a.  
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+obj.foo(); // 2
+```
+
+<h4>Explicit Binding</h4>
+All functions you will create, do have access to call(..) and apply(..).
+How do these utilities work? They both take, as their first parameter, an object to use for the this, and then invoke the  function with that this specified. 
+Since you are directly stating what you want the this to be, we call it explicit binding.  
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2
+};
+
+foo.call( obj ); // 2
+```
+
+<h4>new Binding</h4>
+In JS, constructors are just functions that happen to be called with the new operator in front of them.  
+They are not attached to classes, nor are they instantiating a class.  
+They are not even special types of functions.  
+So new is the final way that a function call's this can be bound. We'll call this new binding.
+
+```javascript
+function foo(a) {
+	this.a = a;
+}
+
+var bar = new foo( 2 );
+console.log( bar.a ); // 2
+```
+
+<h4>Determine "this"</h4>
+Is the function called with new (new binding)? If so, this is the newly constructed object.
+```js
+var bar = new foo()
+```
+
+Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? If so, this is the explicitly specified object.
+```js
+var bar = foo.call( obj2 )
+```
+
+Is the function called with a context (implicit binding), otherwise known as an owning or containing object? If so, this is that context object.
+```js
+var bar = obj1.foo()
+```
+
+Otherwise, default the this (default binding). If in strict mode, pick undefined, otherwise pick the global object.
+
+```js
+var bar = foo()
+```
+
+---
+
+<h4>Objects</h4>
+Objects come in two forms: the declarative (literal) form, and the constructed form.  
+Note: It's extremely uncommon to use the "constructed form" for creating objects as just shown.  
+You would pretty much always want to use the literal syntax form.  
+
+Literal:  
+```javascript
+var myObj = {
+	key: value
+	// ...
+};
+```
+
+Constructed:    
+```javascript
+var myObj = new Object();
+myObj.key = value;
+```
+
+---
+
+<h4>Object Types</h4>
+- string
+- number
+- boolean
+- null
+- undefined
+- object
+
+
+
+
+
+
+---
+
+
 
 ## ES6
 <h4>Spread Operator 1</h4>  
