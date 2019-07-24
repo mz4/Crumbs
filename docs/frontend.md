@@ -247,6 +247,100 @@ printAll()
 var d = []
 console.log(Object.prototype.toString.call(d));
 ```
+---
+
+<h4>Prototype</h4>
+[Prototype](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)
+Every function in JavaScript has a prototype property that references an object.  
+pattern Prototypal Instantiation.  
+
+```javascript
+function Animal (name, energy) {
+  this.name = name
+  this.energy = energy
+}
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating.`)
+  this.energy += amount
+}
+
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping.`)
+  this.energy += length
+}
+
+Animal.prototype.play = function (length) {
+  console.log(`${this.name} is playing.`)
+  this.energy -= length
+}
+
+const leo = new Animal('Leo', 7)
+const snoop = new Animal('Snoop', 10)
+```
+
+Without using new keyword, we have to explicitly create a reference:
+Looking back at our Animal constructor, the two most important parts were creating the object and returning it.  
+Without creating the object with Object.create, we wouldn’t be able to delegate to the function’s prototype on failed lookups.   Without the return statement, we wouldn’t ever get back the created object.  
+```javascript
+function Animal (name, energy) {
+  let animal = Object.create(Animal.prototype)
+  animal.name = name
+  animal.energy = energy
+
+  return animal
+}
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating.`)
+  this.energy += amount
+}
+
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping.`)
+  this.energy += length
+}
+
+Animal.prototype.play = function (length) {
+  console.log(`${this.name} is playing.`)
+  this.energy -= length
+}
+
+const leo = Animal('Leo', 7)
+const snoop = Animal('Snoop', 10)
+
+leo.eat(10)
+snoop.play(5)
+```
+
+ES6 syntax  
+In 2015, EcmaScript (the official JavaScript specification) 6 was released with support for Classes and the class keyword.  
+Let’s see how our Animal constructor function above would look like with the new class syntax.
+
+```javascript
+class Animal {
+  constructor(name, energy) {
+    this.name = name
+    this.energy = energy
+  }
+  eat(amount) {
+    console.log(`${this.name} is eating.`)
+    this.energy += amount
+  }
+  sleep(length) {
+    console.log(`${this.name} is sleeping.`)
+    this.energy += length
+  }
+  play(length) {
+    console.log(`${this.name} is playing.`)
+    this.energy -= length
+  }
+}
+
+const leo = new Animal('Leo', 7)
+const snoop = new Animal('Snoop', 10)
+```
+
 
 ---
 

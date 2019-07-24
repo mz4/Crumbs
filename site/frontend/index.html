@@ -331,6 +331,149 @@ printAll()
 printAll()
 </code></pre>
 
+<h4>Object is an array?</h4>
+
+<pre><code>var d = []
+console.log(Object.prototype.toString.call(d));
+</code></pre>
+
+<hr />
+<h4>this keyword</h4>
+
+<p>It's a special identifier keyword that's automatically defined in the scope of every function.  <br />
+It is based on how the function is called.
+Call-site because it's the only thing that matters for this binding.  </p>
+<pre><code class="javascript">function baz() {
+    // call-stack is: `baz`
+    // so, our call-site is in the global scope
+
+    console.log( &quot;baz&quot; );
+    bar(); // &lt;-- call-site for `bar`
+}
+
+function bar() {
+    // call-stack is: `baz` -&gt; `bar`
+    // so, our call-site is in `baz`
+
+    console.log( &quot;bar&quot; );
+    foo(); // &lt;-- call-site for `foo`
+}
+
+function foo() {
+    // call-stack is: `baz` -&gt; `bar` -&gt; `foo`
+    // so, our call-site is in `bar`
+
+    console.log( &quot;foo&quot; );
+}
+
+baz(); // &lt;-- call-site for `baz`
+</code></pre>
+
+<h4>Default binding</h4>
+
+<p>Standalone function invocation.<br />
+In this case "this" points at the global object.  </p>
+<pre><code class="javascript">function foo() {
+    console.log( this.a );
+}
+
+var a = 2;
+
+foo(); // 2
+</code></pre>
+
+<h4>Implicit Binding</h4>
+
+<p>Because obj is the this for the foo() call, this.a is synonymous with obj.a.  </p>
+<pre><code class="javascript">function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+obj.foo(); // 2
+</code></pre>
+
+<h4>Explicit Binding</h4>
+
+<p>All functions you will create, do have access to call(..) and apply(..).
+How do these utilities work? They both take, as their first parameter, an object to use for the this, and then invoke the  function with that this specified. 
+Since you are directly stating what you want the this to be, we call it explicit binding.  </p>
+<pre><code class="javascript">function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2
+};
+
+foo.call( obj ); // 2
+</code></pre>
+
+<h4>new Binding</h4>
+
+<p>In JS, constructors are just functions that happen to be called with the new operator in front of them.<br />
+They are not attached to classes, nor are they instantiating a class.<br />
+They are not even special types of functions.<br />
+So new is the final way that a function call's this can be bound. We'll call this new binding.</p>
+<pre><code class="javascript">function foo(a) {
+    this.a = a;
+}
+
+var bar = new foo( 2 );
+console.log( bar.a ); // 2
+</code></pre>
+
+<h4>Determine "this"</h4>
+
+<p>Is the function called with new (new binding)? If so, this is the newly constructed object.</p>
+<pre><code class="js">var bar = new foo()
+</code></pre>
+
+<p>Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? If so, this is the explicitly specified object.</p>
+<pre><code class="js">var bar = foo.call( obj2 )
+</code></pre>
+
+<p>Is the function called with a context (implicit binding), otherwise known as an owning or containing object? If so, this is that context object.</p>
+<pre><code class="js">var bar = obj1.foo()
+</code></pre>
+
+<p>Otherwise, default the this (default binding). If in strict mode, pick undefined, otherwise pick the global object.</p>
+<pre><code class="js">var bar = foo()
+</code></pre>
+
+<hr />
+<h4>Objects</h4>
+
+<p>Objects come in two forms: the declarative (literal) form, and the constructed form.<br />
+Note: It's extremely uncommon to use the "constructed form" for creating objects as just shown.<br />
+You would pretty much always want to use the literal syntax form.  </p>
+<p>Literal:  </p>
+<pre><code class="javascript">var myObj = {
+    key: value
+    // ...
+};
+</code></pre>
+
+<p>Constructed:    </p>
+<pre><code class="javascript">var myObj = new Object();
+myObj.key = value;
+</code></pre>
+
+<hr />
+<h4>Object Types</h4>
+
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>object</li>
+</ul>
 <hr />
 <h2 id="es6">ES6</h2>
 <p><h4>Spread Operator 1</h4>  </p>
