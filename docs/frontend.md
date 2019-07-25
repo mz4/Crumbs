@@ -1,11 +1,9 @@
 # FRONTEND
-
 ---
-  
 ## JAVASCRIPT
 
+<br><br>
 <h4>Execution Context</h4>
-
 The environment in which any code is run.  
 Javscript engine wraps the code into an execution context.
 <br>
@@ -13,8 +11,8 @@ Javscript engine wraps the code into an execution context.
 - Global Object Window (browser)  
 - Special Object 'this'  
 - Ref to outer environment  
-<br>
-
+---
+<br><br>
 <h4>Javscript Engine</h4>
 it performs following two steps while executing any code:  
 
@@ -23,40 +21,21 @@ it performs following two steps while executing any code:
 - Setup memory space for Variables & Functions - "Hoisting"  
 - Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
   ("undefined" is a special value assigned to variables that exists in the code but have not been set)
-<br>
+
 <h5>Execution Phase</h5>
 - When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
 - Variable assignment are done in this phase 
-<br>
-
-<h4>Single Threaded (One command at the time) & Synchonous</h4>  
+---
+<br><br>
+<h4>Variable hoisting</h4>
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function). 
+---
+<br><br>
+<h4>Single Threaded (One command at the time) & Synchonous</h4>
 Javascript for programmers behaves in a single threaded manner.  
 And it is Synchronous, one line of code being executed at the time.
-
-<h4>Function invocations and execution stack</h4>
-
-<h4>Bind</h4>
-We use the Bind () method primarily to call a function with the this value set explicitly.  
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
-
-
-```javascript
-// <button>Get Random Person</button>
-// <input type="text">
-var user = {
-    data        :[
-        {name:"T. Woods", age:37},
-        {name:"P. Mickelson", age:43}
-    ],
-    clickHandler:function (event) {
-        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
-        $ ("input").val (this.data[randomNum].name + " " + this.data[randomNum].age);
-    }
-}
-// Assign an eventHandler to the button's click event
-$ ("button").click (user.clickHandler);
-```
-
+---
+<br><br>
 <h4>Scopes in javascript</h4>
 - Global Scope  
 - Local Scope  
@@ -71,6 +50,7 @@ Variables are known within the function they are declared in, from the start of 
 
 <h4>Modern JavaScript</h4>
 The most recent JavaScript specs now also allow a third scope :  
+
 <h4>Block Scope</h4>
 Variables are known within the block they are declared in, from the moment they are declared onwards  
 let myVariable = "Some text";  
@@ -80,16 +60,17 @@ const myVar = "val";
 Function scope is within the function. (var is function scope.)  
 Block scope is within curly brackets. (let and const are block scope.)  
 
-<h4>Variable hoisting</h4>
-Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  
-
 <h4>Scope chain</h4>
-JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there,  
-it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it  
-reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.   
+JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
 
 ---
+<br><br>
+<h4>Bind</h4>
+We use the Bind () method primarily to call a function with the this value set explicitly.  
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
 
+---
+<br><br>
 <h4>Closures</h4>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:  
 it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,  
@@ -109,20 +90,20 @@ and it has access to the global variables.
 
 <html>
  <button onclick="updateClickCount()">click me</button>
-  <div> you've clicked 
-    <span id="spnCount"> 0 </span> times!
+  <div> you have clicked 
+    <span id="spnCount">0</span>
  </div>
 </html>
 ```
 
 ---
-
+<br><br>
 <h4>Promise</h4>
 Promises are one way to deal with asynchronous code.  
 A Promise is in one of these states:  
-Pending: initial state, neither fulfilled nor rejected.  
-Fulfilled: meaning that the operation completed successfully.  
-Rejected: meaning that the operation failed.  
+- Pending: initial state, neither fulfilled nor rejected.  
+- Fulfilled: meaning that the operation completed successfully.  
+- Rejected: meaning that the operation failed.  
   
 A Promise object is created using the new keyword and its constructor.  
 This constructor takes as its argument a function, called the "executor function".  
@@ -202,7 +183,7 @@ printAll()
 
 ---
 
-<h4>Promises:</h4>
+<h4>Promises vs callaback</h4>
 Promises try to fix callback nesting problem. 
 In our function lets use Promises:
 ```js
@@ -250,7 +231,7 @@ console.log(Object.prototype.toString.call(d));
 ---
 
 <h4>Prototype</h4>
-[Prototype](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)
+[Prototype link](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)  
 Every function in JavaScript has a prototype property that references an object.  
 pattern Prototypal Instantiation.  
 
@@ -341,6 +322,43 @@ const leo = new Animal('Leo', 7)
 const snoop = new Animal('Snoop', 10)
 ```
 
+<h4>Array methods</h4>
+We can see all the array’s methods by simply logging Array.prototype.  
+console.log(Array.prototype)
+
+/*
+  concat: ƒn concat()
+  constructor: ƒn Array()
+  copyWithin: ƒn copyWithin()
+  entries: ƒn entries()
+  every: ƒn every()
+  fill: ƒn fill()
+  filter: ƒn filter()
+  find: ƒn find()
+  findIndex: ƒn findIndex()
+  forEach: ƒn forEach()
+  includes: ƒn includes()
+  indexOf: ƒn indexOf()
+  join: ƒn join()
+  keys: ƒn keys()
+  lastIndexOf: ƒn lastIndexOf()
+  length: 0n
+  map: ƒn map()
+  pop: ƒn pop()
+  push: ƒn push()
+  reduce: ƒn reduce()
+  reduceRight: ƒn reduceRight()
+  reverse: ƒn reverse()
+  shift: ƒn shift()
+  slice: ƒn slice()
+  some: ƒn some()
+  sort: ƒn sort()
+  splice: ƒn splice()
+  toLocaleString: ƒn toLocaleString()
+  toString: ƒn toString()
+  unshift: ƒn unshift()
+  values: ƒn values()
+*/
 
 ---
 
@@ -891,6 +909,8 @@ class NameForm extends React.Component {
   }
 }
 ```
+
+---
 
 <h4>React Fragment</h4>
 Fragments let you group a list of children without adding extra nodes to the DOM.

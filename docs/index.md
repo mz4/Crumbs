@@ -2442,6 +2442,7 @@ Various links
 [Socket unit testing](https://medium.com/@ianovenden/react-redux-and-websocket-unit-testing-8c9236d4f3f6)  
 [Socket+jest boilerplate](https://gist.github.com/tozwierz/76be651cc7a7d5c06ea290eec8a0ed73)  
 [kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+[react forms](https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825)
 
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
