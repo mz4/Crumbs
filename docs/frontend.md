@@ -2131,6 +2131,8 @@ p.blocktext {
 ```
 
 - Centering vertically:  
+[centering 1](https://vanseodesign.com/css/vertical-centering/)
+[centering 2 w3c](https://www.w3schools.com/howto/howto_css_center-vertical.asp)
 The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  
 ```css
 DIV.container {
