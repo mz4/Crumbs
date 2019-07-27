@@ -2114,6 +2114,8 @@ html {
 ```
 
 <h4>Centering Things</h4>
+[csstricks centering](https://css-tricks.com/centering-css-complete-guide/)
+
 
 - Centering line of texts:  
 ```css
@@ -2291,6 +2293,9 @@ reusable, repeatable snippets that can be used independently throughout a websit
 - Media queries (CSS3)  
 - Images that resize  
 
+<h4>Grids</h4>
+
+[homemade grids guide](https://css-tricks.com/dont-overthink-it-grids/)
 
 <h4>FLEXBOX</h4>
 <h4>Parent Flex Container</h4>
