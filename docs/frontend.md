@@ -763,6 +763,28 @@ Object.entries(users).forEach(entry, val) =>
 
 ---
 
+## JS Utilities
+
+<h4>Check if an object is empty</h4>
+```javascript
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+```
+
+```javascript
+var myObj = {}; // Empty Object
+if(isEmpty(myObj)) {
+    // Object is empty (Would return true in this example)
+} else {
+    // Object is NOT empty
+}
+```
+
 ## REACT
 
 <h4>State</h4>
@@ -2635,6 +2657,12 @@ div ~ p {
   background-color: yellow;
 }
 ```
+
+<h4>Select p elements with class="center"</h4>
+```
+p.center 
+```
+
 
 ---
 

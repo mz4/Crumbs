@@ -87,6 +87,7 @@
         <li class="main active"><a href="#frontend">FRONTEND</a></li>
             <li><a href="#javascript">JAVASCRIPT</a></li>
             <li><a href="#es6">ES6</a></li>
+            <li><a href="#js-utilities">JS Utilities</a></li>
             <li><a href="#react">REACT</a></li>
             <li><a href="#rest-api">REST API</a></li>
             <li><a href="#graphql">GRAPHQL</a></li>
@@ -816,6 +817,26 @@ const newList = list.map(function(v) {
 </code></pre>
 
 <hr />
+<h2 id="js-utilities">JS Utilities</h2>
+<h4>Check if an object is empty</h4>
+
+<pre><code class="javascript">function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<pre><code class="javascript">var myObj = {}; // Empty Object
+if(isEmpty(myObj)) {
+    // Object is empty (Would return true in this example)
+} else {
+    // Object is NOT empty
+}
+</code></pre>
+
 <h2 id="react">REACT</h2>
 <h4>State</h4>
 
@@ -2649,6 +2670,11 @@ $zMessage: 5050;
 <pre><code>div ~ p {
   background-color: yellow;
 }
+</code></pre>
+
+<h4>Select p elements with class="center"</h4>
+
+<pre><code>p.center 
 </code></pre>
 
 <hr />
