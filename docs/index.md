@@ -1617,6 +1617,33 @@ Press F6 for pause
 
 ---
 
+<h4>Create Snippet</h4>
+```
+ctrl+shift+p
+Preferences: Configure User Snippets
+Select Javascript
+```
+
+'''
+{
+  "Console Log": {
+    "prefix": "xcl",
+    "body": 
+      [,
+      "renderA() {}",
+      "renderB() {}",
+      ],
+    "description": "render() {}"
+  }
+}
+'''
+type "xcl" to use it
+[Snippet Generator](https://snippet-generator.app/)
+
+---
+
+
+
 ## LINKS
 
 React  
