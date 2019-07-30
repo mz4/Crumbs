@@ -2170,6 +2170,15 @@ DIV.container {
 </DIV>
 ```
 
+center vertically ex. 2
+```css
+    labelContainer: {
+      display: 'table-cell',
+      verticalAlign: 'middle',
+      height: '30px',
+    },
+```
+
 - Centering vertically CSS3:
 ```css
 <div class=container3>
