@@ -2471,6 +2471,8 @@ Various links
 [kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 [react forms](https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825)
 
+[jobs in netherland](https://www.honeypot.io/)
+
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
 https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
