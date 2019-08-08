@@ -154,12 +154,6 @@ git commit
 git push
 </code></pre>
 
-<h4>Squash commits</h4>
-
-<pre><code>git reset --soft HEAD~$squashCount
-git commit -m &quot;$commitMsg&quot;
-</code></pre>
-
 <h4>Delete a local and remote branch</h4>
 
 <pre><code>git branch -d branch_name
@@ -1276,6 +1270,16 @@ touch index.html
 </code></pre>
 
 <hr />
+<h4>Webpack enable sourcemap</h4>
+
+<p>in webpack.config.js</p>
+<pre><code class="js">module.exports = {
+  entry: path.join(__dirname, &quot;src&quot;, &quot;index.js&quot;),
+  devtool: 'source-map',
+  output:...........
+</code></pre>
+
+<hr />
 <h2 id="babel">BABEL</h2>
 <p>Babel transpiles back to vanilla JavaScript so that every browser can interpret it. </p>
 <pre><code>npm install --save-dev @babel/core @babel/preset-env
@@ -2259,6 +2263,8 @@ Various links
 [kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 [react forms](https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825)
 
+[jobs in netherland](https://www.honeypot.io/)
+
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
 https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
@@ -2510,5 +2516,5 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-07-30 14:42:05
+Build Date UTC : 2019-08-08 15:36:41
 -->

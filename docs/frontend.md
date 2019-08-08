@@ -691,7 +691,11 @@ promise.then(
 )
 ```
 
-Axios
+Axios  
+[Axios cheatsheet](https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index)  
+[Axios github](https://github.com/axios/axios)  
+[Axios making http requests](https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/)
+
 ```javascript
 axios.get('http://.....')
   .then(
@@ -720,6 +724,25 @@ async function getUser() {
     ...
   }
 }
+```
+
+Axios patch example
+```javascript
+  axios
+    .patch(
+      url,
+      formData,
+      {
+        headers: {
+          'X-Auth-Token': token
+      },
+    })
+    .then((data) => {
+      this.props.loadAccountsData();
+    })
+    .catch(error => {
+      throw error;
+    });
 ```
 
 ---
@@ -761,6 +784,58 @@ Object.entries(users).forEach(entry, val) =>
 }
 ```
 
+<h4>Find highest value in an array</h4>
+```js
+const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current)
+```
+
+<h4>setState spread operator</h4>
+```js
+    trips: [
+      {
+        id: 0,
+        name: 'Rome',
+        dateStart: '19/08/2019',
+        dateEnd: '29/08/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 1,
+        name: 'Paris',
+        dateStart: '15/06/2019',
+        dateEnd: '29/06/2019',
+        isConfirmed: true,
+        isEditing: false
+      },
+      {
+        id: 2,
+        name: 'Malta',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 3,
+        name: 'Budapest',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      }
+    ]
+```
+
+```js
+  handleDateStart = e =>
+    this.setState({
+      form: {
+        ...this.state.form,
+        dateStart: e.target.value
+      }
+    });
+```
 ---
 
 ## JS Utilities

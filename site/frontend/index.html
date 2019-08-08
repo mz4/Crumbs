@@ -755,7 +755,10 @@ promise.then(
 )
 </code></pre>
 
-<p>Axios</p>
+<p>Axios<br />
+<a href="https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index">Axios cheatsheet</a><br />
+<a href="https://github.com/axios/axios">Axios github</a><br />
+<a href="https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/">Axios making http requests</a></p>
 <pre><code class="javascript">axios.get('http://.....')
   .then(
     function(response) {
@@ -782,6 +785,24 @@ promise.then(
     ...
   }
 }
+</code></pre>
+
+<p>Axios patch example</p>
+<pre><code class="javascript">  axios
+    .patch(
+      url,
+      formData,
+      {
+        headers: {
+          'X-Auth-Token': token
+      },
+    })
+    .then((data) =&gt; {
+      this.props.loadAccountsData();
+    })
+    .catch(error =&gt; {
+      throw error;
+    });
 </code></pre>
 
 <hr />
@@ -814,6 +835,58 @@ const newList = list.map(function(v) {
 {
   const [key, value] = entry;
 }
+</code></pre>
+
+<h4>Find highest value in an array</h4>
+
+<pre><code class="js">const max = data.reduce((prev, current) =&gt; (prev.y &gt; current.y) ? prev : current)
+</code></pre>
+
+<h4>setState spread operator</h4>
+
+<pre><code class="js">    trips: [
+      {
+        id: 0,
+        name: 'Rome',
+        dateStart: '19/08/2019',
+        dateEnd: '29/08/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 1,
+        name: 'Paris',
+        dateStart: '15/06/2019',
+        dateEnd: '29/06/2019',
+        isConfirmed: true,
+        isEditing: false
+      },
+      {
+        id: 2,
+        name: 'Malta',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 3,
+        name: 'Budapest',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      }
+    ]
+</code></pre>
+
+<pre><code class="js">  handleDateStart = e =&gt;
+    this.setState({
+      form: {
+        ...this.state.form,
+        dateStart: e.target.value
+      }
+    });
 </code></pre>
 
 <hr />

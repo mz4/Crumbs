@@ -30,6 +30,7 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 ```
 
+
 <h4>Connect to github</h4>
 ```
 Go to github.
@@ -40,11 +41,13 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 ```
 
+
 <h4>Create, switch and push origin new branch</h4>
 ```
 git checkout -b issue400-master
 git push -u origin issue400-master
 ```
+
 
 <h4>Add, Commit and Push</h4>
 ```
@@ -55,17 +58,13 @@ git commit
 git push
 ```
 
-<h4>Squash commits</h4>
-```
-git reset --soft HEAD~$squashCount
-git commit -m "$commitMsg"
-```
 
 <h4>Delete a local and remote branch</h4>
 ```
 git branch -d branch_name
 git push origin --delete <branch_name>
 ```
+
 
 <h4>Clean Local branch</h4>
 ```
@@ -74,10 +73,12 @@ git checkout .
 git clean -fdx
 ```
 
+
 <h4>Clone repo</h4>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
+
 
 <h4>Clone specific branch</h4>
 ```
@@ -85,45 +86,54 @@ git clone -b <branch> <remote_repo>
 git clone -b my-branch git@github.com:user/myproject.git
 ```
 
+
 <h4>Show current branch</h4>
 ```
 git branch
 ```
+
 
 <h4>Show local and remote branch</h4>
 ```
 git branch -a
 ```
 
+
 <h4>Check Status</h4>
 ```
 git status
 ```
+
 
 <h4>Check Log</h4>
 ```
 git log
 ```
 
+
 <h4>Graphical Log</h4>
 ```
 git log --graph --decorate
 ```
+
 
 <h4>Log commit subject of last 10 commits</h4>
 ```
 git log -10 --pretty=format:"%h %s"
 ```
 
+
 <h4>Edit Last Commit Message</h4>
 ```
 git commit --amend -m "New commit message"
 ```
 
+
 <h4>Single file history</h4>
 ```
 git log -p filename
 ```
+
 
 <h4>Get tag</h4>
 ```
@@ -958,13 +968,11 @@ module.exports = {
   ]
 };
 ```
-  
+
 - Mode  
 By setting the mode parameter to either development, production or none, you can enable webpack's built-in optimizations that correspond to each environment.
 - Browser Compatibility  
 Webpack supports all browsers that are ES5-compliant (IE8 and below are not supported).
-
-
 
 ---
 
@@ -1253,6 +1261,16 @@ module.exports = {
 Start Webpack dev server
 ```
 npm start
+```
+---
+
+<h4>Webpack enable sourcemap</h4>
+in webpack.config.js
+```js
+module.exports = {
+  entry: path.join(__dirname, "src", "index.js"),
+  devtool: 'source-map',
+  output:...........
 ```
 
 ---
