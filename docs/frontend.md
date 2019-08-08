@@ -12,7 +12,11 @@ Javscript engine wraps the code into an execution context.
 - Special Object 'this'  
 - Ref to outer environment  
 ---
-<br><br>
+
+<br>
+
+---
+
 <h4>Javscript Engine</h4>
 it performs following two steps while executing any code:  
 
@@ -36,6 +40,46 @@ Javascript for programmers behaves in a single threaded manner.
 And it is Synchronous, one line of code being executed at the time.
 ---
 <br><br>
+<br>
+
+<h4>Single Threaded (One command at the time) & Synchonous</h4>  
+Javascript for programmers behaves in a single threaded manner, one command at the time.  
+And it is Synchronous, one line of code being executed at the time.
+
+---
+
+<h4>Bind</h4>
+We use the Bind () method primarily to call a function with the this value set explicitly.  
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
+
+
+```javascript
+// <button>Get Random Person</button>
+// <input type="text">
+var user = {
+    data        :[
+        {name:"T. Woods", age:37},
+        {name:"P. Mickelson", age:43}
+    ],
+    clickHandler:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
+        $ ("input").val (this.data[randomNum].name + " " + this.data[randomNum].age);
+    }
+}
+// Assign an eventHandler to the button's click event
+$ ("button").click (user.clickHandler);
+```
+
+---
+
+<h4>Function invocations (running functions) and execution stack</h4>
+Anytime you execute or invoke a function in js, a new execution context is created, each execution context, 
+has its own variable environment.  
+"Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.  
+The event queue is constantly monitored by javascript engine.
+  
+---
+
 <h4>Scopes in javascript</h4>
 - Global Scope  
 - Local Scope  
@@ -71,6 +115,14 @@ In other words, bind () allows us to easily set which specific object will be bo
 
 ---
 <br><br>
+<h4>Javascript types</h4>
+You dont need to tell the engine what type of data a variable holds, it is going
+to figure it out while your code is running.
+
+
+---
+
+
 <h4>Closures</h4>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:  
 it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,  

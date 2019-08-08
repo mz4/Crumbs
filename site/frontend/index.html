@@ -111,9 +111,11 @@ Javscript engine wraps the code into an execution context.
 - Special Object 'this'<br />
 - Ref to outer environment  </p>
 <hr />
-<p><br><br>
+<p><br></p>
+<hr />
 <h4>Javscript Engine</h4>
-it performs following two steps while executing any code:  </p>
+
+<p>it performs following two steps while executing any code:  </p>
 <h5>Creation Phase</h5>
 
 <ul>
@@ -139,10 +141,47 @@ Javascript for programmers behaves in a single threaded manner.<br />
 And it is Synchronous, one line of code being executed at the time.</p>
 <hr />
 <p><br><br>
+<br></p>
+<h4>Single Threaded (One command at the time) & Synchonous</h4>
+
+<p>Javascript for programmers behaves in a single threaded manner, one command at the time.<br />
+And it is Synchronous, one line of code being executed at the time.</p>
+<hr />
+<h4>Bind</h4>
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
+<pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
+// &lt;input type=&quot;text&quot;&gt;
+var user = {
+    data        :[
+        {name:&quot;T. Woods&quot;, age:37},
+        {name:&quot;P. Mickelson&quot;, age:43}
+    ],
+    clickHandler:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
+        $ (&quot;input&quot;).val (this.data[randomNum].name + &quot; &quot; + this.data[randomNum].age);
+    }
+}
+// Assign an eventHandler to the button's click event
+$ (&quot;button&quot;).click (user.clickHandler);
+</code></pre>
+
+<hr />
+<h4>Function invocations (running functions) and execution stack</h4>
+
+<p>Anytime you execute or invoke a function in js, a new execution context is created, each execution context, 
+has its own variable environment.<br />
+"Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.<br />
+The event queue is constantly monitored by javascript engine.</p>
+<hr />
 <h4>Scopes in javascript</h4>
-- Global Scope<br />
-- Local Scope<br />
-- Block Scope (let)  </p>
+
+<ul>
+<li>Global Scope  </li>
+<li>Local Scope  </li>
+<li>Block Scope (let)  </li>
+</ul>
 <h4>Old school JavaScript</h4>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
@@ -172,8 +211,13 @@ We use the Bind () method primarily to call a function with the this value set e
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <hr />
 <p><br><br>
+<h4>Javascript types</h4>
+You dont need to tell the engine what type of data a variable holds, it is going
+to figure it out while your code is running.</p>
+<hr />
 <h4>Closures</h4>
-A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
+
+<p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
 it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,<br />
 and it has access to the global variables.  </p>
 <pre><code class="javascript">&lt;script&gt;
