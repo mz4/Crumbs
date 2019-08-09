@@ -100,22 +100,24 @@
 
 <h1 id="frontend">FRONTEND</h1>
 <hr />
+<p><br></p>
 <h2 id="javascript">JAVASCRIPT</h2>
-<p><br><br>
+<hr />
+<p><br>
 <h4>Execution Context</h4>
-The environment in which any code is run.<br />
+The environment in which any code run.<br />
 Javscript engine wraps the code into an execution context.
-<br>
-<h4>Javscript engine creates in the Execution Context</h4>
+<br><br>
+Javscript engine creates in the Execution Context:<br />
 - Global Object Window (browser)<br />
 - Special Object 'this'<br />
 - Ref to outer environment  </p>
-<hr />
 <p><br></p>
 <hr />
+<p><br></p>
 <h4>Javscript Engine</h4>
 
-<p>it performs following two steps while executing any code:  </p>
+<p>It performs following two steps while executing any code:  </p>
 <h5>Creation Phase</h5>
 
 <ul>
@@ -130,51 +132,38 @@ Javscript engine wraps the code into an execution context.
 <li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
 <li>Variable assignment are done in this phase </li>
 </ul>
+<p><br></p>
 <hr />
-<p><br><br>
+<p><br></p>
 <h4>Variable hoisting</h4>
-Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function). </p>
+
+<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope<br />
+(to the top of the current script or the current function). </p>
+<p><br></p>
 <hr />
-<p><br><br>
-<h4>Single Threaded (One command at the time) &amp; Synchonous</h4>
-Javascript for programmers behaves in a single threaded manner.<br />
-And it is Synchronous, one line of code being executed at the time.</p>
-<hr />
-<p><br><br>
-<br></p>
+<p><br></p>
 <h4>Single Threaded (One command at the time) & Synchonous</h4>
 
 <p>Javascript for programmers behaves in a single threaded manner, one command at the time.<br />
 And it is Synchronous, one line of code being executed at the time.</p>
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Bind</h4>
 
 <p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
-<pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
-// &lt;input type=&quot;text&quot;&gt;
-var user = {
-    data        :[
-        {name:&quot;T. Woods&quot;, age:37},
-        {name:&quot;P. Mickelson&quot;, age:43}
-    ],
-    clickHandler:function (event) {
-        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
-        $ (&quot;input&quot;).val (this.data[randomNum].name + &quot; &quot; + this.data[randomNum].age);
-    }
-}
-// Assign an eventHandler to the button's click event
-$ (&quot;button&quot;).click (user.clickHandler);
-</code></pre>
-
+<p><br></p>
 <hr />
-<h4>Function invocations (running functions) and execution stack</h4>
+<p><br></p>
+<h4>Function invocations and execution stack</h4>
 
-<p>Anytime you execute or invoke a function in js, a new execution context is created, each execution context, 
-has its own variable environment.<br />
+<p>Anytime you execute or invoke a function in js, a new execution context is created, each execution context, has its own variable environment.<br />
 "Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.<br />
 The event queue is constantly monitored by javascript engine.</p>
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Scopes in javascript</h4>
 
 <ul>
@@ -182,13 +171,17 @@ The event queue is constantly monitored by javascript engine.</p>
 <li>Local Scope  </li>
 <li>Block Scope (let)  </li>
 </ul>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Old school JavaScript</h4>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
-<h4>Global Scope</h4>
-Variables are known throughout the application, from the start of the application<br />
-<h4>Functional Scope</h4>
-Variables are known within the function they are declared in, from the start of the function  </p>
+- Global Scope: Variables are known throughout the application, from the start of the application<br />
+- Functional Scope: Variables are known within the function they are declared in, from the start of the function  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Modern JavaScript</h4>
 
 <p>The most recent JavaScript specs now also allow a third scope :  </p>
@@ -205,16 +198,18 @@ Block scope is within curly brackets. (let and const are block scope.)  </p>
 
 <p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.</p>
 <hr />
-<p><br><br>
+<p><br><br></p>
 <h4>Bind</h4>
-We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <hr />
+<p><br><br></p>
 <p><br><br>
 <h4>Javascript types</h4>
-You dont need to tell the engine what type of data a variable holds, it is going
-to figure it out while your code is running.</p>
+You dont need to tell the engine what type of data a variable holds, it is going to figure it out while your code is running.</p>
 <hr />
+<p><br><br></p>
 <h4>Closures</h4>
 
 <p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
@@ -2192,11 +2187,12 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
+<hr />
 <h4>CSS Architecture</h4>
 
-<h4>SMACSS</h4>
+<hr />
+<h4>SMACSS method consists on organizing CSS rules in five different categories:</h4>
 
-<p>SMACSS method consists on organizing CSS rules in five different categories:  </p>
 <ul>
 <li>Basic: Default elements styles. It doesn’t include any class or ID selectors.</li>
 <li>Layout: It divides the content into sections (header, footer, primary content).</li>
@@ -2231,164 +2227,7 @@ def upload_license_action(args):
 <li>Border: A border that goes around the padding and content</li>
 <li>Margin: Clears an area outside the border. The margin is transparent</li>
 </ul>
-<h4>Box sizing</h4>
-
-<p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
-padding and border add the width of an object.<br />
-With box sizing the padding and border of that element no longer increase its width.</p>
-<pre><code class="css">html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
-}
-</code></pre>
-
-<h4>Centering Things</h4>
-
-<p><a href="https://css-tricks.com/centering-css-complete-guide/">csstricks centering</a></p>
-<ul>
-<li>Centering line of texts:  </li>
-</ul>
-<pre><code class="css">p { text-align: center }
-</code></pre>
-
-<ul>
-<li>Centering a block or image:  </li>
-</ul>
-<pre><code class="css">p.blocktext {
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em
-}
-&lt;p class=&quot;blocktext&quot;&gt;
-</code></pre>
-
-<ul>
-<li>Centering vertically:<br />
-<a href="https://vanseodesign.com/css/vertical-centering/">centering 1</a>
-<a href="https://www.w3schools.com/howto/howto_css_center-vertical.asp">centering 2 w3c</a>
-The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  </li>
-</ul>
-<pre><code class="css">DIV.container {
-  min-height: 10em;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-&lt;DIV class=&quot;container&quot;&gt;
-  &lt;P&gt;This small paragraph
-&lt;/DIV&gt;
-</code></pre>
-
-<p>center vertically ex. 2</p>
-<pre><code class="css">    labelContainer: {
-      display: 'table-cell',
-      verticalAlign: 'middle',
-      height: '30px',
-    },
-</code></pre>
-
-<ul>
-<li>Centering vertically CSS3:</li>
-</ul>
-<pre><code class="css">&lt;div class=container3&gt;
-  &lt;p&gt;This paragraph…
-&lt;/div&gt;
-
-div.container3 {
-  height: 10em;
-  position: relative 
-}
-div.container3 p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%) 
-}
-</code></pre>
-
-<ul>
-<li>Centering with flex:</li>
-</ul>
-<pre><code class="css">div.container5 {
-  height: 10em;
-  display: flex;
-  align-items: center 
-}
-div.container5 p {
-  margin: 0 
-}
-</code></pre>
-
-<ul>
-<li>Centering horizontally and vertically with css level 3</li>
-</ul>
-<pre><code class="css">&lt;div class=container4&gt;
-  &lt;p&gt;Centered!
-&lt;/div&gt;
-
-div.container4 {
-  height: 10em;
-  position: relative 
-}
-
-div.container4 p {
-  margin: 0;
-  background: yellow;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
-</code></pre>
-
-<ul>
-<li>Centering horizontally and vertically in flex</li>
-</ul>
-<pre><code class="css">div.container6 {
-  height: 10em;
-  display: flex;
-  align-items: center;
-  justify-content: center 
-}
-div.container6 p {
-  margin: 0 
-}
-</code></pre>
-
-<ul>
-<li>Centering in the viewport in css 3</li>
-</ul>
-<pre><code class="css">&lt;html&gt;
-  &lt;style&gt;
-    body {
-      background: white 
-    }
-    section {
-      background: black;
-      color: white;
-      border-radius: 1em;
-      padding: 1em;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%) 
-    }
-  &lt;/style&gt;
-  &lt;section&gt;
-    &lt;h1&gt;Nicely centered&lt;/h1&gt;
-    &lt;p&gt;This text block is vertically centered.
-    &lt;p&gt;Horizontally, too, if the window is wide enough.
-  &lt;/section&gt;
-</code></pre>
-
+<hr />
 <h4>Formatting CSS - based on Airbnb style guide</h4>
 
 <ul>
@@ -2451,7 +2290,7 @@ reusable, repeatable snippets that can be used independently throughout a websit
 <li>Media queries (CSS3)  </li>
 <li>Images that resize  </li>
 </ul>
-<h4>Grids</h4>
+<h4>Dev made Grids</h4>
 
 <p><a href="https://css-tricks.com/dont-overthink-it-grids/">homemade grids guide</a></p>
 <h4>FLEXBOX</h4>
@@ -2614,6 +2453,161 @@ place-self: center;
 }
 </code></pre>
 
+<hr />
+<p><br><br></p>
+<h4>CSS Grid vs Flexbox</h4>
+
+<p><a href="https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412">CSS grid vs flexbox</a>
+- CSS Grid Layout is a two-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a one-dimensional system (either in a column or a row).
+- A core difference between CSS Grid and Flexbox is that — CSS Grid’s approach is layout-first while Flexbox’ approach is content-first. 
+- If you are well aware of your content before making layout, then blindly opt for Flexbox and if not, opt for CSS Grid.
+- Flexbox layout is most appropriate to the components of an application (as most of them are fundamentally linear), and small-scale layouts, while the Grid layout is intended for larger scale layouts which aren’t linear in their design.
+- If you only need to define a layout as a row or a column, then you probably need flexbox. If you want to define a grid and fit content into it in two dimensions — you need the grid.</p>
+<hr />
+<p><br><br></p>
+<h4>Centering Things</h4>
+
+<p><a href="https://css-tricks.com/centering-css-complete-guide/">csstricks centering complete guide</a></p>
+<ul>
+<li>Centering line of texts:  </li>
+</ul>
+<pre><code class="css">p { text-align: center }
+</code></pre>
+
+<ul>
+<li>Centering a block or image:  </li>
+</ul>
+<pre><code class="css">p.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+}
+&lt;p class=&quot;blocktext&quot;&gt;
+</code></pre>
+
+<ul>
+<li>Centering vertically:<br />
+<a href="https://vanseodesign.com/css/vertical-centering/">centering 1</a>
+<a href="https://www.w3schools.com/howto/howto_css_center-vertical.asp">centering 2 w3c</a>
+The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  </li>
+</ul>
+<pre><code class="css">DIV.container {
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+&lt;DIV class=&quot;container&quot;&gt;
+  &lt;P&gt;This small paragraph
+&lt;/DIV&gt;
+</code></pre>
+
+<p>center vertically ex. 2</p>
+<pre><code class="css">    labelContainer: {
+      display: 'table-cell',
+      verticalAlign: 'middle',
+      height: '30px',
+    },
+</code></pre>
+
+<ul>
+<li>Centering vertically CSS3:</li>
+</ul>
+<pre><code class="css">&lt;div class=container3&gt;
+  &lt;p&gt;This paragraph…
+&lt;/div&gt;
+
+div.container3 {
+  height: 10em;
+  position: relative 
+}
+div.container3 p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%) 
+}
+</code></pre>
+
+<ul>
+<li>Centering with flex:</li>
+</ul>
+<pre><code class="css">div.container5 {
+  height: 10em;
+  display: flex;
+  align-items: center 
+}
+div.container5 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically with css level 3</li>
+</ul>
+<pre><code class="css">&lt;div class=container4&gt;
+  &lt;p&gt;Centered!
+&lt;/div&gt;
+
+div.container4 {
+  height: 10em;
+  position: relative 
+}
+
+div.container4 p {
+  margin: 0;
+  background: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically in flex</li>
+</ul>
+<pre><code class="css">div.container6 {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center 
+}
+div.container6 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering in the viewport in css 3</li>
+</ul>
+<pre><code class="css">&lt;html&gt;
+  &lt;style&gt;
+    body {
+      background: white 
+    }
+    section {
+      background: black;
+      color: white;
+      border-radius: 1em;
+      padding: 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%) 
+    }
+  &lt;/style&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Nicely centered&lt;/h1&gt;
+    &lt;p&gt;This text block is vertically centered.
+    &lt;p&gt;Horizontally, too, if the window is wide enough.
+  &lt;/section&gt;
+</code></pre>
+
+<hr />
+<p><br><br></p>
 <h4>Install SASS</h4>
 
 <pre><code>$ npm install sass-loader node-sass --save-dev
@@ -2803,6 +2797,26 @@ $zMessage: 5050;
 </code></pre>
 
 <hr />
+<p><br><br></p>
+<h4>Box sizing</h4>
+
+<p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
+padding and border add the width of an object.<br />
+With box sizing the padding and border of that element no longer increase its width.</p>
+<pre><code class="css">html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+</code></pre>
+
+<hr />
+<p><br><br></p>
 <h2 id="testing">TESTING</h2>
 <p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.<br />
 Jest is a test framework managed by Facebook.<br />
