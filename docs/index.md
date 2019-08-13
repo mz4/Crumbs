@@ -1,7 +1,13 @@
 # TOOLS  
 ---
-
+<br>
 ## GIT
+
+<br>
+
+---
+
+<br>
 
 <h4>Install git</h4>
 ```
@@ -10,6 +16,12 @@ sudo apt-get upgrade
 sudo apt-get install git
 git --version
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Create a New Git Repository from scratch</h4>
 ```
@@ -21,6 +33,12 @@ git add to add the files.
 git commit
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Create New Git Repository from existing project</h4>
 ```
 cd into the directory containing the project.
@@ -30,6 +48,11 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Connect to github</h4>
 ```
@@ -41,6 +64,11 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Create, switch and push origin new branch</h4>
 ```
@@ -48,6 +76,11 @@ git checkout -b issue400-master
 git push -u origin issue400-master
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Add, Commit and Push</h4>
 ```
@@ -58,6 +91,11 @@ git commit
 git push
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Delete a local and remote branch</h4>
 ```
@@ -65,6 +103,11 @@ git branch -d branch_name
 git push origin --delete <branch_name>
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Clean Local branch</h4>
 ```
@@ -73,12 +116,22 @@ git checkout .
 git clean -fdx
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Clone repo</h4>
 ```
 git clone USER@10.0.2.10:/home/git/repos/sys .
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Clone specific branch</h4>
 ```
@@ -86,17 +139,33 @@ git clone -b <branch> <remote_repo>
 git clone -b my-branch git@github.com:user/myproject.git
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Show current branch</h4>
 ```
 git branch
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Show local and remote branch</h4>
 ```
 git branch -a
 ```
+
+<br>
+
+---
+
+<br>
 
 
 <h4>Check Status</h4>
@@ -104,11 +173,22 @@ git branch -a
 git status
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Check Log</h4>
 ```
 git log
 ```
+
+<br>
+
+---
+
+<br>
 
 
 <h4>Graphical Log</h4>
@@ -116,50 +196,100 @@ git log
 git log --graph --decorate
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Log commit subject of last 10 commits</h4>
 ```
 git log -10 --pretty=format:"%h %s"
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Edit Last Commit Message</h4>
 ```
 git commit --amend -m "New commit message"
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Single file history</h4>
 ```
 git log -p filename
 ```
 
+<br>
+
+---
+
+<br>
 
 <h4>Get tag</h4>
 ```
 git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Get commits by date and author</h4>
 ```
 git log --pretty=format:"%ad - %an: %s" --after="2010-02-15" --until="2018-08-20" --author="John"
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Get number of commits by author</h4>
 ```
 git shortlog -s -n --all
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Remove local untracked files</h4>
 ```
 git clean -fdx
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Undo last commit.</h4>
 Warning: Don't do this if you've already pushed
 ```
 git reset HEAD~
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Undo last commit.</h4>
 If you don't want the changes and blow everything away:
@@ -168,31 +298,67 @@ Warning: Don't do this if you've already pushed
 git reset --hard HEAD~
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Untrack .pyc files</h4>
 ```
 $ find . -name '*.pyc' | xargs -n 1 git rm --cached
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Switch to branch</h4>
 ```
 git checkout BRANCHNAME
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Pull from master branch</h4>
 ```
 git pull origin master
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Checkout master</h4>
 ```
 git chekcout master
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Merge branch into master</h4>
 ```
 git checkout master
 git merge user_interface
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Rebase</h4>
 git-rebase - Reapply commits on top of another base tip
@@ -207,11 +373,23 @@ git add namefile.jsx
 git rebase --continue
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Create Tags</h4>
 ```
 git tag v1.0 ec32d32
 git push origin --tags
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Undo a local commit</h4>
 ```
@@ -219,10 +397,22 @@ git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Undo git add</h4>
 ```
 git reset filename.jsx
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Make a copy of local branch</h4>
 ```
@@ -230,30 +420,66 @@ git checkout old_branch
 git branch new_branch
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Show differences after git pull</h4>
 ```
 git diff master@{1} master
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Lists branches merged into master</h4>
 ```
 git branch --merged master
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Lists branches merged into HEAD</h4>
 ```
 git branch --merged 
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Lists branches that have not been merged</h4>
 ```
 git branch --no-merged
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Checkout previous branch</h4>
 ```
 git checkout -
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Diff between branches</h4>
 Diff between current branch and master:  
@@ -261,28 +487,58 @@ Diff between current branch and master:
 git diff master
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Diff between two branches:</h4>
 ```
 git diff master..staging
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Show only files that are different between the two branches</h4>
 ```
 git diff --name-status master..staging
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Create New Branch and Checkout – In One Command</h4>
 ```
 git checkout -b <branch_name>
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Revert Changes to File</h4>
 ```
 git checkout -- <file>
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Squashing commits into one</h4>
-to maintain a clean commit log message when merging the remote branch to master.
+To maintain a clean commit log message when merging the remote branch to master.
 
 SCRIPT:
 ```
@@ -353,9 +609,21 @@ Now that the commit has been squashed into one, you can push to the remote branc
 git push --force origin <name_of_branch>
 ```
 
+<br>
+
+---
+
+<br>
+
 ---
 
 ## LINUX TIPS
+
+<br>
+
+---
+
+<br>
 
 <h4>Systems Directories</h4>
 ```
@@ -385,6 +653,12 @@ git push --force origin <name_of_branch>
 /var/log log files
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Most used Commands</h4>
 ```
 ls Directory listing
@@ -409,8 +683,13 @@ cp -r dir1 dir2 Copy dir1 to dir2;create dir2 if not present
 mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
 ln -s file link Create symbolic link link to file
 ```
+<br>
 
-Process Management
+---
+
+<br>
+
+<h4>Process Management</h4>
 ```
 ps To display the currently working processes
 top Display all running process
@@ -422,107 +701,259 @@ fg Brings the most recent job to foreground
 fg n Brings job n to the foreground
 ```
 
-File permission
+<br>
+
+---
+
+<br>
+
+<h4>File permission</h4>
 ```
 chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
 • 4-read(r)
 • 2-write(w)
 • 1-execute(x)
 ```
-Find how many lines for file extension
+
+<br>
+
+---
+
+<br>
+
+<h4>How many lines for file extension</h4>
 ```
 wc `find | grep jsx$`
 ```
 
-truncate file content
+<br>
+
+---
+
+<br>
+
+<h4>Truncate file content</h4>
 ```
 truncate -s 0 dash.txt
 ```
 
-cat long file
+<br>
+
+---
+
+<br>
+
+<h4>cat long file</h4>
 ```
 cat branch | more -d
 ```
 
-Check if port is listening
+<br>
+
+---
+
+<br>
+
+<h4>Check if port is listening</h4>
 ```
 sudo netstat -ntlp | grep :443
 ```
-Find a string
+
+<br>
+
+---
+
+<br>
+
+<h4>Find a string</h4>
 ```
 grep -r "test" - find string
 ```
+
 Find string include, exclude, ignore case
 ```
 grep -r -i ".ui" --include \*.scss --exclude app.scss
 ```
+
 Find Large files
 ```
 find / -size +10M -ls
 ```
-Directory Size
+
+<br>
+
+---
+
+<br>
+
+<h4>Directory Size</h4>
 ```
 du -hs direcotryName
 ```
-Show system name and kernel
+
+<br>
+
+---
+
+<br>
+
+<h4>Show system name and kernel</h4>
 ```
 uname -a
 ```
-Start a screen session.
+
+<br>
+
+---
+
+<br>
+
+<h4>Start a screen session</h4>
 ```
 screen
 ```
-Resume a screen session.
+
+<br>
+
+---
+
+<br>
+
+<h4>Resume a screen session</h4>
 ```
 screen -r
 ```
-List screen sessions.
+
+<br>
+
+---
+
+<br>
+
+<h4>List screen sessions</h4>
 ```
 screen -list
 ```
-List All Available Packages
+
+<br>
+
+---
+
+<br>
+
+<h4>List All Available Packages</h4>
 ```
 apt-cache pkgnames
 ```
-Package Name and Description of Software
+
+<br>
+
+---
+
+<br>
+
+<h4>Package Name and Description of Software</h4>
 ```
 apt-cache search vsftpd
 ```
-Package Information
+
+<br>
+
+---
+
+<br>
+
+<h4>Package Information</h4>
 ```
 apt-cache show netcat
 ```
-Dependencies for Specific Packages
+
+<br>
+
+---
+
+<br>
+
+<h4>Dependencies for Specific Packages</h4>
 ```
 apt-cache showpkg vsftpd
 ```
-Update System Packages
+
+<br>
+
+---
+
+<br>
+
+<h4>Update System Packages</h4>
 ```
 sudo apt-get update
 ```
-Clean up disks space
+
+<br>
+
+---
+
+<br>
+
+<h4>Clean up disks space</h4>
 ```
 sudo apt-get clean
 ```
-Download only source code
+
+<br>
+
+---
+
+<br>
+
+<h4>Download only source code</h4>
 ```
 sudo apt-get --download-only source vsftpd
 ```
-Check broken dependencies
+
+<br>
+
+---
+
+<br>
+
+<h4>Check broken dependencies</h4>
 ```
 sudo apt-get check
 ```
-Remove files containing a string
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Remove files containing a string</h4>
 ```
 rm ?*foo?*
 ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
 ```
-Create folder and cd into it
+
+<br>
+
+---
+
+<br>
+
+<h4>Create folder and cd into it</h4>
 ```
 mkdir foo && cd "$_"
 ```
 
-Create Swap file
+<br>
+
+---
+
+<br>
+
+<h4>Create Swap file</h4>
 ```
 sudo mkdir -v /var/cache/swap
 cd /var/cache/swap
@@ -535,14 +966,26 @@ top -bn1 | grep -i swap
 echo "/var/cache/swap/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 ```
 
-Change permission in filder and files
+<br>
+
+---
+
+<br>
+
+<h4>Change permission in filder and files</h4>
 ```
 Chmod chown
 find . -type d -exec chmod 777 {} +
 find . -type f -exec chmod 777 {} +
 ```
 
-Mount/Unmount
+<br>
+
+---
+
+<br>
+
+<h4>Mount/Unmount</h4>
 ```
 cat /proc/partitions
 mknod
@@ -554,7 +997,13 @@ mount /dev/vdb /tmp/ciao
 unmount /tmp/ciao
 ```
 
-Compress/Uncompress  Files
+<br>
+
+---
+
+<br>
+
+<h4>Compress/Uncompress  Files</h4>
 Create a tar archive of a directory
 ```
 tar -cvf tarball_name.tar  /path/to/directory
@@ -607,6 +1056,12 @@ Set Default folder for screenshots
 ```
 gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/username/Pictures/GUI/"
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>REGEX</h4>
 [Regex checker](https://regex101.com/)  
@@ -748,11 +1203,21 @@ regex.exec("hello"); // returns result array, null otherwise
 "football".replace(/foot/,"basket"); // replaces matches with second argument
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## NODE / NPM  
 
-version
+<br>
+
+---
+
+<br>
+
+<h4>Check Version</h4>
 ```
 which node
 which npm
@@ -760,72 +1225,138 @@ node --version
 npm --version
 ```
 
-Update to latest version
+<br>
+
+---
+
+<br>
+
+<h4>Update to latest version</h4>
 ```
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 ```
 
-global install packages
+<br>
+
+---
+
+<br>
+
+<h4>Global install packages</h4>
 ```
 npm install uglify-js --global
 ```
 
-list global packages
+<br>
+
+---
+
+<br>
+
+<h4>List global packages</h4>
 ```
 npm list --global
 npm list -g --depth=0
 ```
 
-initialize project
+<br>
+
+---
+
+<br>
+
+<h4>Initialize project</h4>
 ```
 npm init
 ```
 
-local install packages devDependencies
+<br>
+
+---
+
+<br>
+
+<h4>Local install packages devDependencies</h4>
 ```
 npm install should --save-dev
 ```
 
-local install packages dependencies
+<br>
+
+---
+
+<br>
+
+<h4>Local install packages dependencies</h4>
 ```
 npm install should --save
 ```
 
-uninstall packages
+<br>
+
+---
+
+<br>
+
+<h4>Uninstall packages</h4>
 ```
 npm uninstall underscore
 ```
 
-install specific version
+<br>
+
+---
+
+<br>
+
+<h4>Install specific version</h4>
 ```
 npm install underscore@1.8.2
 ```
 
-check outdated packages
+<br>
+
+---
+
+<br>
+
+<h4>Check outdated packages</h4>
 ```
 npm outdated
 ```
 
-update packages
+<br>
+
+---
+
+<br>
+
+<h4>Update packages</h4>
 ```
 npm update underscore
 ```
 
-Quick Project Setup - React, Webpack, Babel, ESLint
-  
-Dependencies
+<br>
+
+---
+
+<br>
+
+<h4>Quick Project Setup - React, Webpack, Babel, ESLint</h4>
+ 
+<h4>Dependencies</h4>
 ```
 npm install --save react react-dom
 ```
 
-Dev Dependencies
+<h4>Dev Dependencies</h4>
 ```
 npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-react babel-eslint css-loader node-sass sass-loader style-loader file-loader webpack webpack-dev-server eslint eslint-plugin-import eslint-plugin-react eslint-watch
 ```
 
-NPM Scripts (package.json)
+<h4>NPM Scripts (package.json)</h4>
 ```
 "scripts": {
   "start": "webpack-dev-server --progress --hot --inline",
@@ -836,7 +1367,7 @@ NPM Scripts (package.json)
 },
 ```
 
-NVM: manage different versions of Node:
+<h4>NVM: manage different versions of Node:</h4>
 ```
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 ```
@@ -847,23 +1378,46 @@ $ [ -s “$NVM_DIR/nvm.sh” ] && \. “$NVM_DIR/nvm.sh”
 $ [ -s "$NVM_DIR/bash_completion" ] && \.   "$NVM_DIR/bash_completion"
 ```
 
-Install a new version
+<br>
+
+---
+
+<br>
+
+<h4>Install a new version</h4>
 ```
 nvm install 8.9.4
 ```
 
-Show available versions of node
+<br>
+
+---
+
+<br>
+
+<h4>Show available versions of node</h4>
 ```
 nvm ls
 ```
 
-Use a particular version
+<br>
+
+---
+
+<br>
+
+<h4>Use a particular version</h4>
 ```
 nvm use 10.15.3
 ```
 
+<br>
 
-Babel (.babelrc)
+---
+
+<br>
+
+<h4>Babel (.babelrc)</h4>
 ```
 {
   "presets": [
@@ -873,9 +1427,13 @@ Babel (.babelrc)
 }
 ```
 
+<br>
+
 ---
 
-Move a module from devDependencies to dependencies:
+<br>
+
+<h4>Move a module from devDependencies to dependencies</h4>
 ```
 npm install <module_name> --save-prod
 ```
@@ -884,7 +1442,13 @@ or
 yarn remove <module_name> --dev&yarn add <module_name> 
 ```
 
-Move a module from dependencies to devDependencies :
+<br>
+
+---
+
+<br>
+
+<h4>Move a module from dependencies to devDependencies</h4>
 ```
 npm install <module_name> --save-dev
 ```
@@ -893,7 +1457,11 @@ or
 yarn remove <module_name>&yarn add <module_name> --dev
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## WEBPACK
 

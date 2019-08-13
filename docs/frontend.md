@@ -2,8 +2,13 @@
 ---
 <br>
 ## JAVASCRIPT
----
+
 <br>
+
+---
+
+<br>
+
 <h4>Execution Context</h4>
 The environment in which any code run.  
 Javscript engine wraps the code into an execution context.
@@ -117,23 +122,30 @@ Block scope is within curly brackets. (let and const are block scope.)
 <h4>Scope chain</h4>
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
 
+<br>
+
 ---
-<br><br>
+
+<br>
 
 <h4>Bind</h4>
 We use the Bind () method primarily to call a function with the this value set explicitly.  
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
 
----
-<br><br>
+<br>
 
-<br><br>
+---
+
+<br>
+
 <h4>Javascript types</h4>
 You dont need to tell the engine what type of data a variable holds, it is going to figure it out while your code is running.
 
+<br>
 
 ---
-<br><br>
+
+<br>
 
 <h4>Closures</h4>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:  
@@ -160,8 +172,12 @@ and it has access to the global variables.
 </html>
 ```
 
+<br>
+
 ---
-<br><br>
+
+<br>
+
 <h4>Promise</h4>
 Promises are one way to deal with asynchronous code.  
 A Promise is in one of these states:  
@@ -214,6 +230,12 @@ function myAsyncFunction(url) {
 }
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Callback, Promises and Async</h4>
   
 <h4>Callback:</h4>
@@ -245,7 +267,11 @@ function printAll(){
 printAll()
 ```
 
+<br>
+
 ---
+
+<br>
 
 <h4>Promises vs callaback</h4>
 Promises try to fix callback nesting problem. 
@@ -287,12 +313,11 @@ async function printAll(){
 printAll()
 ```
 
-<h4>Object is an array?</h4>
-```
-var d = []
-console.log(Object.prototype.toString.call(d));
-```
+<br>
+
 ---
+
+<br>
 
 <h4>Prototype</h4>
 [Prototype link](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)  
@@ -573,14 +598,11 @@ myObj.key = value;
 - undefined
 - object
 
-
-
-
-
+<br>
 
 ---
 
-
+<br>
 
 ## ES6
 <h4>Spread Operator 1</h4>  
@@ -900,29 +922,721 @@ const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current
       }
     });
 ```
+
+<br>
+
 ---
 
-## JS Utilities
+<br>
 
-<h4>Check if an object is empty</h4>
-```javascript
-function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
+
+
+## TYPESCRIPT
+It is a typed superset of Javascript that compiles to plain JavaScript.  
+JavaScript has seen a vast development in the last few years.  
+But, JavaScript was never meant for such large-scale application development.  
+JavaScript is a dynamic programming language with no type system.  
+A no type system means that a variable in JavaScript can have any type of value such as string, number, boolean etc.  
+  
+The type system increases the code quality, readability and makes it an easy to maintain and refactor code base.  
+More importantly, errors can be caught at compile time rather than at run time.  
+
+Hence, the reason to use TypeScript is that it allows JavaScript to be used at scale.  
+
+<br>
+
+---
+
+<br>
+
+<h4>Typescript Features</h4>
+- Cross-Platform: TypeScript runs on any platform that JavaScript runs on.  
+- Object Oriented Language: TypeScript provides powerful features such as Classes, Interfaces, and Modules.  
+- Static type-checking: TypeScript uses static typing. This is done using type annotations. It helps type checking at compile time. Thus, you can find errors while typing the code without running your script each time. Additionally, using the type inference mechanism, if a variable is declared without a type, it will be inferred based on its value.  
+- ES 6 Features: TypeScript includes most features of planned ECMAScript 2015 (ES 6, 7) such as class, interface, Arrow functions etc.
+
+This command compiles the TypeScript code into a plain JavaScript file.
+```
+tsc <filename>.ts 
+```
+Visual Studio Code includes TypeScript language support but does not include the TypeScript compiler, tsc.  
+Install typescript compiler
+```
+npm install -g typescript
+```
+
+```
+tsc example.ts
+```
+
+a: number and b: number. This is called a Type annotation.  
+Type annotation in an object:
+```js
+var employee : { 
+    id: number; 
+    name: string; 
+}; 
+
+employee = { 
+  id: 100, 
+  name : "John"
+}
+```
+<br>
+
+```ts
+var age: number = 32; // number variable
+var name: string = "John";// string variable
+var isUpdated: boolean = true;// Boolean variable
+```
+<br>
+
+In the above example, each variable is declared with their data type.  
+These are type annotations.  
+
+<br>
+
+Type annotations are used to enforce type checking. It is not mandatory in TypeScript to use type annotations.  
+However, type annotations help the compiler in checking types and helps avoid errors dealing with data types.  
+It is also a good way of writing code for easier readability and maintenance by future developers working on your code.  
+
+<br>
+
+---
+
+<br>
+
+<h4>Type Inference</h4>
+Where not declared, Types are inferred by TypeScript compiler when:  
+- Variables are initialized  
+- Default values are set for parameters  
+- Function return types are determined  
+
+<br>
+
+---
+
+<br>
+
+<h4>typescript example with if</h4>
+```js
+let let x: number = 10, y = 20;
+
+if (x > y) 
+{
+    console.log('x is greater than y.');
+} 
+else
+{
+    console.log('x is less than or equal to y.'); //This will be executed
+}
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>typescript switch example</h4>
+```js
+var a:number = 1
+var b:number = 3
+ 
+switch (a+b){
+    case 1 : {
+        console.log("a+b is 1.")
+        break
     }
-    return true;
+    case 3 : {
+        console.log("a+b is 3.")
+        break
+    }
+    case 4 : {
+        console.log("a+b is 4.")
+        break
+    }
+    case 5 : {
+        console.log("a+b is 5.")
+        break
+    }
+    default : {
+        console.log("a+b is 5.")
+        break
+    }
 }
 ```
 
-```javascript
-var myObj = {}; // Empty Object
-if(isEmpty(myObj)) {
-    // Object is empty (Would return true in this example)
-} else {
-    // Object is NOT empty
+<br>
+
+---
+
+<br>
+
+<h4>Typescript loops</h4>
+
+In TypeScript, there are three types of for loops:  
+
+<br>
+
+- for loop
+```js
+for (let i = 0; i < 3; i++) {
+  console.log ("Block statement execution no." + i);
 }
 ```
+
+<br>
+
+---
+
+<br>
+
+- for..of loop  
+it iterates over elements of an array  
+```js
+let arr = [10, 20, 30, 40];
+
+for (var val of arr) {
+  console.log(val); // prints values: 10, 20, 30, 40
+}
+```
+
+<br>
+
+---
+
+<br>
+
+- for..in loop  
+it returns the index.
+```js
+let arr = [10, 20, 30, 40];
+
+for (var index in arr) {
+  console.log(index); // prints indexes: 0, 1, 2, 3
+
+  console.log(arr[index]); // prints elements: 10, 20, 30, 40
+}
+```  
+
+<br>
+
+---
+
+<br>
+
+<h4>do ... while</h4>
+```js
+let i: number = 4;
+do {
+    console.log( "Block statement execution no." + i )
+    i++;
+} while ( i < 4)
+```
+
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Typescript functions</h4>
+```javascript
+function Greet(greeting: string, name?: string ) : string {
+    return greeting + ' ' + name + '!';
+}
+
+Greet('Hello','Steve');//OK, returns "Hello Steve!"
+Greet('Hi'); // OK, returns "Hi undefined!".
+Greet('Hi','Bill','Gates'); //Compiler Error: Expected 2 arguments, but got 3.
+```
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Arrow functions</h4>
+```js
+let sum = (x: number, y: number): number => {
+            return x + y;
+}
+
+sum(10, 20); //returns 30
+```
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Function Overloading</h4>
+You can have multiple functions with the same name but different parameter types and return type.  
+However, the number of parameters should be the same.
+
+```js
+function add(a:string, b:string):string;
+
+function add(a:number, b:number): number;
+
+function add(a: any, b:any): any {
+    return a + b;
+}
+
+add("Hello ", "Steve"); // returns "Hello Steve" 
+add(10, 20); // returns 30 
+```
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Rest Parameters</h4>
+When the number of parameters that a function will receive is not known or can vary, we can use rest parameters.  
+
+```js
+function Greet(greeting: string, ...names: string[]) {
+    return greeting + " " + names.join(", ") + "!";
+}
+
+Greet("Hello", "Steve", "Bill"); // returns "Hello Steve, Bill!"
+
+Greet("Hello");// returns "Hello !"
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Interfaces</h4>
+In TypeScript, Interface is a deal that the objects of the type should contain properties and functions declared in the interface.  
+
+```js
+interface interface_name {
+     // variables' declaration
+     // methods' declaration
+}
+```
+
+function example:  
+```js
+interface Student{
+    // variables
+    name:string
+    rollnumber:number
+ 
+    // functions
+    displayInformation: () => void
+}
+ 
+var student1: Student = {
+    name:"Rohit",
+    rollnumber:2, 
+    displayInformation: ():void => {
+        console.log("\n---- Student Information ----")
+        console.log("Name is : " + student1.name)
+        console.log("Roll Number is : " + student1.rollnumber)
+    }
+}
+ 
+console.log(student1.name)
+console.log(student1.rollnumber)
+student1.displayInformation()
+```
+
+class example:
+```js
+interface IEmployee {
+    empCode: number;
+    name: string;
+    getSalary:(number)=>number;
+}
+
+class Employee implements IEmployee { 
+    empCode: number;
+    name: string;
+
+    constructor(code: number, name: string) { 
+                this.empCode = code;
+                this.name = name;
+    }
+
+    getSalary(empCode:number):number { 
+        return 20000;
+    }
+}
+
+let emp = new Employee(1, "Steve");
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Class</h4>
+```js
+interface IPerson {
+    name: string;
+    display():void;
+}
+
+interface IEmployee {
+    empCode: number;
+}
+
+class Employee implements IPerson, IEmployee {
+    empCode: number;
+    name: string;
+    
+    constructor(empcode: number, name:string) {
+        this.empCode = empcode;
+        this.name = name;
+    }
+    
+    display(): void {
+        console.log("Name = " + this.name +  ", Employee Code = " + this.empCode);
+    }
+}
+
+let per:IPerson = new Employee(100, "Bill");
+per.display(); // Name = Bill, Employee Code = 100
+
+let emp:IEmployee = new Employee(100, "Bill");
+emp.display(); //Compiler Error: Property 'display' does not exist on type 'IEmployee'
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
+
+<h4>TSLint-React</h4>
+Install typescript,tslint and tslint-react packages globally  
+```
+yarn global add tslint typescript tslint-react
+```
+
+<h4>Now inside your project directory, initialise tslint</h4>
+```
+tslint --init
+```
+
+<h4>Configuration tslint</h4>
+```ts
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint-react"
+    ],
+    "jsRules": {
+    },
+    "rules": {
+        "member-access": false,
+        "ordered-imports": false,
+        "quotemark": false,
+        "no-console": false,
+        "semicolon": false,
+        "jsx-no-lambda": false
+    },
+    "rulesDirectory": [
+    ],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+       ]
+   }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Applying interfaces to components</h4>
+```js
+interface FormState {
+    submitted?: boolean;
+    full_name: string;
+    age: number;
+}
+```
+
+```js
+export class MyForm extends React.Component<FormProps, FormState> {
+   ...
+}
+```
+
+and with functional components
+```js
+function MyForm(props: FormProps) {
+  ...
+}
+```
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Import/Export Interfaces</h4>
+export  
+```js
+// src/types/index.tsx
+export interface FormProps {
+    first_name: string;
+    last_name: string;
+    age: number;
+    agreetoterms?: boolean;
+}
+```
+
+import  
+```js
+// src/components/MyForm.tsx
+import React from 'react';
+import { StoreState } from '../types/index';
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>enum</h4>  
+Check whether the submitted form value is valid.  
+```js
+// define enum
+enum HeardFrom {
+    SEARCH_ENGINE = "Search Engine",
+    FRIEND = "Friend",
+    OTHER = "Other"
+}
+//construct heardFrom array
+let heardFrom = [HeardFrom.SEARCH_ENGINE, 
+                 HeardFrom.FRIEND, 
+                 HeardFrom.OTHER];
+
+//get submitted form value
+const submitted_heardFrom = form.values.heardFrom;
+
+//check if value is valid
+heardFrom.includes(submitted_heardFrom)
+   ? valid = true
+   : valid = false;
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Using Typescript with React</h4>
+
+<h4>React Component with typescript</h4>
+```ts
+import * as React from 'react'
+
+export interface StandardComponentProps {
+  title?: string
+  children: React.ReactNode
+}
+
+export function StandardComponent({
+  children,
+  title = 'Dr.',
+}: StandardComponentProps) {
+  return (
+    <div>
+      {title}: {children}
+    </div>
+  )
+}
+```
+
+<br>
+
+---
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+---
+
+<br>
+
+<h4>Interface for Redux Store</h4>
+```js
+// src/types/index.tsx
+export interface MyStore {
+    language: string;
+    country: string;
+    auth: {
+        authenticated: boolean;
+        username?: string;
+    };
+}
+```
+
+<h4>Define Action type and actions</h4>
+```js
+// src/constants/index.tsx
+export const SET_LANGUAGE = 'INCREMENT_ENTHUSIASM';
+export type SET_LANGUAGE = typeof SET_LANGUAGE;
+export const SET_COUNTRY = 'SET_COUNTRY';
+export type SET_COUNTRY = typeof SET_COUNTRY;
+export const AUTHENTICATE = 'AUTHENTICATE';
+export type AUTHENTICATE = typeof AUTHENTICATE;
+```
+
+These const & type objects can now be imported into your src/actions/index.tsx file,  
+where we can define action interfaces and the actions themselves, and typing them along the way:  
+```js
+// src/actions/index.tsx
+import * as constants from '../constants';
+//define action interfaces
+export interface SetLanguage {
+    type: constants.SET_LANGUAGE;
+    language: string;
+}
+export interface SetCountry {
+    type: constants.SET_COUNTRY;
+    country: string;
+}
+export interface Authenticate{
+    type: constants.AUTHENTICATE;
+    username: string;
+    pw: string;
+}
+//define actions
+export function setLanguage(l: string): SetLanguage ({
+   type: constants.SET_LANGUAGE,
+   language: l
+});
+export function setCountry(c: string): SetCountry ({
+   type: constants.SET_COUNTRY,
+   country: c
+});
+export function authenticate(u: string, pw: string): Authenticate ({
+   type: constants.SET_COUNTRY,
+   username: u,
+   pw: pw
+});
+```
+
+Back in our actions file, add a union type for locality under our interfaces:  
+```js
+// src/actions/index.tsx
+export type Locality = SetLanguage | SetCountry;
+```
+
+```js
+// src/reducers/index.tsx
+import { Locality } from '../actions';
+import { StoreState } from '../types/index';
+import { SET_LANGUAGE, SET_COUNTRY, AUTHENTICATE} from '../constants/index';
+export function locality(state: StoreState, action: Locality):     StoreState {
+  
+  switch (action.type) {
+    case SET_LANGUAGE:
+      return return { ...state, language: action.language};
+    case SET_COUNTRY:
+      return { ...state, language: action.country};
+    case AUTHENTICATE:
+      return { 
+         ...state, 
+         auth: {
+            username: action.username, 
+            authenticated: true 
+          }
+      };
+   }
+  return state;
+}
+```
+
+<h4>Creating initial store</h4>
+```js
+// src/index.tsx
+import { createStore } from 'redux';
+import { locality } from './reducers/index';
+import { StoreState } from './types/index';
+const store = createStore<StoreState>(locality, {
+   language: 'British (English)',
+   country: 'United Kingdom',
+   auth: {
+       authenticated: false
+   }
+});
+```
+
+<h4>MapState and Dispatch</h4>
+```js
+// mapStateToProps example
+import { StoreState } from '../types/index';
+interface LocalityProps = {
+    country: string;
+    language: string;
+}
+function mapStateToProps (state: StoreState, ownProps: LocalityProps) ({
+     language: state.language,
+     country: state.country,
+});
+```
+
+<h4>MapDispatchToProps</h4>
+```js
+// mapDispatchToProps example
+const mapDispatchToProps = {
+   actions.setLanguage,
+   actions.setCountry
+}
+```
+
+
+<br>
+
+---
+
+<br>
 
 ## REACT
 
@@ -1071,7 +1785,11 @@ class NameForm extends React.Component {
 }
 ```
 
+<br>
+
 ---
+
+<br>
 
 <h4>React Fragment</h4>
 Fragments let you group a list of children without adding extra nodes to the DOM.
@@ -1207,6 +1925,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>React Redux Thunk</h4>  
 
@@ -1635,10 +2359,7 @@ Today, the most commonly used text formats is JSON.
 <h4>API Documentation</h4>
 - Resource Description  
   example from MailChimp Campaign resource
-  ```
-  Campaigns are how you send emails to your Mailchimp list. 
-  Use the Campaigns API calls to manage campaigns in your Mailchimp account.
-  ```
+
   Resource Description consists of 1-3 sentences.
   Resources usually have various endpoints to access the resource and multiple methods for each endpoint.  
   Sometimes the general resource isn’t described; instead, it just groups the endpoints.
@@ -1648,13 +2369,13 @@ Today, the most commonly used text formats is JSON.
   The endpoints indicate how you access the resource, 
   The method indicates the allowed interactions (such as GET, POST, or DELETE) with the resource.  
   Endpoints usually have brief descriptions similar to the overall resource description but shorter.  
-  ```
-  POST /campaigns	Create a new campaign
-  GET /campaigns	Get all campaigns
-  GET /campaigns/{campaign_id}	Get information about a specific campaign
-  PATCH /campaigns/{campaign_id}	Update the settings for a campaign
-  DELETE /campaigns/{campaign_id}	Delete a campaign
-  ```
+
+  POST /campaigns	Create a new campaign  
+  GET /campaigns	Get all campaigns  
+  GET /campaigns/{campaign_id}	Get information about a specific campaign  
+  PATCH /campaigns/{campaign_id}	Update the settings for a campaign  
+  DELETE /campaigns/{campaign_id}	Delete a campaign  
+
 - Parameters  
   Parameters are options you can pass with the endpoint to influence the response. 
   There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  
@@ -1689,7 +2410,7 @@ Today, the most commonly used text formats is JSON.
   listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.  
   The definition of the response is called the schema or model.
 
-  ```
+```json
   {
     "Context": "ualize",
     "Destination": "http://aaaa.com/aaa",
@@ -1703,7 +2424,7 @@ Today, the most commonly used text formats is JSON.
     "Oem": {},
     "Protocol": "Redfish"
   }
-  ```
+```
 
 [API Documentation example](https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html)  
 [API Docs list](https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites)  
@@ -1895,7 +2616,45 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 });
 ```
 
+<br>
+
 ---
+
+<br>
+
+## JS Utilities
+
+<h4>Check if an object is empty</h4>
+```javascript
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+```
+
+```javascript
+var myObj = {}; // Empty Object
+if(isEmpty(myObj)) {
+    // Object is empty (Would return true in this example)
+} else {
+    // Object is NOT empty
+}
+```
+
+<h4>Object is an array?</h4>
+```js
+var d = []
+console.log(Object.prototype.toString.call(d));
+```
+
+<br>
+
+---
+
+<br>
 
 ## GRAPHQL
 <h4>About</h4>

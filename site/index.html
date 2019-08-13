@@ -101,7 +101,11 @@
 
 <h1 id="tools">TOOLS</h1>
 <hr />
+<p><br></p>
 <h2 id="git">GIT</h2>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Install git</h4>
 
 <pre><code>sudo apt-get update
@@ -110,6 +114,9 @@ sudo apt-get install git
 git --version
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Create a New Git Repository from scratch</h4>
 
 <pre><code>mkdir to create a directory to contain the project.
@@ -120,6 +127,9 @@ git add to add the files.
 git commit
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Create New Git Repository from existing project</h4>
 
 <pre><code>cd into the directory containing the project.
@@ -129,6 +139,9 @@ create a .gitignore to indicate all of the files you don’t want to track
 git commit.
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Connect to github</h4>
 
 <pre><code>Go to github.
@@ -139,12 +152,18 @@ git remote add origin git@github.com:username/new_repo
 git push -u origin master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Create, switch and push origin new branch</h4>
 
 <pre><code>git checkout -b issue400-master
 git push -u origin issue400-master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Add, Commit and Push</h4>
 
 <pre><code>git add sys_ui/css/FILE.css 
@@ -154,12 +173,18 @@ git commit
 git push
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Delete a local and remote branch</h4>
 
 <pre><code>git branch -d branch_name
 git push origin --delete &lt;branch_name&gt;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Clean Local branch</h4>
 
 <pre><code>git reset
@@ -167,83 +192,131 @@ git checkout .
 git clean -fdx
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Clone repo</h4>
 
 <pre><code>git clone USER@10.0.2.10:/home/git/repos/sys .
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Clone specific branch</h4>
 
 <pre><code>git clone -b &lt;branch&gt; &lt;remote_repo&gt;
 git clone -b my-branch git@github.com:user/myproject.git
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Show current branch</h4>
 
 <pre><code>git branch
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Show local and remote branch</h4>
 
 <pre><code>git branch -a
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Check Status</h4>
 
 <pre><code>git status
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Check Log</h4>
 
 <pre><code>git log
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Graphical Log</h4>
 
 <pre><code>git log --graph --decorate
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Log commit subject of last 10 commits</h4>
 
 <pre><code>git log -10 --pretty=format:&quot;%h %s&quot;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Edit Last Commit Message</h4>
 
 <pre><code>git commit --amend -m &quot;New commit message&quot;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Single file history</h4>
 
 <pre><code>git log -p filename
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Get tag</h4>
 
 <pre><code>git log --decorate v0.4bugfix|head -n1|sed 's/.*tag: //;s/[^a-zA-Z.0-9].*//'
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Get commits by date and author</h4>
 
 <pre><code>git log --pretty=format:&quot;%ad - %an: %s&quot; --after=&quot;2010-02-15&quot; --until=&quot;2018-08-20&quot; --author=&quot;John&quot;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Get number of commits by author</h4>
 
 <pre><code>git shortlog -s -n --all
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Remove local untracked files</h4>
 
 <pre><code>git clean -fdx
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Undo last commit.</h4>
 
 <p>Warning: Don't do this if you've already pushed</p>
 <pre><code>git reset HEAD~
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Undo last commit.</h4>
 
 <p>If you don't want the changes and blow everything away:
@@ -251,32 +324,50 @@ Warning: Don't do this if you've already pushed</p>
 <pre><code>git reset --hard HEAD~
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Untrack .pyc files</h4>
 
 <pre><code>$ find . -name '*.pyc' | xargs -n 1 git rm --cached
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Switch to branch</h4>
 
 <pre><code>git checkout BRANCHNAME
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Pull from master branch</h4>
 
 <pre><code>git pull origin master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Checkout master</h4>
 
 <pre><code>git chekcout master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Merge branch into master</h4>
 
 <pre><code>git checkout master
 git merge user_interface
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Rebase</h4>
 
 <p>git-rebase - Reapply commits on top of another base tip</p>
@@ -289,83 +380,128 @@ git rebase master
 git rebase --continue
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Create Tags</h4>
 
 <pre><code>git tag v1.0 ec32d32
 git push origin --tags
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Undo a local commit</h4>
 
 <pre><code>git reset --soft HEAD^     # use --soft if you want to keep your changes
 git reset --hard HEAD^     # use --hard if you don't care about keeping the changes you made
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Undo git add</h4>
 
 <pre><code>git reset filename.jsx
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Make a copy of local branch</h4>
 
 <pre><code>git checkout old_branch
 git branch new_branch
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Show differences after git pull</h4>
 
 <pre><code>git diff master@{1} master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Lists branches merged into master</h4>
 
 <pre><code>git branch --merged master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Lists branches merged into HEAD</h4>
 
 <pre><code>git branch --merged 
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Lists branches that have not been merged</h4>
 
 <pre><code>git branch --no-merged
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Checkout previous branch</h4>
 
 <pre><code>git checkout -
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Diff between branches</h4>
 
 <p>Diff between current branch and master:  </p>
 <pre><code>git diff master
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Diff between two branches:</h4>
 
 <pre><code>git diff master..staging
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Show only files that are different between the two branches</h4>
 
 <pre><code>git diff --name-status master..staging
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Create New Branch and Checkout – In One Command</h4>
 
 <pre><code>git checkout -b &lt;branch_name&gt;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Revert Changes to File</h4>
 
 <pre><code>git checkout -- &lt;file&gt;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Squashing commits into one</h4>
 
-<p>to maintain a clean commit log message when merging the remote branch to master.</p>
+<p>To maintain a clean commit log message when merging the remote branch to master.</p>
 <p>SCRIPT:</p>
 <pre><code>#!/bin/bash
 #
@@ -430,8 +566,14 @@ Combine the two commands to squash n amount of commits into one, with the specif
 <pre><code>git push --force origin &lt;name_of_branch&gt;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <hr />
 <h2 id="linux-tips">LINUX TIPS</h2>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Systems Directories</h4>
 
 <pre><code>/ The root directory.  
@@ -460,6 +602,9 @@ Combine the two commands to squash n amount of commits into one, with the specif
 /var/log log files
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Most used Commands</h4>
 
 <pre><code>ls Directory listing
@@ -485,7 +630,11 @@ mv file1 file2 Rename or move file1 to file2,if file2 is an existing directory
 ln -s file link Create symbolic link link to file
 </code></pre>
 
-<p>Process Management</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Process Management</h4>
+
 <pre><code>ps To display the currently working processes
 top Display all running process
 kill pid Kill the process with given pid
@@ -496,30 +645,54 @@ fg Brings the most recent job to foreground
 fg n Brings job n to the foreground
 </code></pre>
 
-<p>File permission</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>File permission</h4>
+
 <pre><code>chmod octal file Change the permission of file to octal,which can be found separately for user,group,world by adding,
 • 4-read(r)
 • 2-write(w)
 • 1-execute(x)
 </code></pre>
 
-<p>Find how many lines for file extension</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>How many lines for file extension</h4>
+
 <pre><code>wc `find | grep jsx$`
 </code></pre>
 
-<p>truncate file content</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Truncate file content</h4>
+
 <pre><code>truncate -s 0 dash.txt
 </code></pre>
 
-<p>cat long file</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>cat long file</h4>
+
 <pre><code>cat branch | more -d
 </code></pre>
 
-<p>Check if port is listening</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Check if port is listening</h4>
+
 <pre><code>sudo netstat -ntlp | grep :443
 </code></pre>
 
-<p>Find a string</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Find a string</h4>
+
 <pre><code>grep -r &quot;test&quot; - find string
 </code></pre>
 
@@ -531,68 +704,132 @@ fg n Brings job n to the foreground
 <pre><code>find / -size +10M -ls
 </code></pre>
 
-<p>Directory Size</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Directory Size</h4>
+
 <pre><code>du -hs direcotryName
 </code></pre>
 
-<p>Show system name and kernel</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Show system name and kernel</h4>
+
 <pre><code>uname -a
 </code></pre>
 
-<p>Start a screen session.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Start a screen session</h4>
+
 <pre><code>screen
 </code></pre>
 
-<p>Resume a screen session.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Resume a screen session</h4>
+
 <pre><code>screen -r
 </code></pre>
 
-<p>List screen sessions.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>List screen sessions</h4>
+
 <pre><code>screen -list
 </code></pre>
 
-<p>List All Available Packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>List All Available Packages</h4>
+
 <pre><code>apt-cache pkgnames
 </code></pre>
 
-<p>Package Name and Description of Software</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Package Name and Description of Software</h4>
+
 <pre><code>apt-cache search vsftpd
 </code></pre>
 
-<p>Package Information</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Package Information</h4>
+
 <pre><code>apt-cache show netcat
 </code></pre>
 
-<p>Dependencies for Specific Packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Dependencies for Specific Packages</h4>
+
 <pre><code>apt-cache showpkg vsftpd
 </code></pre>
 
-<p>Update System Packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Update System Packages</h4>
+
 <pre><code>sudo apt-get update
 </code></pre>
 
-<p>Clean up disks space</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Clean up disks space</h4>
+
 <pre><code>sudo apt-get clean
 </code></pre>
 
-<p>Download only source code</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Download only source code</h4>
+
 <pre><code>sudo apt-get --download-only source vsftpd
 </code></pre>
 
-<p>Check broken dependencies</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Check broken dependencies</h4>
+
 <pre><code>sudo apt-get check
 </code></pre>
 
-<p>Remove files containing a string</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Remove files containing a string</h4>
+
 <pre><code>rm ?*foo?*
 ls -d '*foo*' | egrep -v '^foo|foo$' | xargs rm
 </code></pre>
 
-<p>Create folder and cd into it</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Create folder and cd into it</h4>
+
 <pre><code>mkdir foo &amp;&amp; cd &quot;$_&quot;
 </code></pre>
 
-<p>Create Swap file</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Create Swap file</h4>
+
 <pre><code>sudo mkdir -v /var/cache/swap
 cd /var/cache/swap
 sudo dd if=/dev/zero of=swapfile bs=1K count=8M
@@ -604,13 +841,21 @@ top -bn1 | grep -i swap
 echo &quot;/var/cache/swap/swapfile none swap sw 0 0&quot; | sudo tee -a /etc/fstab
 </code></pre>
 
-<p>Change permission in filder and files</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Change permission in filder and files</h4>
+
 <pre><code>Chmod chown
 find . -type d -exec chmod 777 {} +
 find . -type f -exec chmod 777 {} +
 </code></pre>
 
-<p>Mount/Unmount</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Mount/Unmount</h4>
+
 <pre><code>cat /proc/partitions
 mknod
 mknod /dev/vdb b 252 16
@@ -621,8 +866,12 @@ mount /dev/vdb /tmp/ciao
 unmount /tmp/ciao
 </code></pre>
 
-<p>Compress/Uncompress  Files
-Create a tar archive of a directory</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Compress/Uncompress  Files</h4>
+
+<p>Create a tar archive of a directory</p>
 <pre><code>tar -cvf tarball_name.tar  /path/to/directory
 </code></pre>
 
@@ -664,6 +913,9 @@ f - Defines the file name of the archive file  </p>
 <pre><code>gsettings set org.gnome.gnome-screenshot auto-save-directory &quot;file:///home/username/Pictures/GUI/&quot;
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>REGEX</h4>
 
 <p><a href="https://regex101.com/">Regex checker</a><br />
@@ -793,68 +1045,121 @@ regex.exec(&quot;hello&quot;); // returns result array, null otherwise
 &quot;football&quot;.replace(/foot/,&quot;basket&quot;); // replaces matches with second argument
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
 <h2 id="node-npm">NODE / NPM</h2>
-<p>version</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Check Version</h4>
+
 <pre><code>which node
 which npm
 node --version
 npm --version
 </code></pre>
 
-<p>Update to latest version</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Update to latest version</h4>
+
 <pre><code>sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 </code></pre>
 
-<p>global install packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Global install packages</h4>
+
 <pre><code>npm install uglify-js --global
 </code></pre>
 
-<p>list global packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>List global packages</h4>
+
 <pre><code>npm list --global
 npm list -g --depth=0
 </code></pre>
 
-<p>initialize project</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Initialize project</h4>
+
 <pre><code>npm init
 </code></pre>
 
-<p>local install packages devDependencies</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Local install packages devDependencies</h4>
+
 <pre><code>npm install should --save-dev
 </code></pre>
 
-<p>local install packages dependencies</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Local install packages dependencies</h4>
+
 <pre><code>npm install should --save
 </code></pre>
 
-<p>uninstall packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Uninstall packages</h4>
+
 <pre><code>npm uninstall underscore
 </code></pre>
 
-<p>install specific version</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Install specific version</h4>
+
 <pre><code>npm install underscore@1.8.2
 </code></pre>
 
-<p>check outdated packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Check outdated packages</h4>
+
 <pre><code>npm outdated
 </code></pre>
 
-<p>update packages</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Update packages</h4>
+
 <pre><code>npm update underscore
 </code></pre>
 
-<p>Quick Project Setup - React, Webpack, Babel, ESLint</p>
-<p>Dependencies</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Quick Project Setup - React, Webpack, Babel, ESLint</h4>
+
+<h4>Dependencies</h4>
+
 <pre><code>npm install --save react react-dom
 </code></pre>
 
-<p>Dev Dependencies</p>
+<h4>Dev Dependencies</h4>
+
 <pre><code>npm install --save-dev babel-{core,loader} babel-preset-es2015 babel-preset-react babel-eslint css-loader node-sass sass-loader style-loader file-loader webpack webpack-dev-server eslint eslint-plugin-import eslint-plugin-react eslint-watch
 </code></pre>
 
-<p>NPM Scripts (package.json)</p>
+<h4>NPM Scripts (package.json)</h4>
+
 <pre><code>&quot;scripts&quot;: {
   &quot;start&quot;: &quot;webpack-dev-server --progress --hot --inline&quot;,
   &quot;build&quot;: &quot;webpack&quot;,
@@ -864,7 +1169,8 @@ npm list -g --depth=0
 },
 </code></pre>
 
-<p>NVM: manage different versions of Node:</p>
+<h4>NVM: manage different versions of Node:</h4>
+
 <pre><code>$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 </code></pre>
 
@@ -873,19 +1179,35 @@ $ [ -s “$NVM_DIR/nvm.sh” ] &amp;&amp; \. “$NVM_DIR/nvm.sh”
 $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bash_completion&quot;
 </code></pre>
 
-<p>Install a new version</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Install a new version</h4>
+
 <pre><code>nvm install 8.9.4
 </code></pre>
 
-<p>Show available versions of node</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Show available versions of node</h4>
+
 <pre><code>nvm ls
 </code></pre>
 
-<p>Use a particular version</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Use a particular version</h4>
+
 <pre><code>nvm use 10.15.3
 </code></pre>
 
-<p>Babel (.babelrc)</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Babel (.babelrc)</h4>
+
 <pre><code>{
   &quot;presets&quot;: [
     &quot;es2015&quot;,
@@ -894,8 +1216,11 @@ $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bas
 }
 </code></pre>
 
+<p><br></p>
 <hr />
-<p>Move a module from devDependencies to dependencies:</p>
+<p><br></p>
+<h4>Move a module from devDependencies to dependencies</h4>
+
 <pre><code>npm install &lt;module_name&gt; --save-prod
 </code></pre>
 
@@ -903,7 +1228,11 @@ $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bas
 <pre><code>yarn remove &lt;module_name&gt; --dev&amp;yarn add &lt;module_name&gt; 
 </code></pre>
 
-<p>Move a module from dependencies to devDependencies :</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Move a module from dependencies to devDependencies</h4>
+
 <pre><code>npm install &lt;module_name&gt; --save-dev
 </code></pre>
 
@@ -911,7 +1240,9 @@ $ [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \.   &quot;$NVM_DIR/bas
 <pre><code>yarn remove &lt;module_name&gt;&amp;yarn add &lt;module_name&gt; --dev
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
 <h2 id="webpack">WEBPACK</h2>
 <p>Webpack is a static module bundler for modern JavaScript applications.<br />
 It internally builds a dependency graph which maps every module your project needs and generates one or more bundles.<br />
@@ -2516,5 +2847,5 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-09 16:34:12
+Build Date UTC : 2019-08-13 14:41:36
 -->
