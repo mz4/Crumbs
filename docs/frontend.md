@@ -3727,3 +3727,62 @@ describe('Emit data check', () => {
 });
 
 ```
+
+<h4>Testing with Moxios</h4>
+```js
+import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
+import moxios from 'moxios';
+import { loadSpsData, loadSpsDataSuccess } from '../../../actions/SpActions';
+
+export const startState = {}
+const middleware = [thunk];
+export const mockStore = configureMockStore(middleware)
+
+describe('loadSpsData', () => {
+
+  beforeEach(function () {
+    moxios.install()
+  });
+
+  afterEach(function () {
+    moxios.uninstall()
+  });
+
+  it('calls loadSpsData', async () => {
+    const expected_url = 'http://localhost:8080/resource/location';
+    const SpsData = {
+      data: {
+        sp: {
+          items: {}
+        },
+      }
+    }
+    const store = mockStore();
+    let request_url = '';
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: SpsData
+      })
+      request_url = request.url;
+    })
+
+    const expected = loadSpsDataSuccess(SpsData)
+
+    await store.dispatch(loadSpsData()).then(() => {
+      const action = store.getActions();
+
+      const type = action[0].type;
+      expect(type).toEqual(expected.type);
+
+      const data = action[0]["spsData"];
+      expect(data).toEqual(expected.spsData);
+
+      expect(request_url).toEqual(expected_url);
+    });
+  })
+});
+
+```
