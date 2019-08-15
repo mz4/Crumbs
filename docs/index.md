@@ -3090,6 +3090,12 @@ https://codepen.io/aaronschwartz/pen/awOyQq?editors=0011)
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
+git immersion
+http://gitimmersion.com/lab_01.html
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
 https://github.com/treehouse-projects/intro-to-graphql/blob/master/s3v3.js  
