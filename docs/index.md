@@ -615,6 +615,23 @@ git push --force origin <name_of_branch>
 
 <br>
 
+<h4>Git reset head</h4>
+Force previous commit to become head.  
+```
+git reset --hard <COMMITID>
+git push -f origin <BRANCH>
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
 ---
 
 ## LINUX TIPS
@@ -3058,6 +3075,20 @@ Various links
 [react forms](https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825)
 
 [jobs in netherland](https://www.honeypot.io/)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+React Table Links
+https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/archives/v6-examples/react-table-cell-renderers
+https://github.com/bvaughn/react-virtualized/issues/732
+https://github.com/tannerlinsley/react-table/issues/786
+https://stackoverflow.com/questions/56481459/render-table-cells-td-with-different-html-tags-in-react
+https://www.npmjs.com/package/react-table
+https://codesandbox.io/s/r5n96yvwnm
+https://codesandbox.io/s/2vn8k07ymj?from-embed
+https://codepen.io/aaronschwartz/pen/awOyQq?editors=0011)
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  

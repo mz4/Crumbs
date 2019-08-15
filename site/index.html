@@ -569,6 +569,16 @@ Combine the two commands to squash n amount of commits into one, with the specif
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>Git reset head</h4>
+
+<p>Force previous commit to become head.  </p>
+<pre><code>git reset --hard &lt;COMMITID&gt;
+git push -f origin &lt;BRANCH&gt;
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <hr />
 <h2 id="linux-tips">LINUX TIPS</h2>
 <p><br></p>
@@ -2006,61 +2016,61 @@ Dockerize a React app.
 
 <h4>Install create-react-app</h4>
 
-wzxhzdk:175
+wzxhzdk:176
 
 
 <h4>Create a new app</h4>
 
-wzxhzdk:176
+wzxhzdk:177
 
 
 <h4>Add Dockerfile to project root</h4>
 Dockerfile defines what goes on in the environment inside your container.  
 
-wzxhzdk:177
+wzxhzdk:178
 
 
 <h4>Add a .dockerignore:</h4>
 
-wzxhzdk:178
+wzxhzdk:179
 
 
 <h4>Build and tag the Docker image</h4>
 
-wzxhzdk:179
+wzxhzdk:180
 
 
 <h4>Spin up the container</h4>
 
-wzxhzdk:180
+wzxhzdk:181
 
 
 <h4>Check the app</h4>
 Open your browser to: 
 
-wzxhzdk:181
+wzxhzdk:182
 
 
 <h4>Docker compose</h4>
 add docker-compose.yml
 
-wzxhzdk:182
+wzxhzdk:183
 
 
 <h4>Build image and fire container</h4>
 
-wzxhzdk:183
+wzxhzdk:184
 
 
 <h4>Stop container</h4>
 
-wzxhzdk:184
+wzxhzdk:185
 
 
 <h4>Docker example</h4>
 Build an image, run container, publish image:
 
-wzxhzdk:185
+wzxhzdk:186
 
 
 <h4>Docker Compose</h4>
@@ -2079,24 +2089,24 @@ To define, run, and scale services:
 
 docker-compose.yml  
 
-wzxhzdk:186
+wzxhzdk:187
 
 
 Initialize containers service
 
-wzxhzdk:187
+wzxhzdk:188
 
 
 Run it
 
-wzxhzdk:188
+wzxhzdk:189
 
 
 The single service stack is running 5 container instances of our deployed image on one host. 
 
 <h4>Services cheatsheet</h4>
 
-wzxhzdk:189
+wzxhzdk:190
 
 -->
 
@@ -2127,23 +2137,23 @@ User images: images created and shared by users.
 
 <h4>Install latest Docker</h4>
 
-wzxhzdk:190
+wzxhzdk:191
 
 
 or
 
 
-wzxhzdk:191
+wzxhzdk:192
 
 
 <h4>Test your Docker installation by running the following</h4>
 
-wzxhzdk:192
+wzxhzdk:193
 
 
 <h4>The pull command fetches image from the Docker registry and saves it to system.</h4>  
 
-wzxhzdk:193
+wzxhzdk:194
 
 
 <h4>Docker Hub</h4>  
@@ -2151,38 +2161,38 @@ or
 
 <h4>List of all images on your system.</h4>  
 
-wzxhzdk:194
+wzxhzdk:195
 
 
 <h4>Run a container</h4>
 
-wzxhzdk:195
+wzxhzdk:196
 
 
 <h4>Show running containers</h4>
 
-wzxhzdk:196
+wzxhzdk:197
 
 
 <h4>Show containers that ran previously</h4>
 
-wzxhzdk:197
+wzxhzdk:198
 
 
 <h4>Live tty session</h4>
 
-wzxhzdk:198
+wzxhzdk:199
 
 
 <h4>Remove containers from which you left</h4>
 --rm flag can be passed to docker run which automatically deletes the container once it's exited from  
 
 
-wzxhzdk:199
+wzxhzdk:200
 
 or  
 
-wzxhzdk:200
+wzxhzdk:201
 
 
 <h4>Run detached</h4>  
@@ -2190,22 +2200,22 @@ or
 -P will publish all exposed ports to random ports and finally  
 --name corresponds to a name we want to give.  
 
-wzxhzdk:201
+wzxhzdk:202
 
 
 <h4>See the ports by running the docker port [CONTAINER] command</h4>
 
-wzxhzdk:202
+wzxhzdk:203
 
 
 <h4>Specify a custom port</h4>
 
-wzxhzdk:203
+wzxhzdk:204
 
 
 <h4>Stop a container</h4>
 
-wzxhzdk:204
+wzxhzdk:205
 
 
 <h4>Creating an image</h4>  
@@ -2214,82 +2224,82 @@ CMD is to tell the container which command it should run when it is started
 port number that needs to be exposed  
 specifying our base image. Use the FROM keyword to do that  
 
-wzxhzdk:205
+wzxhzdk:206
 
 
 Dockerfile example
 
-wzxhzdk:206
+wzxhzdk:207
 
 
 <h4>Build image from Dockerfile</h4>
 
-wzxhzdk:207
+wzxhzdk:208
 
 
 <h4>Run the container</h4>
 
-wzxhzdk:208
+wzxhzdk:209
 
 
 <h4>Publish image to Docker HUB</h4>
 
-wzxhzdk:209
+wzxhzdk:210
 
 
 Now that your image is online, anyone who has docker installed can play with your app by typing just a single command.  
 
-wzxhzdk:210
+wzxhzdk:211
 
 
 <h4>Search for images</h4>
 
-wzxhzdk:211
+wzxhzdk:212
 
 
 <h4>When docker is installed, it creates three networks automatically.</h4>
 
-wzxhzdk:212
+wzxhzdk:213
 
 
 The bridge network is the network in which containers are run by default.  
 <h4>Inspect bridge Network</h4>
 
-wzxhzdk:213
+wzxhzdk:214
 
 
 <h4>Create our own network</h4>  
 A bridge network allows containers connected to the same bridge network to communicate,  
 while providing isolation from containers which are not connected to that bridge network. 
 
-wzxhzdk:214
+wzxhzdk:215
 
 
 <h4>Launch containers into network (--net foodtrucks-net)</h4>
 
-wzxhzdk:215
+wzxhzdk:216
 
 
 <h4>Create and run container on a created Network</h4>
 ./setup-docker.sh
 
-wzxhzdk:216
+wzxhzdk:217
 
 
 Docker Registries & Repositories  
 <h4>Searching an Image</h4>  
 
-wzxhzdk:217
+wzxhzdk:218
 
 
 <h4>Pulling an Image</h4>
 
-wzxhzdk:218
+wzxhzdk:219
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:219
+wzxhzdk:220
 
 <h4>Running Containers`</h4>
 Create and Run a Simple Container  
@@ -2297,270 +2307,270 @@ Start an ubuntu:latest image
 Bind the port 80 from the CONTAINER to port 3000 on the HOST  
 Mount the current directory to /data on the CONTAINER  
 
-wzxhzdk:220
+wzxhzdk:221
 
 
 <h4>Creating a Container</h4>
 
-wzxhzdk:221
+wzxhzdk:222
 
 
 <h4>Running a Container</h4>
 
-wzxhzdk:222
+wzxhzdk:223
 
 
 <h4>Renaming a Container</h4>
 
-wzxhzdk:223
+wzxhzdk:224
 
 
 <h4>Removing a Container</h4>
 
-wzxhzdk:224
+wzxhzdk:225
 
 
 <h4>Updating a Container</h4>
 
-wzxhzdk:225
-
-
-<h4>Starting & Stopping Containers</h4>
-
 wzxhzdk:226
 
 
+<h4>Starting & Stopping Containers</h4>
 
 wzxhzdk:227
 
 
 
-<h4>Restarting</h4>
-
 wzxhzdk:228
 
 
-<h4>Pausing</h4>
+
+<h4>Restarting</h4>
 
 wzxhzdk:229
 
 
-<h4>Unpausing</h4>
+<h4>Pausing</h4>
 
 wzxhzdk:230
 
 
-<h4>Blocking a Container</h4>
+<h4>Unpausing</h4>
 
 wzxhzdk:231
 
 
-<h4>Sending a SIGKILL</h4>
+<h4>Blocking a Container</h4>
 
 wzxhzdk:232
 
 
-<h4>Sending another signal</h4>
+<h4>Sending a SIGKILL</h4>
 
 wzxhzdk:233
 
 
-<h4>Connecting to an Existing Container</h4>
+<h4>Sending another signal</h4>
 
 wzxhzdk:234
+
+
+<h4>Connecting to an Existing Container</h4>
+
+wzxhzdk:235
 
 
 <h4>Getting Information about Containers</h4>
 
 <h4>Running Containers</h4>
 
-wzxhzdk:235
+wzxhzdk:236
 
 
 <h4>Container Logs</h4>
 docker logs infinite
 Follow Container Logs
 
-wzxhzdk:236
+wzxhzdk:237
 
 
 <h4>Inspecting Containers</h4>
 
-wzxhzdk:237
+wzxhzdk:238
 
 
 <h4>Containers Events</h4>
 
-wzxhzdk:238
+wzxhzdk:239
 
 
 <h4>Public Ports</h4>
 
-wzxhzdk:239
+wzxhzdk:240
 
 
 <h4>Running Processes</h4>
 
-wzxhzdk:240
+wzxhzdk:241
 
 
 <h4>Container Resource Usage</h4>
 
-wzxhzdk:241
+wzxhzdk:242
 
 
 <h4>Inspecting changes to files or directories on a container’s filesystem</h4>
 
-wzxhzdk:242
+wzxhzdk:243
 
 
 <h4>Manipulating Images</h4>
 
 <h4>Listing Images</h4>
 
-wzxhzdk:243
+wzxhzdk:244
 
 
 <h4>Building Images</h4>
 
-wzxhzdk:244
+wzxhzdk:245
 
 
 <h4>Removing an Image</h4>
 
-wzxhzdk:245
+wzxhzdk:246
 
 
 <h4>Loading a Tarred Repository from a File or the Standard Input Stream</h4>
 
-wzxhzdk:246
+wzxhzdk:247
 
 
 <h4>Save an Image to a Tar Archive</h4>
 
-wzxhzdk:247
+wzxhzdk:248
 
 
 <h4>Showing the History of an Image</h4>
 
-wzxhzdk:248
+wzxhzdk:249
 
 
 <h4>Creating an Image From a Container</h4>
 
-wzxhzdk:249
+wzxhzdk:250
 
 
 <h4>Tagging an Image</h4>
 
-wzxhzdk:250
+wzxhzdk:251
 
 
 <h4>Pushing an Image</h4>
 
-wzxhzdk:251
+wzxhzdk:252
 
 
 <h4>Creating Networks</h4>  
 
-wzxhzdk:252
+wzxhzdk:253
 
 
 <h4>Removing a Network</h4>
 
-wzxhzdk:253
+wzxhzdk:254
 
 
 <h4>Listing Networks</h4>
 
-wzxhzdk:254
+wzxhzdk:255
 
 
 <h4>Getting Information About a Network</h4>
 
-wzxhzdk:255
+wzxhzdk:256
 
 
 <h4>Connecting a Running Container to a Network</h4>
 
-wzxhzdk:256
+wzxhzdk:257
 
 
 <h4>Connecting a Container to a Network When it Starts</h4>
 
-wzxhzdk:257
+wzxhzdk:258
 
 
 <h4>Disconnecting a Container from a Network</h4>
 
-wzxhzdk:258
+wzxhzdk:259
 
 
 <h4>Exposing Ports</h4>  
 Using Dockerfile, you can expose a port on the container using:
 
-wzxhzdk:259
+wzxhzdk:260
 
 
 <h4>Cleaning Docker</h4>  
 <h4>Removing a Running Container </h4> 
 
-wzxhzdk:260
+wzxhzdk:261
 
 
 <h4>Removing a Container and its Volume</h4>
 
-wzxhzdk:261
+wzxhzdk:262
 
 
 <h4>Removing all Exited Containers</h4>
 
-wzxhzdk:262
+wzxhzdk:263
 
 
 <h4>Removing All Stopped Containers</h4>
 
-wzxhzdk:263
+wzxhzdk:264
 
 
 <h4>Removing a Docker Image</h4>
 
-wzxhzdk:264
+wzxhzdk:265
 
 
 <h4>Removing Dangling Images</h4>
 
-wzxhzdk:265
+wzxhzdk:266
 
 
 <h4>Removing all Images</h4>
 
-wzxhzdk:266
+wzxhzdk:267
 
 
 <h4>Removing all untagged images</h4>
 
-wzxhzdk:267
+wzxhzdk:268
 
 
 <h4>Stopping & Removing all Containers</h4>
 
-wzxhzdk:268
+wzxhzdk:269
 
 
 <h4>Removing Dangling Volumes</h4>
 
-wzxhzdk:269
+wzxhzdk:270
 
 
 <h4>Removing all unused (containers, images, networks and volumes)</h4>
 
-wzxhzdk:270
+wzxhzdk:271
 
 
 <h4>Clean all</h4>
 
-wzxhzdk:271
+wzxhzdk:272
 
 -->
 
@@ -2595,6 +2605,20 @@ Various links
 [react forms](https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825)
 
 [jobs in netherland](https://www.honeypot.io/)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+React Table Links
+https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/archives/v6-examples/react-table-cell-renderers
+https://github.com/bvaughn/react-virtualized/issues/732
+https://github.com/tannerlinsley/react-table/issues/786
+https://stackoverflow.com/questions/56481459/render-table-cells-td-with-different-html-tags-in-react
+https://www.npmjs.com/package/react-table
+https://codesandbox.io/s/r5n96yvwnm
+https://codesandbox.io/s/2vn8k07ymj?from-embed
+https://codepen.io/aaronschwartz/pen/awOyQq?editors=0011)
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 https://github.com/howtographql/react-apollo  
 https://www.howtographql.com/react-apollo/0-introduction/  
@@ -2677,20 +2701,20 @@ Iterates through the elements in an array.
 Executes a callback for each element.
 Does not return a value.
 
-wzxhzdk:272
+wzxhzdk:273
 
 
 map
 Iterates through the elements in an array.
 "Maps" each element to a new element by calling the function on each element, creating a new array as a result.
 
-wzxhzdk:273
+wzxhzdk:274
 
 
 <h4>use case for anonymous functions?</h4>
 As a callback that is used once and does not need to be used anywhere else.
 
-wzxhzdk:274
+wzxhzdk:275
 
 
 <h4>How do you organize your code?</h4>
@@ -2847,5 +2871,5 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-13 14:41:36
+Build Date UTC : 2019-08-15 16:02:12
 -->

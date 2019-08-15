@@ -151,7 +151,9 @@ Sets - Looping through Sets
 
 
 
-
+Why do some npm packages start with @?
+When used in package names, scopes are preceded by an @ symbol and followed by a slash
+Scopes are a way of grouping related packages together.
 
 
 
