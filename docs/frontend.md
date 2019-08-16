@@ -3786,3 +3786,12 @@ describe('loadSpsData', () => {
 });
 
 ```
+
+
+
+---
+
+
+
+<h4>Testing components wrapped in HOC</h4>
+[Testing components wrapped in HOC](https://github.com/airbnb/enzyme/issues/539)
