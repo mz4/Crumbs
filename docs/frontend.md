@@ -3602,17 +3602,71 @@ html {
 <br><br>
 
 ## TESTING
+
+<br>
+
+---
+
+<br>
+
+<h4>Setup Enzyme Jest</h4>
 Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  
 Jest is a test framework managed by Facebook.  
-install enzyme along with an Adapter corresponding to the version of react.  
+  
+<br>
+
+---
+
+<br>
+
+<h4>install Jest</h4>
 ```
-npm i --save-dev enzyme enzyme-adapter-react-16
+npm install -D jest
 ```
-Jest Setup with React:  
+  
+<br>
+
+---
+
+<br>
+
+<h4>Install enzyme</h4> 
+Along with an Adapter corresponding to the version of react.  
+```
+npm i --save-dev enzyme enzyme-adapter-react-16 enzyme-to-json
+```
+<br>
+
+---
+
+<br>  
+
+<h4>Jest Setup with React</h4>
 ```
 npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
 ```
-Add into babel configuration  
+<br>
+
+---
+
+<br>
+
+<h4>Configure Enzyme to work with Jest</h4>
+in __tests__/setup/setupEnzyme.js  
+```
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Add into babel configuration</h4>  
 ```
 "env": {
   "test": {
@@ -3621,10 +3675,248 @@ Add into babel configuration
 }
 ```
 
-useful for debug
+<br>
+
+---
+
+<br>
+
+<h4>Install Redux test helper</h4>
+```
+npm install -D redux-mock-store
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Run tests</h4>
+```
+// Single run
+$ npm run test
+
+// Watchmode
+$ npm run test:watch
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Wrapper Debug</h4>
 ```
 console.log(wrapper.debug());
 ```
+<br>
+
+---
+
+<br>
+
+<h4>Test Component renders</h4>
+```js
+import React from 'react';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import configureStore from 'redux-mock-store'; // Smart components
+
+// Component to be tested
+import GatorMenu from '../../components/GatorMenu';
+
+describe('<GatorMenu />', () => {
+  describe('render()', () => {
+    test('renders the component', () => {
+      const wrapper = shallow(<GatorMenu />);
+      const component = wrapper.dive();
+
+      expect(toJson(component)).toMatchSnapshot();
+    });
+  });
+});
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Test Simulate Click</h4>
+Call the handler on simulate click.  
+```js
+describe('<GatorButton />', () => {
+  describe('onClick()', () => {
+    test('successfully calls the onClick handler', () => {
+      const mockOnClick = jest.fn();
+      const wrapper = shallow(
+        <GatorButton onClick={mockOnClick} label="Eat Food" />
+      );
+      const component = wrapper.dive();
+
+      component.find('button').simulate('click');
+
+      expect(mockOnClick.mock.calls.length).toEqual(1);
+    });
+  });
+});
+
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+<h4>Mocking the store</h4>
+redux-mock-store allows access to:
+
+- dispatch()
+- getActions()
+- clearActions()
+
+```js
+import configureStore from 'redux-mock-store';
+
+// Actions to be tested
+import * as selectActions from '../../actions/select_actions';
+
+const mockStore = configureStore();
+const store = mockStore();
+
+// ...
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Clear Actions</h4>
+```js
+// ...
+
+describe('select_actions', () => {
+  beforeEach(() => { // Runs before each test in the suite
+    store.clearActions();
+  });
+
+  // ...
+
+});
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Test Actions Dispatch</h4>
+```js
+// ...
+
+describe('selectAvatar', () => {
+  test('Dispatches the correct action and payload', () => {
+    const expectedActions = [
+      {
+        'payload': 1,
+        'type': 'select_avatar',
+      },
+    ];
+
+    store.dispatch(selectActions.selectAvatar(1));
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+});
+
+// ...
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Test Reducer</h4>
+```js
+// ...
+
+describe('SELECT_AVATAR', () => {
+  test('returns the correct state', () => {
+    const action = { type: SELECT_AVATAR, payload: 1 };
+    const expectedState = { selectedAvatar: 1 };
+
+    expect(selectReducer(undefined, action)).toEqual(expectedState);
+  });
+});
+
+// ...
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Check Text Value</h4>
+```js
+it("formats temp correctly", () => {
+  // mount our Temperature component
+  const wrapper = mount(
+    <Temperature temp={10} city="Toronto" toggleForecast={() => {}} />
+  );
+
+  // extract the text from the LargeText styled component
+  const text = wrapper.find("LargeText").text();
+
+  // ensure it matches what is expected
+  expect(text).toEqual("10°c");
+});
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Event Testing with Sinon</h4>
+```js
+it("calls toggleForecast on click", () => {
+  // create a spy function
+  const spy = sinon.spy();
+  // pass spy function as our toggleForecast prop
+  const wrapper = mount(
+    <Temperature temp={10} city="Toronto" toggleForecast={spy} />
+  );
+
+  // find the first div and simulate a click event on it
+  wrapper
+    .find("div")
+    .first()
+    .simulate("click");
+
+  // ensure that our spy (toggleForecast) was called when click was simulated
+  expect(spy.calledOnce).toBe(true);
+});
+```
+
+<br>
+
+---
+
+<br>
+
 
 ```javascript
 import configureStore from 'redux-mock-store';
