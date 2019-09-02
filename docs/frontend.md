@@ -4087,3 +4087,34 @@ describe('loadSpsData', () => {
 
 <h4>Testing components wrapped in HOC</h4>
 [Testing components wrapped in HOC](https://github.com/airbnb/enzyme/issues/539)
+
+
+<br>
+
+---
+
+<br>
+
+
+<h4>Pseudo Code</h4>
+```js
+function calculate_gpa
+  pass in student_grades
+  set grade_total to 0
+  for each grade in student_grades
+      if grade is not a 1, 2, 3, or 4
+          print "invalid grade"
+          print grade
+          print "can't complete calculation"
+          exit function
+      else add grade to grade_total
+      endif
+   endfor
+   set gpa to grade_total / number of grades
+   return gpa
+endfunction
+
+set reggie_grades to 4, 4, 3, 4
+set reggie_gpa to call calculate_gpa with reggie_grades
+print reggie_gpa
+```
