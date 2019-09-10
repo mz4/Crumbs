@@ -2245,6 +2245,173 @@ type "xcl" to use it
 
 ---
 
+<br>
+
+---
+
+<br>
+
+## OTHER TOOLS
+
+<h4>Jenkins</h4>
+Jenkins is a cross-platform, continuous integration and continuous delivery application.  
+Use Jenkins to build and test your software projects continuously.  
+It provides powerful ways to define your build pipelines and integrating with testing and deployment technologies.  
+
+build > test > deploy it is the most common pattern
+
+Jenkins is a continuous integration server.  
+Integration tests take all the code and other components of your application and integrate it together, then test it to ensure it's working properly.  
+Jenkins can watch repos for version control software like Git or Subversion.  
+When there's a new commit, Jenkins will check it out automatically.  
+It will run your tests, and report the result.  
+It can even be configured to automatically deploy your software to production if all the tests pass.
+
+A Jenkins pipeline delivers your software to a testing, staging, or production environment.  
+When creating a pipeline, you specify the steps Jenkins needs to follow.  
+Anytime a build is triggered, Jenkins will follow those steps to deliver your code where it needs to go.  
+
+Pipeline scripts use a domain-specific language based on the Groovy programming language.  
+They start with the pipeline keyword, followed by a block in curly braces ({}).  
+The components of the pipeline are nested within that block.  
+We'll look at the agent and stages declarations later in the course; 
+
+```json
+pipeline {
+    agent any 
+    stages {
+        stage('My Stage') {
+            steps {
+                sh 'pwd'
+                // If you're on Windows, use this line instead:
+                // bat 'cd'
+                sh 'whoami'
+                // If you're on Windows, use this line instead:
+                // bat 'whoami'
+                sh 'mkdir newfolder'
+                // If you're on Windows, use this line instead:
+                // bat 'mkdir newfolder'
+                sh 'ls'
+                // If you're on Windows, use this line instead:
+                // bat 'dir'
+            }
+        }
+    }
+}
+```
+
+Save your changes, return to the pipeline screen, and click "Build Now" in the left-hand menu.  
+A new build will appear in the "Build History" area;  
+click it and open its "Console Output".  
+You'll see something like the following:
+
+```json
+Started by user Jay McGavren
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/jay/.jenkins/workspace/Shell Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (My Stage)
+[Pipeline] sh
++ pwd
+/Users/jay/.jenkins/workspace/Shell Pipeline
+[Pipeline] sh
++ whoami
+jay
+[Pipeline] sh
++ mkdir newfolder
+[Pipeline] sh
++ ls
+newfolder
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+
+With Docker, your compiler, database, and everything else your app needs can be installed in a docker image.  
+Then, Jenkins can launch a Docker container based on that image, and run all your sh or bat steps within the container.  You can be certain that all of your app's dependencies are installed correctly, and there's no need to clutter the Jenkins server.
+
+
+## BASH
+```
+  192  cd ~/
+  193  pwd
+  194  ls
+  195  ls -la
+  196  touch .bash_profile
+  197  export PATH=$PATH:/home/matteo/bin
+  198  cd bin
+  199  touch hello-world
+  200  vim hello-world 
+  201  which bash
+  202  vim hello-world 
+  203  chmod u+x hello-world 
+  204  hello-world 
+  205  vim hello-world 
+  206  hello-world 
+  207  vim hello-world 
+  208  hello-world 
+  209  vim hello-world 
+  210  hello-world 
+  211  vim hello-world 
+  212  hello-world 
+  213  vim hello-world 
+  214  hello-world 
+  215  vim hello-world 
+  216  hello-world 
+  217  vim hello-world 
+  218  hello-world 
+  219  vim hello-world 
+  220  hello-world 
+  221  vim hello-world 
+  222  history
+```
+
+example
+```bash
+#!/bin/bash
+who='You!'
+
+echo write name:
+
+read whoami
+
+echo Hello, World!, $who! $whoami
+
+echo write number
+
+read age
+
+if [ "$age" -gt 20 ]
+then
+    echo You can drink.
+else
+    echo You are too young to drink.
+fi
+
+
+FILES=/home/matteo/*
+
+for file in $FILES
+do
+    echo $(basename $file)
+done
+
+
+read -r -p 'Commit message: ' desc  # prompt user for commit message
+git add .                           # track all files
+git add -u                          # track deletes
+git commit -m "$desc"               # commit with message
+git push origin master              # push to origin
+```
+
+
+
 
 
 ## LINKS
