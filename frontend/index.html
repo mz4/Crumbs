@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <script>
+	// Hack for scrolling window when linking to anchor tag with fixed nav header
+        var shiftWindow = function() { scrollBy(0, -75) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow(); }
+      </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,149 +15,142 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>FRONTEND - Crumbs</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/darcula.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/http.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/base.js"></script> 
     </head>
 
-    <body>
+    <body class="">
+      
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<div class="container">
+	<a class="navbar-brand" href="..">Crumbs</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse">
+          <!-- Main navigation -->
+          <ul class="nav navbar-nav">
+            <li >
+              <a class="nav-link" href="..">TOOLS</a>
+            </li>
+            <li class="active">
+              <a class="nav-link" href="./">FRONTEND</a>
+            </li>
+            <li >
+              <a class="nav-link" href="../backend/">BACKEND</a>
+            </li>
+            <li >
+              <a class="nav-link" href="../demo/">DEMO</a>
+            </li>
+          </ul>
+	  
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+		<i class="fa fa-search"></i> Search
+              </a>
+            </li>
+          </ul>
+	</div>
+	</div>
+      </nav><div id="content" class="container">
+        
+      <div class="row">
+        <div class="col-md-9" role="main">
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
 
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..">Crumbs</a>
-                </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    <li class="breadcrumb-item active" aria-current="page">FRONTEND</li>
+  </ol>
+</nav>
 
-                <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">TOOLS</a>
-                            </li>
-                            <li class="active">
-                                <a href="./">FRONTEND</a>
-                            </li>
-                            <li >
-                                <a href="../backend/">BACKEND</a>
-                            </li>
-                            <li >
-                                <a href="../demo/">DEMO</a>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li >
-                                <a rel="next" href="..">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../backend/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#frontend">FRONTEND</a></li>
-            <li><a href="#javascript">JAVASCRIPT</a></li>
-            <li><a href="#es6">ES6</a></li>
-            <li><a href="#react">REACT</a></li>
-            <li><a href="#rest-api">REST API</a></li>
-            <li><a href="#graphql">GRAPHQL</a></li>
-            <li><a href="#socket">SOCKET</a></li>
-            <li><a href="#css3sass">CSS3/SASS</a></li>
-            <li><a href="#testing">TESTING</a></li>
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
 
 <h1 id="frontend">FRONTEND</h1>
 <hr />
+<p><br></p>
 <h2 id="javascript">JAVASCRIPT</h2>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Execution Context</h4>
 
-<p>The environment in which any code is run.<br />
+<p>The environment in which any code run.<br />
 Javscript engine wraps the code into an execution context.
-<br>
-<h4>Javscript engine creates in the Execution Context</h4>
+<br><br>
+Javscript engine creates in the Execution Context:<br />
 - Global Object Window (browser)<br />
 - Special Object 'this'<br />
-- Ref to outer environment<br />
-<br></p>
+- Ref to outer environment  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Javscript Engine</h4>
 
-<p>it performs following two steps while executing any code:  </p>
+<p>It performs following two steps while executing any code:  </p>
 <h5>Creation Phase</h5>
 
 <ul>
 <li>Run through your code &amp; identifies variables &amp; functions  </li>
 <li>Setup memory space for Variables &amp; Functions - "Hoisting"  </li>
 <li>Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
-  ("undefined" is a special value assigned to variables that exists in the code but have not been set)
-<br>
-<h5>Execution Phase</h5></li>
-<li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
-<li>Variable assignment are done in this phase 
-<br></li>
+  ("undefined" is a special value assigned to variables that exists in the code but have not been set)</li>
 </ul>
+<h5>Execution Phase</h5>
+
+<ul>
+<li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
+<li>Variable assignment are done in this phase </li>
+</ul>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Variable hoisting</h4>
+
+<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope<br />
+(to the top of the current script or the current function). </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Single Threaded (One command at the time) & Synchonous</h4>
 
-<p>Javascript for programmers behaves in a single threaded manner.<br />
+<p>Javascript for programmers behaves in a single threaded manner, one command at the time.<br />
 And it is Synchronous, one line of code being executed at the time.</p>
-<h4>Function invocations and execution stack</h4>
-
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Bind</h4>
 
 <p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
-<pre><code class="javascript">// &lt;button&gt;Get Random Person&lt;/button&gt;
-// &lt;input type=&quot;text&quot;&gt;
-var user = {
-    data        :[
-        {name:&quot;T. Woods&quot;, age:37},
-        {name:&quot;P. Mickelson&quot;, age:43}
-    ],
-    clickHandler:function (event) {
-        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1
-        $ (&quot;input&quot;).val (this.data[randomNum].name + &quot; &quot; + this.data[randomNum].age);
-    }
-}
-// Assign an eventHandler to the button's click event
-$ (&quot;button&quot;).click (user.clickHandler);
-</code></pre>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Function invocations and execution stack</h4>
 
+<p>Anytime you execute or invoke a function in js, a new execution context is created, each execution context, has its own variable environment.<br />
+"Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.<br />
+The event queue is constantly monitored by javascript engine.</p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Scopes in javascript</h4>
 
 <ul>
@@ -159,33 +158,48 @@ $ (&quot;button&quot;).click (user.clickHandler);
 <li>Local Scope  </li>
 <li>Block Scope (let)  </li>
 </ul>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Old school JavaScript</h4>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
-<h4>Global Scope</h4>
-Variables are known throughout the application, from the start of the application<br />
-<h4>Functional Scope</h4>
-Variables are known within the function they are declared in, from the start of the function  </p>
+- Global Scope: Variables are known throughout the application, from the start of the application<br />
+- Functional Scope: Variables are known within the function they are declared in, from the start of the function  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Modern JavaScript</h4>
 
-<p>The most recent JavaScript specs now also allow a third scope :<br />
+<p>The most recent JavaScript specs now also allow a third scope :  </p>
 <h4>Block Scope</h4>
-Variables are known within the block they are declared in, from the moment they are declared onwards<br />
+
+<p>Variables are known within the block they are declared in, from the moment they are declared onwards<br />
 let myVariable = "Some text";<br />
 const myVar = "val";  </p>
 <h4>Difference Between Function and Block Scope</h4>
 
 <p>Function scope is within the function. (var is function scope.)<br />
 Block scope is within curly brackets. (let and const are block scope.)  </p>
-<h4>Variable hoisting</h4>
-
-<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).  </p>
 <h4>Scope chain</h4>
 
-<p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there,<br />
-it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it<br />
-reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.   </p>
+<p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.</p>
+<p><br></p>
 <hr />
+<p><br></p>
+<h4>Bind</h4>
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Javascript types</h4>
+
+<p>You dont need to tell the engine what type of data a variable holds, it is going to figure it out while your code is running.</p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Closures</h4>
 
 <p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
@@ -204,20 +218,22 @@ and it has access to the global variables.  </p>
 
 &lt;html&gt;
  &lt;button onclick=&quot;updateClickCount()&quot;&gt;click me&lt;/button&gt;
-  &lt;div&gt; you've clicked 
-    &lt;span id=&quot;spnCount&quot;&gt; 0 &lt;/span&gt; times!
+  &lt;div&gt; you have clicked 
+    &lt;span id=&quot;spnCount&quot;&gt;0&lt;/span&gt;
  &lt;/div&gt;
 &lt;/html&gt;
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Promise</h4>
 
 <p>Promises are one way to deal with asynchronous code.<br />
 A Promise is in one of these states:<br />
-Pending: initial state, neither fulfilled nor rejected.<br />
-Fulfilled: meaning that the operation completed successfully.<br />
-Rejected: meaning that the operation failed.  </p>
+- Pending: initial state, neither fulfilled nor rejected.<br />
+- Fulfilled: meaning that the operation completed successfully.<br />
+- Rejected: meaning that the operation failed.  </p>
 <p>A Promise object is created using the new keyword and its constructor.<br />
 This constructor takes as its argument a function, called the "executor function".<br />
 This function should take two functions as parameters.<br />
@@ -262,6 +278,9 @@ console.log(promise1);
 }
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Callback, Promises and Async</h4>
 
 <h4>Callback:</h4>
@@ -291,8 +310,10 @@ When the first function is done, it will run the second function.  </p>
 printAll()
 </code></pre>
 
+<p><br></p>
 <hr />
-<h4>Promises:</h4>
+<p><br></p>
+<h4>Promises vs callaback</h4>
 
 <p>Promises try to fix callback nesting problem. 
 In our function lets use Promises:</p>
@@ -331,13 +352,144 @@ printAll()
 printAll()
 </code></pre>
 
-<h4>Object is an array?</h4>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Prototype</h4>
 
-<pre><code>var d = []
-console.log(Object.prototype.toString.call(d));
+<p><a href="https://tylermcginnis.com/beginners-guide-to-javascript-prototype/">Prototype link</a><br />
+Every function in JavaScript has a prototype property that references an object.<br />
+pattern Prototypal Instantiation.  </p>
+<pre><code class="javascript">function Animal (name, energy) {
+  this.name = name
+  this.energy = energy
+}
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating.`)
+  this.energy += amount
+}
+
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping.`)
+  this.energy += length
+}
+
+Animal.prototype.play = function (length) {
+  console.log(`${this.name} is playing.`)
+  this.energy -= length
+}
+
+const leo = new Animal('Leo', 7)
+const snoop = new Animal('Snoop', 10)
 </code></pre>
 
+<p>Without using new keyword, we have to explicitly create a reference:
+Looking back at our Animal constructor, the two most important parts were creating the object and returning it.<br />
+Without creating the object with Object.create, we wouldn’t be able to delegate to the function’s prototype on failed lookups.   Without the return statement, we wouldn’t ever get back the created object.  </p>
+<pre><code class="javascript">function Animal (name, energy) {
+  let animal = Object.create(Animal.prototype)
+  animal.name = name
+  animal.energy = energy
+
+  return animal
+}
+
+Animal.prototype.eat = function (amount) {
+  console.log(`${this.name} is eating.`)
+  this.energy += amount
+}
+
+Animal.prototype.sleep = function (length) {
+  console.log(`${this.name} is sleeping.`)
+  this.energy += length
+}
+
+Animal.prototype.play = function (length) {
+  console.log(`${this.name} is playing.`)
+  this.energy -= length
+}
+
+const leo = Animal('Leo', 7)
+const snoop = Animal('Snoop', 10)
+
+leo.eat(10)
+snoop.play(5)
+</code></pre>
+
+<p><br></p>
 <hr />
+<p><br></p>
+<h4>ES6 syntax</h4>
+
+<p>In 2015, EcmaScript (the official JavaScript specification) 6 was released with support for Classes and the class keyword.<br />
+Let’s see how our Animal constructor function above would look like with the new class syntax.</p>
+<pre><code class="javascript">class Animal {
+  constructor(name, energy) {
+    this.name = name
+    this.energy = energy
+  }
+  eat(amount) {
+    console.log(`${this.name} is eating.`)
+    this.energy += amount
+  }
+  sleep(length) {
+    console.log(`${this.name} is sleeping.`)
+    this.energy += length
+  }
+  play(length) {
+    console.log(`${this.name} is playing.`)
+    this.energy -= length
+  }
+}
+
+const leo = new Animal('Leo', 7)
+const snoop = new Animal('Snoop', 10)
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Array methods</h4>
+
+<p>We can see all the array’s methods by simply logging Array.prototype.<br />
+console.log(Array.prototype)</p>
+<p>/<em>
+  concat: ƒn concat()
+  constructor: ƒn Array()
+  copyWithin: ƒn copyWithin()
+  entries: ƒn entries()
+  every: ƒn every()
+  fill: ƒn fill()
+  filter: ƒn filter()
+  find: ƒn find()
+  findIndex: ƒn findIndex()
+  forEach: ƒn forEach()
+  includes: ƒn includes()
+  indexOf: ƒn indexOf()
+  join: ƒn join()
+  keys: ƒn keys()
+  lastIndexOf: ƒn lastIndexOf()
+  length: 0n
+  map: ƒn map()
+  pop: ƒn pop()
+  push: ƒn push()
+  reduce: ƒn reduce()
+  reduceRight: ƒn reduceRight()
+  reverse: ƒn reverse()
+  shift: ƒn shift()
+  slice: ƒn slice()
+  some: ƒn some()
+  sort: ƒn sort()
+  splice: ƒn splice()
+  toLocaleString: ƒn toLocaleString()
+  toString: ƒn toString()
+  unshift: ƒn unshift()
+  values: ƒn values()
+</em>/</p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>this keyword</h4>
 
 <p>It's a special identifier keyword that's automatically defined in the scope of every function.  <br />
@@ -369,6 +521,9 @@ function foo() {
 baz(); // &lt;-- call-site for `baz`
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Default binding</h4>
 
 <p>Standalone function invocation.<br />
@@ -397,6 +552,9 @@ var obj = {
 obj.foo(); // 2
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Explicit Binding</h4>
 
 <p>All functions you will create, do have access to call(..) and apply(..).
@@ -445,7 +603,9 @@ console.log( bar.a ); // 2
 <pre><code class="js">var bar = foo()
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Objects</h4>
 
 <p>Objects come in two forms: the declarative (literal) form, and the constructed form.<br />
@@ -474,7 +634,9 @@ myObj.key = value;
 <li>undefined</li>
 <li>object</li>
 </ul>
+<p><br></p>
 <hr />
+<p><br></p>
 <h2 id="es6">ES6</h2>
 <p><h4>Spread Operator 1</h4>  </p>
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
@@ -508,12 +670,11 @@ let {city, state, zip} = address;
 
 log(city); // 'London'
 log(state); // 'UK'
-log(zip); // 1334
-</code></pre>
+log(zip); // 1334```
 
-<h4>Destructuring 2</h4>
-
-<pre><code class="javascript">var address = {
+&lt;h4&gt;Destructuring 2&lt;/h4&gt;
+```javascript
+var address = {
   city: &quot;London&quot;,
   state: &quot;UK&quot;,
   zip: 1334
@@ -528,13 +689,12 @@ log(c, s, z); // 'London UK 1334'
 displayPerson(person);
 
 function displayPerson({name, age}) {
-  // do something with name and age to display them
-}
-</code></pre>
+  ...
+}```
 
-<h4>Destructuring 4</h4>
-
-<pre><code class="javascript">var person = {name: 'Aaaaaa', age: 35};
+&lt;h4&gt;Destructuring 4&lt;/h4&gt;
+```javascript
+var person = {name: 'Aaaaaa', age: 35};
 let {name, age, address} = person; // error!
 let {name, age, ?address} = person; // OK
 let ?{name, age, address} = person; // OK
@@ -549,13 +709,12 @@ function doSomething([first, second, ...others]){
   log(first);   //logs 1
   log(second);  //logs 2
   log(others);  //logs [3, 4]
-}
-</code></pre>
+}```
 
-<h4>Arrow functions 1</h4>
-
-<p>Specifying parameters:</p>
-<pre><code class="javascript">    () =&gt; { ... } // no parameter
+&lt;h4&gt;Arrow functions 1&lt;/h4&gt;
+Specifying parameters:
+```javascript
+    () =&gt; { ... } // no parameter
      x =&gt; { ... } // one parameter, an identifier
 (x, y) =&gt; { ... } // several parameters
 </code></pre>
@@ -585,6 +744,7 @@ x =&gt; x * x  // expression, equivalent to previous line
 ];
 
 // ES6
+```js
 const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
 console.log(prices); // [649, 576, 489]
 </code></pre>
@@ -592,7 +752,7 @@ console.log(prices); // [649, 576, 489]
 <h4>Nested keys</h4>
 
 <p>Check existance of nested keys.</p>
-<pre><code class="javascript">var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
+<pre><code class="js">var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
 if (update_progress !== null) {
     console.log(JSON.stringify(data));
 }
@@ -612,6 +772,9 @@ if (update_progress !== null) {
 }, 2000); // Execute somethingElse() every 2 seconds.
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Performance analysis</h4>
 
 <pre><code class="js">console.time(&quot;start&quot;);
@@ -622,7 +785,9 @@ if (update_progress !== null) {
 </code></pre>
 
 <p>// this will cause the browser to print time elapsed between start and end.</p>
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Various examples of Loops, Promises, callback</h4>
 
 <p>Promise</p>
@@ -644,7 +809,10 @@ promise.then(
 )
 </code></pre>
 
-<p>Axios</p>
+<p>Axios<br />
+<a href="https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index">Axios cheatsheet</a><br />
+<a href="https://github.com/axios/axios">Axios github</a><br />
+<a href="https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/">Axios making http requests</a></p>
 <pre><code class="javascript">axios.get('http://.....')
   .then(
     function(response) {
@@ -671,6 +839,24 @@ promise.then(
     ...
   }
 }
+</code></pre>
+
+<p>Axios patch example</p>
+<pre><code class="javascript">  axios
+    .patch(
+      url,
+      formData,
+      {
+        headers: {
+          'X-Auth-Token': token
+      },
+    })
+    .then((data) =&gt; {
+      this.props.loadAccountsData();
+    })
+    .catch(error =&gt; {
+      throw error;
+    });
 </code></pre>
 
 <hr />
@@ -705,7 +891,662 @@ const newList = list.map(function(v) {
 }
 </code></pre>
 
+<h4>Find highest value in an array</h4>
+
+<pre><code class="js">const max = data.reduce((prev, current) =&gt; (prev.y &gt; current.y) ? prev : current)
+</code></pre>
+
+<h4>setState spread operator</h4>
+
+<pre><code class="js">    trips: [
+      {
+        id: 0,
+        name: 'Rome',
+        dateStart: '19/08/2019',
+        dateEnd: '29/08/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 1,
+        name: 'Paris',
+        dateStart: '15/06/2019',
+        dateEnd: '29/06/2019',
+        isConfirmed: true,
+        isEditing: false
+      },
+      {
+        id: 2,
+        name: 'Malta',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 3,
+        name: 'Budapest',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      }
+    ]
+</code></pre>
+
+<pre><code class="js">  handleDateStart = e =&gt;
+    this.setState({
+      form: {
+        ...this.state.form,
+        dateStart: e.target.value
+      }
+    });
+</code></pre>
+
+<p><br></p>
 <hr />
+<p><br></p>
+<h2 id="typescript">TYPESCRIPT</h2>
+<p>It is a typed superset of Javascript that compiles to plain JavaScript.<br />
+JavaScript has seen a vast development in the last few years.<br />
+But, JavaScript was never meant for such large-scale application development.<br />
+JavaScript is a dynamic programming language with no type system.<br />
+A no type system means that a variable in JavaScript can have any type of value such as string, number, boolean etc.  </p>
+<p>The type system increases the code quality, readability and makes it an easy to maintain and refactor code base.<br />
+More importantly, errors can be caught at compile time rather than at run time.  </p>
+<p>Hence, the reason to use TypeScript is that it allows JavaScript to be used at scale.  </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Typescript Features</h4>
+
+<ul>
+<li>Cross-Platform: TypeScript runs on any platform that JavaScript runs on.  </li>
+<li>Object Oriented Language: TypeScript provides powerful features such as Classes, Interfaces, and Modules.  </li>
+<li>Static type-checking: TypeScript uses static typing. This is done using type annotations. It helps type checking at compile time. Thus, you can find errors while typing the code without running your script each time. Additionally, using the type inference mechanism, if a variable is declared without a type, it will be inferred based on its value.  </li>
+<li>ES 6 Features: TypeScript includes most features of planned ECMAScript 2015 (ES 6, 7) such as class, interface, Arrow functions etc.</li>
+</ul>
+<p>This command compiles the TypeScript code into a plain JavaScript file.</p>
+<pre><code>tsc &lt;filename&gt;.ts 
+</code></pre>
+
+<p>Visual Studio Code includes TypeScript language support but does not include the TypeScript compiler, tsc.<br />
+Install typescript compiler</p>
+<pre><code>npm install -g typescript
+</code></pre>
+
+<pre><code>tsc example.ts
+</code></pre>
+
+<p>a: number and b: number. This is called a Type annotation.<br />
+Type annotation in an object:</p>
+<pre><code class="js">var employee : { 
+    id: number; 
+    name: string; 
+}; 
+
+employee = { 
+  id: 100, 
+  name : &quot;John&quot;
+}
+</code></pre>
+
+<p><br></p>
+<pre><code class="ts">var age: number = 32; // number variable
+var name: string = &quot;John&quot;;// string variable
+var isUpdated: boolean = true;// Boolean variable
+</code></pre>
+
+<p><br></p>
+<p>In the above example, each variable is declared with their data type.<br />
+These are type annotations.  </p>
+<p><br></p>
+<p>Type annotations are used to enforce type checking. It is not mandatory in TypeScript to use type annotations.<br />
+However, type annotations help the compiler in checking types and helps avoid errors dealing with data types.<br />
+It is also a good way of writing code for easier readability and maintenance by future developers working on your code.  </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Type Inference</h4>
+
+<p>Where not declared, Types are inferred by TypeScript compiler when:<br />
+- Variables are initialized<br />
+- Default values are set for parameters<br />
+- Function return types are determined  </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>typescript example with if</h4>
+
+<pre><code class="js">let let x: number = 10, y = 20;
+
+if (x &gt; y) 
+{
+    console.log('x is greater than y.');
+} 
+else
+{
+    console.log('x is less than or equal to y.'); //This will be executed
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>typescript switch example</h4>
+
+<pre><code class="js">var a:number = 1
+var b:number = 3
+
+switch (a+b){
+    case 1 : {
+        console.log(&quot;a+b is 1.&quot;)
+        break
+    }
+    case 3 : {
+        console.log(&quot;a+b is 3.&quot;)
+        break
+    }
+    case 4 : {
+        console.log(&quot;a+b is 4.&quot;)
+        break
+    }
+    case 5 : {
+        console.log(&quot;a+b is 5.&quot;)
+        break
+    }
+    default : {
+        console.log(&quot;a+b is 5.&quot;)
+        break
+    }
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Typescript loops</h4>
+
+<p>In TypeScript, there are three types of for loops:  </p>
+<p><br></p>
+<ul>
+<li>for loop</li>
+</ul>
+<pre><code class="js">for (let i = 0; i &lt; 3; i++) {
+  console.log (&quot;Block statement execution no.&quot; + i);
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<ul>
+<li>for..of loop<br />
+it iterates over elements of an array  </li>
+</ul>
+<pre><code class="js">let arr = [10, 20, 30, 40];
+
+for (var val of arr) {
+  console.log(val); // prints values: 10, 20, 30, 40
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<ul>
+<li>for..in loop<br />
+it returns the index.</li>
+</ul>
+<pre><code class="js">let arr = [10, 20, 30, 40];
+
+for (var index in arr) {
+  console.log(index); // prints indexes: 0, 1, 2, 3
+
+  console.log(arr[index]); // prints elements: 10, 20, 30, 40
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>do ... while</h4>
+
+<pre><code class="js">let i: number = 4;
+do {
+    console.log( &quot;Block statement execution no.&quot; + i )
+    i++;
+} while ( i &lt; 4)
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Typescript functions</h4>
+
+<pre><code class="javascript">function Greet(greeting: string, name?: string ) : string {
+    return greeting + ' ' + name + '!';
+}
+
+Greet('Hello','Steve');//OK, returns &quot;Hello Steve!&quot;
+Greet('Hi'); // OK, returns &quot;Hi undefined!&quot;.
+Greet('Hi','Bill','Gates'); //Compiler Error: Expected 2 arguments, but got 3.
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Arrow functions</h4>
+
+<pre><code class="js">let sum = (x: number, y: number): number =&gt; {
+            return x + y;
+}
+
+sum(10, 20); //returns 30
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Function Overloading</h4>
+
+<p>You can have multiple functions with the same name but different parameter types and return type.<br />
+However, the number of parameters should be the same.</p>
+<pre><code class="js">function add(a:string, b:string):string;
+
+function add(a:number, b:number): number;
+
+function add(a: any, b:any): any {
+    return a + b;
+}
+
+add(&quot;Hello &quot;, &quot;Steve&quot;); // returns &quot;Hello Steve&quot; 
+add(10, 20); // returns 30 
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Rest Parameters</h4>
+
+<p>When the number of parameters that a function will receive is not known or can vary, we can use rest parameters.  </p>
+<pre><code class="js">function Greet(greeting: string, ...names: string[]) {
+    return greeting + &quot; &quot; + names.join(&quot;, &quot;) + &quot;!&quot;;
+}
+
+Greet(&quot;Hello&quot;, &quot;Steve&quot;, &quot;Bill&quot;); // returns &quot;Hello Steve, Bill!&quot;
+
+Greet(&quot;Hello&quot;);// returns &quot;Hello !&quot;
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Interfaces</h4>
+
+<p>In TypeScript, Interface is a deal that the objects of the type should contain properties and functions declared in the interface.  </p>
+<pre><code class="js">interface interface_name {
+     // variables' declaration
+     // methods' declaration
+}
+</code></pre>
+
+<p>function example:  </p>
+<pre><code class="js">interface Student{
+    // variables
+    name:string
+    rollnumber:number
+
+    // functions
+    displayInformation: () =&gt; void
+}
+
+var student1: Student = {
+    name:&quot;Rohit&quot;,
+    rollnumber:2, 
+    displayInformation: ():void =&gt; {
+        console.log(&quot;\n---- Student Information ----&quot;)
+        console.log(&quot;Name is : &quot; + student1.name)
+        console.log(&quot;Roll Number is : &quot; + student1.rollnumber)
+    }
+}
+
+console.log(student1.name)
+console.log(student1.rollnumber)
+student1.displayInformation()
+</code></pre>
+
+<p>class example:</p>
+<pre><code class="js">interface IEmployee {
+    empCode: number;
+    name: string;
+    getSalary:(number)=&gt;number;
+}
+
+class Employee implements IEmployee { 
+    empCode: number;
+    name: string;
+
+    constructor(code: number, name: string) { 
+                this.empCode = code;
+                this.name = name;
+    }
+
+    getSalary(empCode:number):number { 
+        return 20000;
+    }
+}
+
+let emp = new Employee(1, &quot;Steve&quot;);
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Class</h4>
+
+<pre><code class="js">interface IPerson {
+    name: string;
+    display():void;
+}
+
+interface IEmployee {
+    empCode: number;
+}
+
+class Employee implements IPerson, IEmployee {
+    empCode: number;
+    name: string;
+
+    constructor(empcode: number, name:string) {
+        this.empCode = empcode;
+        this.name = name;
+    }
+
+    display(): void {
+        console.log(&quot;Name = &quot; + this.name +  &quot;, Employee Code = &quot; + this.empCode);
+    }
+}
+
+let per:IPerson = new Employee(100, &quot;Bill&quot;);
+per.display(); // Name = Bill, Employee Code = 100
+
+let emp:IEmployee = new Employee(100, &quot;Bill&quot;);
+emp.display(); //Compiler Error: Property 'display' does not exist on type 'IEmployee'
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>TSLint-React</h4>
+
+<p>Install typescript,tslint and tslint-react packages globally  </p>
+<pre><code>yarn global add tslint typescript tslint-react
+</code></pre>
+
+<h4>Now inside your project directory, initialise tslint</h4>
+
+<pre><code>tslint --init
+</code></pre>
+
+<h4>Configuration tslint</h4>
+
+<pre><code class="ts">{
+    &quot;defaultSeverity&quot;: &quot;error&quot;,
+    &quot;extends&quot;: [
+        &quot;tslint-react&quot;
+    ],
+    &quot;jsRules&quot;: {
+    },
+    &quot;rules&quot;: {
+        &quot;member-access&quot;: false,
+        &quot;ordered-imports&quot;: false,
+        &quot;quotemark&quot;: false,
+        &quot;no-console&quot;: false,
+        &quot;semicolon&quot;: false,
+        &quot;jsx-no-lambda&quot;: false
+    },
+    &quot;rulesDirectory&quot;: [
+    ],
+    &quot;linterOptions&quot;: {
+        &quot;exclude&quot;: [
+            &quot;config/**/*.js&quot;,
+            &quot;node_modules/**/*.ts&quot;
+       ]
+   }
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Applying interfaces to components</h4>
+
+<pre><code class="js">interface FormState {
+    submitted?: boolean;
+    full_name: string;
+    age: number;
+}
+</code></pre>
+
+<pre><code class="js">export class MyForm extends React.Component&lt;FormProps, FormState&gt; {
+   ...
+}
+</code></pre>
+
+<p>and with functional components</p>
+<pre><code class="js">function MyForm(props: FormProps) {
+  ...
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Import/Export Interfaces</h4>
+
+<p>export  </p>
+<pre><code class="js">// src/types/index.tsx
+export interface FormProps {
+    first_name: string;
+    last_name: string;
+    age: number;
+    agreetoterms?: boolean;
+}
+</code></pre>
+
+<p>import  </p>
+<pre><code class="js">// src/components/MyForm.tsx
+import React from 'react';
+import { StoreState } from '../types/index';
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>enum</h4>
+
+<p>Check whether the submitted form value is valid.  </p>
+<pre><code class="js">// define enum
+enum HeardFrom {
+    SEARCH_ENGINE = &quot;Search Engine&quot;,
+    FRIEND = &quot;Friend&quot;,
+    OTHER = &quot;Other&quot;
+}
+//construct heardFrom array
+let heardFrom = [HeardFrom.SEARCH_ENGINE, 
+                 HeardFrom.FRIEND, 
+                 HeardFrom.OTHER];
+
+//get submitted form value
+const submitted_heardFrom = form.values.heardFrom;
+
+//check if value is valid
+heardFrom.includes(submitted_heardFrom)
+   ? valid = true
+   : valid = false;
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Using Typescript with React</h4>
+
+<h4>React Component with typescript</h4>
+
+<pre><code class="ts">import * as React from 'react'
+
+export interface StandardComponentProps {
+  title?: string
+  children: React.ReactNode
+}
+
+export function StandardComponent({
+  children,
+  title = 'Dr.',
+}: StandardComponentProps) {
+  return (
+    &lt;div&gt;
+      {title}: {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Interface for Redux Store</h4>
+
+<pre><code class="js">// src/types/index.tsx
+export interface MyStore {
+    language: string;
+    country: string;
+    auth: {
+        authenticated: boolean;
+        username?: string;
+    };
+}
+</code></pre>
+
+<h4>Define Action type and actions</h4>
+
+<pre><code class="js">// src/constants/index.tsx
+export const SET_LANGUAGE = 'INCREMENT_ENTHUSIASM';
+export type SET_LANGUAGE = typeof SET_LANGUAGE;
+export const SET_COUNTRY = 'SET_COUNTRY';
+export type SET_COUNTRY = typeof SET_COUNTRY;
+export const AUTHENTICATE = 'AUTHENTICATE';
+export type AUTHENTICATE = typeof AUTHENTICATE;
+</code></pre>
+
+<p>These const &amp; type objects can now be imported into your src/actions/index.tsx file,<br />
+where we can define action interfaces and the actions themselves, and typing them along the way:  </p>
+<pre><code class="js">// src/actions/index.tsx
+import * as constants from '../constants';
+//define action interfaces
+export interface SetLanguage {
+    type: constants.SET_LANGUAGE;
+    language: string;
+}
+export interface SetCountry {
+    type: constants.SET_COUNTRY;
+    country: string;
+}
+export interface Authenticate{
+    type: constants.AUTHENTICATE;
+    username: string;
+    pw: string;
+}
+//define actions
+export function setLanguage(l: string): SetLanguage ({
+   type: constants.SET_LANGUAGE,
+   language: l
+});
+export function setCountry(c: string): SetCountry ({
+   type: constants.SET_COUNTRY,
+   country: c
+});
+export function authenticate(u: string, pw: string): Authenticate ({
+   type: constants.SET_COUNTRY,
+   username: u,
+   pw: pw
+});
+</code></pre>
+
+<p>Back in our actions file, add a union type for locality under our interfaces:  </p>
+<pre><code class="js">// src/actions/index.tsx
+export type Locality = SetLanguage | SetCountry;
+</code></pre>
+
+<pre><code class="js">// src/reducers/index.tsx
+import { Locality } from '../actions';
+import { StoreState } from '../types/index';
+import { SET_LANGUAGE, SET_COUNTRY, AUTHENTICATE} from '../constants/index';
+export function locality(state: StoreState, action: Locality):     StoreState {
+
+  switch (action.type) {
+    case SET_LANGUAGE:
+      return return { ...state, language: action.language};
+    case SET_COUNTRY:
+      return { ...state, language: action.country};
+    case AUTHENTICATE:
+      return { 
+         ...state, 
+         auth: {
+            username: action.username, 
+            authenticated: true 
+          }
+      };
+   }
+  return state;
+}
+</code></pre>
+
+<h4>Creating initial store</h4>
+
+<pre><code class="js">// src/index.tsx
+import { createStore } from 'redux';
+import { locality } from './reducers/index';
+import { StoreState } from './types/index';
+const store = createStore&lt;StoreState&gt;(locality, {
+   language: 'British (English)',
+   country: 'United Kingdom',
+   auth: {
+       authenticated: false
+   }
+});
+</code></pre>
+
+<h4>MapState and Dispatch</h4>
+
+<pre><code class="js">// mapStateToProps example
+import { StoreState } from '../types/index';
+interface LocalityProps = {
+    country: string;
+    language: string;
+}
+function mapStateToProps (state: StoreState, ownProps: LocalityProps) ({
+     language: state.language,
+     country: state.country,
+});
+</code></pre>
+
+<h4>MapDispatchToProps</h4>
+
+<pre><code class="js">// mapDispatchToProps example
+const mapDispatchToProps = {
+   actions.setLanguage,
+   actions.setCountry
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <h2 id="react">REACT</h2>
 <h4>State</h4>
 
@@ -853,6 +1694,9 @@ This method is called when a component is being removed from the DOM:
 }
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>React Fragment</h4>
 
 <p>Fragments let you group a list of children without adding extra nodes to the DOM.</p>
@@ -988,6 +1832,9 @@ export default |;
 };
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>React Redux Thunk</h4>
 
 <p>Actions in Redux are dispatched synchronously. <br />
@@ -1390,27 +2237,25 @@ Today, the most commonly used text formats is JSON.</p>
 <h4>API Documentation</h4>
 
 <ul>
-<li>
-<p>Resource Description<br />
-  example from MailChimp Campaign resource
-  <code>Campaigns are how you send emails to your Mailchimp list. 
-  Use the Campaigns API calls to manage campaigns in your Mailchimp account.</code>
-  Resource Description consists of 1-3 sentences.
+<li>Resource Description<br />
+  example from MailChimp Campaign resource</li>
+</ul>
+<p>Resource Description consists of 1-3 sentences.
   Resources usually have various endpoints to access the resource and multiple methods for each endpoint.<br />
   Sometimes the general resource isn’t described; instead, it just groups the endpoints.
   Although the resource isn’t described, descriptions may be added for each of the endpoints.  </p>
-</li>
-<li>
-<p>Endpoint and Methods<br />
+<ul>
+<li>Endpoint and Methods<br />
   The endpoints indicate how you access the resource, 
   The method indicates the allowed interactions (such as GET, POST, or DELETE) with the resource.<br />
-  Endpoints usually have brief descriptions similar to the overall resource description but shorter.<br />
-<code>POST /campaigns   Create a new campaign
-  GET /campaigns    Get all campaigns
-  GET /campaigns/{campaign_id}  Get information about a specific campaign
-  PATCH /campaigns/{campaign_id}    Update the settings for a campaign
-  DELETE /campaigns/{campaign_id}   Delete a campaign</code></p>
-</li>
+  Endpoints usually have brief descriptions similar to the overall resource description but shorter.  </li>
+</ul>
+<p>POST /campaigns   Create a new campaign<br />
+  GET /campaigns    Get all campaigns<br />
+  GET /campaigns/{campaign_id}  Get information about a specific campaign<br />
+  PATCH /campaigns/{campaign_id}    Update the settings for a campaign<br />
+  DELETE /campaigns/{campaign_id}   Delete a campaign  </p>
+<ul>
 <li>Parameters<br />
   Parameters are options you can pass with the endpoint to influence the response. 
   There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  </li>
@@ -1436,19 +2281,21 @@ Today, the most commonly used text formats is JSON.</p>
   listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.<br />
   The definition of the response is called the schema or model.</li>
 </ul>
-<p><code>{
-    "Context": "ualize",
-    "Destination": "http://aaaa.com/aaa",
-    "EventTypes": [
-        "StatusChange",
-        "ResourceAdded",
-        "ResourceRemoved"
+<pre><code class="json">  {
+    &quot;Context&quot;: &quot;ualize&quot;,
+    &quot;Destination&quot;: &quot;http://aaaa.com/aaa&quot;,
+    &quot;EventTypes&quot;: [
+        &quot;StatusChange&quot;,
+        &quot;ResourceAdded&quot;,
+        &quot;ResourceRemoved&quot;
     ],
-    "Id": "3a5f20212134",
-    "Name": "EventSubscription",
-    "Oem": {},
-    "Protocol": "Redfish"
-  }</code></p>
+    &quot;Id&quot;: &quot;3a5f20212134&quot;,
+    &quot;Name&quot;: &quot;EventSubscription&quot;,
+    &quot;Oem&quot;: {},
+    &quot;Protocol&quot;: &quot;Redfish&quot;
+  }
+</code></pre>
+
 <p><a href="https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html">API Documentation example</a><br />
 <a href="https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites">API Docs list</a>  </p>
 <h4>OpenApi</h4>
@@ -1642,7 +2489,38 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 });
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
+<h2 id="js-utilities">JS Utilities</h2>
+<h4>Check if an object is empty</h4>
+
+<pre><code class="javascript">function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+</code></pre>
+
+<pre><code class="javascript">var myObj = {}; // Empty Object
+if(isEmpty(myObj)) {
+    // Object is empty (Would return true in this example)
+} else {
+    // Object is NOT empty
+}
+</code></pre>
+
+<h4>Object is an array?</h4>
+
+<pre><code class="js">var d = []
+console.log(Object.prototype.toString.call(d));
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <h2 id="graphql">GRAPHQL</h2>
 <p><h4>About</h4>
 GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  </p>
@@ -1943,11 +2821,12 @@ def upload_license_action(args):
 
 <hr />
 <h2 id="css3sass">CSS3/SASS</h2>
+<hr />
 <h4>CSS Architecture</h4>
 
-<h4>SMACSS</h4>
+<hr />
+<h4>SMACSS method consists on organizing CSS rules in five different categories:</h4>
 
-<p>SMACSS method consists on organizing CSS rules in five different categories:  </p>
 <ul>
 <li>Basic: Default elements styles. It doesn’t include any class or ID selectors.</li>
 <li>Layout: It divides the content into sections (header, footer, primary content).</li>
@@ -1982,153 +2861,7 @@ def upload_license_action(args):
 <li>Border: A border that goes around the padding and content</li>
 <li>Margin: Clears an area outside the border. The margin is transparent</li>
 </ul>
-<h4>Box sizing</h4>
-
-<p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
-padding and border add the width of an object.<br />
-With box sizing the padding and border of that element no longer increase its width.</p>
-<pre><code class="css">html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
-}
-</code></pre>
-
-<h4>Centering Things</h4>
-
-<ul>
-<li>Centering line of texts:  </li>
-</ul>
-<pre><code class="css">p { text-align: center }
-</code></pre>
-
-<ul>
-<li>Centering a block or image:  </li>
-</ul>
-<pre><code class="css">p.blocktext {
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em
-}
-&lt;p class=&quot;blocktext&quot;&gt;
-</code></pre>
-
-<ul>
-<li>Centering vertically:<br />
-The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  </li>
-</ul>
-<pre><code class="css">DIV.container {
-  min-height: 10em;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-&lt;DIV class=&quot;container&quot;&gt;
-  &lt;P&gt;This small paragraph
-&lt;/DIV&gt;
-</code></pre>
-
-<ul>
-<li>Centering vertically CSS3:</li>
-</ul>
-<pre><code class="css">&lt;div class=container3&gt;
-  &lt;p&gt;This paragraph…
-&lt;/div&gt;
-
-div.container3 {
-  height: 10em;
-  position: relative 
-}
-div.container3 p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%) 
-}
-</code></pre>
-
-<ul>
-<li>Centering with flex:</li>
-</ul>
-<pre><code class="css">div.container5 {
-  height: 10em;
-  display: flex;
-  align-items: center 
-}
-div.container5 p {
-  margin: 0 
-}
-</code></pre>
-
-<ul>
-<li>Centering horizontally and vertically with css level 3</li>
-</ul>
-<pre><code class="css">&lt;div class=container4&gt;
-  &lt;p&gt;Centered!
-&lt;/div&gt;
-
-div.container4 {
-  height: 10em;
-  position: relative 
-}
-
-div.container4 p {
-  margin: 0;
-  background: yellow;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
-</code></pre>
-
-<ul>
-<li>Centering horizontally and vertically in flex</li>
-</ul>
-<pre><code class="css">div.container6 {
-  height: 10em;
-  display: flex;
-  align-items: center;
-  justify-content: center 
-}
-div.container6 p {
-  margin: 0 
-}
-</code></pre>
-
-<ul>
-<li>Centering in the viewport in css 3</li>
-</ul>
-<pre><code class="css">&lt;html&gt;
-  &lt;style&gt;
-    body {
-      background: white 
-    }
-    section {
-      background: black;
-      color: white;
-      border-radius: 1em;
-      padding: 1em;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%) 
-    }
-  &lt;/style&gt;
-  &lt;section&gt;
-    &lt;h1&gt;Nicely centered&lt;/h1&gt;
-    &lt;p&gt;This text block is vertically centered.
-    &lt;p&gt;Horizontally, too, if the window is wide enough.
-  &lt;/section&gt;
-</code></pre>
-
+<hr />
 <h4>Formatting CSS - based on Airbnb style guide</h4>
 
 <ul>
@@ -2191,6 +2924,9 @@ reusable, repeatable snippets that can be used independently throughout a websit
 <li>Media queries (CSS3)  </li>
 <li>Images that resize  </li>
 </ul>
+<h4>Dev made Grids</h4>
+
+<p><a href="https://css-tricks.com/dont-overthink-it-grids/">homemade grids guide</a></p>
 <h4>FLEXBOX</h4>
 
 <h4>Parent Flex Container</h4>
@@ -2351,6 +3087,161 @@ place-self: center;
 }
 </code></pre>
 
+<hr />
+<p><br><br></p>
+<h4>CSS Grid vs Flexbox</h4>
+
+<p><a href="https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412">CSS grid vs flexbox</a>
+- CSS Grid Layout is a two-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a one-dimensional system (either in a column or a row).
+- A core difference between CSS Grid and Flexbox is that — CSS Grid’s approach is layout-first while Flexbox’ approach is content-first. 
+- If you are well aware of your content before making layout, then blindly opt for Flexbox and if not, opt for CSS Grid.
+- Flexbox layout is most appropriate to the components of an application (as most of them are fundamentally linear), and small-scale layouts, while the Grid layout is intended for larger scale layouts which aren’t linear in their design.
+- If you only need to define a layout as a row or a column, then you probably need flexbox. If you want to define a grid and fit content into it in two dimensions — you need the grid.</p>
+<hr />
+<p><br><br></p>
+<h4>Centering Things</h4>
+
+<p><a href="https://css-tricks.com/centering-css-complete-guide/">csstricks centering complete guide</a></p>
+<ul>
+<li>Centering line of texts:  </li>
+</ul>
+<pre><code class="css">p { text-align: center }
+</code></pre>
+
+<ul>
+<li>Centering a block or image:  </li>
+</ul>
+<pre><code class="css">p.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+}
+&lt;p class=&quot;blocktext&quot;&gt;
+</code></pre>
+
+<ul>
+<li>Centering vertically:<br />
+<a href="https://vanseodesign.com/css/vertical-centering/">centering 1</a>
+<a href="https://www.w3schools.com/howto/howto_css_center-vertical.asp">centering 2 w3c</a>
+The trick is to specify that the outer block is to be formatted as a table cell, because the contents of a table cell can be centered vertically.  </li>
+</ul>
+<pre><code class="css">DIV.container {
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+&lt;DIV class=&quot;container&quot;&gt;
+  &lt;P&gt;This small paragraph
+&lt;/DIV&gt;
+</code></pre>
+
+<p>center vertically ex. 2</p>
+<pre><code class="css">    labelContainer: {
+      display: 'table-cell',
+      verticalAlign: 'middle',
+      height: '30px',
+    },
+</code></pre>
+
+<ul>
+<li>Centering vertically CSS3:</li>
+</ul>
+<pre><code class="css">&lt;div class=container3&gt;
+  &lt;p&gt;This paragraph…
+&lt;/div&gt;
+
+div.container3 {
+  height: 10em;
+  position: relative 
+}
+div.container3 p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%) 
+}
+</code></pre>
+
+<ul>
+<li>Centering with flex:</li>
+</ul>
+<pre><code class="css">div.container5 {
+  height: 10em;
+  display: flex;
+  align-items: center 
+}
+div.container5 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically with css level 3</li>
+</ul>
+<pre><code class="css">&lt;div class=container4&gt;
+  &lt;p&gt;Centered!
+&lt;/div&gt;
+
+div.container4 {
+  height: 10em;
+  position: relative 
+}
+
+div.container4 p {
+  margin: 0;
+  background: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+</code></pre>
+
+<ul>
+<li>Centering horizontally and vertically in flex</li>
+</ul>
+<pre><code class="css">div.container6 {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center 
+}
+div.container6 p {
+  margin: 0 
+}
+</code></pre>
+
+<ul>
+<li>Centering in the viewport in css 3</li>
+</ul>
+<pre><code class="css">&lt;html&gt;
+  &lt;style&gt;
+    body {
+      background: white 
+    }
+    section {
+      background: black;
+      color: white;
+      border-radius: 1em;
+      padding: 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%) 
+    }
+  &lt;/style&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Nicely centered&lt;/h1&gt;
+    &lt;p&gt;This text block is vertically centered.
+    &lt;p&gt;Horizontally, too, if the window is wide enough.
+  &lt;/section&gt;
+</code></pre>
+
+<hr />
+<p><br><br></p>
 <h4>Install SASS</h4>
 
 <pre><code>$ npm install sass-loader node-sass --save-dev
@@ -2534,19 +3425,82 @@ $zMessage: 5050;
 }
 </code></pre>
 
-<hr />
-<h2 id="testing">TESTING</h2>
-<p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.<br />
-Jest is a test framework managed by Facebook.<br />
-install enzyme along with an Adapter corresponding to the version of react.  </p>
-<pre><code>npm i --save-dev enzyme enzyme-adapter-react-16
+<h4>Select p elements with class="center"</h4>
+
+<pre><code>p.center 
 </code></pre>
 
-<p>Jest Setup with React:  </p>
+<hr />
+<p><br><br></p>
+<h4>Box sizing</h4>
+
+<p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
+padding and border add the width of an object.<br />
+With box sizing the padding and border of that element no longer increase its width.</p>
+<pre><code class="css">html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+</code></pre>
+
+<hr />
+<p><br><br></p>
+<h2 id="testing">TESTING</h2>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Setup Enzyme Jest</h4>
+
+<p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.<br />
+Jest is a test framework managed by Facebook.  </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>install Jest</h4>
+
+<pre><code>npm install -D jest
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Install enzyme</h4>
+
+<p>Along with an Adapter corresponding to the version of react.  </p>
+<pre><code>npm i --save-dev enzyme enzyme-adapter-react-16 enzyme-to-json
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br>  </p>
+<h4>Jest Setup with React</h4>
+
 <pre><code>npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
 </code></pre>
 
-<p>Add into babel configuration  </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Configure Enzyme to work with Jest</h4>
+
+<p>in <strong>tests</strong>/setup/setupEnzyme.js  </p>
+<pre><code>import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Add into babel configuration</h4>
+
 <pre><code>&quot;env&quot;: {
   &quot;test&quot;: {
     &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;]
@@ -2554,10 +3508,211 @@ install enzyme along with an Adapter corresponding to the version of react.  </p
 }
 </code></pre>
 
-<p>useful for debug</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Install Redux test helper</h4>
+
+<pre><code>npm install -D redux-mock-store
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Run tests</h4>
+
+<pre><code>// Single run
+$ npm run test
+
+// Watchmode
+$ npm run test:watch
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Wrapper Debug</h4>
+
 <pre><code>console.log(wrapper.debug());
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Test Component renders</h4>
+
+<pre><code class="js">import React from 'react';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import configureStore from 'redux-mock-store'; // Smart components
+
+// Component to be tested
+import GatorMenu from '../../components/GatorMenu';
+
+describe('&lt;GatorMenu /&gt;', () =&gt; {
+  describe('render()', () =&gt; {
+    test('renders the component', () =&gt; {
+      const wrapper = shallow(&lt;GatorMenu /&gt;);
+      const component = wrapper.dive();
+
+      expect(toJson(component)).toMatchSnapshot();
+    });
+  });
+});
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Test Simulate Click</h4>
+
+<p>Call the handler on simulate click.  </p>
+<pre><code class="js">describe('&lt;GatorButton /&gt;', () =&gt; {
+  describe('onClick()', () =&gt; {
+    test('successfully calls the onClick handler', () =&gt; {
+      const mockOnClick = jest.fn();
+      const wrapper = shallow(
+        &lt;GatorButton onClick={mockOnClick} label=&quot;Eat Food&quot; /&gt;
+      );
+      const component = wrapper.dive();
+
+      component.find('button').simulate('click');
+
+      expect(mockOnClick.mock.calls.length).toEqual(1);
+    });
+  });
+});
+
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Mocking the store</h4>
+
+<p>redux-mock-store allows access to:</p>
+<ul>
+<li>dispatch()</li>
+<li>getActions()</li>
+<li>clearActions()</li>
+</ul>
+<pre><code class="js">import configureStore from 'redux-mock-store';
+
+// Actions to be tested
+import * as selectActions from '../../actions/select_actions';
+
+const mockStore = configureStore();
+const store = mockStore();
+
+// ...
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Clear Actions</h4>
+
+<pre><code class="js">// ...
+
+describe('select_actions', () =&gt; {
+  beforeEach(() =&gt; { // Runs before each test in the suite
+    store.clearActions();
+  });
+
+  // ...
+
+});
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Test Actions Dispatch</h4>
+
+<pre><code class="js">// ...
+
+describe('selectAvatar', () =&gt; {
+  test('Dispatches the correct action and payload', () =&gt; {
+    const expectedActions = [
+      {
+        'payload': 1,
+        'type': 'select_avatar',
+      },
+    ];
+
+    store.dispatch(selectActions.selectAvatar(1));
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+});
+
+// ...
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Test Reducer</h4>
+
+<pre><code class="js">// ...
+
+describe('SELECT_AVATAR', () =&gt; {
+  test('returns the correct state', () =&gt; {
+    const action = { type: SELECT_AVATAR, payload: 1 };
+    const expectedState = { selectedAvatar: 1 };
+
+    expect(selectReducer(undefined, action)).toEqual(expectedState);
+  });
+});
+
+// ...
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Check Text Value</h4>
+
+<pre><code class="js">it(&quot;formats temp correctly&quot;, () =&gt; {
+  // mount our Temperature component
+  const wrapper = mount(
+    &lt;Temperature temp={10} city=&quot;Toronto&quot; toggleForecast={() =&gt; {}} /&gt;
+  );
+
+  // extract the text from the LargeText styled component
+  const text = wrapper.find(&quot;LargeText&quot;).text();
+
+  // ensure it matches what is expected
+  expect(text).toEqual(&quot;10°c&quot;);
+});
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Event Testing with Sinon</h4>
+
+<pre><code class="js">it(&quot;calls toggleForecast on click&quot;, () =&gt; {
+  // create a spy function
+  const spy = sinon.spy();
+  // pass spy function as our toggleForecast prop
+  const wrapper = mount(
+    &lt;Temperature temp={10} city=&quot;Toronto&quot; toggleForecast={spy} /&gt;
+  );
+
+  // find the first div and simulate a click event on it
+  wrapper
+    .find(&quot;div&quot;)
+    .first()
+    .simulate(&quot;click&quot;);
+
+  // ensure that our spy (toggleForecast) was called when click was simulated
+  expect(spy.calledOnce).toBe(true);
+});
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <pre><code class="javascript">import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 import { shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
@@ -2657,26 +3812,177 @@ describe('Emit data check', () =&gt; {
   });
 });
 
-</code></pre></div>
-        </div>
+</code></pre>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>
-            var base_url = "..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
-        </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+<h4>Testing with Moxios</h4>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+<pre><code class="js">import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
+import moxios from 'moxios';
+import { loadSpsData, loadSpsDataSuccess } from '../../../actions/SpActions';
+
+export const startState = {}
+const middleware = [thunk];
+export const mockStore = configureMockStore(middleware)
+
+describe('loadSpsData', () =&gt; {
+
+  beforeEach(function () {
+    moxios.install()
+  });
+
+  afterEach(function () {
+    moxios.uninstall()
+  });
+
+  it('calls loadSpsData', async () =&gt; {
+    const expected_url = 'http://localhost:8080/resource/location';
+    const SpsData = {
+      data: {
+        sp: {
+          items: {}
+        },
+      }
+    }
+    const store = mockStore();
+    let request_url = '';
+    moxios.wait(() =&gt; {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: SpsData
+      })
+      request_url = request.url;
+    })
+
+    const expected = loadSpsDataSuccess(SpsData)
+
+    await store.dispatch(loadSpsData()).then(() =&gt; {
+      const action = store.getActions();
+
+      const type = action[0].type;
+      expect(type).toEqual(expected.type);
+
+      const data = action[0][&quot;spsData&quot;];
+      expect(data).toEqual(expected.spsData);
+
+      expect(request_url).toEqual(expected_url);
+    });
+  })
+});
+
+</code></pre>
+
+<hr />
+<h4>Testing components wrapped in HOC</h4>
+
+<p><a href="https://github.com/airbnb/enzyme/issues/539">Testing components wrapped in HOC</a></p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Pseudo Code</h4>
+
+<pre><code class="js">function calculate_gpa
+  pass in student_grades
+  set grade_total to 0
+  for each grade in student_grades
+      if grade is not a 1, 2, 3, or 4
+          print &quot;invalid grade&quot;
+          print grade
+          print &quot;can't complete calculation&quot;
+          exit function
+      else add grade to grade_total
+      endif
+   endfor
+   set gpa to grade_total / number of grades
+   return gpa
+endfunction
+
+set reggie_grades to 4, 4, 3, 4
+set reggie_gpa to call calculate_gpa with reggie_grades
+print reggie_gpa
+</code></pre>
+
+<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+  <li class="last-updated-holder displayDate loading">
+    <span class="last-updated-text">Last updated:</span>
+    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date"></time>
+  </li>
+<!--
+  <li class="readingTime">
+    2 minutes to read
+  </li>
+-->
+  <li class="contributors-holder">
+    <span class="contributors-text">Contributors</span>
+    <ul class="contributors" data-bi-name="contributors"></ul>
+  </li>
+</ul>
+</div>
+        <div class="col-md-3"><div class="navbar-light navbar-expand-md hidden-print sticky-top sticky-offset" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column bs-sidenav">
+            <li class="nav-item main"><a class="nav-link" href="#frontend">FRONTEND</a></li>
+                <li class="nav-item">
+                    <a href="#javascript" class="nav-link">JAVASCRIPT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#es6" class="nav-link">ES6</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#typescript" class="nav-link">TYPESCRIPT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#react" class="nav-link">REACT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#rest-api" class="nav-link">REST API</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#js-utilities" class="nav-link">JS Utilities</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#graphql" class="nav-link">GRAPHQL</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#socket" class="nav-link">SOCKET</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#css3sass" class="nav-link">CSS3/SASS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testing" class="nav-link">TESTING</a>
+                </li>
+        </ul>
+    </div>
+</div></div>
+      </div>
+      </div>
+      
+      <footer class="col-md-12">
+	<hr>
+	<div class="container">
+	</div>
+      </footer>
+      <script>
+	var base_url = "..",
+            shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+      </script>
+      <script src="../js/base.js" defer></script>
+      <script src="../search/main.js" defer></script>
+      
+      <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
@@ -2698,8 +4004,8 @@ describe('Emit data check', () =&gt; {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
@@ -2734,6 +4040,6 @@ describe('Emit data check', () =&gt; {
         </div>
     </div>
 </div>
-
+      
     </body>
 </html>
