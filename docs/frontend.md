@@ -383,7 +383,13 @@ leo.eat(10)
 snoop.play(5)
 ```
 
-ES6 syntax  
+<br>
+
+---
+
+<br>
+
+<h4>ES6 syntax</h4>  
 In 2015, EcmaScript (the official JavaScript specification) 6 was released with support for Classes and the class keyword.  
 Let’s see how our Animal constructor function above would look like with the new class syntax.
 
@@ -410,6 +416,12 @@ class Animal {
 const leo = new Animal('Leo', 7)
 const snoop = new Animal('Snoop', 10)
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Array methods</h4>
 We can see all the array’s methods by simply logging Array.prototype.  
@@ -449,7 +461,11 @@ console.log(Array.prototype)
   values: ƒn values()
 */
 
+<br>
+
 ---
+
+<br>
 
 <h4>this keyword</h4>
 It's a special identifier keyword that's automatically defined in the scope of every function.    
@@ -483,6 +499,12 @@ function foo() {
 baz(); // <-- call-site for `baz`
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Default binding</h4>
 Standalone function invocation.  
 In this case "this" points at the global object.  
@@ -512,6 +534,12 @@ var obj = {
 
 obj.foo(); // 2
 ```
+
+<br>
+
+---
+
+<br>
 
 <h4>Explicit Binding</h4>
 All functions you will create, do have access to call(..) and apply(..).
@@ -567,7 +595,11 @@ Otherwise, default the this (default binding). If in strict mode, pick undefined
 var bar = foo()
 ```
 
+<br>
+
 ---
+
+<br>
 
 <h4>Objects</h4>
 Objects come in two forms: the declarative (literal) form, and the constructed form.  
@@ -638,8 +670,7 @@ let {city, state, zip} = address;
 
 log(city); // 'London'
 log(state); // 'UK'
-log(zip); // 1334
-```
+log(zip); // 1334```
 
 <h4>Destructuring 2</h4>
 ```javascript
@@ -658,9 +689,8 @@ var person = {name: 'Aaaaaa', age: 35};
 displayPerson(person);
 
 function displayPerson({name, age}) {
-  // do something with name and age to display them
-}
-```
+  ...
+}```
 
 <h4>Destructuring 4</h4>
 ```javascript
@@ -679,8 +709,7 @@ function doSomething([first, second, ...others]){
   log(first);   //logs 1
   log(second);  //logs 2
   log(others);  //logs [3, 4]
-}
-```
+}```
 
 <h4>Arrow functions 1</h4>
 Specifying parameters:
@@ -715,13 +744,14 @@ const smartPhones = [
 ];
 
 // ES6
+```js
 const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
 
 <h4>Nested keys</h4>
 Check existance of nested keys.
-```javascript
+```js
 var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
 if (update_progress !== null) {
     console.log(JSON.stringify(data));
@@ -743,6 +773,12 @@ setInterval(function () {
 }, 2000); // Execute somethingElse() every 2 seconds.
 ```
 
+<br>
+
+---
+
+<br>
+
 <h4>Performance analysis</h4>
 ```js
 console.time("start");
@@ -753,7 +789,11 @@ console.timeEnd("end")
 ```
 // this will cause the browser to print time elapsed between start and end.
 
+<br>
+
 ---
+
+<br>
 
 <h4>Various examples of Loops, Promises, callback</h4>
 

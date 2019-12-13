@@ -744,6 +744,30 @@ wc `find | grep jsx$`
 ```
 
 <br>
+---
+
+<h4>Find file</h4>
+```
+find /path/to/file/ -iname filename
+```
+
+---
+<br>
+<h4>Get differences between 2 folders</h4>
+```
+diff --brief --recursive dir1/ dir2/ # GNU long options
+diff -qr dir1/ dir2/ # common short options
+```
+---
+<br>
+<h4>Grep with exclude</h4>
+```
+grep -r "moment" --exclude-dir=node_modules
+```
+<br>
+<h4>Grep files names only</h4>
+```
+grep -rl "text" --exclude-dir=node_modules --exclude-dir=deploy --exclude-dir=.venv
 
 ---
 
