@@ -744,6 +744,17 @@ wc `find | grep jsx$`
 ```
 
 <br>
+
+---
+
+<br>
+
+<h4>List nested folders/files </h4>
+```
+tree -L 2
+```
+
+<br>
 ---
 
 <h4>Find file</h4>
@@ -2032,13 +2043,219 @@ curl -v -X PATCH -H$TOKEN $SITE/api/v1/Accounts/abcde -d'{"Password":"zyxwv"}' |
 curl -v -X DELETE -H$TOKEN $SITE/api/v1/Accounts/abcde
 ```
 
+
 --- 
 
+
 ## DOCKER  
-Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers.  
+
+Docker is a platform to develop, deploy, and run applications with containers.  
 A container is launched by running an image.  
 An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.  
 
+<h4>Example 1</h4>
+
+1. create an application
+2. create a Dockerfile
+3. build an image
+4. create a container
+5. using a volume
+
+<h4>1. create an application</h4>
+```
+npm init -y
+npm install express —-save
+```
+
+app.js
+```js
+// app.js
+const express = require('express')
+
+const app = express()
+
+const port = 3000
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+```
+
+run it
+```
+node app.js
+```
+
+<h4>2. create a Dockerfile</h4>
+
+```
+FROM node:latest
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+ENTRYPOINT ["node", "app.js"]
+```
+
+<h4>3. build an image</h4>
+
+```
+docker build -t mz2kh/node:latest .
+```
+
+Show images
+```
+docker images
+```
+
+<h4>4. create a container</h4>
+
+Create a container with docker run
+
+```
+docker run mz2kh/node
+or
+docker run -p 8000:3000 chrisnoring/node
+```
+
+Environment variable
+```
+ENV PORT=3000
+use in Dockerfile: EXPOSE $PORT
+use in Node.js process.env.PORT
+```
+
+List containers
+```
+docker ps
+```
+
+Stop containers
+```
+docker stop containerID
+```
+
+Access contaienr shell interactively
+```
+docker exec -it containerID bash
+```
+
+Remove container
+```
+docker rm containerID
+```
+
+<h4>5. using a Volume</h4>
+We want to be able to change or create files in our container so that
+when we pull it down and start it up again our changes will still be there.
+
+create a volume
+```
+docker volume create [name of volume]
+```
+
+volumes list
+```
+docker volume ls
+```
+
+remove all not used volumes
+```
+docker volume prune
+```
+
+remove a single volume
+```
+docker volume rm [name of volume]
+```
+
+get more information about a volume
+```
+docker inspect [name of volume]
+```
+
+<h4>Mounting a volume</h4>
+
+Syntax options:
+```
+--volume (-v [name of volume]:[directory in the container])
+or 
+--mount (--mount source=[name of volume], target=[directory in container])
+```
+
+Usage in conjunction with run container
+```
+docker run -d -p 8000:3000 --name my-container --volume my-volume:/logs mz2kh/node
+```
+
+Locate our volume inside of our container, and navigate to logs/ directory
+```
+docker exec -it my-container bash
+```
+
+Run container with subdirectory
+```
+docker run -d -p 8000:3000 --name my-container --volume $(pwd)/logs:/logs mz2kh/node
+```
+
+access container and check folder cd ../logs/
+```
+docker exec -it my-container bash
+```
+
+tear down the container
+```
+docker kill my-container && docker rm my-container
+```
+
+Make the entire project directory as a volume
+```
+npm install --save-dev nodemon
+docker run -d -p 8000:3000 --name my-container --volume $(pwd):/app mz2kh/node
+```
+in package.json add
+```
+"scripts": {
+  "start": "nodemon app.js",
+  "log": "echo \"Logging something to screen\""
+}
+```
+in Dockerfile change entrypoint to:
+```
+ENTRYPOINT ["npm", "start"]
+```
+rebuild the image
+```
+docker build -t mz2kh/node .
+```
+bring up our container
+```
+docker run -d -p 8000:3000 --name my-container --volume $(PWD):/app mz2kh/node
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Example 2</h4>
 Develop a new project which involves both a Node backend and a React front-end in Docker containers.
 - Run both the Node and the React app in its own Docker container.
 - Communicate between the two apps running in containers.
@@ -2052,7 +2269,7 @@ Develop a new project which involves both a Node backend and a React front-end i
 For Client
 ```
 # base image
-FROM node:8.7.0-alpine
+FROM node:latest
 
 # set working directory
 RUN mkdir -p /usr/src/appclient
@@ -2100,6 +2317,7 @@ f. COPY . /app/directory/path Copy local code into the container
 g. CMD ["npm", "start"] Now our app lives in the container, we can run the command npm start.  
   
 e. The Dockerfile in the server folder is nearly the same, except that in the last line the command to run is npm run dev , which is an npm script  defined in the package.json file that starts the Node app using nodemon instead of node to trigger recompiling the app server every time I edit something in the local server source code.  
+
 
 <h4>Create the docker-compose.yml file</h4> 
 This will make the two containers communicative.
@@ -2150,14 +2368,17 @@ REACT_APP_PORT=4000
 
 a. ports: Then we map container port to a port on the host machine so that we can access the running containers from the local environment  
 b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container,  
-so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.  
+   so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.  
 c. command: The command to run after the container is up. What’s specified here will override the CMD part in the Dockerfile.  
 
 <!-- 
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
+https://dev.to/azure/docker---from-the-beginning-part-i-28c6
 -->
 
+
 ---
+
 
 ## DEVOPS
 DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  
@@ -2470,6 +2691,9 @@ GIT
 
 Linux  
 [Linux commands](http://landoflinux.com/linux_basic_fundamentals.html)  
+
+Docker
+[Docker](https://dev.to/azure/docker---from-the-beginning-part-i-28c6)
 
 
 
@@ -3329,7 +3553,8 @@ https://scrimba.com
 https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook
 https://grid.layoutit.com/
 http://patrickbrosset.com/lab/2018-01-10-css-alignment-cheatsheet/
-
+http://inanzzz.com
+http://opensource.com
 -->
 
 <!--
