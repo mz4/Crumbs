@@ -1,21 +1,10 @@
 # TOOLS  
+
 ---
+
 <br>
+
 ## GIT
-
-<br>
-
----
-
-<br>
-
-<h4>Install git</h4>
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install git
-git --version
-```
 
 <br>
 
@@ -904,9 +893,34 @@ apt-cache pkgnames
 
 <br>
 
+<h4>Upgrade packages and Install git</h4>
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+git --version
+```
+
+<br>
+
+---
+
+<br>
+
 <h4>Package Name and Description of Software</h4>
 ```
 apt-cache search vsftpd
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Remove packages</h4>
+```
+sudo apt-get autoremove -y
 ```
 
 <br>
@@ -1108,6 +1122,28 @@ Set Default folder for screenshots
 ```
 gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/username/Pictures/GUI/"
 ```
+
+<br>
+
+---
+
+<br>
+
+<h4>Download files from command line</h4>
+```
+curl -L -o "/dir1/dir2/miofile.txt" "https://turbolab.it/scarica/204"
+wget -O "/dir1/dir2/miofile.txt" "https://turbolab.it/scarica/204"
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Download files from command line and assign name</h4>
+curl -o "miofile.txt" "https://turbolab.it/scarica/204"
+wget -O "miofile.txt" "https://turbolab.it/scarica/204"
 
 <br>
 

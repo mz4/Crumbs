@@ -1,8 +1,12 @@
 # BACKEND
 
 ---
-  
+
+<br>
+
 ## PYTHON
+
+<br>
 
 <h4>Byte code compilation</h4>
 Python compiles sourcecode into a format called bytecode.  
