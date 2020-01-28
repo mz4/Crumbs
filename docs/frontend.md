@@ -4161,3 +4161,60 @@ set reggie_grades to 4, 4, 3, 4
 set reggie_gpa to call calculate_gpa with reggie_grades
 print reggie_gpa
 ```
+
+<br>
+
+---
+
+<br>
+
+## CYPRESS
+
+in a .js file into test/cypress folder:
+
+example to validate a component
+
+defining xpath/data-object-id and constants values:
+```js
+const ADD_BUTTON = "[data-object-id=\"AddBtn\"]"
+const USER_EMAIL = "user001@gmail.com"
+
+function click_save() {
+  cy.xpath(BUTTONS_CONTAINER)
+    .within(() => {
+      cy.xpath('/button[1]')
+        .contains('Save')
+        .should('not.be.disabled')
+        .click()
+    })
+}
+
+describe('Component tests', () => {
+  beforeEach(() => {
+    cy.visit('/account');
+  })
+
+  it('loads successfully page', () => {
+    cy.xpath(MAIN_XPATH)
+      .should('exist')
+      .and('not.be.empty');
+
+    cy.xpath(MAIN_XPATH).within(() => {
+      cy.xpath('./header')
+        .should('have.text', 'Account')
+    })
+  })
+
+  it('creates a new account', () => {
+    cy.get(ADD_BUTTON).click()
+
+    cy.xpath(MAIN_FORM).within(() => {
+      cy.xpath(INPUT_FIELD).type(USER_EMAIL)
+
+      click_save();
+    })
+  })
+
+
+})
+```

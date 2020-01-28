@@ -2275,22 +2275,6 @@ docker run -d -p 8000:3000 --name my-container --volume $(PWD):/app mz2kh/node
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h4>Example 2</h4>
 Develop a new project which involves both a Node backend and a React front-end in Docker containers.
 - Run both the Node and the React app in its own Docker container.
@@ -2411,6 +2395,38 @@ c. command: The command to run after the container is up. What’s specified her
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
 https://dev.to/azure/docker---from-the-beginning-part-i-28c6
 -->
+
+---
+
+## CROSS BROWSERS
+
+Common issues: 
+
+- Avoid Internet Explorer to fall back to it’s own Quirksmode:
+```html
+<!DOCTYPE html>
+```
+
+- Add CSS Reset as: https://github.com/necolas/normalize.css/blob/master/normalize.css
+
+- Vendor specific style
+```
+-ms for Microsoft (Internet Explorer)
+-moz for Mozilla Foundation (Firefox)
+-o for Opera Software
+-webkit  for Safari and Chrome
+```
+
+```
+.test{
+ -moz-opacity: 0.6;
+ -ms-opacity: 0.6;
+ -webkit-opacity: 0.6;
+ opacity: 0.6;
+}
+```
+
+- Use cross-browser friendly libraries and frameworks: Bootstrap, JQuery...
 
 
 ---
@@ -2619,39 +2635,6 @@ Then, Jenkins can launch a Docker container based on that image, and run all you
 
 
 ## BASH
-```
-  192  cd ~/
-  193  pwd
-  194  ls
-  195  ls -la
-  196  touch .bash_profile
-  197  export PATH=$PATH:/home/matteo/bin
-  198  cd bin
-  199  touch hello-world
-  200  vim hello-world 
-  201  which bash
-  202  vim hello-world 
-  203  chmod u+x hello-world 
-  204  hello-world 
-  205  vim hello-world 
-  206  hello-world 
-  207  vim hello-world 
-  208  hello-world 
-  209  vim hello-world 
-  210  hello-world 
-  211  vim hello-world 
-  212  hello-world 
-  213  vim hello-world 
-  214  hello-world 
-  215  vim hello-world 
-  216  hello-world 
-  217  vim hello-world 
-  218  hello-world 
-  219  vim hello-world 
-  220  hello-world 
-  221  vim hello-world 
-  222  history
-```
 
 example
 ```bash
