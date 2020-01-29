@@ -4170,6 +4170,21 @@ print reggie_gpa
 
 ## CYPRESS
 
+Install Cypress
+```js
+npm install cypress --save-dev
+```
+
+in package.json
+```json
+"scripts": {
+  "cypress:dashboard": "./node_modules/.bin/cypress open --project test",
+  "cypress": "./node_modules/.bin/cypress run --project test --reporter junit --reporter-options mochaFile=results/componentTestResult[hash]{$(date +%F_%T)}.xml, toConsole=trueS"
+}
+```
+
+
+
 in a .js file into test/cypress folder:
 
 example to validate a component

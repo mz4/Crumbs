@@ -2240,6 +2240,40 @@ https://dev.to/azure/docker---from-the-beginning-part-i-28c6
 -->
 
 <hr />
+<h2 id="cross-browsers">CROSS BROWSERS</h2>
+<p>Common issues: </p>
+<ul>
+<li>Avoid Internet Explorer to fall back to it’s own Quirksmode:</li>
+</ul>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+</code></pre>
+
+<ul>
+<li>
+<p>Add CSS Reset as: https://github.com/necolas/normalize.css/blob/master/normalize.css</p>
+</li>
+<li>
+<p>Vendor specific style</p>
+</li>
+</ul>
+<pre><code>-ms for Microsoft (Internet Explorer)
+-moz for Mozilla Foundation (Firefox)
+-o for Opera Software
+-webkit  for Safari and Chrome
+</code></pre>
+
+<pre><code>.test{
+ -moz-opacity: 0.6;
+ -ms-opacity: 0.6;
+ -webkit-opacity: 0.6;
+ opacity: 0.6;
+}
+</code></pre>
+
+<ul>
+<li>Use cross-browser friendly libraries and frameworks: Bootstrap, JQuery...</li>
+</ul>
+<hr />
 <h2 id="devops">DEVOPS</h2>
 <p>DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  </p>
 <p>These practices are used to automate processes that historically have been manual and slow. They use a technology stack and tooling which help them operate and evolve applications quickly and reliably.  </p>
@@ -2412,39 +2446,6 @@ Finished: SUCCESS
 <p>With Docker, your compiler, database, and everything else your app needs can be installed in a docker image.<br />
 Then, Jenkins can launch a Docker container based on that image, and run all your sh or bat steps within the container.  You can be certain that all of your app's dependencies are installed correctly, and there's no need to clutter the Jenkins server.</p>
 <h2 id="bash">BASH</h2>
-<pre><code>  192  cd ~/
-  193  pwd
-  194  ls
-  195  ls -la
-  196  touch .bash_profile
-  197  export PATH=$PATH:/home/matteo/bin
-  198  cd bin
-  199  touch hello-world
-  200  vim hello-world 
-  201  which bash
-  202  vim hello-world 
-  203  chmod u+x hello-world 
-  204  hello-world 
-  205  vim hello-world 
-  206  hello-world 
-  207  vim hello-world 
-  208  hello-world 
-  209  vim hello-world 
-  210  hello-world 
-  211  vim hello-world 
-  212  hello-world 
-  213  vim hello-world 
-  214  hello-world 
-  215  vim hello-world 
-  216  hello-world 
-  217  vim hello-world 
-  218  hello-world 
-  219  vim hello-world 
-  220  hello-world 
-  221  vim hello-world 
-  222  history
-</code></pre>
-
 <p>example</p>
 <pre><code class="bash">#!/bin/bash
 who='You!'
@@ -3602,6 +3603,9 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
                     <a href="#docker" class="nav-link">DOCKER</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#cross-browsers" class="nav-link">CROSS BROWSERS</a>
+                </li>
+                <li class="nav-item">
                     <a href="#devops" class="nav-link">DEVOPS</a>
                 </li>
                 <li class="nav-item">
@@ -3703,5 +3707,5 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-01-01 21:03:39
+Build Date UTC : 2020-01-28 18:47:21
 -->

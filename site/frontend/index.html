@@ -3903,6 +3903,56 @@ set reggie_gpa to call calculate_gpa with reggie_grades
 print reggie_gpa
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
+<h2 id="cypress">CYPRESS</h2>
+<p>in a .js file into test/cypress folder:</p>
+<p>example to validate a component</p>
+<p>defining xpath/data-object-id and constants values:</p>
+<pre><code class="js">const ADD_BUTTON = &quot;[data-object-id=\&quot;AddBtn\&quot;]&quot;
+const USER_EMAIL = &quot;user001@gmail.com&quot;
+
+function click_save() {
+  cy.xpath(BUTTONS_CONTAINER)
+    .within(() =&gt; {
+      cy.xpath('/button[1]')
+        .contains('Save')
+        .should('not.be.disabled')
+        .click()
+    })
+}
+
+describe('Component tests', () =&gt; {
+  beforeEach(() =&gt; {
+    cy.visit('/account');
+  })
+
+  it('loads successfully page', () =&gt; {
+    cy.xpath(MAIN_XPATH)
+      .should('exist')
+      .and('not.be.empty');
+
+    cy.xpath(MAIN_XPATH).within(() =&gt; {
+      cy.xpath('./header')
+        .should('have.text', 'Account')
+    })
+  })
+
+  it('creates a new account', () =&gt; {
+    cy.get(ADD_BUTTON).click()
+
+    cy.xpath(MAIN_FORM).within(() =&gt; {
+      cy.xpath(INPUT_FIELD).type(USER_EMAIL)
+
+      click_save();
+    })
+  })
+
+
+})
+</code></pre>
+
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <li class="last-updated-holder displayDate loading">
     <span class="last-updated-text">Last updated:</span>
@@ -3958,6 +4008,9 @@ print reggie_gpa
                 </li>
                 <li class="nav-item">
                     <a href="#testing" class="nav-link">TESTING</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#cypress" class="nav-link">CYPRESS</a>
                 </li>
         </ul>
     </div>
