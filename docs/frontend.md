@@ -12,6 +12,34 @@
 
 <br>
 
+<h4>Javscript Engine</h4>
+A javascript Engine (as Google’s V8 engine) performs following two main tasks:  
+
+<h5>Creation</h5>
+- Setup memory space for Variables & Functions - "Hoisting"  
+- Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
+  ("undefined" is a special value assigned to variables that exists in the code but have not been set)
+
+<h5>Execution</h5>
+- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
+- Variable assignment are done in this phase 
+
+<br>
+
+---
+
+<br>
+
+<h4>Creation</h4>
+Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope  
+(to the top of the current script or the current function). 
+
+<br>
+
+---
+
+<br>
+
 <h4>Execution Context</h4>
 The environment in which any code run.  
 Javscript engine wraps the code into an execution context.
@@ -27,38 +55,29 @@ Javscript engine creates in the Execution Context:
 
 <br>
 
-<h4>Javscript Engine</h4>
-It performs following two steps while executing any code:  
-
-<h5>Creation Phase</h5>
-- Run through your code & identifies variables & functions  
-- Setup memory space for Variables & Functions - "Hoisting"  
-- Hoisting, before code is executed, the JS Engine set asides memory space for Var & Func used inside the code.  
-  ("undefined" is a special value assigned to variables that exists in the code but have not been set)
-
-<h5>Execution Phase</h5>
-- When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  
-- Variable assignment are done in this phase 
-
-<br>
-
----
-
-<br>
-
-<h4>Variable hoisting</h4>
-Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope  
-(to the top of the current script or the current function). 
-
-<br>
-
----
-
-<br>
-
-<h4>Single Threaded (One command at the time) & Synchonous</h4>  
+<h4>Javascript is: Single Threaded & Synchonous</h4>  
 Javascript for programmers behaves in a single threaded manner, one command at the time.  
 And it is Synchronous, one line of code being executed at the time.
+
+<br>
+
+---
+
+<br>
+
+<h4>Function invocations and execution stack</h4>
+Anytime you execute or invoke a function in js, a new execution context is created, each execution context, has its own variable environment.  
+"Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.  
+The event queue is constantly monitored by javascript engine.
+
+<br>
+
+---
+
+<br>
+
+<h4>Async event loop</h4>
+The job of the Event loop is to look into the call stack and determine if the call stack is empty or not. If the call stack is empty, it looks into the message queue to see if there’s any pending callback waiting to be executed.
 
 <br>
 
@@ -69,18 +88,6 @@ And it is Synchronous, one line of code being executed at the time.
 <h4>Bind</h4>
 We use the Bind () method primarily to call a function with the this value set explicitly.  
 In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
-
-<br>
-
----
-
-<br>
-
-
-<h4>Function invocations and execution stack</h4>
-Anytime you execute or invoke a function in js, a new execution context is created, each execution context, has its own variable environment.  
-"Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.  
-The event queue is constantly monitored by javascript engine.
   
 <br>
 
@@ -184,17 +191,18 @@ and it has access to the global variables.
 <h4>Promise</h4>
 Promises are one way to deal with asynchronous code.  
 A Promise is in one of these states:  
-- Pending: initial state, neither fulfilled nor rejected.  
-- Fulfilled: meaning that the operation completed successfully.  
-- Rejected: meaning that the operation failed.  
+Pending: initial state, neither fulfilled nor rejected.  
+Fulfilled: meaning that the operation completed successfully.  
+Rejected: meaning that the operation failed.  
   
 A Promise object is created using the new keyword and its constructor.  
-This constructor takes as its argument a function, called the "executor function".  
+This constructor takes as its argument a function, called the executor function.  
 This function should take two functions as parameters.  
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.  
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  
 
 <h4>Promise example 1</h4>
+
 ```javascript
 get('supplyData.json').then(function(response) {
   console.log("Success!", response);
@@ -204,6 +212,7 @@ get('supplyData.json').then(function(response) {
 ```
   
 <h4>Promise example 2</h4>
+
 ```javascript
 var promise1 = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -221,6 +230,7 @@ console.log(promise1);
 ```
 
 <h4>Promise example 3</h4>
+
 ```javascript
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -230,6 +240,44 @@ function myAsyncFunction(url) {
     xhr.onerror = () => reject(xhr.statusText);
     xhr.send();
   });
+}
+```
+
+<h4>Promise example 4</h4>
+
+```javascript
+/* ES5, using Bluebird */
+var isMomHappy = true;
+
+// Promise
+var willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            var phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason);
+        }
+
+    }
+);
+
+
+// call our promise
+var askMom = function () {
+    willIGetNewPhone
+        .then(function (fulfilled) {
+            // yay, you got a new phone
+            console.log(fulfilled);
+        })
+        .catch(function (error) {
+            // ops, mom don't buy it
+            console.log(error.message);
+        });
 }
 ```
 
@@ -246,6 +294,7 @@ A callback is a function that is passed to another function.
 When the first function is done, it will run the second function.  
 
 Print a string after a random amount of time:
+
 ```js
 function printString(string, callback){
   setTimeout(
@@ -259,6 +308,7 @@ function printString(string, callback){
 ```
 
 Let’s try to print the letters A, B, C in that order:
+
 ```js
 function printAll(){
   printString("A", () => {
@@ -279,6 +329,7 @@ printAll()
 <h4>Promises vs callaback</h4>
 Promises try to fix callback nesting problem. 
 In our function lets use Promises:
+
 ```js
 function printString(string){
   return new Promise((resolve, reject) => {
@@ -307,6 +358,7 @@ printAll()
 ```
 
 <h4>Await:</h4>
+
 ```js
 async function printAll(){
   await printString("A")
@@ -355,6 +407,7 @@ const snoop = new Animal('Snoop', 10)
 Without using new keyword, we have to explicitly create a reference:
 Looking back at our Animal constructor, the two most important parts were creating the object and returning it.  
 Without creating the object with Object.create, we wouldn’t be able to delegate to the function’s prototype on failed lookups.   Without the return statement, we wouldn’t ever get back the created object.  
+
 ```javascript
 function Animal (name, energy) {
   let animal = Object.create(Animal.prototype)
@@ -430,7 +483,7 @@ const snoop = new Animal('Snoop', 10)
 We can see all the array’s methods by simply logging Array.prototype.  
 console.log(Array.prototype)
 
-/*
+```js
   concat: ƒn concat()
   constructor: ƒn Array()
   copyWithin: ƒn copyWithin()
@@ -462,13 +515,35 @@ console.log(Array.prototype)
   toString: ƒn toString()
   unshift: ƒn unshift()
   values: ƒn values()
-*/
+```
 
 <br>
 
 ---
 
 <br>
+
+<h4>Arrays</h4>
+Arrays is javascript are dynamically typed, and can contain different type of data
+
+```javascript
+var arr = [
+    1, 
+    false, 
+    {
+        name: 'Tony',
+        address: '111 Main St.'
+    },
+    function(name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    "hello"
+];
+
+console.log(arr);
+arr[3](arr[2].name);
+```
 
 <h4>this keyword</h4>
 It's a special identifier keyword that's automatically defined in the scope of every function.    
@@ -610,6 +685,7 @@ Note: It's extremely uncommon to use the "constructed form" for creating objects
 You would pretty much always want to use the literal syntax form.  
 
 Literal:  
+
 ```javascript
 var myObj = {
 	key: value
@@ -618,6 +694,7 @@ var myObj = {
 ```
 
 Constructed:    
+
 ```javascript
 var myObj = new Object();
 myObj.key = value;
@@ -640,7 +717,8 @@ myObj.key = value;
 <br>
 
 ## ES6
-<h4>Spread Operator 1</h4>  
+<h4>Spread Operator 1</h4>
+
 ```javascript
 const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
@@ -649,6 +727,7 @@ console.log(res);  // { isAuthenticated: true }
 ```
 
 <h4>Spread Operator 2</h4>
+
 ```javascript
 var mid = [3, 4];  
 var arr = [1, 2, ...mid, 5, 6];  
@@ -656,6 +735,7 @@ console.log(arr);  // [ 1, 2, 3, 4, 5, 6 ]
 ```
 
 <h4>Spread Operator 3</h4>
+
 ```javascript
 let nums = [1, 2, 3];
 let abcs = ['a', 'b', 'c'];
@@ -663,6 +743,7 @@ let alphanum = [ ...nums, ...abs ]; // [1, 2, 3, 'a', 'b', 'c']
 ```
 
 <h4>Destructuring 1</h4>
+
 ```javascript
 var address = {
   city: "London",
@@ -674,19 +755,22 @@ let {city, state, zip} = address;
 log(city); // 'London'
 log(state); // 'UK'
 log(zip); // 1334```
+```
 
 <h4>Destructuring 2</h4>
-```javascript
+
+```js
 var address = {
   city: "London",
   state: "UK",
   zip: 1334
 };
 let {city: c, state: s, zip: z} = address;
-log(c, s, z); // 'London UK 1334'
+log(c, s, z);
 ```
 
 <h4>Destructuring 3</h4>
+
 ```javascript
 var person = {name: 'Aaaaaa', age: 35};
 displayPerson(person);
@@ -704,6 +788,7 @@ let ?{name, age, address} = person; // OK
 ```
 
 <h4>Destructuring 5</h4>
+
 ```javascript
 var nums = [1, 2, 3, 4];
 doSomething(nums);
@@ -712,10 +797,12 @@ function doSomething([first, second, ...others]){
   log(first);   //logs 1
   log(second);  //logs 2
   log(others);  //logs [3, 4]
-}```
+}
+```
 
 <h4>Arrow functions 1</h4>
 Specifying parameters:
+
 ```javascript
     () => { ... } // no parameter
      x => { ... } // one parameter, an identifier
@@ -723,22 +810,26 @@ Specifying parameters:
 ```
 
 <h4>Specifying a body:</h4>
+
 ```javascript
 x => { return x * x }  // block
 x => x * x  // expression, equivalent to previous line
 ```
 
 <h4>Arrow function 2</h4>
+
 ```javascript
 const phraseSplitterEs6 = phrase => phrase.split(" ");
 ```
 
 <h4>Arrow function 3</h4>
+
 ```javascript
 var docLogEs6 = () => { console.log(document); };
 ```
 
 <h4>Arrow function 4</h4>
+
 ```javascript
 const smartPhones = [
   { name:'iphone', price:649 },
@@ -747,13 +838,13 @@ const smartPhones = [
 ];
 
 // ES6
-```js
 const prices = smartPhones.map(smartPhone => smartPhone.price);
 console.log(prices); // [649, 576, 489]
 ```
 
 <h4>Nested keys</h4>
 Check existance of nested keys.
+
 ```js
 var update_progress = (((data || {}).Oem || {}).Name || {}).UpdateProgress;
 if (update_progress !== null) {
@@ -763,6 +854,7 @@ if (update_progress !== null) {
 
 <h4>Difference setInterval and setTimeout</h4>
 setTimeout(): It is a function that execute a JavaScript statement AFTER x interval.
+
 ```js
 setTimeout(function () {
     something();
@@ -770,6 +862,7 @@ setTimeout(function () {
 ```
 
 setInterval(): It is a function that execute a JavaScript statement EVERY x interval.
+
 ```js
 setInterval(function () {
     somethingElse();
@@ -783,6 +876,7 @@ setInterval(function () {
 <br>
 
 <h4>Performance analysis</h4>
+
 ```js
 console.time("start");
 ```
@@ -879,6 +973,7 @@ Axios patch example
 Callback functions  
 
 setInterval
+
 ```js
 setInterval(function(){
   console.log('hello);
@@ -914,11 +1009,13 @@ Object.entries(users).forEach(entry, val) =>
 ```
 
 <h4>Find highest value in an array</h4>
+
 ```js
 const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current)
 ```
 
 <h4>setState spread operator</h4>
+
 ```js
     trips: [
       {
@@ -1235,6 +1332,37 @@ function add(a: any, b:any): any {
 
 add("Hello ", "Steve"); // returns "Hello Steve" 
 add(10, 20); // returns 30 
+```
+
+<h4>Arguments and Spread</h4>
+
+```js
+function greet(firstname, lastname, language) {
+ 
+    language = language || 'en';
+    
+    if (arguments.length === 0) {
+        console.log('Missing parameters!');
+        console.log('-------------');
+        return;
+    }
+    
+    console.log(firstname);
+    console.log(lastname);
+    console.log(language);
+    console.log(arguments);
+    console.log('arg 0: ' + arguments[0]);
+    console.log('-------------');
+    
+}
+
+greet();
+greet('John');
+greet('John', 'Doe');
+greet('John', 'Doe', 'es');
+
+// in ES6 I can do:  function greet(firstname, ...other)
+// and 'other' will be an array that contains the rest of the arguments
 ```
 
 <br>

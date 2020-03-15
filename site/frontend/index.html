@@ -90,6 +90,32 @@
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>Javscript Engine</h4>
+
+<p>A javascript Engine (as Google’s V8 engine) performs following two main tasks:  </p>
+<h5>Creation</h5>
+
+<ul>
+<li>Setup memory space for Variables &amp; Functions - "Hoisting"  </li>
+<li>Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
+  ("undefined" is a special value assigned to variables that exists in the code but have not been set)</li>
+</ul>
+<h5>Execution</h5>
+
+<ul>
+<li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
+<li>Variable assignment are done in this phase </li>
+</ul>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Creation</h4>
+
+<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope<br />
+(to the top of the current script or the current function). </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Execution Context</h4>
 
 <p>The environment in which any code run.<br />
@@ -102,44 +128,10 @@ Javscript engine creates in the Execution Context:<br />
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Javscript Engine</h4>
-
-<p>It performs following two steps while executing any code:  </p>
-<h5>Creation Phase</h5>
-
-<ul>
-<li>Run through your code &amp; identifies variables &amp; functions  </li>
-<li>Setup memory space for Variables &amp; Functions - "Hoisting"  </li>
-<li>Hoisting, before code is executed, the JS Engine set asides memory space for Var &amp; Func used inside the code.<br />
-  ("undefined" is a special value assigned to variables that exists in the code but have not been set)</li>
-</ul>
-<h5>Execution Phase</h5>
-
-<ul>
-<li>When the code is executed line-by-line (by JS interpreeter) it can access the variables defined inside Execution Context  </li>
-<li>Variable assignment are done in this phase </li>
-</ul>
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Variable hoisting</h4>
-
-<p>Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope<br />
-(to the top of the current script or the current function). </p>
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Single Threaded (One command at the time) & Synchonous</h4>
+<h4>Javascript is: Single Threaded & Synchonous</h4>
 
 <p>Javascript for programmers behaves in a single threaded manner, one command at the time.<br />
 And it is Synchronous, one line of code being executed at the time.</p>
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Bind</h4>
-
-<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <p><br></p>
 <hr />
 <p><br></p>
@@ -148,6 +140,19 @@ In other words, bind () allows us to easily set which specific object will be bo
 <p>Anytime you execute or invoke a function in js, a new execution context is created, each execution context, has its own variable environment.<br />
 "Asynchronous tasks" are placed in a so called event queue and executed only when the execution stack is empty.<br />
 The event queue is constantly monitored by javascript engine.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Async event loop</h4>
+
+<p>The job of the Event loop is to look into the call stack and determine if the call stack is empty or not. If the call stack is empty, it looks into the message queue to see if there’s any pending callback waiting to be executed.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Bind</h4>
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <p><br></p>
 <hr />
 <p><br></p>
@@ -231,11 +236,11 @@ and it has access to the global variables.  </p>
 
 <p>Promises are one way to deal with asynchronous code.<br />
 A Promise is in one of these states:<br />
-- Pending: initial state, neither fulfilled nor rejected.<br />
-- Fulfilled: meaning that the operation completed successfully.<br />
-- Rejected: meaning that the operation failed.  </p>
+Pending: initial state, neither fulfilled nor rejected.<br />
+Fulfilled: meaning that the operation completed successfully.<br />
+Rejected: meaning that the operation failed.  </p>
 <p>A Promise object is created using the new keyword and its constructor.<br />
-This constructor takes as its argument a function, called the "executor function".<br />
+This constructor takes as its argument a function, called the executor function.<br />
 This function should take two functions as parameters.<br />
 The first (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value.<br />
 The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.  </p>
@@ -275,6 +280,43 @@ console.log(promise1);
     xhr.onerror = () =&gt; reject(xhr.statusText);
     xhr.send();
   });
+}
+</code></pre>
+
+<h4>Promise example 4</h4>
+
+<pre><code class="javascript">/* ES5, using Bluebird */
+var isMomHappy = true;
+
+// Promise
+var willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            var phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason);
+        }
+
+    }
+);
+
+
+// call our promise
+var askMom = function () {
+    willIGetNewPhone
+        .then(function (fulfilled) {
+            // yay, you got a new phone
+            console.log(fulfilled);
+        })
+        .catch(function (error) {
+            // ops, mom don't buy it
+            console.log(error.message);
+        });
 }
 </code></pre>
 
@@ -454,8 +496,7 @@ const snoop = new Animal('Snoop', 10)
 
 <p>We can see all the array’s methods by simply logging Array.prototype.<br />
 console.log(Array.prototype)</p>
-<p>/<em>
-  concat: ƒn concat()
+<pre><code class="js">  concat: ƒn concat()
   constructor: ƒn Array()
   copyWithin: ƒn copyWithin()
   entries: ƒn entries()
@@ -486,10 +527,32 @@ console.log(Array.prototype)</p>
   toString: ƒn toString()
   unshift: ƒn unshift()
   values: ƒn values()
-</em>/</p>
+</code></pre>
+
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>Arrays</h4>
+
+<p>Arrays is javascript are dynamically typed, and can contain different type of data</p>
+<pre><code class="javascript">var arr = [
+    1, 
+    false, 
+    {
+        name: 'Tony',
+        address: '111 Main St.'
+    },
+    function(name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    &quot;hello&quot;
+];
+
+console.log(arr);
+arr[3](arr[2].name);
+</code></pre>
+
 <h4>this keyword</h4>
 
 <p>It's a special identifier keyword that's automatically defined in the scope of every function.  <br />
@@ -638,7 +701,7 @@ myObj.key = value;
 <hr />
 <p><br></p>
 <h2 id="es6">ES6</h2>
-<p><h4>Spread Operator 1</h4>  </p>
+<p><h4>Spread Operator 1</h4></p>
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
 const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
@@ -671,16 +734,17 @@ let {city, state, zip} = address;
 log(city); // 'London'
 log(state); // 'UK'
 log(zip); // 1334```
+</code></pre>
 
-&lt;h4&gt;Destructuring 2&lt;/h4&gt;
-```javascript
-var address = {
+<h4>Destructuring 2</h4>
+
+<pre><code class="js">var address = {
   city: &quot;London&quot;,
   state: &quot;UK&quot;,
   zip: 1334
 };
 let {city: c, state: s, zip: z} = address;
-log(c, s, z); // 'London UK 1334'
+log(c, s, z);
 </code></pre>
 
 <h4>Destructuring 3</h4>
@@ -709,12 +773,13 @@ function doSomething([first, second, ...others]){
   log(first);   //logs 1
   log(second);  //logs 2
   log(others);  //logs [3, 4]
-}```
+}
+</code></pre>
 
-&lt;h4&gt;Arrow functions 1&lt;/h4&gt;
-Specifying parameters:
-```javascript
-    () =&gt; { ... } // no parameter
+<h4>Arrow functions 1</h4>
+
+<p>Specifying parameters:</p>
+<pre><code class="javascript">    () =&gt; { ... } // no parameter
      x =&gt; { ... } // one parameter, an identifier
 (x, y) =&gt; { ... } // several parameters
 </code></pre>
@@ -744,7 +809,6 @@ x =&gt; x * x  // expression, equivalent to previous line
 ];
 
 // ES6
-```js
 const prices = smartPhones.map(smartPhone =&gt; smartPhone.price);
 console.log(prices); // [649, 576, 489]
 </code></pre>
@@ -1162,6 +1226,36 @@ function add(a: any, b:any): any {
 
 add(&quot;Hello &quot;, &quot;Steve&quot;); // returns &quot;Hello Steve&quot; 
 add(10, 20); // returns 30 
+</code></pre>
+
+<h4>Arguments and Spread</h4>
+
+<pre><code class="js">function greet(firstname, lastname, language) {
+
+    language = language || 'en';
+
+    if (arguments.length === 0) {
+        console.log('Missing parameters!');
+        console.log('-------------');
+        return;
+    }
+
+    console.log(firstname);
+    console.log(lastname);
+    console.log(language);
+    console.log(arguments);
+    console.log('arg 0: ' + arguments[0]);
+    console.log('-------------');
+
+}
+
+greet();
+greet('John');
+greet('John', 'Doe');
+greet('John', 'Doe', 'es');
+
+// in ES6 I can do:  function greet(firstname, ...other)
+// and 'other' will be an array that contains the rest of the arguments
 </code></pre>
 
 <p><br></p>
@@ -3501,7 +3595,7 @@ Enzyme.configure({ adapter: new Adapter() });
 <p><br></p>
 <h4>Add into babel configuration</h4>
 
-<pre><code>&quot;env&quot;: {
+<pre><code class="json">&quot;env&quot;: {
   &quot;test&quot;: {
     &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;]
   }
@@ -3567,26 +3661,22 @@ describe('&lt;GatorMenu /&gt;', () =&gt; {
 <h4>Test Simulate Click</h4>
 
 <p>Call the handler on simulate click.  </p>
-<pre><code class="js">describe('&lt;GatorButton /&gt;', () =&gt; {
-  describe('onClick()', () =&gt; {
-    test('successfully calls the onClick handler', () =&gt; {
+<pre><code>describe(&quot;&lt;GatorButton /&gt;&quot;, () =&gt; {
+  describe(&quot;onClick()&quot;, () =&gt; {
+    test(&quot;successfully calls the onClick handler&quot;, () =&gt; {
       const mockOnClick = jest.fn();
       const wrapper = shallow(
         &lt;GatorButton onClick={mockOnClick} label=&quot;Eat Food&quot; /&gt;
       );
       const component = wrapper.dive();
-
-      component.find('button').simulate('click');
-
+      component.find(&quot;button&quot;).simulate(&quot;click&quot;);
       expect(mockOnClick.mock.calls.length).toEqual(1);
     });
   });
 });
-
 </code></pre>
 
-<p><br></p>
-<hr />
+<h2 id="_1"><br></h2>
 <p><br></p>
 <h4>Mocking the store</h4>
 
@@ -3612,15 +3702,12 @@ const store = mockStore();
 <p><br></p>
 <h4>Clear Actions</h4>
 
-<pre><code class="js">// ...
-
-describe('select_actions', () =&gt; {
+<pre><code class="js">//
+describe(&quot;select_actions&quot;, () =&gt; {
   beforeEach(() =&gt; { // Runs before each test in the suite
     store.clearActions();
   });
-
-  // ...
-
+  //
 });
 </code></pre>
 
@@ -3629,9 +3716,7 @@ describe('select_actions', () =&gt; {
 <p><br></p>
 <h4>Test Actions Dispatch</h4>
 
-<pre><code class="js">// ...
-
-describe('selectAvatar', () =&gt; {
+<pre><code class="js">describe('selectAvatar', () =&gt; {
   test('Dispatches the correct action and payload', () =&gt; {
     const expectedActions = [
       {
@@ -3644,12 +3729,9 @@ describe('selectAvatar', () =&gt; {
     expect(store.getActions()).toEqual(expectedActions);
   });
 });
-
-// ...
 </code></pre>
 
-<p><br></p>
-<hr />
+<h2 id="_2"><br></h2>
 <p><br></p>
 <h4>Test Reducer</h4>
 
@@ -3873,10 +3955,222 @@ describe('loadSpsData', () =&gt; {
 
 </code></pre>
 
+<p><br></p>
 <hr />
+<p><br></p>
 <h4>Testing components wrapped in HOC</h4>
 
 <p><a href="https://github.com/airbnb/enzyme/issues/539">Testing components wrapped in HOC</a></p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>1. Test asynchronous callback</h4>
+
+<pre><code class="js">import React from &quot;react&quot;;
+import DataRetriever from &quot;./DataRetriever&quot;;
+
+export default class DataDisplayer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dataAvailable: false,
+      data: null
+    };
+  }
+
+  componentDidMount() {
+    new DataRetriever().Retrieve(title =&gt; {
+      this.setState({
+        dataAvailable: true,
+        data: title
+      });
+    });
+  }
+
+  render() {
+    if (!this.state.dataAvailable) return &lt;div&gt;Data not available&lt;/div&gt;;
+    return (
+      &lt;div&gt;
+        Data value: &lt;strong&gt;{this.state.data}&lt;/strong&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>2. Retriever</h4>
+
+<pre><code class="js">export default class DataRetriever {
+
+  // This demo method calls an open API, then translates the response to JSON. Once that is done
+  // it calls the passed in callbackMethod with the title property as parameter. So when the API
+  // gives us { title: 'myTitle' }, the code will perform callbackMethod('myTitle')
+  Retrieve(callbackMethod) {
+    fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;)
+      .then(response =&gt; {
+        return response.json();
+      })
+      .then(responseJson =&gt; callbackMethod(responseJson.title));
+  }
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>3. Mock Retriever implementation with Jest</h4>
+
+<pre><code class="js">it(&quot;Should show the data, When retrieved&quot;, () =&gt; {
+  DataRetriever.mockImplementation(() =&gt; {
+    return {
+      Retrieve: (callback) =&gt; callback(&quot;fakeTitle&quot;)
+    }
+  });
+
+  var wrapper = mount(&lt;DataDisplayer /&gt;);
+  expect(wrapper.text()).toContain(&quot;fakeTitle&quot;);
+});
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>1. async await</h4>
+
+<pre><code class="js">import RetrieveData from &quot;./DataRetriever&quot;;
+...
+
+  async componentDidMount () {
+    const title = await RetrieveData();
+    if(title){
+      this.setState({
+        dataAvailable: true,
+        data: title
+      });
+    }
+  }
+</code></pre>
+
+<ol>
+<li>Data Retriever</li>
+</ol>
+<pre><code class="js">export default async() =&gt; {
+  const todoData = await fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;);
+  const todoDataJson = await todoData.json();
+  return todoDataJson.title;
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<ol>
+<li>or with Promise:</li>
+</ol>
+<pre><code class="js">  async componentDidMount () {
+    RetrieveData().then(title =&gt; {
+          if(title){
+            this.setState({
+              dataAvailable: true,
+              data: title
+            });
+          }
+        });
+  }
+</code></pre>
+
+<pre><code class="js">export default () =&gt; {
+  return fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;)
+    .then(response =&gt; {
+      return response.json();
+    })
+    .then(responseJson =&gt; responseJson.title);
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<ol>
+<li>test async/await or promise</li>
+</ol>
+<pre><code class="js">import React from &quot;react&quot;;
+import { shallow } from &quot;enzyme&quot;;
+import DataDisplayer from &quot;./DataDisplayer&quot;;
+
+// We want to test DataDisplayer in an isolated state, but DataDisplayer uses DataRetriever.
+// To keep the isolation we will need to mock out the DataRetriever. This way we control 
+// what this component does and we can predict the outcome. To do this we need to do a manual
+// mock, we can do this by importing the component we want to mock, and then defining a mock
+// om that import.
+import * as DataRetriever from &quot;./DataRetriever&quot;;
+DataRetriever.default = jest.fn();
+
+describe(&quot;DataDisplayer&quot;, () =&gt; {
+  beforeEach(() =&gt; {
+    // Before each test we want to reset the state of the mocked component, so each test can
+    // mock the component in the way it needs to be mocked. Should you have any default mock
+    // needed that is required for every test, this is the place to do this.
+    DataRetriever.default.mockClear();
+  });
+});
+
+// In this test we will mock the DataRetriever in a way that it will create a promise for us
+  // which it will resolve with &quot;fakeTitle&quot; as argument. This simulates that the API has
+  // given us a result with { title: &quot;fakeTitle&quot; } in it. We make the test asynchronous, since
+  // we want to be able to use await in the code to wait for a promise to resolve.
+  it(&quot;Should show the data, When retrieved&quot;, async () =&gt; {
+    // We are going to set up the mock value that DataRetriever resolves to, we tell it when the 
+    // code uses DataRetiever instead of actually calling it and fetching data from the API. It
+    // instantly resolves to a value 'fakeTitle'.
+    DataRetriever.default.mockResolvedValue('fakeTitle');
+
+    // We shallow mount the component through enzyme. This renders the component with a fake DOM 
+    // making us able to see the result that would be rendered. We specifically use the shallow
+    // mount in this case. Not only is this the preferred render for unit tests, since it isolates
+    // the component completely when rendering, we also use it because we don't want to trigger
+    // the lifecycle methods. Since our lifecycle method handles code asynchronously, we want
+    // to be able to wait for that code to complete, this requires manually calling this method.
+    var wrapper = shallow(&lt;DataDisplayer /&gt;);
+    // We need to get the actual instance from the virtual DOM, so we can call any method that 
+    // is available on it.
+    const instance = wrapper.instance();
+    // Now we call the componentDidMount event, telling the component that it mounted. But because
+    // we called it manually we are able to await for it to resolve. This makes sure the promise
+    // for the method is completed before going on with the code.
+    await instance.componentDidMount();
+    // Since we fake a result coming back from the retriever, we expect the text to actually show
+    // the word &quot;fakeTitle&quot; in the component.
+    expect(wrapper.text()).toContain(&quot;fakeTitle&quot;);
+  });
+
+  // In this test we will mock the DataRetriever in a way that it will return a different promise
+  // which resolves without value. This simulates the API returning unexpected data.
+  // We make the test asynchronous, since we want to be able to use await in the code to wait 
+  // for a promise to resolve.
+  it(&quot;Should show not available, When data has not been retrieved&quot;, async () =&gt; {
+    // We are going to set up the mock value that DataRetriever resolves to, we tell it when the 
+    // code uses DataRetiever instead of actually calling it and fetching data from the API. It
+    // instantly resolves to an undefined value, so we can handle nothing coming back from the API.
+    DataRetriever.default.mockResolvedValue(undefined);
+
+    // We are shallow mounting the component again, using its instance, calling the 
+    // componentDidMount and waiting for it to resolve. Only this time it will resolve to a value
+    // of undefined.
+    var wrapper = shallow(&lt;DataDisplayer /&gt;);
+    const instance = wrapper.instance();
+    await instance.componentDidMount();
+    // Since we fake no result coming back from the retriever we don't expect any title appearing
+    // on the page, but instead we expect to see the text &quot;not available&quot;
+    expect(wrapper.text()).toContain(&quot;not available&quot;);
+
+
+</code></pre>
+
 <p><br></p>
 <hr />
 <p><br></p>
@@ -3907,6 +4201,17 @@ print reggie_gpa
 <hr />
 <p><br></p>
 <h2 id="cypress">CYPRESS</h2>
+<p>Install Cypress</p>
+<pre><code class="js">npm install cypress --save-dev
+</code></pre>
+
+<p>in package.json</p>
+<pre><code class="json">&quot;scripts&quot;: {
+  &quot;cypress:dashboard&quot;: &quot;./node_modules/.bin/cypress open --project test&quot;,
+  &quot;cypress&quot;: &quot;./node_modules/.bin/cypress run --project test --reporter junit --reporter-options mochaFile=results/componentTestResult[hash]{$(date +%F_%T)}.xml, toConsole=trueS&quot;
+}
+</code></pre>
+
 <p>in a .js file into test/cypress folder:</p>
 <p>example to validate a component</p>
 <p>defining xpath/data-object-id and constants values:</p>
@@ -3945,6 +4250,7 @@ describe('Component tests', () =&gt; {
     cy.xpath(MAIN_FORM).within(() =&gt; {
       cy.xpath(INPUT_FIELD).type(USER_EMAIL)
 
+      cy.wait(5000)
       click_save();
     })
   })
