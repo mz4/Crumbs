@@ -90,17 +90,6 @@
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Install git</h4>
-
-<pre><code>sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install git
-git --version
-</code></pre>
-
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Create a New Git Repository from scratch</h4>
 
 <pre><code>mkdir to create a directory to contain the project.
@@ -658,6 +647,14 @@ fg n Brings job n to the foreground
 <pre><code>wc `find | grep jsx$`
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>List nested folders/files </h4>
+
+<pre><code>tree -L 2
+</code></pre>
+
 <h2 id="_1"><br></h2>
 <h4>Find file</h4>
 
@@ -805,10 +802,35 @@ Find Large files
 
 &lt;br&gt;
 
+&lt;h4&gt;Upgrade packages and Install git&lt;/h4&gt;
+</code></pre>
+
+<p>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+git --version</p>
+<pre><code>
+&lt;br&gt;
+
+---
+
+&lt;br&gt;
+
 &lt;h4&gt;Package Name and Description of Software&lt;/h4&gt;
 </code></pre>
 
 <p>apt-cache search vsftpd</p>
+<pre><code>
+&lt;br&gt;
+
+---
+
+&lt;br&gt;
+
+&lt;h4&gt;Remove packages&lt;/h4&gt;
+</code></pre>
+
+<p>sudo apt-get autoremove -y</p>
 <pre><code>
 &lt;br&gt;
 
@@ -1010,6 +1032,28 @@ Set Default folder for screenshots
 
 <p>gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/username/Pictures/GUI/"</p>
 <pre><code>
+&lt;br&gt;
+
+---
+
+&lt;br&gt;
+
+&lt;h4&gt;Download files from command line&lt;/h4&gt;
+</code></pre>
+
+<p>curl -L -o "/dir1/dir2/miofile.txt" "https://turbolab.it/scarica/204"
+wget -O "/dir1/dir2/miofile.txt" "https://turbolab.it/scarica/204"</p>
+<pre><code>
+&lt;br&gt;
+
+---
+
+&lt;br&gt;
+
+&lt;h4&gt;Download files from command line and assign name&lt;/h4&gt;
+curl -o &quot;miofile.txt&quot; &quot;https://turbolab.it/scarica/204&quot;
+wget -O &quot;miofile.txt&quot; &quot;https://turbolab.it/scarica/204&quot;
+
 &lt;br&gt;
 
 ---
@@ -1916,9 +1960,173 @@ module.exports = {
 
 <hr />
 <h2 id="docker">DOCKER</h2>
-<p>Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers.<br />
+<p>Docker is a platform to develop, deploy, and run applications with containers.<br />
 A container is launched by running an image.<br />
 An image is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files.  </p>
+<h4>Example 1</h4>
+
+<ol>
+<li>create an application</li>
+<li>create a Dockerfile</li>
+<li>build an image</li>
+<li>create a container</li>
+<li>using a volume</li>
+</ol>
+<h4>1. create an application</h4>
+
+<pre><code>npm init -y
+npm install express —-save
+</code></pre>
+
+<p>app.js</p>
+<pre><code class="js">// app.js
+const express = require('express')
+
+const app = express()
+
+const port = 3000
+
+app.get('/', (req, res) =&gt; res.send('Hello World!'))
+
+app.listen(port, () =&gt; console.log(`Example app listening on port ${port}!`))
+</code></pre>
+
+<p>run it</p>
+<pre><code>node app.js
+</code></pre>
+
+<h4>2. create a Dockerfile</h4>
+
+<pre><code>FROM node:latest
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+ENTRYPOINT [&quot;node&quot;, &quot;app.js&quot;]
+</code></pre>
+
+<h4>3. build an image</h4>
+
+<pre><code>docker build -t mz2kh/node:latest .
+</code></pre>
+
+<p>Show images</p>
+<pre><code>docker images
+</code></pre>
+
+<h4>4. create a container</h4>
+
+<p>Create a container with docker run</p>
+<pre><code>docker run mz2kh/node
+or
+docker run -p 8000:3000 chrisnoring/node
+</code></pre>
+
+<p>Environment variable</p>
+<pre><code>ENV PORT=3000
+use in Dockerfile: EXPOSE $PORT
+use in Node.js process.env.PORT
+</code></pre>
+
+<p>List containers</p>
+<pre><code>docker ps
+</code></pre>
+
+<p>Stop containers</p>
+<pre><code>docker stop containerID
+</code></pre>
+
+<p>Access contaienr shell interactively</p>
+<pre><code>docker exec -it containerID bash
+</code></pre>
+
+<p>Remove container</p>
+<pre><code>docker rm containerID
+</code></pre>
+
+<h4>5. using a Volume</h4>
+
+<p>We want to be able to change or create files in our container so that
+when we pull it down and start it up again our changes will still be there.</p>
+<p>create a volume</p>
+<pre><code>docker volume create [name of volume]
+</code></pre>
+
+<p>volumes list</p>
+<pre><code>docker volume ls
+</code></pre>
+
+<p>remove all not used volumes</p>
+<pre><code>docker volume prune
+</code></pre>
+
+<p>remove a single volume</p>
+<pre><code>docker volume rm [name of volume]
+</code></pre>
+
+<p>get more information about a volume</p>
+<pre><code>docker inspect [name of volume]
+</code></pre>
+
+<h4>Mounting a volume</h4>
+
+<p>Syntax options:</p>
+<pre><code>--volume (-v [name of volume]:[directory in the container])
+or 
+--mount (--mount source=[name of volume], target=[directory in container])
+</code></pre>
+
+<p>Usage in conjunction with run container</p>
+<pre><code>docker run -d -p 8000:3000 --name my-container --volume my-volume:/logs mz2kh/node
+</code></pre>
+
+<p>Locate our volume inside of our container, and navigate to logs/ directory</p>
+<pre><code>docker exec -it my-container bash
+</code></pre>
+
+<p>Run container with subdirectory</p>
+<pre><code>docker run -d -p 8000:3000 --name my-container --volume $(pwd)/logs:/logs mz2kh/node
+</code></pre>
+
+<p>access container and check folder cd ../logs/</p>
+<pre><code>docker exec -it my-container bash
+</code></pre>
+
+<p>tear down the container</p>
+<pre><code>docker kill my-container &amp;&amp; docker rm my-container
+</code></pre>
+
+<p>Make the entire project directory as a volume</p>
+<pre><code>npm install --save-dev nodemon
+docker run -d -p 8000:3000 --name my-container --volume $(pwd):/app mz2kh/node
+</code></pre>
+
+<p>in package.json add</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;nodemon app.js&quot;,
+  &quot;log&quot;: &quot;echo \&quot;Logging something to screen\&quot;&quot;
+}
+</code></pre>
+
+<p>in Dockerfile change entrypoint to:</p>
+<pre><code>ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+
+<p>rebuild the image</p>
+<pre><code>docker build -t mz2kh/node .
+</code></pre>
+
+<p>bring up our container</p>
+<pre><code>docker run -d -p 8000:3000 --name my-container --volume $(PWD):/app mz2kh/node
+</code></pre>
+
+<h4>Example 2</h4>
+
 <p>Develop a new project which involves both a Node backend and a React front-end in Docker containers.
 - Run both the Node and the React app in its own Docker container.
 - Communicate between the two apps running in containers.
@@ -1931,7 +2139,7 @@ An image is an executable package that includes everything needed to run an appl
 </ol>
 <p>For Client</p>
 <pre><code># base image
-FROM node:8.7.0-alpine
+FROM node:latest
 
 # set working directory
 RUN mkdir -p /usr/src/appclient
@@ -2024,12 +2232,47 @@ REACT_APP_PORT=4000
 
 <p>a. ports: Then we map container port to a port on the host machine so that we can access the running containers from the local environment<br />
 b. volumes: Mounting volumes enables us to map local source code to the corresponding code in the container,<br />
-so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.<br />
+   so that every time we edit these code files in our local IDE the changes will be instantly reflected in the container.<br />
 c. command: The command to run after the container is up. What’s specified here will override the CMD part in the Dockerfile.  </p>
 <!-- 
 https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
+https://dev.to/azure/docker---from-the-beginning-part-i-28c6
 -->
 
+<hr />
+<h2 id="cross-browsers">CROSS BROWSERS</h2>
+<p>Common issues: </p>
+<ul>
+<li>Avoid Internet Explorer to fall back to it’s own Quirksmode:</li>
+</ul>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+</code></pre>
+
+<ul>
+<li>
+<p>Add CSS Reset as: https://github.com/necolas/normalize.css/blob/master/normalize.css</p>
+</li>
+<li>
+<p>Vendor specific style</p>
+</li>
+</ul>
+<pre><code>-ms for Microsoft (Internet Explorer)
+-moz for Mozilla Foundation (Firefox)
+-o for Opera Software
+-webkit  for Safari and Chrome
+</code></pre>
+
+<pre><code>.test{
+ -moz-opacity: 0.6;
+ -ms-opacity: 0.6;
+ -webkit-opacity: 0.6;
+ opacity: 0.6;
+}
+</code></pre>
+
+<ul>
+<li>Use cross-browser friendly libraries and frameworks: Bootstrap, JQuery...</li>
+</ul>
 <hr />
 <h2 id="devops">DEVOPS</h2>
 <p>DevOps is a combination of practices, and tools that increases an organization’s ability to deliver applications and services at high velocity to better serve their customers and compete more effectively in the market.  </p>
@@ -2203,39 +2446,6 @@ Finished: SUCCESS
 <p>With Docker, your compiler, database, and everything else your app needs can be installed in a docker image.<br />
 Then, Jenkins can launch a Docker container based on that image, and run all your sh or bat steps within the container.  You can be certain that all of your app's dependencies are installed correctly, and there's no need to clutter the Jenkins server.</p>
 <h2 id="bash">BASH</h2>
-<pre><code>  192  cd ~/
-  193  pwd
-  194  ls
-  195  ls -la
-  196  touch .bash_profile
-  197  export PATH=$PATH:/home/matteo/bin
-  198  cd bin
-  199  touch hello-world
-  200  vim hello-world 
-  201  which bash
-  202  vim hello-world 
-  203  chmod u+x hello-world 
-  204  hello-world 
-  205  vim hello-world 
-  206  hello-world 
-  207  vim hello-world 
-  208  hello-world 
-  209  vim hello-world 
-  210  hello-world 
-  211  vim hello-world 
-  212  hello-world 
-  213  vim hello-world 
-  214  hello-world 
-  215  vim hello-world 
-  216  hello-world 
-  217  vim hello-world 
-  218  hello-world 
-  219  vim hello-world 
-  220  hello-world 
-  221  vim hello-world 
-  222  history
-</code></pre>
-
 <p>example</p>
 <pre><code class="bash">#!/bin/bash
 who='You!'
@@ -2301,6 +2511,8 @@ git push origin master              # push to origin
 <a href="https://git-scm.com/docs">GIT commands</a>  </p>
 <p>Linux<br />
 <a href="http://landoflinux.com/linux_basic_fundamentals.html">Linux commands</a>  </p>
+<p>Docker
+<a href="https://dev.to/azure/docker---from-the-beginning-part-i-28c6">Docker</a></p>
 <!--
 ***********************************************************************************************************************
 * DOCKER
@@ -3203,7 +3415,8 @@ https://scrimba.com
 https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook
 https://grid.layoutit.com/
 http://patrickbrosset.com/lab/2018-01-10-css-alignment-cheatsheet/
-
+http://inanzzz.com
+http://opensource.com
 -->
 
 <!--
@@ -3390,6 +3603,9 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
                     <a href="#docker" class="nav-link">DOCKER</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#cross-browsers" class="nav-link">CROSS BROWSERS</a>
+                </li>
+                <li class="nav-item">
                     <a href="#devops" class="nav-link">DEVOPS</a>
                 </li>
                 <li class="nav-item">
@@ -3491,5 +3707,5 @@ https://codeburst.io/javascript-essentials-objects-56373a1a6bfb
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-12-13 23:33:34
+Build Date UTC : 2020-03-28 14:07:43
 -->
