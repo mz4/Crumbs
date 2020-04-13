@@ -205,11 +205,10 @@ In other words, bind () allows us to easily set which specific object will be bo
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Closures</h4>
+<h4>Closures: counter</h4>
 
 <p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
-it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,<br />
-and it has access to the global variables.  </p>
+it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  </p>
 <pre><code class="javascript">&lt;script&gt;
   var updateClickCount=(function(){
   var counter=0;
@@ -227,6 +226,24 @@ and it has access to the global variables.  </p>
     &lt;span id=&quot;spnCount&quot;&gt;0&lt;/span&gt;
  &lt;/div&gt;
 &lt;/html&gt;
+</code></pre>
+
+<p><br></p>
+<hr />
+<p></br></p>
+<h4>Closures example: make methods private</h4>
+
+<pre><code class="javascript">a = (function () {
+    var privatefunction = function () {
+        alert('hello');
+    }
+
+    return {
+        publicfunction : function () {
+            privatefunction();
+        }
+    }
+})();
 </code></pre>
 
 <p><br></p>
@@ -752,6 +769,112 @@ myObj.key = value;
 <li>undefined</li>
 <li>object</li>
 </ul>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Design Patterns</h4>
+
+<ul>
+<li>Module Patterns</li>
+<li>Revealing Module Patterns</li>
+<li>Constructor</li>
+<li>Constructor with Prototypes</li>
+<li>Prototype Pattern</li>
+</ul>
+<p><br></p>
+<h4>Module Pattern</h4>
+
+<p>The module pattern allows for public and private access levels.</p>
+<p>Modules should be Immediately-Invoked-Function-Expressions (IIFE) to allow for private scopes. 
+A closure that protect variables and methods.</p>
+<pre><code class="js">(function() {
+
+  // Declare private variables/functions
+
+  return {
+    // Declare public variables/functions
+  }
+
+})()
+</code></pre>
+
+<p>example:</p>
+<pre><code class="js">var contentLog = (function(){
+
+  var content = 'Good Morning'
+
+  var changeHtml = function() {
+    var element = document.getElementById('appId')
+    element.innerHTML = content;
+  }
+
+  return {
+    callChangeHtml: function() {
+      changeHtml()
+      console.log(content)
+    }
+  }
+})();
+
+contentLog.callChangeHtml();
+</code></pre>
+
+<p><br></p>
+<h4>Revealing Module Pattern</h4>
+
+<p>The purpose is to maintain encapsulation and reveal certain variables and methods returned in an object literal.</p>
+<pre><code class="js">var Exposer = (function() {
+  var privateVar = 10;
+
+  var privateMethod = function() {
+    privateVar++
+  }
+
+  var publicMethodOne = function() {
+    console.log('this is an exposed method 1')
+  }
+
+  var publicMethodTwo = function() {
+    console.log('this is an exposed method 2')
+  }
+
+  return {
+    first: publicMethodOne,
+    two: publicMethodTwo
+  }
+
+})()
+
+Exposer.first();
+Exposer.second();
+
+</code></pre>
+
+<h4>Protype Design Pattern</h4>
+
+<p>Creates objects based on a template of an existing object through cloning.
+The pattern an easy way to implement inheritance.</p>
+<pre><code class="js">var myCar = {
+
+  name: &quot;Ford Escort&quot;,
+
+  drive: function () {
+    console.log( &quot;Weeee. I'm driving!&quot; );
+  },
+
+  panic: function () {
+    console.log( &quot;Wait. How do you stop this thing?&quot; );
+  }
+
+};
+
+// Use Object.create to instantiate a new car
+var yourCar = Object.create( myCar );
+
+// Now we can see that one is a prototype of the other
+console.log( yourCar.name );
+</code></pre>
+
 <p><br></p>
 <hr />
 <p><br></p>
@@ -1515,7 +1638,7 @@ import { StoreState } from '../types/index';
 <p><br></p>
 <h4>enum</h4>
 
-<p>Check whether the submitted form value is valid.  </p>
+<p>Check whether the submitted form value is valid.</p>
 <pre><code class="js">// define enum
 enum HeardFrom {
     SEARCH_ENGINE = &quot;Search Engine&quot;,
@@ -1562,9 +1685,6 @@ export function StandardComponent({
 }
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <p><br></p>
 <hr />
 <p><br></p>
@@ -1734,6 +1854,28 @@ It can be passed to a children as its props.  </p>
 }
 </code></pre>
 
+<pre><code class="javascript">var links = [
+  { endpoint: '/america' },
+  { endpoint: '/canada' },
+  { endpoint: '/norway' },
+  { endpoint: '/bahamas' }
+];
+
+class Navigation extends React.Component {
+  render() {
+    const listItems = links.map((link) =&gt;
+        &lt;li key={link.endpoint}&gt;{link.endpoint}&lt;/li&gt; 
+    );
+    return (
+      &lt;div className=&quot;navigation&quot;&gt;
+        &lt;ul&gt;
+          {listItems}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+}
+</code></pre>
+
 <h4>Stateless function component - sfc</h4>
 
 <pre><code class="javascript">const | = props =&gt; {
@@ -1867,7 +2009,7 @@ This method is called when a component is being removed from the DOM:
 
 <h4>Declare state</h4>
 
-<pre><code>export class Counter extends React.Component {
+<pre><code class="js">export class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: props.initialCount};
@@ -2199,9 +2341,10 @@ They let you use state and other React features without writing a class.<br />
 Hooks are functions that let you “hook into” React state and lifecycle features from function components. Hooks don’t work inside classes.<br />
 Our goal is for Hooks to cover all use cases for classes as soon as possible.<br />
 It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.  </p>
-<p>Lifecycle methods
-constructor: Function components don’t need a constructor.<br />
-componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these (including less common cases)  </p>
+<h4>Lifecycle methods</h4>
+
+<p>constructor: Function components don’t need a constructor.<br />
+componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these </p>
 <p>We recommend to split state into multiple state variables based on which values tend to change together.  </p>
 <pre><code class="javascript">function Box() {
   const [position, setPosition] = useState({ left: 0, top: 0 });
@@ -2847,8 +2990,9 @@ They provide the abstraction that you need to be able to focus on the important 
 <hr />
 <h4>Example 1</h4>
 
-<p><h5>Frontend graphql query in react with Apollo</h5></p>
-<pre><code>npm install -g npx // (npx comes with npm 5.2+ and higher)
+<h5>Frontend graphql query in react with Apollo</h5>
+
+<pre><code class="js">npm install -g npx // (npx comes with npm 5.2+ and higher)
 npx create-react-app react-graphql-test
 npm start
 </code></pre>
@@ -2861,16 +3005,17 @@ npm start
 react-apollo: View layer integration for React<br />
 graphql-tag: Necessary for parsing your GraphQL queries<br />
 graphql: Also parses your GraphQL queries  </p>
-<p>in App.js  </p>
-<pre><code>import ApolloClient from &quot;apollo-boost&quot;;
+<p>in App.js</p>
+<pre><code class="js">import ApolloClient from &quot;apollo-boost&quot;;
 const client = new ApolloClient({
   uri: &quot;[Insert URI of GraphQL endpoint]&quot;
 });
 </code></pre>
 
 <p>Connect the instance of ApolloClient to the React app</p>
-<pre><code>import { ApolloProvider } from &quot;react-apollo&quot;;
-...
+<pre><code class="js">import { ApolloProvider } from &quot;react-apollo&quot;;
+
+...js
 const App = () =&gt; (
   &lt;ApolloProvider client={client}&gt;
     &lt;div&gt;
@@ -2882,7 +3027,7 @@ const App = () =&gt; (
 
 <p>Retrieve a list of Courses.<br />
 Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  </p>
-<pre><code>import React from 'react';
+<pre><code class="js">import React from 'react';
 import { Query } from &quot;react-apollo&quot;;
 import gql from &quot;graphql-tag&quot;;
 const Courses = () =&gt; (
@@ -2917,13 +3062,137 @@ export default Courses;
 <hr />
 <h4>Example 2</h4>
 
-<pre><code>
-&lt;!-- 
-  https://www.howtographql.com/react-apollo/1-getting-started/
---&gt;
-
+<pre><code>https://www.howtographql.com/react-apollo/1-getting-started/
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Example 3 - GraphQL React Class Component</h4>
+
+<p>getUsers.tsx</p>
+<pre><code class="js">import gql from 'graphql-tag';
+
+export const getUsers = gql'
+  query users(userId : $userId) {
+    userId
+    name
+    lastActive
+    status
+    teams {
+      name
+      role
+    }
+  }'
+</code></pre>
+
+<pre><code class="js">import { Query } from 'react-apollo'
+import { getUsers } from 'utils/graphql/Queries'
+
+export class Users extends React.PureComponent&lt;{}, IState&gt; {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      table: [{}],
+      selectedUser : '',
+      loading: 'init'
+    }
+  }
+
+  public render(): any {
+    if (this.state.loading == 'init') {
+      return (
+        &lt;div&gt;
+          &lt;showLoader&gt;
+        &lt;/div&gt;
+      )
+    } else {
+      return (
+        &lt;header&gt;page title&lt;/header&gt;
+        &lt;div class='container'&gt;
+          &lt;Query
+            query={getUsers}
+            variables={userId}
+            pollInterval={refreshInterval}
+          &gt;
+            {({loading, error, data}) =&gt; {
+              if (loading) {
+                return &lt;div&gt;loading table message&lt;/div&gt;
+              }
+              if (error) {
+                return &lt;div&gt;error message&lt;/div&gt;
+              }
+              // if data
+              return &lt;div&gt;{this.setTableConent()}&lt;/div&gt;
+            }
+            }
+          &lt;/Query&gt;
+        &lt;/div&gt;
+      )
+    }
+  }
+
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Fake data with graphql-faker</h4>
+
+<p>github: https://github.com/APIs-guru/graphql-faker</p>
+<p>Install</p>
+<pre><code class="js">npm install -g graphql-faker
+</code></pre>
+
+<p>Usage</p>
+<pre><code class="js">graphql-faker [options] [SDL file]
+</code></pre>
+
+<p>Create a Graphql Faker Schema (schema.faker.graphql):</p>
+<pre><code class="js">type Query {
+  users(userId: ID!): [User]
+}
+
+type User {
+  userId: ID! @fake(type: uuid),
+  name: String @fake(type: name),
+  teams: Team
+}
+
+type Team {
+  name: String @fake(type: name)
+  ipAddress: String @fake(type: ipv4Address)
+}
+</code></pre>
+
+<h4>Setup package.json and webpack to run graphql faker local</h4>
+
+<pre><code class="JSON">  &quot;scripts&quot;: {
+    &quot;start:mock-graphql&quot;: &quot;./node_modules/graphql-faker ./schema.faker.graphql&quot;
+  }
+</code></pre>
+
+<p>webpack.local.js</p>
+<pre><code class="js">config.devServer = {
+  hot: true,
+  contentBase: './dist',
+  headers: {
+    &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot;,
+  },
+  proxy: {
+    'api/v1/0000002929/graphql': {
+      target: 'http:127.0.0.1:9002',
+      pathRewrite: {'/api/rewrite/graphql': 'graphql'},
+      changeOrigin: true
+    }
+  }
+}
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <h2 id="socket">SOCKET</h2>
 <p>socket client</p>
 <p>socket install </p>
