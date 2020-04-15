@@ -2804,10 +2804,77 @@ if(isEmpty(myObj)) {
 }
 </code></pre>
 
+<pre><code class="js">index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+const under_five = x =&gt; x &lt; 5; 
+
+if (array.every(under_five)) { 
+    console.log('All are less than 5'); 
+} 
+else { 
+    console.log('At least one element is not less than 5'); 
+} 
+</code></pre>
+
 <h4>Object is an array?</h4>
 
 <pre><code class="js">var d = []
 console.log(Object.prototype.toString.call(d));
+</code></pre>
+
+<h4>Loops</h4>
+
+<p>For loop</p>
+<pre><code class="js">array = [ 1, 2, 3, 4, 5, 6 ]; 
+for (index = 0; index &lt; array.length; index++) { 
+  console.log(array[index]); 
+} 
+</code></pre>
+
+<p>While</p>
+<pre><code class="js">index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+while (index &lt; array.length) { 
+    console.log(array[index]); 
+    index++; 
+}
+</code></pre>
+
+<p>ForEach</p>
+<pre><code class="js">index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+array.forEach(myFunction); 
+function myFunction(item, index) 
+{ 
+  console.log(item); 
+}
+</code></pre>
+
+<p>Every</p>
+<pre><code class="js">index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+const under_five = x =&gt; x &lt; 5; 
+
+if (array.every(under_five)) { 
+    console.log('All are less than 5'); 
+} 
+else { 
+    console.log('At least one element is not less than 5'); 
+} 
+</code></pre>
+
+<p>Map</p>
+<pre><code class="js">index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+square = x =&gt; Math.pow(x, 2); 
+squares = array.map(square); 
+console.log(array); 
+console.log(squares);
 </code></pre>
 
 <p><br></p>
