@@ -85,16 +85,6 @@ The job of the Event loop is to look into the call stack and determine if the ca
 
 <br>
 
-<h4>Bind</h4>
-We use the Bind () method primarily to call a function with the this value set explicitly.  
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
-  
-<br>
-
----
-
-<br>
-
 <h4>Scopes in javascript</h4>
 - Global Scope  
 - Local Scope  
@@ -138,16 +128,6 @@ JavaScript engine will try to find the value of the variable in the executing co
 
 <br>
 
-<h4>Bind</h4>
-We use the Bind () method primarily to call a function with the this value set explicitly.  
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
-
-<br>
-
----
-
-<br>
-
 <h4>Javascript types</h4>
 You dont need to tell the engine what type of data a variable holds, it is going to figure it out while your code is running.
 
@@ -157,10 +137,9 @@ You dont need to tell the engine what type of data a variable holds, it is going
 
 <br>
 
-<h4>Closures</h4>
+<h4>Closures: counter</h4>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:  
-it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables,  
-and it has access to the global variables.  
+it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  
 
 ```javascript
 <script>
@@ -181,6 +160,29 @@ and it has access to the global variables.
  </div>
 </html>
 ```
+
+<br>
+
+---
+
+</br>
+
+<h4>Closures example: make methods private</h4>
+
+```javascript
+a = (function () {
+    var privatefunction = function () {
+        alert('hello');
+    }
+
+    return {
+        publicfunction : function () {
+            privatefunction();
+        }
+    }
+})();
+```
+
 
 <br>
 
@@ -280,6 +282,64 @@ var askMom = function () {
         });
 }
 ```
+
+<h4>Promise example 5 - async await</h4>
+
+```javascript
+/_ ES7 _/
+const isMomHappy = true;
+
+// Promise
+const willIGetNewPhone = new Promise(
+    (resolve, reject) => {
+        if (isMomHappy) {
+            const phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            const reason = new Error('mom is not happy');
+            reject(reason);
+        }
+
+    }
+);
+
+// 2nd promise
+async function showOff(phone) {
+    return new Promise(
+        (resolve, reject) => {
+            var message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' phone';
+
+            resolve(message);
+        }
+    );
+};
+
+// call our promise
+async function askMom() {
+    try {
+        console.log('before asking Mom');
+
+        let phone = await willIGetNewPhone;
+        let message = await showOff(phone);
+
+        console.log(message);
+        console.log('after asking mom');
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+}
+
+(async () => {
+    await askMom();
+})();
+```
+
+
 
 <br>
 
@@ -439,6 +499,7 @@ leo.eat(10)
 snoop.play(5)
 ```
 
+
 <br>
 
 ---
@@ -545,36 +606,82 @@ console.log(arr);
 arr[3](arr[2].name);
 ```
 
-<h4>this keyword</h4>
+<br>
+
+---
+
+<br>
+
+<h4>'this' keyword</h4>
 It's a special identifier keyword that's automatically defined in the scope of every function.    
-It is based on how the function is called.
-Call-site because it's the only thing that matters for this binding.  
+'this' will be pointing at different objects, depending on where the function is and how it is called.
 
-```javascript
-function baz() {
-    // call-stack is: `baz`
-    // so, our call-site is in the global scope
-
-    console.log( "baz" );
-    bar(); // <-- call-site for `bar`
+```js
+function a() {
+    console.log(this);
+    this.newvariable = 'hello';
 }
 
-function bar() {
-    // call-stack is: `baz` -> `bar`
-    // so, our call-site is in `baz`
-
-    console.log( "bar" );
-    foo(); // <-- call-site for `foo`
+var b = function() {
+    console.log(this);   
 }
 
-function foo() {
-    // call-stack is: `baz` -> `bar` -> `foo`
-    // so, our call-site is in `bar`
+a();
 
-    console.log( "foo" );
+console.log(newvariable); // not good!
+
+b();
+
+var c = {
+    name: 'c object',
+    log: function() {
+        var self = this;
+        
+        self.name = 'Updated c object';
+        console.log(self);
+        
+        var setname = function(newname) {
+            self.name = newname;   
+        }
+        setname('Updated again! The c object');
+        console.log(self);
+    }
 }
 
-baz(); // <-- call-site for `baz`
+c.log();
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Determine "this"</h4>
+
+Is the function called with new (new binding)? 
+If so, 'this' is the newly constructed object.
+
+```js
+var bar = new foo()
+```
+
+Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? 
+If so, 'this' is the explicitly specified object.
+```js
+var bar = foo.call( obj2 )
+```
+
+Is the function called with a context (implicit binding), otherwise known as an owning or containing object? 
+If so, 'this' is that context object.
+```js
+var bar = obj1.foo()
+```
+
+Otherwise, default the this (default binding). If in strict mode, pick undefined, otherwise pick the global object.
+
+```js
+var bar = foo()
 ```
 
 <br>
@@ -584,8 +691,7 @@ baz(); // <-- call-site for `baz`
 <br>
 
 <h4>Default binding</h4>
-Standalone function invocation.  
-In this case "this" points at the global object.  
+Standalone function invocation. In this case "this" points at the global object.  
 
 ```javascript
 function foo() {
@@ -624,6 +730,8 @@ All functions you will create, do have access to call(..) and apply(..).
 How do these utilities work? They both take, as their first parameter, an object to use for the this, and then invoke the  function with that this specified. 
 Since you are directly stating what you want the this to be, we call it explicit binding.  
 
+example with call
+
 ```javascript
 function foo() {
 	console.log( this.a );
@@ -635,6 +743,26 @@ var obj = {
 
 foo.call( obj ); // 2
 ```
+
+example with apply
+
+```js
+var obj = {name:"Niladri"};
+var greeting = function(a,b,c){
+    return "welcome "+this.name+" to "+a+" "+b+" in "+c;
+};
+// array of arguments to the actual function
+var args = ["Newtown","KOLKATA","WB"];  
+console.log("Output using .apply() below ")
+console.log(greeting.apply(obj,args));
+/* The output will be 
+  Output using .apply() below
+ welcome Niladri to Newtown KOLKATA in WB */
+```
+
+apply() method sets the "this" value which is the object upon which the function is invoked. 
+The only difference of apply() with the call() method is that the second parameter of the apply() method accepts the arguments to the actual function as an array.
+
 
 <h4>new Binding</h4>
 In JS, constructors are just functions that happen to be called with the new operator in front of them.  
@@ -651,26 +779,24 @@ var bar = new foo( 2 );
 console.log( bar.a ); // 2
 ```
 
-<h4>Determine "this"</h4>
-Is the function called with new (new binding)? If so, this is the newly constructed object.
-```js
-var bar = new foo()
-```
+<br>
 
-Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? If so, this is the explicitly specified object.
-```js
-var bar = foo.call( obj2 )
-```
+---
 
-Is the function called with a context (implicit binding), otherwise known as an owning or containing object? If so, this is that context object.
-```js
-var bar = obj1.foo()
-```
+<br>
 
-Otherwise, default the this (default binding). If in strict mode, pick undefined, otherwise pick the global object.
+<h4>Bind</h4>
+We use the Bind () method primarily to call a function with the this value set explicitly.  
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.
 
 ```js
-var bar = foo()
+var obj = {name:"Leo"};
+var greeting = function(a, b){
+    return "Hello "+ this.name + " to " + a + " " + b;
+};
+var bound = greeting.bind(obj); 
+console.log(bound("a", "b"));
+/* Output: welcome Leo to a b */
 ```
 
 <br>
@@ -709,6 +835,140 @@ myObj.key = value;
 - null
 - undefined
 - object
+
+
+<br>
+
+---
+
+<br>
+
+<h4>Design Patterns</h4>
+
+- Module Patterns
+- Revealing Module Patterns
+- Constructor
+- Constructor with Prototypes
+- Prototype Pattern
+
+
+<br>
+
+<h4>Module Pattern</h4>
+The module pattern allows for public and private access levels.
+
+Modules should be Immediately-Invoked-Function-Expressions (IIFE) to allow for private scopes. 
+A closure that protect variables and methods.
+
+```js
+(function() {
+
+  // Declare private variables/functions
+
+  return {
+    // Declare public variables/functions
+  }
+
+})()
+```
+
+example:
+```js
+var contentLog = (function(){
+
+  var content = 'Good Morning'
+
+  var changeHtml = function() {
+    var element = document.getElementById('appId')
+    element.innerHTML = content;
+  }
+
+  return {
+    callChangeHtml: function() {
+      changeHtml()
+      console.log(content)
+    }
+  }
+})();
+
+contentLog.callChangeHtml();
+```
+
+<br>
+
+<h4>Revealing Module Pattern</h4>
+
+The purpose is to maintain encapsulation and reveal certain variables and methods returned in an object literal.
+
+```js
+var Exposer = (function() {
+  var privateVar = 10;
+
+  var privateMethod = function() {
+    privateVar++
+  }
+
+  var publicMethodOne = function() {
+    console.log('this is an exposed method 1')
+  }
+
+  var publicMethodTwo = function() {
+    console.log('this is an exposed method 2')
+  }
+
+  return {
+    first: publicMethodOne,
+    two: publicMethodTwo
+  }
+
+})()
+
+Exposer.first();
+Exposer.second();
+
+```
+
+<h4>Protype Design Pattern</h4>
+
+Creates objects based on a template of an existing object through cloning.
+The pattern an easy way to implement inheritance.
+Two separate instances are actually referencing the same functions!
+
+```js
+const User = function(name) {
+  this.name = name
+  this.age = 100
+}
+
+User.prototype.bash = function(target) {
+  target.age -= 15
+}
+
+User.prototype.omniSlash = function(target) {
+  if (target.hp < 50) {
+    return
+  }
+  target.hp -= 50
+}
+
+const sam = new User('Sam')
+const lella = new User('Lella')
+
+console.log(sam.bash === lella.bash)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 
@@ -1601,7 +1861,8 @@ import { StoreState } from '../types/index';
 <br>
 
 <h4>enum</h4>  
-Check whether the submitted form value is valid.  
+Check whether the submitted form value is valid.
+
 ```js
 // define enum
 enum HeardFrom {
@@ -1632,6 +1893,7 @@ heardFrom.includes(submitted_heardFrom)
 <h4>Using Typescript with React</h4>
 
 <h4>React Component with typescript</h4>
+
 ```ts
 import * as React from 'react'
 
@@ -1658,23 +1920,8 @@ export function StandardComponent({
 
 <br>
 
-
-
-
-
-
-
-
-
-
-
-<br>
-
----
-
-<br>
-
 <h4>Interface for Redux Store</h4>
+
 ```js
 // src/types/index.tsx
 export interface MyStore {
@@ -1688,6 +1935,7 @@ export interface MyStore {
 ```
 
 <h4>Define Action type and actions</h4>
+
 ```js
 // src/constants/index.tsx
 export const SET_LANGUAGE = 'INCREMENT_ENTHUSIASM';
@@ -1700,6 +1948,7 @@ export type AUTHENTICATE = typeof AUTHENTICATE;
 
 These const & type objects can now be imported into your src/actions/index.tsx file,  
 where we can define action interfaces and the actions themselves, and typing them along the way:  
+
 ```js
 // src/actions/index.tsx
 import * as constants from '../constants';
@@ -1765,6 +2014,7 @@ export function locality(state: StoreState, action: Locality):     StoreState {
 ```
 
 <h4>Creating initial store</h4>
+
 ```js
 // src/index.tsx
 import { createStore } from 'redux';
@@ -1780,6 +2030,7 @@ const store = createStore<StoreState>(locality, {
 ```
 
 <h4>MapState and Dispatch</h4>
+
 ```js
 // mapStateToProps example
 import { StoreState } from '../types/index';
@@ -1833,6 +2084,7 @@ It can be passed to a children as its props.
 ```
 
 <h4>Rendering elements</h4>
+
 ```javascript
 class TodoList extends React.Component {
   render() {
@@ -1847,7 +2099,32 @@ class TodoList extends React.Component {
 }
 ```
 
+```javascript
+var links = [
+  { endpoint: '/america' },
+  { endpoint: '/canada' },
+  { endpoint: '/norway' },
+  { endpoint: '/bahamas' }
+];
+
+class Navigation extends React.Component {
+  render() {
+    const listItems = links.map((link) =>
+        <li key={link.endpoint}>{link.endpoint}</li> 
+    );
+    return (
+      <div className="navigation">
+        <ul>
+          {listItems}
+        </ul>
+      </div>
+    );
+}
+```
+
+
 <h4>Stateless function component - sfc</h4>
+
 ```javascript
 const | = props => {
   return ( | );
@@ -1857,6 +2134,7 @@ export default |;
 ```
 
 <h4>State and lifecycle</h4>
+
 ```
 Mounting  
 These methods are called in the following order:  
@@ -1879,6 +2157,7 @@ This method is called when a component is being removed from the DOM:
 ```
 
 <h4>Handling events</h4>
+
 ```javascript
 function ActionLink() {
   function handleClick(e) {
@@ -1895,6 +2174,7 @@ function ActionLink() {
 ```
 
 <h4>Conditional rendering</h4>
+
 ```javascript
 render() {
   const isLoggedIn = this.state.isLoggedIn;
@@ -1907,6 +2187,7 @@ render() {
 ```
 
 <h4>List and Keys</h4>
+
 ```javascript
 function NumberList(props) {
   const numbers = props.numbers;
@@ -1923,6 +2204,7 @@ function NumberList(props) {
 ```
 
 <h4>Forms</h4>
+
 ```javascript
 class NameForm extends React.Component {
   constructor(props) {
@@ -1964,6 +2246,7 @@ class NameForm extends React.Component {
 
 <h4>React Fragment</h4>
 Fragments let you group a list of children without adding extra nodes to the DOM.
+
 ```js
 render() {
   return (
@@ -1982,7 +2265,8 @@ import './styles/style.css'
 ```
 
 <h4>Declare state</h4>
-```
+
+```js
 export class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -1991,6 +2275,7 @@ export class Counter extends React.Component {
 ```
 
 <h4>defaultProps example</h4>
+
 ```javascript
 Notification.defaultProps = {
   actionTitle: '',
@@ -2000,6 +2285,7 @@ Notification.defaultProps = {
 ```
 
 <h4>propTypes example</h4>
+
 ```javascript
 Notification.propTypes = {
   actionTitle: PropTypes.string,
@@ -2011,16 +2297,19 @@ Notification.propTypes = {
 ```
 
 <h4>Import statement - imr</h4>
+
 ```javascript
 import React from 'react';
 ```
 
 <h4>Import React and Component - imrc</h4>
+
 ```javascript
 import React, { Component } from 'react';
 ```
 
 <h4>Make a Class Component and export - cc</h4>
+
 ```javascript
 class | extends Component {
   state = { | },
@@ -2033,6 +2322,7 @@ export default |;
 ```
 
 <h4>componentDidMount - cdm</h4>
+
 ```javascript
 componentDidMount() {
   |
@@ -2040,6 +2330,7 @@ componentDidMount() {
 ```
 
 <h4>componentDidUpdate - cdu</h4>
+
 ```javascript
 componentDidUpdate(prevProps, prevState) {
   |
@@ -2047,11 +2338,13 @@ componentDidUpdate(prevProps, prevState) {
 ```
 
 <h4>setState - ss</h4>
+
 ```javascript
 this.setState({ | : | });
 ```
 
 <h4>render - ren</h4>
+
 ```javascript
 render() {
   return (
@@ -2061,11 +2354,13 @@ render() {
 ```
 
 <h4>export example with mapStateToProps, mapDispatchToProps</h4>
+
 ```javascript
 export default connect(mapStateToProps, mapDispatchToProps)(Name);
 ```
 
 <h4>mapStateToProps example</h4>
+
 ```javascript
 const mapStateToProps = (state) => {
   return {
@@ -2078,16 +2373,19 @@ const mapStateToProps = (state) => {
 
 <h4>mapDispatchToProps</h4>
 Import actions  
+
 ```javascript
 import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
 ```
   
 <h4>Emit action </h4> 
+
 ```javascript
 this.props.selectedRaidIndex(id);
 ```
   
 <h4>Dispatch actions</h4>  
+
 ```javascript
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -2329,11 +2627,12 @@ Hooks are functions that let you “hook into” React state and lifecycle featu
 Our goal is for Hooks to cover all use cases for classes as soon as possible.  
 It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.  
 
-Lifecycle methods
+<h4>Lifecycle methods</h4>
 constructor: Function components don’t need a constructor.  
-componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these (including less common cases)  
+componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook can express all combinations of these 
 
 We recommend to split state into multiple state variables based on which values tend to change together.  
+
 ```javascript
 function Box() {
   const [position, setPosition] = useState({ left: 0, top: 0 });
@@ -2347,6 +2646,7 @@ function Box() {
 ```
 
 <h4>State Hooks</h4>
+
 ```javascript
 import React, { useState } from 'react';
 
@@ -2796,6 +3096,7 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 ## JS Utilities
 
 <h4>Check if an object is empty</h4>
+
 ```javascript
 function isEmpty(obj) {
     for(var key in obj) {
@@ -2815,11 +3116,101 @@ if(isEmpty(myObj)) {
 }
 ```
 
+```js
+index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+const under_five = x => x < 5; 
+
+if (array.every(under_five)) { 
+	console.log('All are less than 5'); 
+} 
+else { 
+	console.log('At least one element is not less than 5'); 
+} 
+```
+
 <h4>Object is an array?</h4>
+
 ```js
 var d = []
 console.log(Object.prototype.toString.call(d));
 ```
+
+<h4>Loops</h4>
+
+For loop
+```js
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+for (index = 0; index < array.length; index++) { 
+  console.log(array[index]); 
+} 
+```
+
+While
+```js
+index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+while (index < array.length) { 
+	console.log(array[index]); 
+	index++; 
+}
+```
+
+ForEach
+```js
+index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+  
+array.forEach(myFunction); 
+function myFunction(item, index) 
+{ 
+  console.log(item); 
+}
+```
+
+Every
+```js
+index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+
+const under_five = x => x < 5; 
+
+if (array.every(under_five)) { 
+	console.log('All are less than 5'); 
+} 
+else { 
+	console.log('At least one element is not less than 5'); 
+} 
+```
+
+Map
+```js
+index = 0; 
+array = [ 1, 2, 3, 4, 5, 6 ]; 
+  
+square = x => Math.pow(x, 2); 
+squares = array.map(square); 
+console.log(array); 
+console.log(squares);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 
@@ -3013,14 +3404,16 @@ They provide the abstraction that you need to be able to focus on the important 
 ---
 
 <h4>Example 1</h4>
- <h5>Frontend graphql query in react with Apollo</h5>
-```
+<h5>Frontend graphql query in react with Apollo</h5>
+
+```js
 npm install -g npx // (npx comes with npm 5.2+ and higher)
 npx create-react-app react-graphql-test
 npm start
 ```
 
 Dependencies install  
+
 ```
 npm install apollo-boost react-apollo graphql-tag graphql
 ```
@@ -3031,8 +3424,9 @@ graphql-tag: Necessary for parsing your GraphQL queries
 graphql: Also parses your GraphQL queries  
 
 
-in App.js  
-```
+in App.js
+
+```js
 import ApolloClient from "apollo-boost";
 const client = new ApolloClient({
   uri: "[Insert URI of GraphQL endpoint]"
@@ -3040,9 +3434,11 @@ const client = new ApolloClient({
 ```
 
 Connect the instance of ApolloClient to the React app
-```
+
+```js
 import { ApolloProvider } from "react-apollo";
-...
+
+...js
 const App = () => (
   <ApolloProvider client={client}>
     <div>
@@ -3054,7 +3450,8 @@ const App = () => (
 
 Retrieve a list of Courses.  
 Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component.  
-```
+
+```js
 import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -3090,13 +3487,158 @@ export default Courses;
 ---
 
 <h4>Example 2</h4>
-```
-
-<!-- 
-  https://www.howtographql.com/react-apollo/1-getting-started/
--->
 
 ```
+https://www.howtographql.com/react-apollo/1-getting-started/
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Example 3 - GraphQL React Class Component</h4>
+
+getUsers.tsx
+
+```js
+import gql from 'graphql-tag';
+
+export const getUsers = gql'
+  query users(userId : $userId) {
+    userId
+    name
+    lastActive
+    status
+    teams {
+      name
+      role
+    }
+  }'
+```
+
+
+```js
+import { Query } from 'react-apollo'
+import { getUsers } from 'utils/graphql/Queries'
+
+export class Users extends React.PureComponent<{}, IState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      table: [{}],
+      selectedUser : '',
+      loading: 'init'
+    }
+  }
+
+  public render(): any {
+    if (this.state.loading == 'init') {
+      return (
+        <div>
+          <showLoader>
+        </div>
+      )
+    } else {
+      return (
+        <header>page title</header>
+        <div class='container'>
+          <Query
+            query={getUsers}
+            variables={userId}
+            pollInterval={refreshInterval}
+          >
+            {({loading, error, data}) => {
+              if (loading) {
+                return <div>loading table message</div>
+              }
+              if (error) {
+                return <div>error message</div>
+              }
+              // if data
+              return <div>{this.setTableConent()}</div>
+            }
+            }
+          </Query>
+        </div>
+      )
+    }
+  }
+
+}
+```
+
+<br>
+
+---
+
+<br>
+
+<h4>Fake data with graphql-faker</h4>
+github: https://github.com/APIs-guru/graphql-faker
+
+Install
+```js
+npm install -g graphql-faker
+```
+
+Usage
+```js
+graphql-faker [options] [SDL file]
+```
+
+Create a Graphql Faker Schema (schema.faker.graphql):
+
+```js
+type Query {
+  users(userId: ID!): [User]
+}
+
+type User {
+  userId: ID! @fake(type: uuid),
+  name: String @fake(type: name),
+  teams: Team
+}
+
+type Team {
+  name: String @fake(type: name)
+  ipAddress: String @fake(type: ipv4Address)
+}
+```
+
+<h4>Setup package.json and webpack to run graphql faker local</h4>
+
+```JSON
+  "scripts": {
+    "start:mock-graphql": "./node_modules/graphql-faker ./schema.faker.graphql"
+  }
+```
+
+webpack.local.js
+```js
+config.devServer = {
+  hot: true,
+  contentBase: './dist',
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
+  proxy: {
+    'api/v1/0000002929/graphql': {
+      target: 'http:127.0.0.1:9002',
+      pathRewrite: {'/api/rewrite/graphql': 'graphql'},
+      changeOrigin: true
+    }
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
 
 ## SOCKET
 
@@ -4397,6 +4939,7 @@ export default () => {
 <br>
 
 4. test async/await or promise
+
 ```js
 import React from "react";
 import { shallow } from "enzyme";
