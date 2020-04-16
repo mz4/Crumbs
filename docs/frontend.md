@@ -90,22 +90,10 @@ The job of the Event loop is to look into the call stack and determine if the ca
 - Local Scope  
 - Block Scope (let)  
 
-<br>
-
----
-
-<br>
-
 <h4>Old school JavaScript</h4>
 Traditionally, JavaScript really only has two types of scope :  
 - Global Scope: Variables are known throughout the application, from the start of the application  
 - Functional Scope: Variables are known within the function they are declared in, from the start of the function  
-
-<br>
-
----
-
-<br>
 
 <h4>Modern JavaScript</h4>
 The most recent JavaScript specs now also allow a third scope :  
@@ -182,7 +170,6 @@ a = (function () {
     }
 })();
 ```
-
 
 <br>
 
@@ -268,7 +255,6 @@ var willIGetNewPhone = new Promise(
     }
 );
 
-
 // call our promise
 var askMom = function () {
     willIGetNewPhone
@@ -338,8 +324,6 @@ async function askMom() {
     await askMom();
 })();
 ```
-
-
 
 <br>
 
@@ -498,7 +482,6 @@ const snoop = Animal('Snoop', 10)
 leo.eat(10)
 snoop.play(5)
 ```
-
 
 <br>
 
@@ -957,19 +940,6 @@ const lella = new User('Lella')
 console.log(sam.bash === lella.bash)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 
 ---
@@ -1419,6 +1389,7 @@ Where not declared, Types are inferred by TypeScript compiler when:
 <br>
 
 <h4>typescript example with if</h4>
+
 ```js
 let let x: number = 10, y = 20;
 
@@ -1439,6 +1410,7 @@ else
 <br>
 
 <h4>typescript switch example</h4>
+
 ```js
 var a:number = 1
 var b:number = 3
@@ -1527,6 +1499,7 @@ for (var index in arr) {
 <br>
 
 <h4>do ... while</h4>
+
 ```js
 let i: number = 4;
 do {
@@ -1534,7 +1507,6 @@ do {
     i++;
 } while ( i < 4)
 ```
-
 
 <br>
 
@@ -1544,6 +1516,7 @@ do {
 
 
 <h4>Typescript functions</h4>
+
 ```javascript
 function Greet(greeting: string, name?: string ) : string {
     return greeting + ' ' + name + '!';
@@ -1562,6 +1535,7 @@ Greet('Hi','Bill','Gates'); //Compiler Error: Expected 2 arguments, but got 3.
 
 
 <h4>Arrow functions</h4>
+
 ```js
 let sum = (x: number, y: number): number => {
             return x + y;
@@ -1719,6 +1693,7 @@ let emp = new Employee(1, "Steve");
 <br>
 
 <h4>Class</h4>
+
 ```js
 interface IPerson {
     name: string;
@@ -1750,16 +1725,11 @@ let emp:IEmployee = new Employee(100, "Bill");
 emp.display(); //Compiler Error: Property 'display' does not exist on type 'IEmployee'
 ```
 
-
-
 <br>
 
 ---
 
 <br>
-
-
-
 
 <h4>TSLint-React</h4>
 Install typescript,tslint and tslint-react packages globally  
@@ -1773,6 +1743,7 @@ tslint --init
 ```
 
 <h4>Configuration tslint</h4>
+
 ```ts
 {
     "defaultSeverity": "error",
@@ -1807,6 +1778,7 @@ tslint --init
 <br>
 
 <h4>Applying interfaces to components</h4>
+
 ```js
 interface FormState {
     submitted?: boolean;
@@ -1836,6 +1808,7 @@ function MyForm(props: FormProps) {
 
 
 <h4>Import/Export Interfaces</h4>
+
 export  
 ```js
 // src/types/index.tsx
@@ -2045,6 +2018,7 @@ function mapStateToProps (state: StoreState, ownProps: LocalityProps) ({
 ```
 
 <h4>MapDispatchToProps</h4>
+
 ```js
 // mapDispatchToProps example
 const mapDispatchToProps = {
@@ -2052,7 +2026,6 @@ const mapDispatchToProps = {
    actions.setCountry
 }
 ```
-
 
 <br>
 
@@ -3056,13 +3029,14 @@ externalDocs:
 <!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
 
 <h4>Axios - HTTP client</h4>
+
 Axios install  
 ```
 npm install axios --save
 ```
 
 Basic get request
-```
+```js
   componentDidMount() {
     axios.get(`https://jsonplaceholder.typicode.com/users`)
       .then(res => {
@@ -3195,22 +3169,6 @@ squares = array.map(square);
 console.log(array); 
 console.log(squares);
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <br>
 
@@ -4406,6 +4364,7 @@ npm install -D redux-mock-store
 <br>
 
 <h4>Run tests</h4>
+
 ```
 // Single run
 $ npm run test
@@ -4431,6 +4390,7 @@ console.log(wrapper.debug());
 <br>
 
 <h4>Test Component renders</h4>
+
 ```js
 import React from 'react';
 import { shallow } from 'enzyme';
@@ -4460,7 +4420,8 @@ describe('<GatorMenu />', () => {
 
 <h4>Test Simulate Click</h4>
 Call the handler on simulate click.  
-```
+
+```js
 describe("<GatorButton />", () => {
   describe("onClick()", () => {
     test("successfully calls the onClick handler", () => {
@@ -4506,6 +4467,7 @@ const store = mockStore();
 <br>
 
 <h4>Clear Actions</h4>
+
 ```js
 //
 describe("select_actions", () => {
@@ -4523,6 +4485,7 @@ describe("select_actions", () => {
 <br>
 
 <h4>Test Actions Dispatch</h4>
+
 ```js
 describe('selectAvatar', () => {
   test('Dispatches the correct action and payload', () => {
@@ -4544,6 +4507,7 @@ describe('selectAvatar', () => {
 <br>
 
 <h4>Test Reducer</h4>
+
 ```js
 // ...
 
@@ -4566,6 +4530,7 @@ describe('SELECT_AVATAR', () => {
 <br>
 
 <h4>Check Text Value</h4>
+
 ```js
 it("formats temp correctly", () => {
   // mount our Temperature component
@@ -4588,6 +4553,7 @@ it("formats temp correctly", () => {
 <br>
 
 <h4>Event Testing with Sinon</h4>
+
 ```js
 it("calls toggleForecast on click", () => {
   // create a spy function
@@ -4718,6 +4684,7 @@ describe('Emit data check', () => {
 ```
 
 <h4>Testing with Moxios</h4>
+
 ```js
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -4793,6 +4760,7 @@ describe('loadSpsData', () => {
 <br>
 
 <h4>1. Test asynchronous callback</h4>
+
 ```js
 import React from "react";
 import DataRetriever from "./DataRetriever";
@@ -4834,6 +4802,7 @@ export default class DataDisplayer extends React.Component {
 <br>
 
 <h4>2. Retriever</h4>
+
 ```js
 export default class DataRetriever {
 
@@ -4857,6 +4826,7 @@ export default class DataRetriever {
 <br>
 
 <h4>3. Mock Retriever implementation with Jest</h4>
+
 ```js
 it("Should show the data, When retrieved", () => {
   DataRetriever.mockImplementation(() => {
