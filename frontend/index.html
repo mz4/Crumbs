@@ -149,13 +149,6 @@ The event queue is constantly monitored by javascript engine.</p>
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Bind</h4>
-
-<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Scopes in javascript</h4>
 
 <ul>
@@ -189,13 +182,6 @@ Block scope is within curly brackets. (let and const are block scope.)  </p>
 <h4>Scope chain</h4>
 
 <p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.</p>
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Bind</h4>
-
-<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
-In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
 <p><br></p>
 <hr />
 <p><br></p>
@@ -628,41 +614,13 @@ arr[3](arr[2].name);
 <h4>this keyword</h4>
 
 <p>It's a special identifier keyword that's automatically defined in the scope of every function.  <br />
-It is based on how the function is called.
-Call-site because it's the only thing that matters for this binding.  </p>
-<pre><code class="javascript">function baz() {
-    // call-stack is: `baz`
-    // so, our call-site is in the global scope
-
-    console.log( &quot;baz&quot; );
-    bar(); // &lt;-- call-site for `bar`
-}
-
-function bar() {
-    // call-stack is: `baz` -&gt; `bar`
-    // so, our call-site is in `baz`
-
-    console.log( &quot;bar&quot; );
-    foo(); // &lt;-- call-site for `foo`
-}
-
-function foo() {
-    // call-stack is: `baz` -&gt; `bar` -&gt; `foo`
-    // so, our call-site is in `bar`
-
-    console.log( &quot;foo&quot; );
-}
-
-baz(); // &lt;-- call-site for `baz`
-</code></pre>
-
+It is based on how the function is called.</p>
 <p><br></p>
 <hr />
 <p><br></p>
 <h4>Default binding</h4>
 
-<p>Standalone function invocation.<br />
-In this case "this" points at the global object.  </p>
+<p>Standalone function invocation. In this case "this" points at the global object.  </p>
 <pre><code class="javascript">function foo() {
     console.log( this.a );
 }
@@ -706,6 +664,22 @@ var obj = {
 foo.call( obj ); // 2
 </code></pre>
 
+<p>example with apply</p>
+<pre><code class="js">var obj = {name:&quot;Niladri&quot;};
+var greeting = function(a,b,c){
+    return &quot;welcome &quot;+this.name+&quot; to &quot;+a+&quot; &quot;+b+&quot; in &quot;+c;
+};
+// array of arguments to the actual function
+var args = [&quot;Newtown&quot;,&quot;KOLKATA&quot;,&quot;WB&quot;];  
+console.log(&quot;Output using .apply() below &quot;)
+console.log(greeting.apply(obj,args));
+/* The output will be 
+  Output using .apply() below
+ welcome Niladri to Newtown KOLKATA in WB */
+</code></pre>
+
+<p>apply() method sets the "this" value which is the object upon which the function is invoked. 
+The only difference of apply() with the call() method is that the second parameter of the apply() method accepts the arguments to the actual function as an array.</p>
 <h4>new Binding</h4>
 
 <p>In JS, constructors are just functions that happen to be called with the new operator in front of them.<br />
@@ -720,17 +694,38 @@ var bar = new foo( 2 );
 console.log( bar.a ); // 2
 </code></pre>
 
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Bind</h4>
+
+<p>We use the Bind () method primarily to call a function with the this value set explicitly.<br />
+In other words, bind () allows us to easily set which specific object will be bound to this when a function or method is invoked.</p>
+<pre><code class="js">var obj = {name:&quot;Leo&quot;};
+var greeting = function(a, b){
+    return &quot;Hello &quot;+ this.name + &quot; to &quot; + a + &quot; &quot; + b;
+};
+var bound = greeting.bind(obj); 
+console.log(bound(&quot;a&quot;, &quot;b&quot;));
+/* Output: welcome Leo to a b */
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Determine "this"</h4>
 
-<p>Is the function called with new (new binding)? If so, this is the newly constructed object.</p>
+<p>Is the function called with new (new binding)? If so, 'this' is the newly constructed object.</p>
 <pre><code class="js">var bar = new foo()
 </code></pre>
 
-<p>Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? If so, this is the explicitly specified object.</p>
+<p>Is the function called with call or apply (explicit binding), even hidden inside a bind hard binding? 
+If so, 'this' is the explicitly specified object.</p>
 <pre><code class="js">var bar = foo.call( obj2 )
 </code></pre>
 
-<p>Is the function called with a context (implicit binding), otherwise known as an owning or containing object? If so, this is that context object.</p>
+<p>Is the function called with a context (implicit binding), otherwise known as an owning or containing object? 
+If so, 'this' is that context object.</p>
 <pre><code class="js">var bar = obj1.foo()
 </code></pre>
 
@@ -853,26 +848,28 @@ Exposer.second();
 <h4>Protype Design Pattern</h4>
 
 <p>Creates objects based on a template of an existing object through cloning.
-The pattern an easy way to implement inheritance.</p>
-<pre><code class="js">var myCar = {
+The pattern an easy way to implement inheritance.
+Two separate instances are actually referencing the same functions!</p>
+<pre><code class="js">const User = function(name) {
+  this.name = name
+  this.age = 100
+}
 
-  name: &quot;Ford Escort&quot;,
+User.prototype.bash = function(target) {
+  target.age -= 15
+}
 
-  drive: function () {
-    console.log( &quot;Weeee. I'm driving!&quot; );
-  },
-
-  panic: function () {
-    console.log( &quot;Wait. How do you stop this thing?&quot; );
+User.prototype.omniSlash = function(target) {
+  if (target.hp &lt; 50) {
+    return
   }
+  target.hp -= 50
+}
 
-};
+const sam = new User('Sam')
+const lella = new User('Lella')
 
-// Use Object.create to instantiate a new car
-var yourCar = Object.create( myCar );
-
-// Now we can see that one is a prototype of the other
-console.log( yourCar.name );
+console.log(sam.bash === lella.bash)
 </code></pre>
 
 <p><br></p>
