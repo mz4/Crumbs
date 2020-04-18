@@ -447,6 +447,77 @@ printAll()
 
 <p><br></p>
 <hr />
+<p></br></p>
+<h4>Http Requests</h4>
+
+<p>Fetch</p>
+<pre><code class="js">fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;)
+  .then(response =&gt; response.json())
+  .then(json =&gt; console.log(json));
+</code></pre>
+
+<p>Fetch + other params</p>
+<pre><code class="js">const url = &quot;https://jsonplaceholder.typicode.com/posts&quot;;
+
+const otherParam = {
+  headers: {
+    &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;
+  },
+  method: &quot;GET&quot;
+};
+
+fetch(url, otherParam)
+  .then(data =&gt; {
+    return data.json();
+  })
+  .then(ret =&gt; console.log(ret))
+  .catch(error =&gt; console.log(error));
+</code></pre>
+
+<p>Axios</p>
+<pre><code class="js">const url = &quot;https://jsonplaceholder.typicode.com/posts&quot;;
+
+const reqParam = {
+  headers: {
+    &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;
+  },
+  method: &quot;GET&quot;
+};
+
+axios
+  .get(url, reqParam)
+  .then(data =&gt; console.log(data))
+  .catch(err =&gt; console.log(err));
+</code></pre>
+
+<p>axios async/await</p>
+<pre><code class="js">async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+</code></pre>
+
+<p>multiple concurrent requests</p>
+<pre><code class="js">function getUserAccount() {
+  return axios.get('/user/12345');
+}
+
+function getUserPermissions() {
+  return axios.get('/user/12345/permissions');
+}
+
+axios.all([getUserAccount(), getUserPermissions()])
+  .then(axios.spread(function (acct, perms) {
+    // Both requests are now complete
+  }));
+</code></pre>
+
+<p><br></p>
+<hr />
 <p><br></p>
 <h4>Prototype</h4>
 
@@ -2910,8 +2981,8 @@ console.log(squares);
 <hr />
 <p><br></p>
 <h2 id="graphql">GRAPHQL</h2>
-<p><h4>About</h4>
-GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  </p>
+<p><h4>About</h4></p>
+<p>GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  </p>
 <ul>
 <li>Open source and created by Facebook  </li>
 <li>Gives clients the power to describe exactly what data they want  </li>
@@ -2944,7 +3015,7 @@ Instead of having multiple endpoints that return fixed data structures, GraphQL 
 - Self-documenting API - An API that can be easily understood just by reading its schema -- no extra documentation needed  </p>
 <h4>Basic Query</h4>
 
-<pre><code>{
+<pre><code class="js">{
   allPersons {
     name
   }
@@ -2954,7 +3025,7 @@ Instead of having multiple endpoints that return fixed data structures, GraphQL 
 <p>allPersons is called the root field of the query.<br />
 Everything that follows the root field, is called the payload of the query.  </p>
 <p>This will return:</p>
-<pre><code>{
+<pre><code class="js">{
   &quot;allPersons&quot;: [
     { &quot;name&quot;: &quot;Johnny&quot; },
     { &quot;name&quot;: &quot;Sarah&quot; },
@@ -2964,7 +3035,7 @@ Everything that follows the root field, is called the payload of the query.  </p
 </code></pre>
 
 <p>it allows for naturally querying nested information.</p>
-<pre><code>{
+<pre><code class="js">{
   allPersons {
     name
     age
@@ -2977,18 +3048,76 @@ Everything that follows the root field, is called the payload of the query.  </p
 
 <p>Each field can have zero or more arguments if that’s specified in the schema.<br />
 For example, the allPersons field could have a last parameter to only return up to a specific number of persons. </p>
-<pre><code>{
+<pre><code class="js">{
   allPersons(last: 2) {
     name
   }
 }
 </code></pre>
 
+<h4>Testing Graphql Query</h4>
+
+<p>from: https://www.apollographql.com/docs/react/development-testing/testing/</p>
+<p>Consider component:</p>
+<pre><code class="js">import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+// Make sure the query is also exported -- not just the component
+export const GET_DOG_QUERY = gql`
+  query getDog($name: String) {
+    dog(name: $name) {
+      id
+      name
+      breed
+    }
+  }
+`;
+
+export const Dog = ({ name }) =&gt; (
+  &lt;Query query={GET_DOG_QUERY} variables={{ name }}&gt;
+    {({ loading, error, data }) =&gt; {
+      if (loading) return &lt;p&gt;Loading...&lt;/p&gt;;
+      if (error) return &lt;p&gt;Error!&lt;/p&gt;;
+
+      return (
+        &lt;p&gt;
+          {data.dog.name} is a {data.dog.breed}
+        &lt;/p&gt;
+      );
+    }}
+  &lt;/Query&gt;
+);
+</code></pre>
+
+<p>Unit tests:</p>
+<pre><code class="js">it('should show error UI', async () =&gt; {
+  const dogMock = {
+    request: {
+      query: GET_DOG_QUERY,
+      variables: { name: 'Buck' },
+    },
+    error: new Error('aw shucks'),
+  };
+
+  const component = renderer.create(
+    &lt;MockedProvider mocks={[dogMock]} addTypename={false}&gt;
+      &lt;Dog name=&quot;Buck&quot; /&gt;
+    &lt;/MockedProvider&gt;,
+  );
+
+  await wait(0); // wait for response
+
+  const tree = component.toJSON();
+  expect(tree.children).toContain('Error!');
+});
+</code></pre>
+
 <h4>Mutations</h4>
 
-<p>It allows to reate, update and delete.
+<p>It allows to create, update and delete data.
 Create a new Person:</p>
-<pre><code>mutation {
+<pre><code class="js">mutation {
   createPerson(name: &quot;Bob&quot;, age: 36) {
     name
     age
@@ -2997,7 +3126,7 @@ Create a new Person:</p>
 </code></pre>
 
 <p>GraphQL types have unique IDs that are generated by the server when new objects are created:</p>
-<pre><code>type Person {
+<pre><code class="js">type Person {
   id: ID!
   name: String!
   age: Int!
@@ -3005,11 +3134,71 @@ Create a new Person:</p>
 </code></pre>
 
 <p>Directly ask for the id in the payload of the mutation</p>
-<pre><code>mutation {
+<pre><code class="js">mutation {
   createPerson(name: &quot;Alice&quot;, age: 36) {
     id
   }
 }
+</code></pre>
+
+<h4>Testing Graphql mutations</h4>
+
+<p>Component</p>
+<pre><code class="js">export const DELETE_DOG_MUTATION = gql`
+  mutation deleteDog($name: String!) {
+    deleteDog(name: $name) {
+      id
+      name
+      breed
+    }
+  }
+`;
+
+export const DeleteButton = () =&gt; (
+  &lt;Mutation mutation={DELETE_DOG_MUTATION}&gt;
+    {(mutate, { loading, error, data }) =&gt; {
+      if (loading) return &lt;p&gt;Loading...&lt;/p&gt;;
+      if (error) return &lt;p&gt;Error!&lt;/p&gt;;
+      if (data) return &lt;p&gt;Deleted!&lt;/p&gt;;
+
+      return (
+        &lt;button onClick={() =&gt; mutate({ variables: { name: 'Buck' } })}&gt;
+          Click me to Delete Buck!
+        &lt;/button&gt;
+      );
+    }}
+  &lt;/Mutation&gt;
+);
+</code></pre>
+
+<p>Tests</p>
+<pre><code class="js">it('should delete and give visual feedback', async () =&gt; {
+  const deleteDog = { name: 'Buck', breed: 'Poodle', id: 1 };
+  const mocks = [
+    {
+      request: {
+        query: DELETE_DOG_MUTATION,
+        variables: { name: 'Buck' },
+      },
+      result: { data: { deleteDog } },
+    },
+  ];
+
+  const component = renderer.create(
+    &lt;MockedProvider mocks={mocks} addTypename={false}&gt;
+      &lt;DeleteButton /&gt;
+    &lt;/MockedProvider&gt;,
+  );
+
+  // find the button and simulate a click
+  const button = component.root.findByType('button');
+  button.props.onClick(); // fires the mutation
+
+  await wait(0);
+
+  const tree = component.toJSON();
+  expect(tree.children).toContain('Deleted!');
+});
 </code></pre>
 
 <h4>Subscriptions</h4>
@@ -3017,7 +3206,7 @@ Create a new Person:</p>
 <p>Realtime connection to the server in order to get immediately informed about important events.<br />
 Subscriptions represent a stream of data sent over to the client.  </p>
 <p>Subscribe on events happening on the Person type:  </p>
-<pre><code>subscription {
+<pre><code class="js">subscription {
   newPerson {
     name
     age
@@ -3027,7 +3216,7 @@ Subscriptions represent a stream of data sent over to the client.  </p>
 
 <p>After a client sent this subscription to a server, a connection is opened between them.<br />
 Then, whenever a new mutation is performed that creates a new Person, the server sends the information about this person over to the client:  </p>
-<pre><code>{
+<pre><code class="js">{
   &quot;newPerson&quot;: {
     &quot;name&quot;: &quot;Jane&quot;,
     &quot;age&quot;: 23
