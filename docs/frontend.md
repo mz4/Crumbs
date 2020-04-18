@@ -503,8 +503,11 @@ axios.all([getUserAccount(), getUserPermissions()])
 
 <h4>Prototype</h4>
 [Prototype link](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)  
-Every function in JavaScript has a prototype property that references an object.  
-pattern Prototypal Instantiation.  
+The prototype is an object that is associated with every functions and objects by default in JavaScript.
+Every object in javascript includes '__proto__' property that points to prototype object of a function that created this object.
+The prototype object is being used by JavaScript engine in two things, 
+1) to find properties and methods of an object 
+2) to implement inheritance in JavaScript.
 
 ```javascript
 function Animal (name, energy) {
