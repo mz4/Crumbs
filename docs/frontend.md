@@ -3241,6 +3241,7 @@ console.log(squares);
 <br>
 
 ## GRAPHQL
+
 <h4>About</h4>
 
 GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.  
@@ -3359,6 +3360,7 @@ export const Dog = ({ name }) => (
 ```
 
 Unit tests:
+
 ```js
 it('should show error UI', async () => {
   const dogMock = {
@@ -3384,6 +3386,7 @@ it('should show error UI', async () => {
 
 
 <h4>Mutations</h4>
+
 It allows to create, update and delete data.
 Create a new Person:
 
@@ -3523,7 +3526,7 @@ type Query {
 
 <h4>Schema example</h4>
 
-```
+```js
 type Query {
   allPersons(last: Int): [Person!]!
 }
@@ -3569,7 +3572,7 @@ npm start
 
 Dependencies install  
 
-```
+```js
 npm install apollo-boost react-apollo graphql-tag graphql
 ```
 
@@ -3793,6 +3796,293 @@ config.devServer = {
 ---
 
 <br>
+
+
+
+<h4>Graphql Query types</h4>
+
+Query with a client object
+```js
+export const checkCompanyNameExist = (client, name) => {
+const IS_COMPANY_NAME_EXIST = `
+    query {
+      company(name: “Foo”) {
+        name
+    }
+  }
+`;
+ 
+  return client.query({
+    query: IS_COMPANY_NAME_EXIST,
+    fetchPolicy: 'network-only',
+    variables: { name }
+  })
+  .then(res => res.json())
+  .then(console.log)
+  .catch(console.error);
+};
+```
+
+
+
+High Order Component withApollo
+```js
+import { withApollo } from 'react-apollo';
+ 
+class SomeComponent extends React.Component {
+  componentDidMount = async () => {
+      const { client } = this.props;
+      const res = await client.query({ query: SOME_QUERY });
+      // ...
+  }
+  render() {
+      // ...
+  }
+}
+export default withApollo(SomeComponent);
+```
+
+Declarative Query
+```js
+const GET_SELLER_PHOTO = gql`
+  query seller($seller: String!) {
+    seller(seller: $seller) {
+      id
+      image
+    }
+  }
+`;
+ 
+const SellerPhoto = ({ seller }) => (
+  <Query query={GET_SELLER_PHOTO} variables={{ seller }}>
+    {({ loading, error, data }) => {
+      if (loading) return null;
+      if (error) return `Something went wrong: ${error}`;
+ 
+      return (
+        <img src={data.seller.image}/>
+      );
+    }}
+  </Query>
+);
+```
+
+React Hooks API
+
+```js
+const GET_SELLER_PHOTO = gql`
+  query seller($seller: String!) {
+    seller(seller: $seller) {
+      id
+      image
+    }
+  }
+`;
+ 
+function SellerPhoto({ seller }) {
+  const { loading, error, data } = useQuery(GET_SELLER_PHOTO, {
+    variables: { seller }
+  });
+ 
+  if (loading) return null;
+  if (error) return `Something went wrong: ${error}`;
+ 
+  return (
+    <img src={data.seller.image} />
+  );
+}
+```
+
+Lazy loading query with Hooks API
+
+```js
+const LazyQuery = () => {
+  const [getNewUser, { loading, data }] = useLazyQuery(GET_NEW_USER);
+  const { loading: loadingGetUsers, data: dataGetUsers } = useQuery(GET_USERS);
+ 
+  if (loading) return 'Loading';
+  if (loadingGetUsers) return 'Loading';
+ 
+  if (dataGetUsers && dataGetUsers.userID) {
+    // ...
+  }
+ 
+  return (
+    <div>
+      {dataGetUSers.users}
+      <button onClick={() => getNewUser({ variables: { id: dataGetUsers.userID } })}>
+        Up new User
+      </button>
+    </div>
+  );
+}
+```
+
+<h4>Mutations</h4>
+
+Mutation with client
+```js
+const mutateComment = client => {
+  const mutation = gql`
+  mutation AddComment($text: String!){
+    addComment(text: $text) {
+      id
+      text
+    }
+  }
+`;
+  return client.mutate({
+    variables: { text: 'hello' },
+    mutation
+  })
+    .then((result) => { console.log(result); })
+    .catch((error) => { console.log(error); });
+};
+```
+
+Declarative Mutation
+
+```js
+const ADD_SELLER = gql`
+  mutation($type: String!) {
+    addSeller(type: $type) {
+      id
+      type
+    }
+  }
+`;
+ 
+const addSeller = () => {
+  let input;
+ 
+  return (
+    <Mutation mutation={ADD_SELLER}>
+      {(addSellerName, { data }) => (
+        <div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addSellerName({ variables: { type: input.value } });
+              input.value = '';
+            }}
+          >
+            <input
+              ref={(node) => {
+                input = node;
+              }}
+            />
+            <button type="submit">Add Seller</button>
+          </form>
+        </div>
+      )}
+    </Mutation>
+  );
+};
+```
+
+Mutation with hook
+```js
+const AddProduct = () => {
+  const [productCreate] = useMutation(PRODUCT_CREATE);
+  const { pathname } = useRouter();
+ 
+  const onSubmit = (values, { setSubmitting, setErrors }) => {
+    submitProductCreate(productCreate, values, setSubmitting, setErrors);
+  };
+ 
+  return <ProductForm onSubmit={onSubmit} pathname={pathname} />;
+};
+ 
+export default AddProduct;
+```
+
+<h4>Subscriptions</h4>
+
+Subscriptions with client
+```js
+const subscriptionProduct = client => {
+  const subscription = gql`
+  subscription {
+    products {
+      id
+      url
+      description
+      user {
+       id
+      }
+    }
+  }
+`;
+ 
+  return client.subscription({
+    subscription
+  })
+    .then((result) => { console.log(result); })
+    .catch((error) => { console.log(error); });
+};
+```
+
+Declarative Subscriptions
+
+```js
+const SubProductType = ({ idProduct }) => {
+const SELLER_ON_PRODUCT_SUBSCRIPTION = gql`
+  subscription {
+    products {
+      id
+      description
+      user {
+       id
+      }
+    }
+  }
+`
+  return (
+<Subscription
+    subscription={SELLER_ON_PRODUCT_SUBSCRIPTION}
+    variables={{ id: idProduct }}
+  	>
+    {({ data: { products }, loading, error }) => {
+      if (loading) return 'loading';
+      if (error) return 'error';
+ 
+      return (
+        <h4>{products.description}</h4>
+      );
+    }}
+  </Subscription>
+);
+```
+
+useSubscriptions Hook
+
+```js
+const SubProductType = ({ idProduct }) => {
+const SELLER_ON_PRODUCT_SUBSCRIPTION = gql`
+  subscription {
+    products {
+      id
+      description
+      user {
+       id
+      }
+    }
+  }
+`
+  const {
+    data: { products }, loading, error
+  } = useSubscription(SELLER_ON_PRODUCT_SUBSCRIPTION, {
+    variables: { id: idProduct }
+  });
+ 
+  if (loading) return 'loading';
+  if (error) return 'error';
+ 
+  return (
+    <h4>{products.description}</h4>
+  );
+};
+```
 
 
 ## SOCKET
