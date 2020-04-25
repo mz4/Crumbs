@@ -98,6 +98,19 @@ git push origin --delete <branch_name>
 
 <br>
 
+<h4>Remove cached files</h4>
+```
+git rm -r --cached .
+git add .
+git commit -m "fixed untracked files"
+```
+
+<br>
+
+---
+
+<br>
+
 <h4>Clean Local branch</h4>
 ```
 git reset
