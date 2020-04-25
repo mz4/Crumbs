@@ -525,48 +525,26 @@ Animal.prototype.sleep = function (length) {
   this.energy += length
 }
 
-Animal.prototype.play = function (length) {
-  console.log(`${this.name} is playing.`)
-  this.energy -= length
-}
-
 const leo = new Animal('Leo', 7)
 const snoop = new Animal('Snoop', 10)
 ```
 
-Without using new keyword, we have to explicitly create a reference:
-Looking back at our Animal constructor, the two most important parts were creating the object and returning it.  
-Without creating the object with Object.create, we wouldn’t be able to delegate to the function’s prototype on failed lookups.   Without the return statement, we wouldn’t ever get back the created object.  
+JS prototype Inheritance
 
-```javascript
-function Animal (name, energy) {
-  let animal = Object.create(Animal.prototype)
-  animal.name = name
-  animal.energy = energy
-
-  return animal
+```js
+function Dog(name, energy, age, breed) {
+  Animal.call(this, name, energy)
+  this.age = age
+  this.breed= breed
 }
 
-Animal.prototype.eat = function (amount) {
-  console.log(`${this.name} is eating.`)
-  this.energy += amount
+Dog.prototype = Object.create(Animal.prototype)
+
+Dog.prototype.bark = function() {
+  console.log('bark')
 }
 
-Animal.prototype.sleep = function (length) {
-  console.log(`${this.name} is sleeping.`)
-  this.energy += length
-}
-
-Animal.prototype.play = function (length) {
-  console.log(`${this.name} is playing.`)
-  this.energy -= length
-}
-
-const leo = Animal('Leo', 7)
-const snoop = Animal('Snoop', 10)
-
-leo.eat(10)
-snoop.play(5)
+Dog.prototype.constructor = Dog;
 ```
 
 <br>
