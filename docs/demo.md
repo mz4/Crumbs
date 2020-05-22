@@ -48,9 +48,7 @@
 
 <br>
 
-## Todo list 
-
-<h4>useState React Hooks</h4>
+## Todo list with useState React Hooks
 
 <iframe src="https://codesandbox.io/embed/nostalgic-mcnulty-vf118?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="nostalgic-mcnulty-vf118" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
@@ -62,7 +60,7 @@
 
 <br>
 
-<h4>useReducer React Hooks</h4>
+## Todo list with useReducer React Hooks
 
 <iframe src="https://codesandbox.io/embed/hardcore-violet-t042g?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="hardcore-violet-t042g" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
