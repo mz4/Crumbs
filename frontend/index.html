@@ -4403,42 +4403,46 @@ With box sizing the padding and border of that element no longer increase its wi
 
 <hr />
 <p><br><br></p>
-<h2 id="testing">TESTING</h2>
+<h2 id="unit-testing">UNIT TESTING</h2>
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Setup Enzyme Jest</h4>
+<h4>Reference Links</h4>
 
-<p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.<br />
-Jest is a test framework managed by Facebook.  </p>
+<p>https://devhints.io/enzyme@2<br>
+https://alligator.io/react/testing-react-redux-with-jest-enzyme/<br>
+https://dev.to/jhotterbeekx/testing-asynchronous-lifecycle-methods-with-jest-13jo<br>
+https://github.com/JHotterbeekx/demo-jest-testing-with-async-lifecycle<br></p>
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>Enzyme</h4>
+
+<p>Enzyme is a JavaScript Testing utility created for react, maintained by Airbnb that makes it easier to assert, manipulate, and traverse your React Components' output.  </p>
+<h4>Jest</h4>
+
+<p>Jest is a test framework managed by Facebook. </p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>Setup Jest and Enzyme example</h4>
+
 <h4>install Jest</h4>
 
 <pre><code>npm install -D jest
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Install enzyme</h4>
 
 <p>Along with an Adapter corresponding to the version of react.  </p>
 <pre><code>npm i --save-dev enzyme enzyme-adapter-react-16 enzyme-to-json
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br>  </p>
 <h4>Jest Setup with React</h4>
 
 <pre><code>npm install --save-dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Configure Enzyme to work with Jest</h4>
 
 <p>in <strong>tests</strong>/setup/setupEnzyme.js  </p>
@@ -4448,9 +4452,6 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Add into babel configuration</h4>
 
 <pre><code class="json">&quot;env&quot;: {
@@ -4460,17 +4461,11 @@ Enzyme.configure({ adapter: new Adapter() });
 }
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Install Redux test helper</h4>
 
 <pre><code>npm install -D redux-mock-store
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Run tests</h4>
 
 <pre><code>// Single run
@@ -4491,7 +4486,7 @@ $ npm run test:watch
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Test Component renders</h4>
+<h4>ex.1 Test Component renders</h4>
 
 <pre><code class="js">import React from 'react';
 import { shallow } from 'enzyme';
@@ -4499,12 +4494,12 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'; // Smart components
 
 // Component to be tested
-import GatorMenu from '../../components/GatorMenu';
+import Menu from '../../components/Menu';
 
-describe('&lt;GatorMenu /&gt;', () =&gt; {
+describe('&lt;Menu /&gt;', () =&gt; {
   describe('render()', () =&gt; {
     test('renders the component', () =&gt; {
-      const wrapper = shallow(&lt;GatorMenu /&gt;);
+      const wrapper = shallow(&lt;Menu /&gt;);
       const component = wrapper.dive();
 
       expect(toJson(component)).toMatchSnapshot();
@@ -4516,15 +4511,15 @@ describe('&lt;GatorMenu /&gt;', () =&gt; {
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Test Simulate Click</h4>
+<h4>ex.2 Test Simulate Click</h4>
 
-<p>Call the handler on simulate click.  </p>
-<pre><code class="js">describe(&quot;&lt;GatorButton /&gt;&quot;, () =&gt; {
+<p>Call the handler on simulate click and check function has been called.  </p>
+<pre><code class="js">describe(&quot;&lt;Button /&gt;&quot;, () =&gt; {
   describe(&quot;onClick()&quot;, () =&gt; {
     test(&quot;successfully calls the onClick handler&quot;, () =&gt; {
       const mockOnClick = jest.fn();
       const wrapper = shallow(
-        &lt;GatorButton onClick={mockOnClick} label=&quot;Eat Food&quot; /&gt;
+        &lt;Button onClick={mockOnClick} label=&quot;Eat Food&quot; /&gt;
       );
       const component = wrapper.dive();
       component.find(&quot;button&quot;).simulate(&quot;click&quot;);
@@ -4534,9 +4529,29 @@ describe('&lt;GatorMenu /&gt;', () =&gt; {
 });
 </code></pre>
 
-<h2 id="_1"><br></h2>
 <p><br></p>
-<h4>Mocking the store</h4>
+<hr />
+<p><br></p>
+<h4>ex.3 Check Element contains correct formatted Value</h4>
+
+<pre><code class="js">it(&quot;formats temp correctly&quot;, () =&gt; {
+  // mount our Temperature component
+  const wrapper = mount(
+    &lt;Temperature temp={10} city=&quot;Toronto&quot; toggleForecast={() =&gt; {}} /&gt;
+  );
+
+  // extract the text from the LargeText styled component
+  const text = wrapper.find(&quot;LargeText&quot;).text();
+
+  // ensure it matches what is expected
+  expect(text).toEqual(&quot;10°c&quot;);
+});
+</code></pre>
+
+<p><br></p>
+<p>--</p>
+<p><br></p>
+<h4>ex.4 Mocking the store with redux-mock-store</h4>
 
 <p>redux-mock-store allows access to:</p>
 <ul>
@@ -4555,9 +4570,6 @@ const store = mockStore();
 // ...
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Clear Actions</h4>
 
 <pre><code class="js">//
@@ -4569,9 +4581,6 @@ describe(&quot;select_actions&quot;, () =&gt; {
 });
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
 <h4>Test Actions Dispatch</h4>
 
 <pre><code class="js">describe('selectAvatar', () =&gt; {
@@ -4589,8 +4598,6 @@ describe(&quot;select_actions&quot;, () =&gt; {
 });
 </code></pre>
 
-<h2 id="_2"><br></h2>
-<p><br></p>
 <h4>Test Reducer</h4>
 
 <pre><code class="js">// ...
@@ -4610,26 +4617,7 @@ describe('SELECT_AVATAR', () =&gt; {
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Check Text Value</h4>
-
-<pre><code class="js">it(&quot;formats temp correctly&quot;, () =&gt; {
-  // mount our Temperature component
-  const wrapper = mount(
-    &lt;Temperature temp={10} city=&quot;Toronto&quot; toggleForecast={() =&gt; {}} /&gt;
-  );
-
-  // extract the text from the LargeText styled component
-  const text = wrapper.find(&quot;LargeText&quot;).text();
-
-  // ensure it matches what is expected
-  expect(text).toEqual(&quot;10°c&quot;);
-});
-</code></pre>
-
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Event Testing with Sinon</h4>
+<h4>ex.5 Event Testing with Sinon</h4>
 
 <pre><code class="js">it(&quot;calls toggleForecast on click&quot;, () =&gt; {
   // create a spy function
@@ -4653,6 +4641,8 @@ describe('SELECT_AVATAR', () =&gt; {
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>ex.6 Testing a React Component</h4>
+
 <pre><code class="javascript">import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 import { shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
@@ -4754,7 +4744,10 @@ describe('Emit data check', () =&gt; {
 
 </code></pre>
 
-<h4>Testing with Moxios</h4>
+<p><br></p>
+<hr />
+<p><br></p>
+<h4>ex. 7 Testing with Moxios</h4>
 
 <pre><code class="js">import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -4816,13 +4809,13 @@ describe('loadSpsData', () =&gt; {
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Testing components wrapped in HOC</h4>
+<h4>ex.8 Testing components wrapped in HOC</h4>
 
 <p><a href="https://github.com/airbnb/enzyme/issues/539">Testing components wrapped in HOC</a></p>
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>1. Test asynchronous callback</h4>
+<h4>ex.9 Test asynchronous callback</h4>
 
 <pre><code class="js">import React from &quot;react&quot;;
 import DataRetriever from &quot;./DataRetriever&quot;;
@@ -4857,10 +4850,7 @@ export default class DataDisplayer extends React.Component {
 }
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>2. Retriever</h4>
+<h4>DataRetriever</h4>
 
 <pre><code class="js">export default class DataRetriever {
 
@@ -4877,10 +4867,7 @@ export default class DataDisplayer extends React.Component {
 }
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>3. Mock Retriever implementation with Jest</h4>
+<h4>Mock DataRetriever implementation with Jest</h4>
 
 <pre><code class="js">it(&quot;Should show the data, When retrieved&quot;, () =&gt; {
   DataRetriever.mockImplementation(() =&gt; {
@@ -4897,7 +4884,7 @@ export default class DataDisplayer extends React.Component {
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>1. async await</h4>
+<h4>ex.10 Retrieve Data with async await</h4>
 
 <pre><code class="js">import RetrieveData from &quot;./DataRetriever&quot;;
 ...
@@ -4913,10 +4900,9 @@ export default class DataDisplayer extends React.Component {
   }
 </code></pre>
 
-<ol>
-<li>Data Retriever</li>
-</ol>
-<pre><code class="js">export default async() =&gt; {
+<h4>Data Retriever</h4>
+
+<pre><code class="js">export default RetrieveData() =&gt; {
   const todoData = await fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;);
   const todoDataJson = await todoData.json();
   return todoDataJson.title;
@@ -4926,9 +4912,8 @@ export default class DataDisplayer extends React.Component {
 <p><br></p>
 <hr />
 <p><br></p>
-<ol>
-<li>or with Promise:</li>
-</ol>
+<h4>ex.10 Retrieve Data with Promise</h4>
+
 <pre><code class="js">  async componentDidMount () {
     RetrieveData().then(title =&gt; {
           if(title){
@@ -4941,6 +4926,8 @@ export default class DataDisplayer extends React.Component {
   }
 </code></pre>
 
+<h4>Retrieve Data</h4>
+
 <pre><code class="js">export default () =&gt; {
   return fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;)
     .then(response =&gt; {
@@ -4950,83 +4937,37 @@ export default class DataDisplayer extends React.Component {
 }
 </code></pre>
 
-<p><br></p>
-<hr />
-<p><br></p>
-<ol>
-<li>test async/await or promise</li>
-</ol>
+<h4>Component test async/await or promise</h4>
+
 <pre><code class="js">import React from &quot;react&quot;;
 import { shallow } from &quot;enzyme&quot;;
 import DataDisplayer from &quot;./DataDisplayer&quot;;
 
-// We want to test DataDisplayer in an isolated state, but DataDisplayer uses DataRetriever.
-// To keep the isolation we will need to mock out the DataRetriever. This way we control 
-// what this component does and we can predict the outcome. To do this we need to do a manual
-// mock, we can do this by importing the component we want to mock, and then defining a mock
-// om that import.
 import * as DataRetriever from &quot;./DataRetriever&quot;;
 DataRetriever.default = jest.fn();
 
 describe(&quot;DataDisplayer&quot;, () =&gt; {
   beforeEach(() =&gt; {
-    // Before each test we want to reset the state of the mocked component, so each test can
-    // mock the component in the way it needs to be mocked. Should you have any default mock
-    // needed that is required for every test, this is the place to do this.
     DataRetriever.default.mockClear();
   });
 });
 
-// In this test we will mock the DataRetriever in a way that it will create a promise for us
-  // which it will resolve with &quot;fakeTitle&quot; as argument. This simulates that the API has
-  // given us a result with { title: &quot;fakeTitle&quot; } in it. We make the test asynchronous, since
-  // we want to be able to use await in the code to wait for a promise to resolve.
   it(&quot;Should show the data, When retrieved&quot;, async () =&gt; {
-    // We are going to set up the mock value that DataRetriever resolves to, we tell it when the 
-    // code uses DataRetiever instead of actually calling it and fetching data from the API. It
-    // instantly resolves to a value 'fakeTitle'.
     DataRetriever.default.mockResolvedValue('fakeTitle');
 
-    // We shallow mount the component through enzyme. This renders the component with a fake DOM 
-    // making us able to see the result that would be rendered. We specifically use the shallow
-    // mount in this case. Not only is this the preferred render for unit tests, since it isolates
-    // the component completely when rendering, we also use it because we don't want to trigger
-    // the lifecycle methods. Since our lifecycle method handles code asynchronously, we want
-    // to be able to wait for that code to complete, this requires manually calling this method.
     var wrapper = shallow(&lt;DataDisplayer /&gt;);
-    // We need to get the actual instance from the virtual DOM, so we can call any method that 
-    // is available on it.
     const instance = wrapper.instance();
-    // Now we call the componentDidMount event, telling the component that it mounted. But because
-    // we called it manually we are able to await for it to resolve. This makes sure the promise
-    // for the method is completed before going on with the code.
     await instance.componentDidMount();
-    // Since we fake a result coming back from the retriever, we expect the text to actually show
-    // the word &quot;fakeTitle&quot; in the component.
     expect(wrapper.text()).toContain(&quot;fakeTitle&quot;);
   });
 
-  // In this test we will mock the DataRetriever in a way that it will return a different promise
-  // which resolves without value. This simulates the API returning unexpected data.
-  // We make the test asynchronous, since we want to be able to use await in the code to wait 
-  // for a promise to resolve.
   it(&quot;Should show not available, When data has not been retrieved&quot;, async () =&gt; {
-    // We are going to set up the mock value that DataRetriever resolves to, we tell it when the 
-    // code uses DataRetiever instead of actually calling it and fetching data from the API. It
-    // instantly resolves to an undefined value, so we can handle nothing coming back from the API.
     DataRetriever.default.mockResolvedValue(undefined);
 
-    // We are shallow mounting the component again, using its instance, calling the 
-    // componentDidMount and waiting for it to resolve. Only this time it will resolve to a value
-    // of undefined.
     var wrapper = shallow(&lt;DataDisplayer /&gt;);
     const instance = wrapper.instance();
     await instance.componentDidMount();
-    // Since we fake no result coming back from the retriever we don't expect any title appearing
-    // on the page, but instead we expect to see the text &quot;not available&quot;
     expect(wrapper.text()).toContain(&quot;not available&quot;);
-
-
 </code></pre>
 
 <p><br></p>
@@ -5171,7 +5112,7 @@ describe('Component tests', () =&gt; {
                     <a href="#css3sass" class="nav-link">CSS3/SASS</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#testing" class="nav-link">TESTING</a>
+                    <a href="#unit-testing" class="nav-link">UNIT TESTING</a>
                 </li>
                 <li class="nav-item">
                     <a href="#cypress" class="nav-link">CYPRESS</a>
