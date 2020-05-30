@@ -84,3 +84,13 @@
 ## Typescript/UseEffect/Custom Hooks
 
 <iframe src="https://codesandbox.io/embed/fervent-platform-roum7?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="fervent-platform-roum7" allow="accelerometer ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-autoplay"></iframe>
+
+<br>
+
+---
+
+<br>
+
+## Testing with React/Jest/Enzyme example
+
+<iframe src="https://codesandbox.io/embed/busy-sanderson-fis68?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="busy-sanderson-fis68" allow="accelerometer ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
