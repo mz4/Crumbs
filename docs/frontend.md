@@ -4798,25 +4798,25 @@ html {
 
 ## UNIT TESTING
 
-each test contains:
-- Setup phase (e.g. shallow component)
-- Action phase (e.g. setState)
-- Expect a certain outcome (e.g. expect modal to be rendered)
-
-Some notes:
-- Basic tests functionalities: 
-  Component renders correctly
-  Subcomponents renders correctly
-  Fundamental elements of the pages are present (input fields, buttons, text)
-- Play with data:
-  Renders the component correct data, wrong data, no data
-  setState, setProps with different set of values
-- Verify communication with backed:
-  API endpoints
-  Forms send correct data
-- Verify Action
-  click buttons and expect an outcome
-  expect errors to be shown in the form
+each test contains:<br>
+- Setup phase (e.g. shallow component)<br>
+- Action phase (e.g. setState)<br>
+- Expect a certain outcome (e.g. expect modal to be rendered)<br>
+<br>
+Some notes:<br>
+- Basic tests functionalities: <br>
+  Component renders correctly<br>
+  Subcomponents renders correctly<br>
+  Fundamental elements of the pages are present (input fields, buttons, text)<br>
+- Play with data:<br>
+  Renders the component correct data, wrong data, no data<br>
+  setState, setProps with different set of values<br>
+- Verify communication with backed:<br>
+  API endpoints<br>
+  Forms send correct data<br>
+- Verify Action<br>
+  click buttons and expect an outcome<br>
+  expect errors to be shown in the form<br>
 
 <br>
 
