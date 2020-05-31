@@ -3733,27 +3733,27 @@ const SELLER_ON_PRODUCT_SUBSCRIPTION = gql`
 <pre><code>npm i socket.io-client
 </code></pre>
 
-<pre><code>const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
+<pre><code class="js">const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
 export default io;
 </code></pre>
 
 <p>io Emit from client</p>
-<pre><code>import io from './components/common/io';
+<pre><code class="js">import io from './components/common/io';
 io.emit('populate_table', { table_name: 'users_table' });
 </code></pre>
 
 <p>io Receive</p>
-<pre><code>io.on('isloggedin', (payload) =&gt; {
+<pre><code class="js">io.on('isloggedin', (payload) =&gt; {
   ...
 }
 </code></pre>
 
 <p>Remove listeners</p>
-<pre><code>io.removeAllListeners('action_response');
+<pre><code class="js">io.removeAllListeners('action_response');
 </code></pre>
 
 <p>socketio server flask</p>
-<pre><code>from app.server import socketio
+<pre><code class="js">from app.server import socketio
 @socketio.on(socket_names.UPLOAD_LICENSE)
 def upload_license_action(args):
     &quot;&quot;&quot;
@@ -3883,7 +3883,7 @@ reusable, repeatable snippets that can be used independently throughout a websit
 
 <h4>Parent Flex Container</h4>
 
-<pre><code>display: flex | inline-flex;
+<pre><code class="css">display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
 flex-wrap: wrap | nowrap | wrap-reverse; flex-flow (shorthand for flex-direction and flexwrap)
 justify-content: flex-start | flex-end | center | spacebetween | space-around | space-evenly;
@@ -3893,7 +3893,7 @@ align-content (cross axis - adjust to largest item): flex-start | flex-end | cen
 
 <h4>Children Flex Items</h4>
 
-<pre><code>order: &lt;integer&gt;;
+<pre><code class="css">order: &lt;integer&gt;;
 flex-grow: &lt;number&gt;;
 flex-shrink: &lt;number&gt;;
 flex-basis: &lt;length&gt; | auto;
@@ -3905,7 +3905,7 @@ align-self: overrides alignment set on parent
 
 <h4>Grid Container</h4>
 
-<pre><code>display: grid | inline-grid;
+<pre><code class="css">display: grid | inline-grid;
 grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
 grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ...;
 grid-template-areas: &lt;grid-area-name&gt;;
@@ -3927,7 +3927,7 @@ grid: A shorthand for setting all of the following properties in a single declar
 
 <h4>Grid Items</h4>
 
-<pre><code>grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
+<pre><code class="css">grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
 grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
 grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
 grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto
@@ -3941,7 +3941,7 @@ place-self: center;
 
 <h4>Media Queries</h4>
 
-<pre><code>/* 
+<pre><code class="css">/* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
@@ -3980,7 +3980,7 @@ place-self: center;
 &lt;/div&gt;
 </code></pre>
 
-<pre><code>.block {
+<pre><code class="css">.block {
   &amp;__element {
     background: blue;
     &amp;--modifier {
@@ -3992,7 +3992,7 @@ place-self: center;
 
 <h4>BEM with Sass</h4>
 
-<pre><code>.person {
+<pre><code class="css">.person {
   &amp;__hand {/* Styles */}
 
   &amp;__leg {/* Styles */}
@@ -4039,8 +4039,9 @@ place-self: center;
 }
 </code></pre>
 
+<p><br></p>
 <hr />
-<p><br><br></p>
+<p><br></p>
 <h4>CSS Grid vs Flexbox</h4>
 
 <p><a href="https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412">CSS grid vs flexbox</a>
@@ -4049,8 +4050,9 @@ place-self: center;
 - If you are well aware of your content before making layout, then blindly opt for Flexbox and if not, opt for CSS Grid.
 - Flexbox layout is most appropriate to the components of an application (as most of them are fundamentally linear), and small-scale layouts, while the Grid layout is intended for larger scale layouts which aren’t linear in their design.
 - If you only need to define a layout as a row or a column, then you probably need flexbox. If you want to define a grid and fit content into it in two dimensions — you need the grid.</p>
+<p><br></p>
 <hr />
-<p><br><br></p>
+<p><br></p>
 <h4>Centering Things</h4>
 
 <p><a href="https://css-tricks.com/centering-css-complete-guide/">csstricks centering complete guide</a></p>
@@ -4347,7 +4349,7 @@ $zMessage: 5050;
 
 <h4>Descendant Selector</h4>
 
-<p>all p elements inside div elements  </p>
+<p>all p elements inside div elements </p>
 <pre><code>div p {
   background-color: yellow;
 }
@@ -4363,7 +4365,7 @@ $zMessage: 5050;
 
 <h4>Adjacent Sibling Selector</h4>
 
-<p>all p elements that are placed immediately after div elements  </p>
+<p>all p elements that are placed immediately after div elements</p>
 <pre><code>div + p {
   background-color: yellow;
 }
@@ -4371,7 +4373,7 @@ $zMessage: 5050;
 
 <h4>General Sibling Selector</h4>
 
-<p>all p elements that are siblings of div elements  </p>
+<p>all p elements that are siblings of div elements</p>
 <pre><code>div ~ p {
   background-color: yellow;
 }
@@ -4382,8 +4384,9 @@ $zMessage: 5050;
 <pre><code>p.center 
 </code></pre>
 
+<p><br></p>
 <hr />
-<p><br><br></p>
+<p><br></p>
 <h4>Box sizing</h4>
 
 <p>The box-sizing property can make building CSS layouts easier and a lot more intuitive.<br />
@@ -4401,9 +4404,28 @@ With box sizing the padding and border of that element no longer increase its wi
 }
 </code></pre>
 
+<p><br></p>
 <hr />
-<p><br><br></p>
+<p><br></p>
 <h2 id="unit-testing">UNIT TESTING</h2>
+<p>each test contains:
+- Setup phase (e.g. shallow component)
+- Action phase (e.g. setState)
+- Expect a certain outcome (e.g. expect modal to be rendered)</p>
+<p>Some notes:
+- Basic tests functionalities: 
+  Component renders correctly
+  Subcomponents renders correctly
+  Fundamental elements of the pages are present (input fields, buttons, text)
+- Play with data:
+  Renders the component correct data, wrong data, no data
+  setState, setProps with different set of values
+- Verify communication with backed:
+  API endpoints
+  Forms send correct data
+- Verify Action
+  click buttons and expect an outcome
+  expect errors to be shown in the form</p>
 <p><br></p>
 <hr />
 <p><br></p>
