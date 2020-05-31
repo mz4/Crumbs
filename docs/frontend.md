@@ -4094,31 +4094,31 @@ socket install
 npm i socket.io-client
 ```
 
-```
+```js
 const io = require('socket.io-client')('https://'.concat(document.domain).concat(':').concat(location.port));
 export default io;
 ```
 
 io Emit from client
-```
+```js
 import io from './components/common/io';
 io.emit('populate_table', { table_name: 'users_table' });
 ```
 
 io Receive
-```
+```js
 io.on('isloggedin', (payload) => {
   ...
 }
 ```
 
 Remove listeners
-```
+```js
 io.removeAllListeners('action_response');
 ```
 
 socketio server flask
-```
+```js
 from app.server import socketio
 @socketio.on(socket_names.UPLOAD_LICENSE)
 def upload_license_action(args):
@@ -4219,6 +4219,7 @@ Good
 ```
 
 <h4>Use a combination of OOCSS and BEM</h4>
+
 - OOCSS, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”:  
 reusable, repeatable snippets that can be used independently throughout a website.  
   It is based on two main principles:  
@@ -4228,7 +4229,9 @@ reusable, repeatable snippets that can be used independently throughout a websit
 - BEM, or “Block-Element-Modifier”, is a naming convention for classes in HTML and CSS.  
 
 <h4>Responsive Design</h4>
+
 <h4>Defined by three characteristics</h4>
+
 - Flexible grid-based layout  
 - Media queries (CSS3)  
 - Images that resize  
@@ -4239,7 +4242,8 @@ reusable, repeatable snippets that can be used independently throughout a websit
 
 <h4>FLEXBOX</h4>
 <h4>Parent Flex Container</h4>
-```
+
+```css
 display: flex | inline-flex;
 flex-direction: row | row-reverse | column | columnreverse;
 flex-wrap: wrap | nowrap | wrap-reverse; flex-flow (shorthand for flex-direction and flexwrap)
@@ -4249,7 +4253,8 @@ align-content (cross axis - adjust to largest item): flex-start | flex-end | cen
 ```
 
 <h4>Children Flex Items</h4>
-```
+
+```css
 order: <integer>;
 flex-grow: <number>;
 flex-shrink: <number>;
@@ -4260,7 +4265,8 @@ align-self: overrides alignment set on parent
 
 <h4>GRID</h4>
 <h4>Grid Container</h4>
-```
+
+```css
 display: grid | inline-grid;
 grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
 grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
@@ -4282,7 +4288,8 @@ grid: A shorthand for setting all of the following properties in a single declar
 ```
 
 <h4>Grid Items</h4>
-```
+
+```css
 grid-column-start: <number> | <name> | span <number> | span <name> | auto
 grid-column-end: <number> | <name> | span <number> | span <name> | auto
 grid-row-start: <number> | <name> | span <number> | span <name> | auto
@@ -4296,7 +4303,8 @@ place-self: center;
 ```
 
 <h4>Media Queries</h4>
-```
+
+```css
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -4336,7 +4344,7 @@ place-self: center;
 </div>
 ```
 
-```
+```css
 .block {
   &__element {
     background: blue;
@@ -4348,7 +4356,8 @@ place-self: center;
 ```
 
 <h4>BEM with Sass</h4>
-```
+
+```css
 .person {
   &__hand {/* Styles */}
 
@@ -4396,11 +4405,14 @@ place-self: center;
 }
 ```
 
+<br>
 
 ---
-<br><br>
+
+<br>
 
 <h4>CSS Grid vs Flexbox</h4>
+
 [CSS grid vs flexbox](https://medium.com/youstart-labs/beginners-guide-to-choose-between-css-grid-and-flexbox-783005dd2412)
 - CSS Grid Layout is a two-dimensional system, meaning it can handle both columns and rows, unlike flexbox which is largely a one-dimensional system (either in a column or a row).
 - A core difference between CSS Grid and Flexbox is that — CSS Grid’s approach is layout-first while Flexbox’ approach is content-first. 
@@ -4408,8 +4420,12 @@ place-self: center;
 - Flexbox layout is most appropriate to the components of an application (as most of them are fundamentally linear), and small-scale layouts, while the Grid layout is intended for larger scale layouts which aren’t linear in their design.
 - If you only need to define a layout as a row or a column, then you probably need flexbox. If you want to define a grid and fit content into it in two dimensions — you need the grid.
 
+
+<br>
+
 ---
-<br><br>
+
+<br>
 
 <h4>Centering Things</h4>
 [csstricks centering complete guide](https://css-tricks.com/centering-css-complete-guide/)
@@ -4555,6 +4571,7 @@ $ npm install sass-loader node-sass --save-dev
 ```
 
 <h4>Update the webpack.config.js to chain sass-loader , then css-loader and then chain their output to style-loader (Loader-chaining)</h4>
+
 ```scss
 Module:{
      Rules:[
@@ -4567,11 +4584,13 @@ Module:{
 ```
 
 <h4>SCSS Import</h4>
+
 ```scss
 @import 'reset';
 ```
 
 <h4>SCSS Variables</h4>
+
 ```scss
 $zHeader: 2000;
 $zOverlay: 5000;
@@ -4589,6 +4608,7 @@ $zMessage: 5050;
 ```
 
 <h4>SCSS Mixins</h4>
+
 ```scss
 @mixin square($size, $color) {
   width: $size;
@@ -4606,6 +4626,7 @@ $zMessage: 5050;
 ```
 
 <h4>SCSS CrossBrowser Mixins</h4>
+
 ```scss
 @mixin transform-tilt() {
   $tilt: rotate(15deg);
@@ -4621,6 +4642,7 @@ $zMessage: 5050;
 
 <h4>SCSS Extend</h4>
 <h4>Extending should be used when we need similarly styled elements, which still differ in some detail. </h4>
+
 ```scss
 .dialog-button {
   box-sizing: border-box;
@@ -4645,6 +4667,7 @@ $zMessage: 5050;
 
 <h4>SCSS Nesting</h4>
 <h4>Organize your stylesheet in a way that resembles the HTML more closely.</h4>
+
 ```scss
 ul {
   list-style: none;
@@ -4663,6 +4686,7 @@ ul {
 ```
 
 <h4>Nested Pseudo Classes and Pseudo Elements </h4>
+
 ```scss
 .weather {
   @extend %module;
@@ -4680,6 +4704,7 @@ ul {
 ```
 
 <h4>SCSS Operations  </h4>
+
 ```scss
 $width: 800px;
 
@@ -4699,7 +4724,8 @@ $width: 800px;
 <h4>Selectors</h4>
 
 <h4>Descendant Selector</h4>
-all p elements inside div elements  
+all p elements inside div elements 
+
 ```
 div p {
   background-color: yellow;
@@ -4707,7 +4733,9 @@ div p {
 ```
   
 <h4>Child Selector</h4>
+
 all p elements that are immediate children of a div element  
+
 ```
 div > p {
   background-color: yellow;
@@ -4715,7 +4743,8 @@ div > p {
 ```
 
 <h4>Adjacent Sibling Selector</h4>
-all p elements that are placed immediately after div elements  
+all p elements that are placed immediately after div elements
+
 ```
 div + p {
   background-color: yellow;
@@ -4723,7 +4752,8 @@ div + p {
 ```
 
 <h4>General Sibling Selector</h4>
-all p elements that are siblings of div elements  
+all p elements that are siblings of div elements
+
 ```
 div ~ p {
   background-color: yellow;
@@ -4731,12 +4761,16 @@ div ~ p {
 ```
 
 <h4>Select p elements with class="center"</h4>
+
 ```
 p.center 
 ```
 
+<br>
+
 ---
-<br><br>
+
+<br>
 
 <h4>Box sizing</h4>
 The box-sizing property can make building CSS layouts easier and a lot more intuitive.  
@@ -4756,10 +4790,33 @@ html {
 }
 ```
 
+<br>
+
 ---
-<br><br>
+
+<br>
 
 ## UNIT TESTING
+
+each test contains:
+- Setup phase (e.g. shallow component)
+- Action phase (e.g. setState)
+- Expect a certain outcome (e.g. expect modal to be rendered)
+
+Some notes:
+- Basic tests functionalities: 
+  Component renders correctly
+  Subcomponents renders correctly
+  Fundamental elements of the pages are present (input fields, buttons, text)
+- Play with data:
+  Renders the component correct data, wrong data, no data
+  setState, setProps with different set of values
+- Verify communication with backed:
+  API endpoints
+  Forms send correct data
+- Verify Action
+  click buttons and expect an outcome
+  expect errors to be shown in the form
 
 <br>
 
@@ -5316,6 +5373,7 @@ import RetrieveData from "./DataRetriever";
     }
   }
 ```
+
 <h4>Data Retriever</h4>
 
 ```js
@@ -5433,6 +5491,7 @@ print reggie_gpa
 ## CYPRESS
 
 Install Cypress
+
 ```js
 npm install cypress --save-dev
 ```
@@ -5452,6 +5511,7 @@ in a .js file into test/cypress folder:
 example to validate a component
 
 defining xpath/data-object-id and constants values:
+
 ```js
 const ADD_BUTTON = "[data-object-id=\"AddBtn\"]"
 const USER_EMAIL = "user001@gmail.com"
