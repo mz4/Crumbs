@@ -59,6 +59,18 @@ git push -u origin master
 
 <br>
 
+<h4>Get remote name of your repository</h4>
+```
+git config --get remote.origin.url
+```
+
+<br>
+
+---
+
+<br>
+
+
 <h4>Create, switch and push origin new branch</h4>
 ```
 git checkout -b issue400-master
@@ -3519,7 +3531,12 @@ docker system prune -a
 ***********************************************************************************************************************
 
 Interview questions
-https://github.com/sudheerj/reactjs-interview-questions#what-is-react
+
+https://github.com/sudheerj/javascript-interview-questions
+- https://github.com/sudheerj/reactjs-interview-questions#what-is-react
+https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions
+https://www.sitepoint.com/5-javascript-interview-exercises/
+https://github.com/yangshun/front-end-interview-handbook/blob/master/contents/en/javascript-questions.md
 
 Callback, promises, async
 https://medium.com/front-end-weekly/callbacks-promises-and-async-await-ad4756e01d90

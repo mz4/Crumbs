@@ -1379,6 +1379,8 @@ const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current
 - https://www.sitepoint.com/react-with-typescript-best-practices/
 - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
 - https://www.typescriptlang.org/docs/handbook/basic-types.html
+- https://fettblog.eu/typescript-react/
+- https://marketplace.visualstudio.com/items?itemName=infeng.vscode-react-typescript
 
 
 
@@ -2048,6 +2050,7 @@ npm install redux-thunk
 ```
 
 <h4>Apply middleware to app store.</h4>  
+
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -2071,6 +2074,7 @@ ReactDOM.render(
 
 The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.  
 **AddTodo.jsx**  
+
 ```javascript
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
@@ -3735,6 +3739,14 @@ def upload_license_action(args):
 ---
 
 ## CSS3/SASS
+
+---
+
+<h4>Links</h4>
+
+Styled Components:
+
+https://dev.to/aromanarguello/how-to-use-themes-in-styled-components-49h
 
 ---
 

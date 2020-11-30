@@ -1,6 +1,7 @@
 nav:
 - 'index.md'
 - 'frontend.md'
+- 'react.md'
 - 'backend.md'
 - 'demo.md'
 site_name: Crumbs
