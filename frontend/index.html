@@ -2100,65 +2100,11 @@ componentDidMount, componentDidUpdate, componentWillUnmount: The useEffect Hook 
     // ...
 </code></pre>
 
-<h4>State Hooks</h4>
-
-<pre><code class="javascript">import React, { useState } from 'react';
-
-function Example() {
-  // Declare a new state variable, which we'll call &quot;count&quot;
-  const [count, setCount] = useState(0);
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;You clicked {count} times&lt;/p&gt;
-      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
-        Click me
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-}
-</code></pre>
-
-<h4>Declaring multiple state variables</h4>
-
-<pre><code class="javascript">function ExampleWithManyStates() {
-  // Declare multiple state variables!
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
-  // ...
-}
-</code></pre>
-
 <h4>Effect Hook</h4>
 
 <p>The Effect Hook, useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes,<br />
 but unified into a single API.  By default, React runs the effects after every render — including the first render.  </p>
 <p>Effects may also optionally specify how to “clean up” after them by returning a function.  </p>
-<pre><code class="javascript">import React, { useState, useEffect } from 'react';
-
-function FriendStatus(props) {
-  const [isOnline, setIsOnline] = useState(null);
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
-  useEffect(() =&gt; {
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-
-    return () =&gt; {
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    };
-  });
-
-  if (isOnline === null) {
-    return 'Loading...';
-  }
-  return isOnline ? 'Online' : 'Offline';
-}
-</code></pre>
-
 <h4>Reuse logic in another component.</h4>
 
 <p>It takes friendID as an argument, and returns whether our friend is online.  </p>

@@ -87,10 +87,8 @@
 
 
 <h1 id="react">REACT</h1>
-<p><br>---<br></p>
-<h2 id="react-fc">REACT FC</h2>
-<p><br>---<br></p>
-<h4>React FC</h4>
+<p><br></p>
+<h4>React FC - useState</h4>
 
 <pre><code class="js">import React, { useState } from 'react';
 
@@ -103,6 +101,30 @@ const clickComponent = () =&gt; {
       &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
         Click me
       &lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p><br></p>
+<h4>React FC - useEffect</h4>
+
+<pre><code class="js">import React, { useState, useEffect } from 'react';
+import { fetchEmployees } from './fetchEmployees';
+
+const Employees = ({ query }) =&gt; {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() =&gt; {
+    const fetch = async () =&gt; {
+      setEmployees(await fetchEmployees(query))
+    }
+    fetch()
+  }, [query]);
+
+  return (
+    &lt;div&gt;
+      {employees.map(name =&gt; &lt;div&gt;{name}&lt;/div&gt;)}
     &lt;/div&gt;
   )
 }
@@ -134,9 +156,6 @@ const clickComponent = () =&gt; {
     <div id="toc-collapse" class="navbar-collapse collapse card">
         <ul class="nav flex-column bs-sidenav">
             <li class="nav-item main"><a class="nav-link" href="#react">REACT</a></li>
-                <li class="nav-item">
-                    <a href="#react-fc" class="nav-link">REACT FC</a>
-                </li>
         </ul>
     </div>
 </div></div>
