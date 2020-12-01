@@ -2,8 +2,9 @@
 
 <br>
 
+## Function components
 
-<h4>## Stateless function component - sfc</h4>
+<h4>Stateless function component - sfc</h4>
 
 ```js
 const | = props => {
@@ -13,6 +14,7 @@ const | = props => {
 export default |;
 ```
 
+## Hooks
 
 <h4>React FC - useState</h4>
 
