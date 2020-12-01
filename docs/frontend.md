@@ -1756,17 +1756,6 @@ class Navigation extends React.Component {
 }
 ```
 
-
-<h4>Stateless function component - sfc</h4>
-
-```javascript
-const | = props => {
-  return ( | );
-};
-
-export default |;
-```
-
 <h4>State and lifecycle</h4>
 
 ```

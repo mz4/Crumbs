@@ -2,6 +2,18 @@
 
 <br>
 
+
+<h4>## Stateless function component - sfc</h4>
+
+```js
+const | = props => {
+  return ( | );
+};
+
+export default |;
+```
+
+
 <h4>React FC - useState</h4>
 
 ```js

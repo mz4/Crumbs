@@ -130,6 +130,55 @@ const Employees = ({ query }) =&gt; {
 }
 </code></pre>
 
+<p><br></p>
+<h4>React FC - UseContext</h4>
+
+<pre><code class="js">
+const themes = {
+  light: {
+    foreground: '#000',
+    background: '#eee'
+  },
+  dark: {
+    foreground: '#eee',
+    background: '#000'
+  }
+}
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    &lt;ThemeContext.Provider value={themes.dark}&gt;
+      &lt;Toolbar /&gt;
+    &lt;/ThemeContext&gt;
+  )
+}
+
+function Toolbar(props) {
+  return (
+    &lt;div&gt;
+      &lt;ThemedButton /&gt;
+    &lt;/div&gt;
+  )
+}
+
+function ThemeButton() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    &lt;button style={{ background: theme.background, color:theme.foregroudn }}&gt;
+      Click me
+    &lt;/button&gt;
+  )
+}
+</code></pre>
+
+<p><br></p>
+<h4>React FC - Update UseContext</h4>
+
+<iframe src="https://codesandbox.io/embed/updating-shared-react-context-from-child-components-with-hooks-forked-fucsb?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Updating Shared React Context from Child Components with Hooks (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <li class="last-updated-holder displayDate loading">
     <span class="last-updated-text">Last updated:</span>
