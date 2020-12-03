@@ -124,3 +124,9 @@ function ThemeButton() {
 <h4>React FC - useCallback</h4>
 
 <iframe src="https://codesandbox.io/embed/reactusecallback-forked-d1401?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="React.useCallback (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<h4>React Memo</h4>
+
+<p>React memo is used to wrap React components to prevent re-renderings</p>
+
+<iframe src="https://codesandbox.io/embed/thirsty-hellman-mytul?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="thirsty-hellman-mytul" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
