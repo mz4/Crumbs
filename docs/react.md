@@ -2,7 +2,7 @@
 
 <br>
 
-## Function components
+## Hooks
 
 <h4>Stateless function component - sfc</h4>
 
@@ -13,8 +13,6 @@ const | = props => {
 
 export default |;
 ```
-
-## Hooks
 
 <h4>React FC - useState</h4>
 
