@@ -1,10 +1,10 @@
-# FRONTEND
+# JAVASCRIPT
 
 ---
 
 <br>
 
-## JAVASCRIPT
+## how it works
 
 <br>
 
@@ -55,7 +55,7 @@ Javscript engine creates in the Execution Context:
 
 <br>
 
-<h4>Javascript is: Single Threaded & Synchonous</h4>  
+<h4>Single Threaded & Synchonous</h4>  
 Javascript for programmers behaves in a single threaded manner, one command at the time.  
 And it is Synchronous, one line of code being executed at the time.
 
@@ -85,27 +85,53 @@ The job of the Event loop is to look into the call stack and determine if the ca
 
 <br>
 
+## Scopes
+
 <h4>Scopes in javascript</h4>
 - Global Scope  
 - Local Scope  
 - Block Scope (let)  
+
+<br>
+
+---
+
+<br>
 
 <h4>Old school JavaScript</h4>
 Traditionally, JavaScript really only has two types of scope :  
 - Global Scope: Variables are known throughout the application, from the start of the application  
 - Functional Scope: Variables are known within the function they are declared in, from the start of the function  
 
+<br>
+
+---
+
+<br>
+
 <h4>Modern JavaScript</h4>
 The most recent JavaScript specs now also allow a third scope :  
 
-<h4>Block Scope</h4>
+Block Scope
 Variables are known within the block they are declared in, from the moment they are declared onwards  
 let myVariable = "Some text";  
 const myVar = "val";  
 
+<br>
+
+---
+
+<br>
+
 <h4>Difference Between Function and Block Scope</h4>
 Function scope is within the function. (var is function scope.)  
 Block scope is within curly brackets. (let and const are block scope.)  
+
+<br>
+
+---
+
+<br>
 
 <h4>Scope chain</h4>
 JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.
@@ -125,11 +151,13 @@ You dont need to tell the engine what type of data a variable holds, it is going
 
 <br>
 
+## Closures
+
 <h4>Closures: counter</h4>
 A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:  
 it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  
 
-```javascript
+```js
 <script>
   var updateClickCount=(function(){
   var counter=0;
@@ -177,10 +205,13 @@ a = (function () {
 
 <br>
 
-<h4>Promise</h4>
+## Promises
+
+<h4>Promises</h4>
 
 Promises are one way to deal with asynchronous code.  
 A Promise is in one of these states:  
+
 Pending: initial state, neither fulfilled nor rejected.  
 Fulfilled: meaning that the operation completed successfully.  
 Rejected: meaning that the operation failed.  
@@ -332,6 +363,8 @@ async function askMom() {
 
 <br>
 
+## Callback
+
 <h4>Callback, Promises and Async</h4>
   
 <h4>Callback:</h4>
@@ -363,6 +396,46 @@ function printAll(){
   })
 }
 printAll()
+```
+
+---
+
+Callback functions  
+
+setInterval
+
+```js
+setInterval(function(){
+  console.log('hello);
+}, 1000);
+```
+
+```js
+const list = ['uno', 'due', 'tre'];
+
+const newList = list.map(function(v) {
+  return v + 'a';
+}).filter(function(v) {
+  return v.value > 'aa';
+}
+)
+```
+
+```js
+button.addEventListener('click', function(e){
+  ...
+})
+```
+
+```js
+setTimeout(func, 1000);
+```
+
+```js
+Object.entries(users).forEach(entry, val) =>
+{
+  const [key, value] = entry;
+}
 ```
 
 <br>
@@ -419,6 +492,8 @@ printAll()
 ---
 
 </br>
+
+## Http Requests
 
 <h4>Http Requests</h4>
 
@@ -494,6 +569,82 @@ axios.all([getUserAccount(), getUserPermissions()])
   }));
 ```
 
+<h4>Various examples of Loops, Promises, callback</h4>
+
+Promise
+```javascript
+const promise = new Promise (
+  function(resolve, reject) {
+    if (...something) {
+      resolve('data');
+    }
+    if (...somethingelse) {
+      reject('error');
+    }
+  }
+)
+
+promise.then(
+  function(data) {...}
+).catch(
+  function(error) {...}
+)
+```
+
+Axios  
+[Axios cheatsheet](https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index)  
+[Axios github](https://github.com/axios/axios)  
+[Axios making http requests](https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/)
+
+```javascript
+axios.get('http://.....')
+  .then(
+    function(response) {
+      ....
+    }
+  )
+  .catch(
+    function(error) {
+      ....
+    }
+  )
+  .finally(
+    function() {
+      ....
+    }
+  )
+```
+
+```js
+async function getUser() {
+  try {
+    const output = await axios.get()
+  }
+  catch {
+    ...
+  }
+}
+```
+
+Axios patch example
+```javascript
+  axios
+    .patch(
+      url,
+      formData,
+      {
+        headers: {
+          'X-Auth-Token': token
+      },
+    })
+    .then((data) => {
+      this.props.loadAccountsData();
+    })
+    .catch(error => {
+      throw error;
+    });
+```
+
 
 <br>
 
@@ -501,7 +652,10 @@ axios.all([getUserAccount(), getUserPermissions()])
 
 <br>
 
-<h4>Prototype</h4>
+## Prototypes
+
+<h4>Prototypes</h4>
+
 [Prototype link](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)  
 The prototype is an object that is associated with every functions and objects by default in JavaScript.
 Every object in javascript includes '__proto__' property that points to prototype object of a function that created this object.
@@ -553,6 +707,8 @@ Dog.prototype.constructor = Dog;
 
 <br>
 
+## ES6 Syntax
+
 <h4>ES6 syntax</h4>  
 In 2015, EcmaScript (the official JavaScript specification) 6 was released with support for Classes and the class keyword.  
 Let’s see how our Animal constructor function above would look like with the new class syntax.
@@ -587,8 +743,38 @@ const snoop = new Animal('Snoop', 10)
 
 <br>
 
+<h4>Arrays</h4>
+Arrays is javascript are dynamically typed, and can contain different type of data
+
+```javascript
+var arr = [
+    1, 
+    false, 
+    {
+        name: 'Tony',
+        address: '111 Main St.'
+    },
+    function(name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    "hello"
+];
+
+console.log(arr);
+arr[3](arr[2].name);
+```
+
+<br>
+
+---
+
+<br>
+
+
 <h4>Array methods</h4>
-We can see all the array’s methods by simply logging Array.prototype.  
+
+See all the array’s methods by simply logging Array.prototype.  
 console.log(Array.prototype)
 
 ```js
@@ -631,33 +817,68 @@ console.log(Array.prototype)
 
 <br>
 
-<h4>Arrays</h4>
-Arrays is javascript are dynamically typed, and can contain different type of data
+<h4>Find highest value in an array</h4>
 
-```javascript
-var arr = [
-    1, 
-    false, 
-    {
-        name: 'Tony',
-        address: '111 Main St.'
-    },
-    function(name) {
-        var greeting = 'Hello ';
-        console.log(greeting + name);
-    },
-    "hello"
-];
+```js
+const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current)
+```
 
-console.log(arr);
-arr[3](arr[2].name);
+<h4>setState spread operator</h4>
+
+```js
+    trips: [
+      {
+        id: 0,
+        name: 'Rome',
+        dateStart: '19/08/2019',
+        dateEnd: '29/08/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 1,
+        name: 'Paris',
+        dateStart: '15/06/2019',
+        dateEnd: '29/06/2019',
+        isConfirmed: true,
+        isEditing: false
+      },
+      {
+        id: 2,
+        name: 'Malta',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 3,
+        name: 'Budapest',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      }
+    ]
+```
+
+```js
+  handleDateStart = e =>
+    this.setState({
+      form: {
+        ...this.state.form,
+        dateStart: e.target.value
+      }
+    });
 ```
 
 <br>
 
 ---
 
-<br>
+</br>
+
+## This
 
 <h4>'this' keyword</h4>
 It's a special identifier keyword that's automatically defined in the scope of every function.    
@@ -852,6 +1073,8 @@ console.log(bound("a", "b"));
 
 <br>
 
+## Objects
+
 <h4>Objects</h4>
 Objects come in two forms: the declarative (literal) form, and the constructed form.  
 Note: It's extremely uncommon to use the "constructed form" for creating objects as just shown.  
@@ -889,6 +1112,8 @@ myObj.key = value;
 ---
 
 <br>
+
+## Design Patterns
 
 <h4>Design Patterns</h4>
 
@@ -1011,6 +1236,7 @@ console.log(sam.bash === lella.bash)
 <br>
 
 ## ES6
+
 <h4>Spread Operator 1</h4>
 
 ```javascript
@@ -1186,183 +1412,6 @@ console.timeEnd("end")
 
 <br>
 
-<h4>Various examples of Loops, Promises, callback</h4>
-
-Promise
-```javascript
-const promise = new Promise (
-  function(resolve, reject) {
-    if (...something) {
-      resolve('data');
-    }
-    if (...somethingelse) {
-      reject('error');
-    }
-  }
-)
-
-promise.then(
-  function(data) {...}
-).catch(
-  function(error) {...}
-)
-```
-
-Axios  
-[Axios cheatsheet](https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index)  
-[Axios github](https://github.com/axios/axios)  
-[Axios making http requests](https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/)
-
-```javascript
-axios.get('http://.....')
-  .then(
-    function(response) {
-      ....
-    }
-  )
-  .catch(
-    function(error) {
-      ....
-    }
-  )
-  .finally(
-    function() {
-      ....
-    }
-  )
-```
-
-```js
-async function getUser() {
-  try {
-    const output = await axios.get()
-  }
-  catch {
-    ...
-  }
-}
-```
-
-Axios patch example
-```javascript
-  axios
-    .patch(
-      url,
-      formData,
-      {
-        headers: {
-          'X-Auth-Token': token
-      },
-    })
-    .then((data) => {
-      this.props.loadAccountsData();
-    })
-    .catch(error => {
-      throw error;
-    });
-```
-
----
-
-Callback functions  
-
-setInterval
-
-```js
-setInterval(function(){
-  console.log('hello);
-}, 1000);
-```
-
-```js
-const list = ['uno', 'due', 'tre'];
-
-const newList = list.map(function(v) {
-  return v + 'a';
-}).filter(function(v) {
-  return v.value > 'aa';
-}
-)
-```
-
-```js
-button.addEventListener('click', function(e){
-  ...
-})
-```
-
-```js
-setTimeout(func, 1000);
-```
-
-```js
-Object.entries(users).forEach(entry, val) =>
-{
-  const [key, value] = entry;
-}
-```
-
-<h4>Find highest value in an array</h4>
-
-```js
-const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current)
-```
-
-<h4>setState spread operator</h4>
-
-```js
-    trips: [
-      {
-        id: 0,
-        name: 'Rome',
-        dateStart: '19/08/2019',
-        dateEnd: '29/08/2019',
-        isConfirmed: false,
-        isEditing: false
-      },
-      {
-        id: 1,
-        name: 'Paris',
-        dateStart: '15/06/2019',
-        dateEnd: '29/06/2019',
-        isConfirmed: true,
-        isEditing: false
-      },
-      {
-        id: 2,
-        name: 'Malta',
-        dateStart: '01/02/2019',
-        dateEnd: '08/02/2019',
-        isConfirmed: false,
-        isEditing: false
-      },
-      {
-        id: 3,
-        name: 'Budapest',
-        dateStart: '01/02/2019',
-        dateEnd: '08/02/2019',
-        isConfirmed: false,
-        isEditing: false
-      }
-    ]
-```
-
-```js
-  handleDateStart = e =>
-    this.setState({
-      form: {
-        ...this.state.form,
-        dateStart: e.target.value
-      }
-    });
-```
-
-<br>
-
----
-
-<br>
-
 
 
 ## TYPESCRIPT
@@ -1381,9 +1430,6 @@ const max = data.reduce((prev, current) => (prev.y > current.y) ? prev : current
 - https://www.typescriptlang.org/docs/handbook/basic-types.html
 - https://fettblog.eu/typescript-react/
 - https://marketplace.visualstudio.com/items?itemName=infeng.vscode-react-typescript
-
-
-
 
 <br>
 
@@ -1694,804 +1740,7 @@ const mapDispatchToProps = {
 
 <br>
 
-## REACT
-
-<h4>State</h4>
-React is all about one-way data flow down the component hierarchy.  
-State is created in the component and stays in the component.  
-It can be passed to a children as its props.  
-
-
-<h4>Basic Concepts</h4>
-- JSX
-- Rendering Elements
-- Components Functional/Container
-- State and Lifecycle
-- Handling Events
-- Conditional Rendering
-- Lists and Keys
-- Forms
-
-<h4>JSX</h4>
-```javascript
-<MyComponent message={'hello world'} />
-```
-
-<h4>Rendering elements</h4>
-
-```javascript
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    );
-  }
-}
-```
-
-```javascript
-var links = [
-  { endpoint: '/america' },
-  { endpoint: '/canada' },
-  { endpoint: '/norway' },
-  { endpoint: '/bahamas' }
-];
-
-class Navigation extends React.Component {
-  render() {
-    const listItems = links.map((link) =>
-        <li key={link.endpoint}>{link.endpoint}</li> 
-    );
-    return (
-      <div className="navigation">
-        <ul>
-          {listItems}
-        </ul>
-      </div>
-    );
-}
-```
-
-<h4>State and lifecycle</h4>
-
-```
-Mounting  
-These methods are called in the following order:  
-* constructor()  
-* static getDerivedStateFromProps()  
-* render()  
-* componentDidMount()  
-  
-Updating  
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:  
-* static getDerivedStateFromProps()  
-* shouldComponentUpdate()  
-* render()  
-* getSnapshotBeforeUpdate()  
-* componentDidUpdate()    
-  
-Unmounting  
-This method is called when a component is being removed from the DOM:  
-* componentWillUnmount()  
-```
-
-<h4>Handling events</h4>
-
-```javascript
-function ActionLink() {
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('The link was clicked.');
-  }
-
-  return (
-    <a href="#" onClick={handleClick}>
-      Click me
-    </a>
-  );
-}
-```
-
-<h4>Conditional rendering</h4>
-
-```javascript
-render() {
-  const isLoggedIn = this.state.isLoggedIn;
-  return (
-    <div>
-      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
-    </div>
-  );
-}
-```
-
-<h4>List and Keys</h4>
-
-```javascript
-function NumberList(props) {
-  const numbers = props.numbers;
-  return (
-    <ul>
-      {numbers.map((number) =>
-        <ListItem key={number.toString()}
-                  value={number} />
-
-      )}
-    </ul>
-  );
-}
-```
-
-<h4>Forms</h4>
-
-```javascript
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-```
-
-<br>
-
-
-<h4>Import CSS</h4>
-```
-import './styles/style.css'
-```
-
-<h4>Declare state</h4>
-
-```js
-export class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: props.initialCount};
-  }
-```
-
-<h4>defaultProps example</h4>
-
-```javascript
-Notification.defaultProps = {
-  actionTitle: '',
-  selectedElements: {},
-  actionLogs: [],
-};
-```
-
-<h4>propTypes example</h4>
-
-```javascript
-Notification.propTypes = {
-  actionTitle: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  elementTitle: PropTypes.objectOf(PropTypes.any),
-  selectedElements: PropTypes.arrayOf(PropTypes.any),
-};
-```
-
-<h4>Import statement - imr</h4>
-
-```javascript
-import React from 'react';
-```
-
-<h4>Import React and Component - imrc</h4>
-
-```javascript
-import React, { Component } from 'react';
-```
-
-<h4>Make a Class Component and export - cc</h4>
-
-```javascript
-class | extends Component {
-  state = { | },
-  render() {
-    return ( | );
-  }
-}
-
-export default |;
-```
-
-<h4>componentDidMount - cdm</h4>
-
-```javascript
-componentDidMount() {
-  |
-}
-```
-
-<h4>componentDidUpdate - cdu</h4>
-
-```javascript
-componentDidUpdate(prevProps, prevState) {
-  |
-}
-```
-
-<h4>setState - ss</h4>
-
-```javascript
-this.setState({ | : | });
-```
-
-<h4>render - ren</h4>
-
-```javascript
-render() {
-  return (
-    |
-  );
-}
-```
-
-<h4>export example with mapStateToProps, mapDispatchToProps</h4>
-
-```javascript
-export default connect(mapStateToProps, mapDispatchToProps)(Name);
-```
-
-<h4>mapStateToProps example</h4>
-
-```javascript
-const mapStateToProps = (state) => {
-  return {
-    elements: state.refreshRaidElements.raidElements,
-    controllers: state.refreshControllers.controllers,
-    waitingLogs: state.watingLogs.wating_action_logs,
-  };
-};
-```
-
-<h4>mapDispatchToProps</h4>
-Import actions  
-
-```javascript
-import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
-```
-  
-<h4>Emit action </h4> 
-
-```javascript
-this.props.selectedRaidIndex(id);
-```
-  
-<h4>Dispatch actions</h4>  
-
-```javascript
-const mapDispatchToProps = (dispatch) => {
-  return {
-    checkboxClicked: id => dispatch(checkboxClicked(id)),
-    selectedIndex: id => dispatch(selectedIndex(id)),
-  };
-};
-```
-
-<br>
-
----
-
-<br>
-
-<h4>React Redux Thunk</h4>  
-
-Actions in Redux are dispatched synchronously.   
-Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  
-
-**Redux Thunk is a middleware** that lets you call action creators that return a function instead of an action object.   
-That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside  
-the body of the function once the asynchronous operations have completed.  
-  
-Install redux-thunk  
-```
-npm install redux-thunk
-```
-
-<h4>Apply middleware to app store.</h4>  
-
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import rootReducer from './reducers';
-import App from './App';
-
-// use applyMiddleware to add the thunk middleware to the store
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
-```
-
-The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.  
-**AddTodo.jsx**  
-
-```javascript
-import { connect } from 'react-redux';
-import { addTodo } from '../actions';
-import NewTodo from '../components/NewTodo';
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddTodo: todo => {
-      dispatch(addTodo(toto));
-    }
-  };
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(NewTodo);
-```
-
-**actions/index.jsx**  
-```javascript
-import {
-  ADD_TODO_SUCCESS,
-  ADD_TODO_FAILURE,
-  ADD_TODO_STARTED,
-  DELETE_TODO
-} from './types';
-
-import axios from 'axios';
-
-export const addTodo = ({ title, userId }) => {
-  return dispatch => {
-    dispatch(addTodoStarted());
-
-    axios
-      .post(`https://jsonplaceholder.typicode.com/todos`, {
-        title,
-        userId,
-        completed: false
-      })
-      .then(res => {
-        dispatch(addTodoSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(addTodoFailure(err.message));
-      });
-  };
-};
-
-const addTodoSuccess = todo => ({
-  type: ADD_TODO_SUCCESS,
-  payload: {
-    ...todo
-  }
-});
-
-const addTodoStarted = () => ({
-  type: ADD_TODO_STARTED
-});
-
-const addTodoFailure = error => ({
-  type: ADD_TODO_FAILURE,
-  payload: {
-    error
-  }
-});
-```
-
-**reducers/todoReducers.jsx**  
-```javascript
-import {
-  ADD_TODO_SUCCESS,
-  ADD_TODO_FAILURE,
-  ADD_TODO_STARTED,
-  DELETE_TODO
-} from '../actions/types';
-
-const initialState = {
-  loading: false,
-  todos: [],
-  error: null
-};
-
-export default function todosReducer(state = initialState, action) {
-  switch (action.type) {
-    case ADD_TODO_STARTED:
-      return {
-        ...state,
-        loading: true
-      };
-    case ADD_TODO_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: null,
-        todos: [...state.todos, action.payload]
-      };
-    case ADD_TODO_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error
-      };
-    default:
-      return state;
-  }
-}
-```
-
----
-
-## REST API  
-
-<h4>Definition</h4>
-REST stands for Representational State Transfer. 
-It is web standards based architecture and uses HTTP Protocol. 
- 
-A Web API conforming to the REST architectural style is a REST API.  
-A web service is a collection of standards used for exchanging data between applications or systems.  
-Web services based on REST Architecture are known as RESTful web services.  
-These webservices uses HTTP methods to implement the concept of REST architecture.  
-A RESTful web service usually defines a URI, Uniform Resource Identifier a service,  
-which provides resource representation such as JSON and set of HTTP Methods.
-
-A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  
-
-<h4>URI Format</h4>
-generic URI syntax as shown below:  
-```
-URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
-```
-
-<h4>Good Practices</h4>
-Forward slash separator (/) indicates a hierarchical relationship  
-underscores (_) should not be used in uris  
-Trailing forward slash (/) should not be included in uris  
-hyphens (-) should be used to improve readability of uris  
-lowercase letters should be preferred in uri paths  
-crud function names should not be used in uris  
-query component of a URI may be used to filter collections or stores
-
-<h4>Request Methods</h4>
-CRUD requests: DELETE, GET, POST, PUT  
-HEAD retrieve metadata.  
-OPTIONS retrieve metadata of resource’s available interactions.  
-
-<h4>Some Responses status</h4>
-200 success
-201 new resource has been created
-202 Accepted, start of an asynchronous action
-204 No Content body left blank
-301 Moved Permanently
-400 Bad Request Indicates a nonspecific client error
-401 Unauthorized
-402 Forbidden
-404 Not Found
-405 Method Not Allowed
-
-<h4>HTTP Headers</h4>
-Various forms of metadata may be conveyed through the entity headers.    
-  
-<h4>Request headers</h4>
-Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request.  
-The client may store it and send it back with the next request to the same server.  
-User-Agent: identify the application type, operating system, software vendor
-Host: The Host request header specifies the domain name of the server  
-X-Requested-With: Mainly used to identify AJAX requests.  
-Accept-Language which languages the client is able to understand  
-  
-<h4>Response headers</h4>
-Content-Type  
-Content-Length  size of the response body  
-Set-Cookie used to send cookies from the server to the client.
-
-<h4>Body Format</h4>
-A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource.   
-Today, the most commonly used text formats is JSON.
-
-<h4>API Documentation</h4>
-- Resource Description  
-  example from MailChimp Campaign resource
-
-  Resource Description consists of 1-3 sentences.
-  Resources usually have various endpoints to access the resource and multiple methods for each endpoint.  
-  Sometimes the general resource isn’t described; instead, it just groups the endpoints.
-  Although the resource isn’t described, descriptions may be added for each of the endpoints.  
-
-- Endpoint and Methods  
-  The endpoints indicate how you access the resource, 
-  The method indicates the allowed interactions (such as GET, POST, or DELETE) with the resource.  
-  Endpoints usually have brief descriptions similar to the overall resource description but shorter.  
-
-  POST /campaigns	Create a new campaign  
-  GET /campaigns	Get all campaigns  
-  GET /campaigns/{campaign_id}	Get information about a specific campaign  
-  PATCH /campaigns/{campaign_id}	Update the settings for a campaign  
-  DELETE /campaigns/{campaign_id}	Delete a campaign  
-
-- Parameters  
-  Parameters are options you can pass with the endpoint to influence the response. 
-  There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  
-    
-  <strong>Header parameters</strong> are included in the request header. Usually, the header just includes authorization parameters.  
-
-  <strong>Path parameters</strong> are part of the endpoint itself and are not optional. For example, in the following endpoint,  
-  {user} and {bicycleId} are required path parameters:  
-  ```
-  /service/myresource/user/{user}/bicycles/{bicycleId}
-  ```
-    
-  <strong>Query string parameters</strong> appear after a question mark (?) in the endpoint. The question mark followed by the parameters and  
-  their values is referred to as the “query string.”  
-  ```
-  /surfreport/{beachId}?days=3&units=metric&time=1400
-  ```
-
-  <strong>Body parameters</strong>: with POST requests (where you’re creating something), you submit a JSON object in the request body.
-
-- Request example
-  The request example includes a sample request using the endpoint, showing some parameters configured.  
-  ```
-  curl -u "username:password" 
-  -H "Content-Type:application/json" 
-  -X GET "https://api.callfire.com/v2/texts?limit=50&offset=200"
-  ```
-- Response example  
-  The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
-  The response lets developers know if the resource contains the information they want, the format, and how that information is structured and labeled. 
-  The description of the response is known as the response schema. The response schema documents the response in a more comprehensive, general way,  
-  listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.  
-  The definition of the response is called the schema or model.
-
-```json
-  {
-    "Context": "ualize",
-    "Destination": "http://aaaa.com/aaa",
-    "EventTypes": [
-        "StatusChange",
-        "ResourceAdded",
-        "ResourceRemoved"
-    ],
-    "Id": "3a5f20212134",
-    "Name": "EventSubscription",
-    "Oem": {},
-    "Protocol": "Redfish"
-  }
-```
-
-[API Documentation example](https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html)  
-[API Docs list](https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites)  
-
-<h4>OpenApi</h4>
-OpenAPI is a specification for describing REST APIs.  
-
-Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints  
-while learning about the API.  
-With OpenAPI, you have a set of JSON objects, with a specific schema that defines their naming, order, and contents.  
-
-In the OpenAPI specification, your endpoints are paths.  
-Instead of writing following example in a text editor, use [Swagger Editor](http://editor.swagger.io/).  
-Instead of coding the OpenAPI specification document by hand, you can also auto-generate it from annotations in your programming code.  
-```json
-paths:
-  /pets:
-    get:
-      summary: List all pets
-      operationId: listPets
-      tags:
-        - pets
-      parameters:
-        - name: limit
-          in: query
-          description: How many items to return at one time (max 100)
-          required: false
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: An paged array of pets
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/Pets"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-```
-After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools  
-to parse it and generate the interactive documentation.  
-Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  
-
-<h4>OpenAPI root level</h4>
-- openapi  
-indicate the version of the OpenAPI spec to validate against.  
-- info  
-The info object contains basic information about your API, including the title, a description, version, link to the license,  
-link to the terms of service, and contact information.  
-- servers  
-In the servers object, you specify the basepath used in your API requests.  
-- paths  
-listing the paths (endpoints) and their allowed operations (methods).  
-
-```
-paths:
-  /weather:
-    get:
-      tags:
-      summary:
-      description:
-      operationId:
-      externalDocs:
-      parameters:
-      responses:
-```
-
-```
-paths:
-  /pet/findByStatus:
-    get:
-      tags:
-      - "pet"
-      summary: "Finds Pets by status"
-      description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findPetsByStatus"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "status"
-        in: "query"
-        description: "Status values that need to be considered for filter"
-        required: true
-        type: "array"
-        items:
-          type: "string"
-          enum:
-          - "available"
-          - "pending"
-          - "sold"
-          default: "available"
-        collectionFormat: "multi"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Pet"
-        400:
-          description: "Invalid status value"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
-```
-- components  
-```
-The components object can contain these objects:
-
-schemas
-responses
-parameters
-examples
-requestBody
-headers
-securitySchemes
-links
-callbacks
-```
-- security  
-Swagger UI supports four authorization schemes:  
-  
-- API key  
-- HTTP  
-- OAuth 2.0  
-- Open ID Connect  
-
-```
-The security object specifies the security or 
-authorization protocol used when submitting requests.
-``` 
-- tags  
-```
-At the root level, the tags object lists all the tags that are used in the operation objects
-```
-- externalDocs  
-Here’s an example of an externalDocs object:  
-```
-externalDocs:
-  description: API Documentation
-  url: https://openweathermap.org/api
-```
-
-
-
-<!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
-
-<h4>Axios - HTTP client</h4>
-
-Axios install  
-```
-npm install axios --save
-```
-
-Basic get request
-```js
-  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
-      })
-  }
-```
-
-Multiple get requests
-```
-let URL1 = "https://www.something.com"
-let URL2 = "https://www.something1.com
-let URL3 = "https://www.something2.com"
-
-const promise1 = axios.get(URL1);
-const promise2 = axios.get(URL2);
-const promise3 = axios.get(URL3);
-
-Promise.all([promise1, promise2, promise3]).then(function(values) {
-  console.log(values);
-});
-```
-
-<br>
-
----
-
-<br>
-
-## JS Utilities
+## Utilities
 
 <h4>Check if an object is empty</h4>
 
@@ -2592,6 +1841,30 @@ square = x => Math.pow(x, 2);
 squares = array.map(square); 
 console.log(array); 
 console.log(squares);
+```
+
+<h4>Pseudo Code</h4>
+
+```js
+function calculate_gpa
+  pass in student_grades
+  set grade_total to 0
+  for each grade in student_grades
+      if grade is not a 1, 2, 3, or 4
+          print "invalid grade"
+          print grade
+          print "can't complete calculation"
+          exit function
+      else add grade to grade_total
+      endif
+   endfor
+   set gpa to grade_total / number of grades
+   return gpa
+endfunction
+
+set reggie_grades to 4, 4, 3, 4
+set reggie_gpa to call calculate_gpa with reggie_grades
+print reggie_gpa
 ```
 
 <br>
@@ -3157,11 +2430,10 @@ config.devServer = {
 
 <br>
 
-
-
 <h4>Graphql Query types</h4>
 
 Query with a client object
+
 ```js
 export const checkCompanyNameExist = (client, name) => {
 const IS_COMPANY_NAME_EXIST = `
@@ -3183,9 +2455,8 @@ const IS_COMPANY_NAME_EXIST = `
 };
 ```
 
+High Order Component with Apollo
 
-
-High Order Component withApollo
 ```js
 import { withApollo } from 'react-apollo';
  
@@ -3341,6 +2612,7 @@ const addSeller = () => {
 ```
 
 Mutation with hook
+
 ```js
 const AddProduct = () => {
   const [productCreate] = useMutation(PRODUCT_CREATE);
@@ -3359,6 +2631,7 @@ export default AddProduct;
 <h4>Subscriptions</h4>
 
 Subscriptions with client
+
 ```js
 const subscriptionProduct = client => {
   const subscription = gql`
@@ -4818,36 +4091,6 @@ describe("DataDisplayer", () => {
     const instance = wrapper.instance();
     await instance.componentDidMount();
     expect(wrapper.text()).toContain("not available");
-```
-
-<br>
-
----
-
-<br>
-
-<h4>Pseudo Code</h4>
-
-```js
-function calculate_gpa
-  pass in student_grades
-  set grade_total to 0
-  for each grade in student_grades
-      if grade is not a 1, 2, 3, or 4
-          print "invalid grade"
-          print grade
-          print "can't complete calculation"
-          exit function
-      else add grade to grade_total
-      endif
-   endfor
-   set gpa to grade_total / number of grades
-   return gpa
-endfunction
-
-set reggie_grades to 4, 4, 3, 4
-set reggie_gpa to call calculate_gpa with reggie_grades
-print reggie_gpa
 ```
 
 <br>
