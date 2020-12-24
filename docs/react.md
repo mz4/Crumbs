@@ -4,6 +4,18 @@
 
 ## Hooks
 
+<h4>Why hooks</h4>
+we often can’t break complex components down any further because the logic is stateful and can’t be extracted to a function or another component.
+Hooks let us organize the logic inside a component into reusable isolated units.
+
+Hooks apply the React philosophy (explicit data flow and composition) inside a component, rather than just between the components. That’s why I feel that Hooks are a natural fit for the React component model.
+
+Components are more powerful, but they have to render some UI. This makes them inconvenient for sharing non-visual logic. This is how we end up with complex patterns like render props and higher-order components. Wouldn’t React be simpler if there was just one common way to reuse code instead of so many?
+
+
+Functions seem to be a perfect mechanism for code reuse. Moving logic between functions takes the least amount of effort. However, functions can’t have local React state inside them. You can’t extract behavior like “watch window size and update the state” or “animate a value over time”.
+
+
 <h4>Stateless function component - sfc</h4>
 
 ```js
@@ -130,3 +142,7 @@ function ThemeButton() {
 <p>React memo is used to wrap React components to prevent re-renderings</p>
 
 <iframe src="https://codesandbox.io/embed/thirsty-hellman-mytul?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="thirsty-hellman-mytul" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<h4>Custom Hooks - useWindowSize</h4>
+
+<iframe src="https://codesandbox.io/embed/exciting-ellis-zzic6?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="exciting-ellis-zzic6" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>

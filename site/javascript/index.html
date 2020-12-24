@@ -14,7 +14,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>FRONTEND - Crumbs</title>
+        <title>JAVASCRIPT - Crumbs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -50,7 +50,7 @@
               <a class="nav-link" href="..">TOOLS</a>
             </li>
             <li class="active">
-              <a class="nav-link" href="./">FRONTEND</a>
+              <a class="nav-link" href="./">JAVASCRIPT</a>
             </li>
             <li >
               <a class="nav-link" href="../react/">REACT</a>
@@ -81,15 +81,15 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     
-    <li class="breadcrumb-item active" aria-current="page">FRONTEND</li>
+    <li class="breadcrumb-item active" aria-current="page">JAVASCRIPT</li>
   </ol>
 </nav>
 
 
-<h1 id="frontend">FRONTEND</h1>
+<h1 id="javascript">JAVASCRIPT</h1>
 <hr />
 <p><br></p>
-<h2 id="javascript">JAVASCRIPT</h2>
+<h2 id="how-it-works">how it works</h2>
 <p><br></p>
 <hr />
 <p><br></p>
@@ -131,7 +131,7 @@ Javscript engine creates in the Execution Context:<br />
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Javascript is: Single Threaded & Synchonous</h4>
+<h4>Single Threaded & Synchonous</h4>
 
 <p>Javascript for programmers behaves in a single threaded manner, one command at the time.<br />
 And it is Synchronous, one line of code being executed at the time.</p>
@@ -152,6 +152,7 @@ The event queue is constantly monitored by javascript engine.</p>
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="scopes">Scopes</h2>
 <h4>Scopes in javascript</h4>
 
 <ul>
@@ -159,23 +160,34 @@ The event queue is constantly monitored by javascript engine.</p>
 <li>Local Scope  </li>
 <li>Block Scope (let)  </li>
 </ul>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Old school JavaScript</h4>
 
 <p>Traditionally, JavaScript really only has two types of scope :<br />
 - Global Scope: Variables are known throughout the application, from the start of the application<br />
 - Functional Scope: Variables are known within the function they are declared in, from the start of the function  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Modern JavaScript</h4>
 
 <p>The most recent JavaScript specs now also allow a third scope :  </p>
-<h4>Block Scope</h4>
-
-<p>Variables are known within the block they are declared in, from the moment they are declared onwards<br />
+<p>Block Scope
+Variables are known within the block they are declared in, from the moment they are declared onwards<br />
 let myVariable = "Some text";<br />
 const myVar = "val";  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Difference Between Function and Block Scope</h4>
 
 <p>Function scope is within the function. (var is function scope.)<br />
 Block scope is within curly brackets. (let and const are block scope.)  </p>
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Scope chain</h4>
 
 <p>JavaScript engine will try to find the value of the variable in the executing code's block scope (your room) and when unable to find the value there, it will go to its lexical outer scope (your house) and if not even found there, it will go to it’s outer scope’s outer scope(your colony) until it reaches the global scope, let’s say in your case can be the country, which in context of JavaScript will be window, if your working in browser environment.</p>
@@ -188,11 +200,12 @@ Block scope is within curly brackets. (let and const are block scope.)  </p>
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="closures">Closures</h2>
 <h4>Closures: counter</h4>
 
 <p>A closure is an inner function that has access to the outer (enclosing) function’s variables — scope chain. The closure has three scope chains:<br />
 it has access to its own scope (variables defined between its curly brackets), it has access to the outer function’s variables, and it has access to the global variables.  </p>
-<pre><code class="javascript">&lt;script&gt;
+<pre><code class="js">&lt;script&gt;
   var updateClickCount=(function(){
   var counter=0;
 
@@ -232,11 +245,12 @@ it has access to its own scope (variables defined between its curly brackets), i
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Promise</h4>
+<h2 id="promises">Promises</h2>
+<h4>Promises</h4>
 
 <p>Promises are one way to deal with asynchronous code.<br />
-A Promise is in one of these states:<br />
-Pending: initial state, neither fulfilled nor rejected.<br />
+A Promise is in one of these states:  </p>
+<p>Pending: initial state, neither fulfilled nor rejected.<br />
 Fulfilled: meaning that the operation completed successfully.<br />
 Rejected: meaning that the operation failed.  </p>
 <p>A Promise object is created using the new keyword and its constructor.<br />
@@ -377,6 +391,7 @@ async function askMom() {
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="callback">Callback</h2>
 <h4>Callback, Promises and Async</h4>
 
 <h4>Callback:</h4>
@@ -404,6 +419,38 @@ When the first function is done, it will run the second function.  </p>
   })
 }
 printAll()
+</code></pre>
+
+<hr />
+<p>Callback functions  </p>
+<p>setInterval</p>
+<pre><code class="js">setInterval(function(){
+  console.log('hello);
+}, 1000);
+</code></pre>
+
+<pre><code class="js">const list = ['uno', 'due', 'tre'];
+
+const newList = list.map(function(v) {
+  return v + 'a';
+}).filter(function(v) {
+  return v.value &gt; 'aa';
+}
+)
+</code></pre>
+
+<pre><code class="js">button.addEventListener('click', function(e){
+  ...
+})
+</code></pre>
+
+<pre><code class="js">setTimeout(func, 1000);
+</code></pre>
+
+<pre><code class="js">Object.entries(users).forEach(entry, val) =&gt;
+{
+  const [key, value] = entry;
+}
 </code></pre>
 
 <p><br></p>
@@ -451,6 +498,7 @@ printAll()
 <p><br></p>
 <hr />
 <p></br></p>
+<h2 id="http-requests">Http Requests</h2>
 <h4>Http Requests</h4>
 
 <p>Fetch</p>
@@ -519,10 +567,82 @@ axios.all([getUserAccount(), getUserPermissions()])
   }));
 </code></pre>
 
+<h4>Various examples of Loops, Promises, callback</h4>
+
+<p>Promise</p>
+<pre><code class="javascript">const promise = new Promise (
+  function(resolve, reject) {
+    if (...something) {
+      resolve('data');
+    }
+    if (...somethingelse) {
+      reject('error');
+    }
+  }
+)
+
+promise.then(
+  function(data) {...}
+).catch(
+  function(error) {...}
+)
+</code></pre>
+
+<p>Axios<br />
+<a href="https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index">Axios cheatsheet</a><br />
+<a href="https://github.com/axios/axios">Axios github</a><br />
+<a href="https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/">Axios making http requests</a></p>
+<pre><code class="javascript">axios.get('http://.....')
+  .then(
+    function(response) {
+      ....
+    }
+  )
+  .catch(
+    function(error) {
+      ....
+    }
+  )
+  .finally(
+    function() {
+      ....
+    }
+  )
+</code></pre>
+
+<pre><code class="js">async function getUser() {
+  try {
+    const output = await axios.get()
+  }
+  catch {
+    ...
+  }
+}
+</code></pre>
+
+<p>Axios patch example</p>
+<pre><code class="javascript">  axios
+    .patch(
+      url,
+      formData,
+      {
+        headers: {
+          'X-Auth-Token': token
+      },
+    })
+    .then((data) =&gt; {
+      this.props.loadAccountsData();
+    })
+    .catch(error =&gt; {
+      throw error;
+    });
+</code></pre>
+
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Prototype</h4>
+<h2 id="prototypes">Prototypes</h2>
+<h4>Prototypes</h4>
 
 <p><a href="https://tylermcginnis.com/beginners-guide-to-javascript-prototype/">Prototype link</a><br />
 The prototype is an object that is associated with every functions and objects by default in JavaScript.
@@ -568,6 +688,7 @@ Dog.prototype.constructor = Dog;
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="es6-syntax">ES6 Syntax</h2>
 <h4>ES6 syntax</h4>
 
 <p>In 2015, EcmaScript (the official JavaScript specification) 6 was released with support for Classes and the class keyword.<br />
@@ -598,9 +719,33 @@ const snoop = new Animal('Snoop', 10)
 <p><br></p>
 <hr />
 <p><br></p>
+<h4>Arrays</h4>
+
+<p>Arrays is javascript are dynamically typed, and can contain different type of data</p>
+<pre><code class="javascript">var arr = [
+    1, 
+    false, 
+    {
+        name: 'Tony',
+        address: '111 Main St.'
+    },
+    function(name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    &quot;hello&quot;
+];
+
+console.log(arr);
+arr[3](arr[2].name);
+</code></pre>
+
+<p><br></p>
+<hr />
+<p><br></p>
 <h4>Array methods</h4>
 
-<p>We can see all the array’s methods by simply logging Array.prototype.<br />
+<p>See all the array’s methods by simply logging Array.prototype.<br />
 console.log(Array.prototype)</p>
 <pre><code class="js">  concat: ƒn concat()
   constructor: ƒn Array()
@@ -638,30 +783,62 @@ console.log(Array.prototype)</p>
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Arrays</h4>
+<h4>Find highest value in an array</h4>
 
-<p>Arrays is javascript are dynamically typed, and can contain different type of data</p>
-<pre><code class="javascript">var arr = [
-    1, 
-    false, 
-    {
-        name: 'Tony',
-        address: '111 Main St.'
-    },
-    function(name) {
-        var greeting = 'Hello ';
-        console.log(greeting + name);
-    },
-    &quot;hello&quot;
-];
+<pre><code class="js">const max = data.reduce((prev, current) =&gt; (prev.y &gt; current.y) ? prev : current)
+</code></pre>
 
-console.log(arr);
-arr[3](arr[2].name);
+<h4>setState spread operator</h4>
+
+<pre><code class="js">    trips: [
+      {
+        id: 0,
+        name: 'Rome',
+        dateStart: '19/08/2019',
+        dateEnd: '29/08/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 1,
+        name: 'Paris',
+        dateStart: '15/06/2019',
+        dateEnd: '29/06/2019',
+        isConfirmed: true,
+        isEditing: false
+      },
+      {
+        id: 2,
+        name: 'Malta',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      },
+      {
+        id: 3,
+        name: 'Budapest',
+        dateStart: '01/02/2019',
+        dateEnd: '08/02/2019',
+        isConfirmed: false,
+        isEditing: false
+      }
+    ]
+</code></pre>
+
+<pre><code class="js">  handleDateStart = e =&gt;
+    this.setState({
+      form: {
+        ...this.state.form,
+        dateStart: e.target.value
+      }
+    });
 </code></pre>
 
 <p><br></p>
 <hr />
-<p><br></p>
+<p></br></p>
+<h2 id="this">This</h2>
 <h4>'this' keyword</h4>
 
 <p>It's a special identifier keyword that's automatically defined in the scope of every function.  <br />
@@ -823,6 +1000,7 @@ console.log(bound(&quot;a&quot;, &quot;b&quot;));
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="objects">Objects</h2>
 <h4>Objects</h4>
 
 <p>Objects come in two forms: the declarative (literal) form, and the constructed form.<br />
@@ -854,6 +1032,7 @@ myObj.key = value;
 <p><br></p>
 <hr />
 <p><br></p>
+<h2 id="design-patterns">Design Patterns</h2>
 <h4>Design Patterns</h4>
 
 <ul>
@@ -963,7 +1142,8 @@ console.log(sam.bash === lella.bash)
 <hr />
 <p><br></p>
 <h2 id="es6">ES6</h2>
-<p><h4>Spread Operator 1</h4></p>
+<h4>Spread Operator 1</h4>
+
 <pre><code class="javascript">const userInfo = { isAuthenticated: false }  
 const action = { isAuthenticated: true, type: 'nope' }  
 const res = { ...userInfo, isAuthenticated: action.isAuthenticated };   
@@ -1111,164 +1291,6 @@ if (update_progress !== null) {
 </code></pre>
 
 <p>// this will cause the browser to print time elapsed between start and end.</p>
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>Various examples of Loops, Promises, callback</h4>
-
-<p>Promise</p>
-<pre><code class="javascript">const promise = new Promise (
-  function(resolve, reject) {
-    if (...something) {
-      resolve('data');
-    }
-    if (...somethingelse) {
-      reject('error');
-    }
-  }
-)
-
-promise.then(
-  function(data) {...}
-).catch(
-  function(error) {...}
-)
-</code></pre>
-
-<p>Axios<br />
-<a href="https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index">Axios cheatsheet</a><br />
-<a href="https://github.com/axios/axios">Axios github</a><br />
-<a href="https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/">Axios making http requests</a></p>
-<pre><code class="javascript">axios.get('http://.....')
-  .then(
-    function(response) {
-      ....
-    }
-  )
-  .catch(
-    function(error) {
-      ....
-    }
-  )
-  .finally(
-    function() {
-      ....
-    }
-  )
-</code></pre>
-
-<pre><code class="js">async function getUser() {
-  try {
-    const output = await axios.get()
-  }
-  catch {
-    ...
-  }
-}
-</code></pre>
-
-<p>Axios patch example</p>
-<pre><code class="javascript">  axios
-    .patch(
-      url,
-      formData,
-      {
-        headers: {
-          'X-Auth-Token': token
-      },
-    })
-    .then((data) =&gt; {
-      this.props.loadAccountsData();
-    })
-    .catch(error =&gt; {
-      throw error;
-    });
-</code></pre>
-
-<hr />
-<p>Callback functions  </p>
-<p>setInterval</p>
-<pre><code class="js">setInterval(function(){
-  console.log('hello);
-}, 1000);
-</code></pre>
-
-<pre><code class="js">const list = ['uno', 'due', 'tre'];
-
-const newList = list.map(function(v) {
-  return v + 'a';
-}).filter(function(v) {
-  return v.value &gt; 'aa';
-}
-)
-</code></pre>
-
-<pre><code class="js">button.addEventListener('click', function(e){
-  ...
-})
-</code></pre>
-
-<pre><code class="js">setTimeout(func, 1000);
-</code></pre>
-
-<pre><code class="js">Object.entries(users).forEach(entry, val) =&gt;
-{
-  const [key, value] = entry;
-}
-</code></pre>
-
-<h4>Find highest value in an array</h4>
-
-<pre><code class="js">const max = data.reduce((prev, current) =&gt; (prev.y &gt; current.y) ? prev : current)
-</code></pre>
-
-<h4>setState spread operator</h4>
-
-<pre><code class="js">    trips: [
-      {
-        id: 0,
-        name: 'Rome',
-        dateStart: '19/08/2019',
-        dateEnd: '29/08/2019',
-        isConfirmed: false,
-        isEditing: false
-      },
-      {
-        id: 1,
-        name: 'Paris',
-        dateStart: '15/06/2019',
-        dateEnd: '29/06/2019',
-        isConfirmed: true,
-        isEditing: false
-      },
-      {
-        id: 2,
-        name: 'Malta',
-        dateStart: '01/02/2019',
-        dateEnd: '08/02/2019',
-        isConfirmed: false,
-        isEditing: false
-      },
-      {
-        id: 3,
-        name: 'Budapest',
-        dateStart: '01/02/2019',
-        dateEnd: '08/02/2019',
-        isConfirmed: false,
-        isEditing: false
-      }
-    ]
-</code></pre>
-
-<pre><code class="js">  handleDateStart = e =&gt;
-    this.setState({
-      form: {
-        ...this.state.form,
-        dateStart: e.target.value
-      }
-    });
-</code></pre>
-
 <p><br></p>
 <hr />
 <p><br></p>
@@ -1559,756 +1581,7 @@ const mapDispatchToProps = {
 <p><br></p>
 <hr />
 <p><br></p>
-<h2 id="react">REACT</h2>
-<h4>State</h4>
-
-<p>React is all about one-way data flow down the component hierarchy.<br />
-State is created in the component and stays in the component.<br />
-It can be passed to a children as its props.  </p>
-<h4>Basic Concepts</h4>
-
-<ul>
-<li>JSX</li>
-<li>Rendering Elements</li>
-<li>Components Functional/Container</li>
-<li>State and Lifecycle</li>
-<li>Handling Events</li>
-<li>Conditional Rendering</li>
-<li>Lists and Keys</li>
-<li>Forms</li>
-</ul>
-<h4>JSX</h4>
-
-<pre><code class="javascript">&lt;MyComponent message={'hello world'} /&gt;
-</code></pre>
-
-<h4>Rendering elements</h4>
-
-<pre><code class="javascript">class TodoList extends React.Component {
-  render() {
-    return (
-      &lt;ul&gt;
-        {this.props.items.map(item =&gt; (
-          &lt;li key={item.id}&gt;{item.text}&lt;/li&gt;
-        ))}
-      &lt;/ul&gt;
-    );
-  }
-}
-</code></pre>
-
-<pre><code class="javascript">var links = [
-  { endpoint: '/america' },
-  { endpoint: '/canada' },
-  { endpoint: '/norway' },
-  { endpoint: '/bahamas' }
-];
-
-class Navigation extends React.Component {
-  render() {
-    const listItems = links.map((link) =&gt;
-        &lt;li key={link.endpoint}&gt;{link.endpoint}&lt;/li&gt; 
-    );
-    return (
-      &lt;div className=&quot;navigation&quot;&gt;
-        &lt;ul&gt;
-          {listItems}
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    );
-}
-</code></pre>
-
-<h4>State and lifecycle</h4>
-
-<pre><code>Mounting  
-These methods are called in the following order:  
-* constructor()  
-* static getDerivedStateFromProps()  
-* render()  
-* componentDidMount()  
-
-Updating  
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:  
-* static getDerivedStateFromProps()  
-* shouldComponentUpdate()  
-* render()  
-* getSnapshotBeforeUpdate()  
-* componentDidUpdate()    
-
-Unmounting  
-This method is called when a component is being removed from the DOM:  
-* componentWillUnmount()  
-</code></pre>
-
-<h4>Handling events</h4>
-
-<pre><code class="javascript">function ActionLink() {
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('The link was clicked.');
-  }
-
-  return (
-    &lt;a href=&quot;#&quot; onClick={handleClick}&gt;
-      Click me
-    &lt;/a&gt;
-  );
-}
-</code></pre>
-
-<h4>Conditional rendering</h4>
-
-<pre><code class="javascript">render() {
-  const isLoggedIn = this.state.isLoggedIn;
-  return (
-    &lt;div&gt;
-      The user is &lt;b&gt;{isLoggedIn ? 'currently' : 'not'}&lt;/b&gt; logged in.
-    &lt;/div&gt;
-  );
-}
-</code></pre>
-
-<h4>List and Keys</h4>
-
-<pre><code class="javascript">function NumberList(props) {
-  const numbers = props.numbers;
-  return (
-    &lt;ul&gt;
-      {numbers.map((number) =&gt;
-        &lt;ListItem key={number.toString()}
-                  value={number} /&gt;
-
-      )}
-    &lt;/ul&gt;
-  );
-}
-</code></pre>
-
-<h4>Forms</h4>
-
-<pre><code class="javascript">class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      &lt;form onSubmit={this.handleSubmit}&gt;
-        &lt;label&gt;
-          Name:
-          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
-        &lt;/label&gt;
-        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
-      &lt;/form&gt;
-    );
-  }
-}
-</code></pre>
-
-<p><br></p>
-<h4>Import CSS</h4>
-
-<pre><code>import './styles/style.css'
-</code></pre>
-
-<h4>Declare state</h4>
-
-<pre><code class="js">export class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: props.initialCount};
-  }
-</code></pre>
-
-<h4>defaultProps example</h4>
-
-<pre><code class="javascript">Notification.defaultProps = {
-  actionTitle: '',
-  selectedElements: {},
-  actionLogs: [],
-};
-</code></pre>
-
-<h4>propTypes example</h4>
-
-<pre><code class="javascript">Notification.propTypes = {
-  actionTitle: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
-  elementTitle: PropTypes.objectOf(PropTypes.any),
-  selectedElements: PropTypes.arrayOf(PropTypes.any),
-};
-</code></pre>
-
-<h4>Import statement - imr</h4>
-
-<pre><code class="javascript">import React from 'react';
-</code></pre>
-
-<h4>Import React and Component - imrc</h4>
-
-<pre><code class="javascript">import React, { Component } from 'react';
-</code></pre>
-
-<h4>Make a Class Component and export - cc</h4>
-
-<pre><code class="javascript">class | extends Component {
-  state = { | },
-  render() {
-    return ( | );
-  }
-}
-
-export default |;
-</code></pre>
-
-<h4>componentDidMount - cdm</h4>
-
-<pre><code class="javascript">componentDidMount() {
-  |
-}
-</code></pre>
-
-<h4>componentDidUpdate - cdu</h4>
-
-<pre><code class="javascript">componentDidUpdate(prevProps, prevState) {
-  |
-}
-</code></pre>
-
-<h4>setState - ss</h4>
-
-<pre><code class="javascript">this.setState({ | : | });
-</code></pre>
-
-<h4>render - ren</h4>
-
-<pre><code class="javascript">render() {
-  return (
-    |
-  );
-}
-</code></pre>
-
-<h4>export example with mapStateToProps, mapDispatchToProps</h4>
-
-<pre><code class="javascript">export default connect(mapStateToProps, mapDispatchToProps)(Name);
-</code></pre>
-
-<h4>mapStateToProps example</h4>
-
-<pre><code class="javascript">const mapStateToProps = (state) =&gt; {
-  return {
-    elements: state.refreshRaidElements.raidElements,
-    controllers: state.refreshControllers.controllers,
-    waitingLogs: state.watingLogs.wating_action_logs,
-  };
-};
-</code></pre>
-
-<h4>mapDispatchToProps</h4>
-
-<p>Import actions  </p>
-<pre><code class="javascript">import { checkboxClicked, selectedIndex } from '../../../store/actions/ElementsAction';
-</code></pre>
-
-<h4>Emit action </h4>
-
-<pre><code class="javascript">this.props.selectedRaidIndex(id);
-</code></pre>
-
-<h4>Dispatch actions</h4>
-
-<pre><code class="javascript">const mapDispatchToProps = (dispatch) =&gt; {
-  return {
-    checkboxClicked: id =&gt; dispatch(checkboxClicked(id)),
-    selectedIndex: id =&gt; dispatch(selectedIndex(id)),
-  };
-};
-</code></pre>
-
-<p><br></p>
-<hr />
-<p><br></p>
-<h4>React Redux Thunk</h4>
-
-<p>Actions in Redux are dispatched synchronously. <br />
-Thankfully though, Redux allows for middleware that sits between an action being dispatched and the action reaching the reducers.  </p>
-<p><strong>Redux Thunk is a middleware</strong> that lets you call action creators that return a function instead of an action object. <br />
-That function receives the store’s dispatch method, which is then used to dispatch regular synchronous actions inside<br />
-the body of the function once the asynchronous operations have completed.  </p>
-<p>Install redux-thunk  </p>
-<pre><code>npm install redux-thunk
-</code></pre>
-
-<h4>Apply middleware to app store.</h4>
-
-<pre><code class="javascript">import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import rootReducer from './reducers';
-import App from './App';
-
-// use applyMiddleware to add the thunk middleware to the store
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-ReactDOM.render(
-  &lt;Provider store={store}&gt;
-    &lt;App /&gt;
-  &lt;/Provider&gt;,
-  document.getElementById('root')
-);
-</code></pre>
-
-<p>The most common use-case for Redux Thunk is for communicating asynchronously with an external API to retrieve or save data.<br />
-<strong>AddTodo.jsx</strong>  </p>
-<pre><code class="javascript">import { connect } from 'react-redux';
-import { addTodo } from '../actions';
-import NewTodo from '../components/NewTodo';
-
-const mapDispatchToProps = dispatch =&gt; {
-  return {
-    onAddTodo: todo =&gt; {
-      dispatch(addTodo(toto));
-    }
-  };
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(NewTodo);
-</code></pre>
-
-<p><strong>actions/index.jsx</strong>  </p>
-<pre><code class="javascript">import {
-  ADD_TODO_SUCCESS,
-  ADD_TODO_FAILURE,
-  ADD_TODO_STARTED,
-  DELETE_TODO
-} from './types';
-
-import axios from 'axios';
-
-export const addTodo = ({ title, userId }) =&gt; {
-  return dispatch =&gt; {
-    dispatch(addTodoStarted());
-
-    axios
-      .post(`https://jsonplaceholder.typicode.com/todos`, {
-        title,
-        userId,
-        completed: false
-      })
-      .then(res =&gt; {
-        dispatch(addTodoSuccess(res.data));
-      })
-      .catch(err =&gt; {
-        dispatch(addTodoFailure(err.message));
-      });
-  };
-};
-
-const addTodoSuccess = todo =&gt; ({
-  type: ADD_TODO_SUCCESS,
-  payload: {
-    ...todo
-  }
-});
-
-const addTodoStarted = () =&gt; ({
-  type: ADD_TODO_STARTED
-});
-
-const addTodoFailure = error =&gt; ({
-  type: ADD_TODO_FAILURE,
-  payload: {
-    error
-  }
-});
-</code></pre>
-
-<p><strong>reducers/todoReducers.jsx</strong>  </p>
-<pre><code class="javascript">import {
-  ADD_TODO_SUCCESS,
-  ADD_TODO_FAILURE,
-  ADD_TODO_STARTED,
-  DELETE_TODO
-} from '../actions/types';
-
-const initialState = {
-  loading: false,
-  todos: [],
-  error: null
-};
-
-export default function todosReducer(state = initialState, action) {
-  switch (action.type) {
-    case ADD_TODO_STARTED:
-      return {
-        ...state,
-        loading: true
-      };
-    case ADD_TODO_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: null,
-        todos: [...state.todos, action.payload]
-      };
-    case ADD_TODO_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error
-      };
-    default:
-      return state;
-  }
-}
-</code></pre>
-
-<hr />
-<h2 id="rest-api">REST API</h2>
-<h4>Definition</h4>
-
-<p>REST stands for Representational State Transfer. 
-It is web standards based architecture and uses HTTP Protocol. </p>
-<p>A Web API conforming to the REST architectural style is a REST API.<br />
-A web service is a collection of standards used for exchanging data between applications or systems.<br />
-Web services based on REST Architecture are known as RESTful web services.<br />
-These webservices uses HTTP methods to implement the concept of REST architecture.<br />
-A RESTful web service usually defines a URI, Uniform Resource Identifier a service,<br />
-which provides resource representation such as JSON and set of HTTP Methods.</p>
-<p>A REST API is composed of four distinct resource archetypes: document, collection, store, and controller  </p>
-<h4>URI Format</h4>
-
-<p>generic URI syntax as shown below:  </p>
-<pre><code>URI = scheme &quot;://&quot; authority &quot;/&quot; path [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]
-</code></pre>
-
-<h4>Good Practices</h4>
-
-<p>Forward slash separator (/) indicates a hierarchical relationship<br />
-underscores (_) should not be used in uris<br />
-Trailing forward slash (/) should not be included in uris<br />
-hyphens (-) should be used to improve readability of uris<br />
-lowercase letters should be preferred in uri paths<br />
-crud function names should not be used in uris<br />
-query component of a URI may be used to filter collections or stores</p>
-<h4>Request Methods</h4>
-
-<p>CRUD requests: DELETE, GET, POST, PUT<br />
-HEAD retrieve metadata.<br />
-OPTIONS retrieve metadata of resource’s available interactions.  </p>
-<h4>Some Responses status</h4>
-
-<p>200 success
-201 new resource has been created
-202 Accepted, start of an asynchronous action
-204 No Content body left blank
-301 Moved Permanently
-400 Bad Request Indicates a nonspecific client error
-401 Unauthorized
-402 Forbidden
-404 Not Found
-405 Method Not Allowed</p>
-<h4>HTTP Headers</h4>
-
-<p>Various forms of metadata may be conveyed through the entity headers.    </p>
-<h4>Request headers</h4>
-
-<p>Cookie: HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user’s request.<br />
-The client may store it and send it back with the next request to the same server.<br />
-User-Agent: identify the application type, operating system, software vendor
-Host: The Host request header specifies the domain name of the server<br />
-X-Requested-With: Mainly used to identify AJAX requests.<br />
-Accept-Language which languages the client is able to understand  </p>
-<h4>Response headers</h4>
-
-<p>Content-Type<br />
-Content-Length  size of the response body<br />
-Set-Cookie used to send cookies from the server to the client.</p>
-<h4>Body Format</h4>
-
-<p>A REST API commonly uses a response message’s entity body to help convey the state of a request message’s identified resource. <br />
-Today, the most commonly used text formats is JSON.</p>
-<h4>API Documentation</h4>
-
-<ul>
-<li>Resource Description<br />
-  example from MailChimp Campaign resource</li>
-</ul>
-<p>Resource Description consists of 1-3 sentences.
-  Resources usually have various endpoints to access the resource and multiple methods for each endpoint.<br />
-  Sometimes the general resource isn’t described; instead, it just groups the endpoints.
-  Although the resource isn’t described, descriptions may be added for each of the endpoints.  </p>
-<ul>
-<li>Endpoint and Methods<br />
-  The endpoints indicate how you access the resource, 
-  The method indicates the allowed interactions (such as GET, POST, or DELETE) with the resource.<br />
-  Endpoints usually have brief descriptions similar to the overall resource description but shorter.  </li>
-</ul>
-<p>POST /campaigns   Create a new campaign<br />
-  GET /campaigns    Get all campaigns<br />
-  GET /campaigns/{campaign_id}  Get information about a specific campaign<br />
-  PATCH /campaigns/{campaign_id}    Update the settings for a campaign<br />
-  DELETE /campaigns/{campaign_id}   Delete a campaign  </p>
-<ul>
-<li>Parameters<br />
-  Parameters are options you can pass with the endpoint to influence the response. 
-  There are four types of parameters: header parameters, path parameters, query string parameters, and request body parameters.  </li>
-</ul>
-<p><strong>Header parameters</strong> are included in the request header. Usually, the header just includes authorization parameters.  </p>
-<p><strong>Path parameters</strong> are part of the endpoint itself and are not optional. For example, in the following endpoint,<br />
-  {user} and {bicycleId} are required path parameters:<br />
-<code>/service/myresource/user/{user}/bicycles/{bicycleId}</code></p>
-<p><strong>Query string parameters</strong> appear after a question mark (?) in the endpoint. The question mark followed by the parameters and<br />
-  their values is referred to as the “query string.”<br />
-<code>/surfreport/{beachId}?days=3&amp;units=metric&amp;time=1400</code></p>
-<p><strong>Body parameters</strong>: with POST requests (where you’re creating something), you submit a JSON object in the request body.</p>
-<ul>
-<li>Request example
-  The request example includes a sample request using the endpoint, showing some parameters configured.<br />
-<code>curl -u "username:password" 
-  -H "Content-Type:application/json" 
-  -X GET "https://api.callfire.com/v2/texts?limit=50&amp;offset=200"</code></li>
-<li>Response example<br />
-  The response example shows a sample response from the request example; the response schema defines all possible elements in the response.
-  The response lets developers know if the resource contains the information they want, the format, and how that information is structured and labeled. 
-  The description of the response is known as the response schema. The response schema documents the response in a more comprehensive, general way,<br />
-  listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details.<br />
-  The definition of the response is called the schema or model.</li>
-</ul>
-<pre><code class="json">  {
-    &quot;Context&quot;: &quot;ualize&quot;,
-    &quot;Destination&quot;: &quot;http://aaaa.com/aaa&quot;,
-    &quot;EventTypes&quot;: [
-        &quot;StatusChange&quot;,
-        &quot;ResourceAdded&quot;,
-        &quot;ResourceRemoved&quot;
-    ],
-    &quot;Id&quot;: &quot;3a5f20212134&quot;,
-    &quot;Name&quot;: &quot;EventSubscription&quot;,
-    &quot;Oem&quot;: {},
-    &quot;Protocol&quot;: &quot;Redfish&quot;
-  }
-</code></pre>
-
-<p><a href="https://idratherbewriting.com/learnapidoc/docapis_finished_doc_result.html">API Documentation example</a><br />
-<a href="https://idratherbewriting.com/learnapidoc/pubapis_apilist.html#list_api_doc_sites">API Docs list</a>  </p>
-<h4>OpenApi</h4>
-
-<p>OpenAPI is a specification for describing REST APIs.  </p>
-<p>Display frameworks such as Swagger UI can parse the OpenAPI specification and generate interactive documentation that lets users try out endpoints<br />
-while learning about the API.<br />
-With OpenAPI, you have a set of JSON objects, with a specific schema that defines their naming, order, and contents.  </p>
-<p>In the OpenAPI specification, your endpoints are paths.<br />
-Instead of writing following example in a text editor, use <a href="http://editor.swagger.io/">Swagger Editor</a>.<br />
-Instead of coding the OpenAPI specification document by hand, you can also auto-generate it from annotations in your programming code.  </p>
-<pre><code class="json">paths:
-  /pets:
-    get:
-      summary: List all pets
-      operationId: listPets
-      tags:
-        - pets
-      parameters:
-        - name: limit
-          in: query
-          description: How many items to return at one time (max 100)
-          required: false
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: An paged array of pets
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:    
-              schema:
-                $ref: &quot;#/components/schemas/Pets&quot;
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: &quot;#/components/schemas/Error&quot;
-</code></pre>
-
-<p>After you have a valid OpenAPI specification document that describes your API, you can then feed this specification to different tools<br />
-to parse it and generate the interactive documentation.<br />
-Probably the most common tool used to parse the OpenAPI specification is Swagger UI.  </p>
-<h4>OpenAPI root level</h4>
-
-<ul>
-<li>openapi<br />
-indicate the version of the OpenAPI spec to validate against.  </li>
-<li>info<br />
-The info object contains basic information about your API, including the title, a description, version, link to the license,<br />
-link to the terms of service, and contact information.  </li>
-<li>servers<br />
-In the servers object, you specify the basepath used in your API requests.  </li>
-<li>paths<br />
-listing the paths (endpoints) and their allowed operations (methods).  </li>
-</ul>
-<pre><code>paths:
-  /weather:
-    get:
-      tags:
-      summary:
-      description:
-      operationId:
-      externalDocs:
-      parameters:
-      responses:
-</code></pre>
-
-<pre><code>paths:
-  /pet/findByStatus:
-    get:
-      tags:
-      - &quot;pet&quot;
-      summary: &quot;Finds Pets by status&quot;
-      description: &quot;Multiple status values can be provided with comma separated strings&quot;
-      operationId: &quot;findPetsByStatus&quot;
-      produces:
-      - &quot;application/xml&quot;
-      - &quot;application/json&quot;
-      parameters:
-      - name: &quot;status&quot;
-        in: &quot;query&quot;
-        description: &quot;Status values that need to be considered for filter&quot;
-        required: true
-        type: &quot;array&quot;
-        items:
-          type: &quot;string&quot;
-          enum:
-          - &quot;available&quot;
-          - &quot;pending&quot;
-          - &quot;sold&quot;
-          default: &quot;available&quot;
-        collectionFormat: &quot;multi&quot;
-      responses:
-        200:
-          description: &quot;successful operation&quot;
-          schema:
-            type: &quot;array&quot;
-            items:
-              $ref: &quot;#/definitions/Pet&quot;
-        400:
-          description: &quot;Invalid status value&quot;
-      security:
-      - petstore_auth:
-        - &quot;write:pets&quot;
-        - &quot;read:pets&quot;
-</code></pre>
-
-<ul>
-<li>components  </li>
-</ul>
-<pre><code>The components object can contain these objects:
-
-schemas
-responses
-parameters
-examples
-requestBody
-headers
-securitySchemes
-links
-callbacks
-</code></pre>
-
-<ul>
-<li>
-<p>security<br />
-Swagger UI supports four authorization schemes:  </p>
-</li>
-<li>
-<p>API key  </p>
-</li>
-<li>HTTP  </li>
-<li>OAuth 2.0  </li>
-<li>Open ID Connect  </li>
-</ul>
-<pre><code>The security object specifies the security or 
-authorization protocol used when submitting requests.
-</code></pre>
-
-<ul>
-<li>tags  </li>
-</ul>
-<pre><code>At the root level, the tags object lists all the tags that are used in the operation objects
-</code></pre>
-
-<ul>
-<li>externalDocs<br />
-Here’s an example of an externalDocs object:  </li>
-</ul>
-<pre><code>externalDocs:
-  description: API Documentation
-  url: https://openweathermap.org/api
-</code></pre>
-
-<!-- https://idratherbewriting.com/learnapidoc/pubapis_swagger_intro.html -->
-
-<h4>Axios - HTTP client</h4>
-
-<p>Axios install  </p>
-<pre><code>npm install axios --save
-</code></pre>
-
-<p>Basic get request</p>
-<pre><code class="js">  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res =&gt; {
-        const persons = res.data;
-        this.setState({ persons });
-      })
-  }
-</code></pre>
-
-<p>Multiple get requests</p>
-<pre><code>let URL1 = &quot;https://www.something.com&quot;
-let URL2 = &quot;https://www.something1.com
-let URL3 = &quot;https://www.something2.com&quot;
-
-const promise1 = axios.get(URL1);
-const promise2 = axios.get(URL2);
-const promise3 = axios.get(URL3);
-
-Promise.all([promise1, promise2, promise3]).then(function(values) {
-  console.log(values);
-});
-</code></pre>
-
-<p><br></p>
-<hr />
-<p><br></p>
-<h2 id="js-utilities">JS Utilities</h2>
+<h2 id="utilities">Utilities</h2>
 <h4>Check if an object is empty</h4>
 
 <pre><code class="javascript">function isEmpty(obj) {
@@ -2399,6 +1672,29 @@ square = x =&gt; Math.pow(x, 2);
 squares = array.map(square); 
 console.log(array); 
 console.log(squares);
+</code></pre>
+
+<h4>Pseudo Code</h4>
+
+<pre><code class="js">function calculate_gpa
+  pass in student_grades
+  set grade_total to 0
+  for each grade in student_grades
+      if grade is not a 1, 2, 3, or 4
+          print &quot;invalid grade&quot;
+          print grade
+          print &quot;can't complete calculation&quot;
+          exit function
+      else add grade to grade_total
+      endif
+   endfor
+   set gpa to grade_total / number of grades
+   return gpa
+endfunction
+
+set reggie_grades to 4, 4, 3, 4
+set reggie_gpa to call calculate_gpa with reggie_grades
+print reggie_gpa
 </code></pre>
 
 <p><br></p>
@@ -2926,7 +2222,7 @@ const IS_COMPANY_NAME_EXIST = `
 };
 </code></pre>
 
-<p>High Order Component withApollo</p>
+<p>High Order Component with Apollo</p>
 <pre><code class="js">import { withApollo } from 'react-apollo';
 
 class SomeComponent extends React.Component {
@@ -4444,32 +3740,6 @@ describe(&quot;DataDisplayer&quot;, () =&gt; {
 <p><br></p>
 <hr />
 <p><br></p>
-<h4>Pseudo Code</h4>
-
-<pre><code class="js">function calculate_gpa
-  pass in student_grades
-  set grade_total to 0
-  for each grade in student_grades
-      if grade is not a 1, 2, 3, or 4
-          print &quot;invalid grade&quot;
-          print grade
-          print &quot;can't complete calculation&quot;
-          exit function
-      else add grade to grade_total
-      endif
-   endfor
-   set gpa to grade_total / number of grades
-   return gpa
-endfunction
-
-set reggie_grades to 4, 4, 3, 4
-set reggie_gpa to call calculate_gpa with reggie_grades
-print reggie_gpa
-</code></pre>
-
-<p><br></p>
-<hr />
-<p><br></p>
 <h2 id="cypress">CYPRESS</h2>
 <p>Install Cypress</p>
 <pre><code class="js">npm install cypress --save-dev
@@ -4554,9 +3824,39 @@ describe('Component tests', () =&gt; {
 
     <div id="toc-collapse" class="navbar-collapse collapse card">
         <ul class="nav flex-column bs-sidenav">
-            <li class="nav-item main"><a class="nav-link" href="#frontend">FRONTEND</a></li>
+            <li class="nav-item main"><a class="nav-link" href="#javascript">JAVASCRIPT</a></li>
                 <li class="nav-item">
-                    <a href="#javascript" class="nav-link">JAVASCRIPT</a>
+                    <a href="#how-it-works" class="nav-link">how it works</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#scopes" class="nav-link">Scopes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#closures" class="nav-link">Closures</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#promises" class="nav-link">Promises</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#callback" class="nav-link">Callback</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#http-requests" class="nav-link">Http Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#prototypes" class="nav-link">Prototypes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#es6-syntax" class="nav-link">ES6 Syntax</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#this" class="nav-link">This</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#objects" class="nav-link">Objects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#design-patterns" class="nav-link">Design Patterns</a>
                 </li>
                 <li class="nav-item">
                     <a href="#es6" class="nav-link">ES6</a>
@@ -4565,13 +3865,7 @@ describe('Component tests', () =&gt; {
                     <a href="#typescript" class="nav-link">TYPESCRIPT</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#react" class="nav-link">REACT</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#rest-api" class="nav-link">REST API</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#js-utilities" class="nav-link">JS Utilities</a>
+                    <a href="#utilities" class="nav-link">Utilities</a>
                 </li>
                 <li class="nav-item">
                     <a href="#graphql" class="nav-link">GRAPHQL</a>
