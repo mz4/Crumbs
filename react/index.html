@@ -14,7 +14,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>React - Crumbs</title>
+        <title>REACT - Crumbs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -53,7 +53,7 @@
               <a class="nav-link" href="../javascript/">JAVASCRIPT</a>
             </li>
             <li class="active">
-              <a class="nav-link" href="./">React</a>
+              <a class="nav-link" href="./">REACT</a>
             </li>
             <li >
               <a class="nav-link" href="../backend/">BACKEND</a>
@@ -81,20 +81,23 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     
-    <li class="breadcrumb-item active" aria-current="page">React</li>
+    <li class="breadcrumb-item active" aria-current="page">REACT</li>
   </ol>
 </nav>
 
 
-<h1>React</h1>
-
+<h1 id="react">REACT</h1>
+<p><br></p>
+<hr />
+<p></br></p>
 <h1 id="hooks">Hooks</h1>
 <p>we often can’t break complex components down any further because the logic is stateful and can’t be extracted to a function or another component.
 Hooks let us organize the logic inside a component into reusable isolated units.</p>
 <p>Hooks apply the React philosophy (explicit data flow and composition) inside a component, rather than just between the components. That’s why I feel that Hooks are a natural fit for the React component model.</p>
 <p>Components are more powerful, but they have to render some UI. This makes them inconvenient for sharing non-visual logic. This is how we end up with complex patterns like render props and higher-order components. Wouldn’t React be simpler if there was just one common way to reuse code instead of so many?</p>
 <p>Functions seem to be a perfect mechanism for code reuse. Moving logic between functions takes the least amount of effort. However, functions can’t have local React state inside them. You can’t extract behavior like “watch window size and update the state” or “animate a value over time”.</p>
-<h2 id="_1"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usestate">useState</h1>
 <pre><code class="js">import React, { useState } from 'react';
@@ -113,7 +116,8 @@ const clickComponent = () =&gt; {
 }
 </code></pre>
 
-<h2 id="_2"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="useeffect">useEffect</h1>
 <pre><code class="js">import React, { useState, useEffect } from 'react';
@@ -137,7 +141,8 @@ const Employees = ({ query }) =&gt; {
 }
 </code></pre>
 
-<h2 id="_3"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usecontext">UseContext</h1>
 <pre><code class="js">
@@ -181,29 +186,34 @@ function ThemeButton() {
 }
 </code></pre>
 
-<h2 id="_4"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usecontext-demo">UseContext Demo</h1>
 <iframe src="https://codesandbox.io/embed/updating-shared-react-context-from-child-components-with-hooks-forked-fucsb?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Updating Shared React Context from Child Components with Hooks (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h2 id="_5"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usereducer-demo">useReducer Demo</h1>
 <iframe src="https://codesandbox.io/embed/usereducer-todo-app-forked-43qk4?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="useReducer todo app (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h2 id="_6"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usecallback-demo">useCallback Demo</h1>
 <iframe src="https://codesandbox.io/embed/reactusecallback-forked-d1401?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="React.useCallback (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h2 id="_7"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="react-memo-demo">React Memo Demo</h1>
 <p>React memo is used to wrap React components to prevent re-renderings</p>
 
 <iframe src="https://codesandbox.io/embed/thirsty-hellman-mytul?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="thirsty-hellman-mytul" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h2 id="_8"><br></h2>
+<p><br></p>
+<hr />
 <p></br></p>
 <h1 id="usewindowsize-demo">useWindowSize Demo</h1>
 <iframe src="https://codesandbox.io/embed/exciting-ellis-zzic6?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="exciting-ellis-zzic6" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
@@ -233,6 +243,7 @@ function ThemeButton() {
 
     <div id="toc-collapse" class="navbar-collapse collapse card">
         <ul class="nav flex-column bs-sidenav">
+            <li class="nav-item main"><a class="nav-link" href="#react">REACT</a></li>
             <li class="nav-item main"><a class="nav-link" href="#hooks">Hooks</a></li>
             <li class="nav-item main"><a class="nav-link" href="#usestate">useState</a></li>
             <li class="nav-item main"><a class="nav-link" href="#useeffect">useEffect</a></li>
