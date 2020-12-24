@@ -1,4 +1,10 @@
-<h1>React</h1>
+# REACT
+
+<br>
+
+---
+
+</br>
 
 # Hooks
 
@@ -13,7 +19,9 @@ Components are more powerful, but they have to render some UI. This makes them i
 Functions seem to be a perfect mechanism for code reuse. Moving logic between functions takes the least amount of effort. However, functions can’t have local React state inside them. You can’t extract behavior like “watch window size and update the state” or “animate a value over time”.
 
 <br>
+
 ---
+
 </br>
 
 # useState
@@ -36,7 +44,9 @@ const clickComponent = () => {
 ```
 
 <br>
+
 ---
+
 </br>
 
 # useEffect
@@ -64,7 +74,9 @@ const Employees = ({ query }) => {
 ```
 
 <br>
+
 ---
+
 </br>
 
 # UseContext
@@ -112,7 +124,9 @@ function ThemeButton() {
 ```
 
 <br>
+
 ---
+
 </br>
 
 # UseContext Demo
@@ -121,7 +135,9 @@ function ThemeButton() {
 <iframe src="https://codesandbox.io/embed/updating-shared-react-context-from-child-components-with-hooks-forked-fucsb?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Updating Shared React Context from Child Components with Hooks (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 <br>
+
 ---
+
 </br>
 
 # useReducer Demo
@@ -129,7 +145,9 @@ function ThemeButton() {
 <iframe src="https://codesandbox.io/embed/usereducer-todo-app-forked-43qk4?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="useReducer todo app (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 <br>
+
 ---
+
 </br>
 
 # useCallback Demo
@@ -137,7 +155,9 @@ function ThemeButton() {
 <iframe src="https://codesandbox.io/embed/reactusecallback-forked-d1401?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="React.useCallback (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 <br>
+
 ---
+
 </br>
 
 # React Memo Demo
@@ -147,7 +167,9 @@ function ThemeButton() {
 <iframe src="https://codesandbox.io/embed/thirsty-hellman-mytul?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="thirsty-hellman-mytul" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 <br>
+
 ---
+
 </br>
 
 # useWindowSize Demo
