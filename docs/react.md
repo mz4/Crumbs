@@ -1,10 +1,5 @@
-# REACT
+# Hooks
 
-<br>
-
-## Hooks
-
-<h4>Why hooks</h4>
 we often can’t break complex components down any further because the logic is stateful and can’t be extracted to a function or another component.
 Hooks let us organize the logic inside a component into reusable isolated units.
 
@@ -15,18 +10,11 @@ Components are more powerful, but they have to render some UI. This makes them i
 
 Functions seem to be a perfect mechanism for code reuse. Moving logic between functions takes the least amount of effort. However, functions can’t have local React state inside them. You can’t extract behavior like “watch window size and update the state” or “animate a value over time”.
 
+<br>
+---
+</br>
 
-<h4>Stateless function component - sfc</h4>
-
-```js
-const | = props => {
-  return ( | );
-};
-
-export default |;
-```
-
-<h4>React FC - useState</h4>
+# useState
 
 ```js
 import React, { useState } from 'react';
@@ -47,7 +35,7 @@ const clickComponent = () => {
 
 <br>
 
-<h4>React FC - useEffect</h4>
+# useEffect
 
 ```js
 import React, { useState, useEffect } from 'react';
@@ -73,7 +61,7 @@ const Employees = ({ query }) => {
 
 <br>
 
-<h4>React FC - UseContext</h4>
+# UseContext
 
 ```js
 
@@ -119,7 +107,7 @@ function ThemeButton() {
 
 <br>
 
-<h4>React FC - Update UseContext</h4>
+# Update UseContext
 
 
 <iframe src="https://codesandbox.io/embed/updating-shared-react-context-from-child-components-with-hooks-forked-fucsb?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Updating Shared React Context from Child Components with Hooks (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
@@ -127,22 +115,26 @@ function ThemeButton() {
 
 <br>
 
-<h4>React FC - useReducer</h4>
+# useReducer
 
 <iframe src="https://codesandbox.io/embed/usereducer-todo-app-forked-43qk4?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="useReducer todo app (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 <br>
 
-<h4>React FC - useCallback</h4>
+# useCallback
 
 <iframe src="https://codesandbox.io/embed/reactusecallback-forked-d1401?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="React.useCallback (forked)" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h4>React Memo</h4>
+<br>
+
+# React Memo
 
 <p>React memo is used to wrap React components to prevent re-renderings</p>
 
 <iframe src="https://codesandbox.io/embed/thirsty-hellman-mytul?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="thirsty-hellman-mytul" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-<h4>Custom Hooks - useWindowSize</h4>
+<br>
+
+# useWindowSize
 
 <iframe src="https://codesandbox.io/embed/exciting-ellis-zzic6?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="exciting-ellis-zzic6" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
