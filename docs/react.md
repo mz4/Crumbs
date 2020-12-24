@@ -4,7 +4,7 @@
 
 ---
 
-</br>
+<br>
 
 # Hooks
 
@@ -22,7 +22,7 @@ Functions seem to be a perfect mechanism for code reuse. Moving logic between fu
 
 ---
 
-</br>
+<br>
 
 # useState
 
@@ -47,7 +47,7 @@ const clickComponent = () => {
 
 ---
 
-</br>
+<br>
 
 # useEffect
 
@@ -77,7 +77,7 @@ const Employees = ({ query }) => {
 
 ---
 
-</br>
+<br>
 
 # UseContext
 
@@ -127,7 +127,7 @@ function ThemeButton() {
 
 ---
 
-</br>
+<br>
 
 # UseContext Demo
 
@@ -138,7 +138,7 @@ function ThemeButton() {
 
 ---
 
-</br>
+<br>
 
 # useReducer Demo
 
@@ -148,7 +148,7 @@ function ThemeButton() {
 
 ---
 
-</br>
+<br>
 
 # useCallback Demo
 
@@ -158,7 +158,7 @@ function ThemeButton() {
 
 ---
 
-</br>
+<br>
 
 # React Memo Demo
 
@@ -170,7 +170,7 @@ function ThemeButton() {
 
 ---
 
-</br>
+<br>
 
 # useWindowSize Demo
 
